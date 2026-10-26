@@ -351,6 +351,26 @@ label.pick.v9pick>input{margin:3px 0 0!important;justify-self:start}
 /* mobile/tablet: roster scrolls with the page, no nested scroll box */
 @media (max-width:900px),(pointer:coarse){.roster.roster-scroll,#roster.roster-scroll,.roster{max-height:none!important;overflow-y:visible!important;overscroll-behavior:auto!important;padding-right:0}}
 
+/* mobile compact roster (<=700px only) */
+.v9-rfilters,.v9-rrow,.v9-rempty{display:none}
+@media (max-width:700px){
+.v9-rfilters{display:flex;gap:6px;overflow-x:auto;flex-wrap:nowrap;margin:0 0 10px;padding-bottom:4px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.v9-rfilters::-webkit-scrollbar{display:none}
+.v9-chip{flex:0 0 auto;white-space:nowrap;min-height:40px;padding:0 13px;border-radius:99px;border:1px solid #435a78;background:transparent;color:#c9d5e6;font:13px system-ui,sans-serif}
+.v9-chip span{color:var(--muted);margin-left:3px}.v9-chip.active{background:#3d321b;border-color:#8b7136;color:var(--gold2)}
+#hero-list.roster{grid-template-columns:1fr;gap:6px}
+#hero-list .v9-rcard{display:none}#hero-list .v9-rcard.v9-open{display:flex;margin-bottom:6px;border-color:#8b7136}
+#hero-list .v9-rempty{display:block}
+.v9-rrow{display:flex;align-items:center;gap:10px;width:100%;min-height:48px;padding:4px 10px;text-align:left;border:1px solid var(--line);border-radius:9px;background:#132238}
+.v9-rrow.v9-open{border-color:#8b7136;background:#1b2e49}
+.v9-rpic{flex:0 0 32px;width:32px;height:32px;border-radius:50%;object-fit:cover;display:grid;place-items:center;border:1px solid #647e9f;color:var(--gold);font-size:14px;background:#0a1524}
+.v9-rmain{flex:1 1 auto;min-width:0;display:flex;flex-direction:column}
+.v9-rmain b,.v9-rmain small{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.v9-rmain b{font-weight:400;font-size:15px}.v9-rmain small{font:12px system-ui,sans-serif;color:var(--muted)}
+.v9-rrank{flex:0 0 auto;font:12px system-ui,sans-serif;color:var(--gold2);border:1px solid #826a31;border-radius:6px;padding:2px 6px}
+.v9-rrow{min-width:0;max-width:100%;overflow:hidden}.v9-rrow .pill{flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;font-size:12px}.v9-rrow .pill.v9-rw1{border-color:#8a7a3a;color:#e6d28a}.v9-rrow .pill.v9-rw2{border-color:#9a5f3a;color:#f0b08a}.v9-rrow .pill.v9-rw3{border-color:#a04848;color:#f19a9a}
+#hero-list .v9-hide{display:none!important}
+}
+
 </style>
 </head>
 <body>
@@ -1383,6 +1403,23 @@ if(r===1&&tbwHas(h,'Lucky')&&!(h.luckyDay&&game.day-h.luckyDay<7)){h.luckyDay=ga
 if(r===2&&tbwHas(h,'Cursed Luck')){r=1;note(`Cursed Luck: ${h.name}'s 2 counts as a natural 1`)}
 const ok=r>=(c.critMin||20)||(r!==1&&r+mod>=edc);if(!ok){const e=fx.find(e=>(e.sp==='rerollFail'||e.sp==='drw')&&cond(e)&&!(ctx&&ctx.used&&ctx.used.has(h.id+':'+e.perk.id)));if(e&&once(e)){const n=d20(),old=r;r=Math.max(old,n);note(`${e.perk.name}: ${h.name} rerolls ${old} → ${n}`)}}
 return r}
+
+/* mobile compact roster: slim rows + filter chips (CSS shows only <=700px) */
+let v9RosterFilter='all',v9RosterOpen=null;
+function v9RosterStatus(h){if(h.dead)return ['Fallen','gold'];if(h.wound&&WOUND_TIERS[h.wound.tier])return [WOUND_TIERS[h.wound.tier].name+' wound','v9-rw'+h.wound.tier];return h.ready?['Ready','']:['On quest','blue']}
+function v9RosterMatch(h,f){if(f==='all')return true;if(f==='wounded')return !!(h.wound&&h.wound.tier);if(f==='available')return !h.dead&&h.ready&&!(h.wound&&h.wound.tier>=3);return v9Role(h)===f}
+function v9RosterApply(){const root=document.getElementById('hero-list');if(!root)return;let shown=0;root.querySelectorAll('.v9-rrow').forEach(r=>{const h=game.heroes.find(x=>x.id===r.dataset.id),m=h&&v9RosterMatch(h,v9RosterFilter);r.classList.toggle('v9-hide',!m);const c=r.nextElementSibling;if(c){c.classList.toggle('v9-hide',!m);const o=m&&v9RosterOpen===r.dataset.id;c.classList.toggle('v9-open',o);r.classList.toggle('v9-open',o);r.setAttribute('aria-expanded',String(o))}if(m)shown++});let e=root.querySelector('.v9-rempty');if(!shown&&root.querySelector('.v9-rrow')){if(!e){e=document.createElement('div');e.className='empty v9-rempty';e.textContent='No heroes match this filter.';root.appendChild(e)}}else if(e)e.remove();document.querySelectorAll('#v9-rfilters .v9-chip').forEach(c=>c.classList.toggle('active',c.dataset.f===v9RosterFilter))}
+function v9RosterSet(f){v9RosterFilter=f;v9RosterOpen=null;v9RosterApply()}
+function v9RosterToggle(id){v9RosterOpen=v9RosterOpen===id?null:id;v9RosterApply()}
+const _v9RenderHeroes=renderHeroes;renderHeroes=function(){_v9RenderHeroes.apply(this,arguments);const root=document.getElementById('hero-list');if(!root)return;
+ const vis=game.heroes.filter(h=>Boolean(h.dead)===showFallen),cards=[...root.querySelectorAll(':scope > article.hero')];
+ let bar=document.getElementById('v9-rfilters');if(!bar){bar=document.createElement('div');bar.id='v9-rfilters';bar.className='v9-rfilters';bar.setAttribute('role','toolbar');root.parentNode.insertBefore(bar,root)}
+ const F=[['all','All'],['tank','Tank'],['healer','Healer'],['dps','Damage'],['wounded','Wounded'],['available','Available']];
+ bar.innerHTML=F.map(([k,l])=>{const n=vis.filter(h=>v9RosterMatch(h,k)).length;return `<button class="v9-chip" data-f="${k}" onclick="v9RosterSet('${k}')">${l} <span>${n}</span></button>`}).join('');bar.style.display=vis.length?'':'none';
+ if(cards.length!==vis.length)return;
+ cards.forEach((c,i)=>{const h=vis[i],[st,cl]=v9RosterStatus(h);c.classList.add('v9-rcard');const r=document.createElement('button');r.className='v9-rrow';r.dataset.id=h.id;r.setAttribute('onclick',`v9RosterToggle('${h.id}')`);
+  r.innerHTML=`${imageSrc(h)?`<img class="v9-rpic" src="${imageSrc(h)}" alt="">`:`<span class="v9-rpic">${tbwEsc((h.name||'?')[0])}</span>`}<span class="v9-rmain"><b>${tbwEsc(h.name)}</b><small>${tbwEsc(h.className||'Warrior')} · ${tbwEsc(h.spec||'Arms')}</small></span><span class="v9-rrank">${ranks[h.rank]||'F'}</span><span class="pill ${cl}">${st}</span>`;root.insertBefore(r,c)});
+ v9RosterApply()};
 
 let game=loadGame();if(game._v9NeedStarters){delete game._v9NeedStarters;v9RandomStarters(game)}let recruitId=null;let chosenQuest=null;let playerRespecDraft=null;let viewingHeroId=null;let showFallen=false;let saveTimer;setInterval(tickQuestTimers,1000);
 function loadGame(){try{const x=JSON.parse(localStorage.getItem(SAVE_KEY));if(x&&x.heroes&&x.gear){if(x.reputation===undefined)x.reputation=x.renown||0;delete x.renown;x.heroes.forEach((h,i)=>{h.trials=Array.isArray(h.trials)?h.trials:[];h.race=h.race||(['Human','Dwarf'][i%2]);h.className=h.className||(i===0?'Hunter':'Warrior');h.spec=h.spec||(specs[h.className]?.[0]||'Arms');h.abilities={...defaultAbilities(h.className),...(h.abilities||{})};delete h.might;delete h.grit;delete h.wit;migrateProgression(h);h.rank=h.rank||0});x.player=x.player||{id:'player',name:'Kael Arden',race:'Human',className:'Warrior',spec:'Arms',level:3,levelProgress:0,missions:0,might:4,grit:3,wit:2,gear:null,ready:true,trials:[]};x.player.trials=Array.isArray(x.player.trials)?x.player.trials:[];x.player.className=x.player.className||'Warrior';const basePlayerAbilities=x.player.name==='Kael Arden'&&x.player.className==='Warrior'?{str:16,dex:12,con:14,int:10,wis:12,cha:14}:defaultAbilities(x.player.className);x.player.abilities={...basePlayerAbilities,...(x.player.abilities||{})};delete x.player.might;delete x.player.grit;delete x.player.wit;x.player.className=x.player.className||'Warrior';x.player.spec=x.player.spec||(specs[x.player.className]?.[0]||'Arms');x.player.ready=x.player.ready!==false;x.player.rank=x.player.rank||0;migrateProgression(x.player);x.player.missions=x.player.missions||0;x.gear=Array.isArray(x.gear)?x.gear:[];x.materials=x.materials||{};x.consumables=x.consumables||[];x.warehouseGear=x.warehouseGear||[];x.staff=x.staff||{xp:0,rank:1,perk:null};x.staff.profession=x.staff.profession||'Alchemy';x.staff.professionXP=x.staff.professionXP||{};x.professionXP=x.professionXP||{Mining:0,Fishing:0,Herbalism:0,Skinning:0};x.materials=x.materials||{};x.pendingReports=x.pendingReports||[];migratePendingReports(x.pendingReports,x.day);x.todayReports=x.todayReports||[];x.questBoard=x.questBoard||[];x.questSequence=x.questSequence||1;x.arrivalsInitialized=x.arrivalsInitialized??true;x.applicantSequence=x.applicantSequence||1;x.lastOutreachDay=x.lastOutreachDay||0;x.outreachOrder=x.outreachOrder&&typeof x.outreachOrder==='object'?x.outreachOrder:null;x.dismissedHeroes=Array.isArray(x.dismissedHeroes)?x.dismissedHeroes:[];(x.applicants||[]).forEach(a=>{if(a.expiresDay===undefined)a.expiresDay=x.day+3;if(a.rank===undefined)a.rank=0});x.storySession=x.storySession?.dueAt?x.storySession:null;x.selected=[];x.questDone=x.questDone||{};x.staffMembers=x.staffMembers||[];x.staffMembers.forEach(st=>{st.buildingKey=st.buildingKey||buildingDefs.find(b=>b.staffId===st.id)?.key||(st.id==='eda'?'staffOffice':null);st.profession=staffProfessionForKey(st.buildingKey)||st.profession||st.job||'Generalist';st.professionXP=typeof st.professionXP==='object'&&st.professionXP!==null?st.professionXP:{};st.professionXP[st.profession]=Number(st.professionXP[st.profession])||0;delete st.growth;delete st.level;delete st.xp});x.buildings={warehouse:true,staffOffice:false,workshop:false,infirmary:false,armory:false,kitchen:false,warRoom:false,huntersLodge:false,commandPost:false,...(x.buildings||{})};x.buildingLevels=x.buildingLevels||{};x.constructionProjects=x.constructionProjects||[];x.warehouseLevel=x.warehouseLevel||1;x.consumables=x.consumables||[];x.warehouseGear=x.warehouseGear||[];[...x.heroes,x.player].forEach(h=>{h.gold=h.gold??(h.id==='player'?15:0);h.dead=!!h.dead});migrateRecruitmentV2(x);return x}}catch(e){}return starter()}

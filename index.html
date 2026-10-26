@@ -1167,8 +1167,8 @@ function v9RankPicker(q){const max=v9PermMax();return `<select class="v9-rank-pi
 // ---------- economy tuning (v9.1): market saturation per day ----------
 // Each quest dispatched on the same day pays the guild less gold and earns less rep (local demand is finite);
 // quests below the board's rank ceiling earn reduced rep. Hero purse minimums (5 gp Contract) are unchanged.
-var V9_ECON={repMul:.35,belowRep:.5,repK:2,goldK:3.5};
-function v9Market(q){game.market=game.market&&game.market.day===game.day?game.market:{day:game.day,n:0,repFrac:(game.market&&game.market.repFrac)||0};const n=game.market.n++;const below=q.kind==='Contract'&&q.ceilingRank!==undefined&&q.rank<q.ceilingRank;return {n,below,gold:V9_ECON.goldK/(n+V9_ECON.goldK),rep:V9_ECON.repMul*(below?V9_ECON.belowRep:1)*V9_ECON.repK/(n+V9_ECON.repK)}}
+var V9_ECON={repMul:.35,belowRep:.5,repK:2,goldK:2,goldFree:3};
+function v9Market(q){game.market=game.market&&game.market.day===game.day?game.market:{day:game.day,n:0,repFrac:(game.market&&game.market.repFrac)||0};const n=game.market.n++;const below=q.kind==='Contract'&&q.ceilingRank!==undefined&&q.rank<q.ceilingRank;const gf=V9_ECON.goldFree||0;return {n,below,gold:n<gf?1:V9_ECON.goldK/(n-gf+1+V9_ECON.goldK),rep:V9_ECON.repMul*(below?V9_ECON.belowRep:1)*V9_ECON.repK/(n+V9_ECON.repK)}}
 function v9RepRound(x){game.market=game.market||{day:game.day,n:0,repFrac:0};const t=x+(game.market.repFrac||0),w=Math.floor(t);game.market.repFrac=t-w;return w}
 // ---------- quests: away marker for training ----------
 const _v9Queue=queueQuestReport;queueQuestReport=function(q,partyIds,...rest){const r=_v9Queue(q,partyIds,...rest);(partyIds||[]).forEach(id=>{const h=purse(id);if(h)h.lastQuestDay=game.day});return r};

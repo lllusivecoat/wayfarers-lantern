@@ -332,6 +332,15 @@ html.v9-modal-open,body.v9-modal-open{overflow:hidden!important;overscroll-behav
 .v9-info{margin:-9px -6px -9px 0!important}
 .v9pick .v9pick-body{overflow:visible!important}
 .v9pick .v9pick-head{width:100%;min-width:0}
+/* picker card layout: explicit grid, works at every width */
+label.pick.v9pick{display:grid!important;grid-template-columns:18px minmax(0,1fr)!important;column-gap:10px!important;justify-items:stretch!important;justify-content:stretch!important;align-items:start!important;text-align:left!important}
+label.pick.v9pick>input{margin:3px 0 0!important;justify-self:start}
+.v9pick .v9pick-body{width:100%!important;align-items:stretch!important;text-align:left!important}
+.v9pick .v9pick-head{display:grid!important;grid-template-columns:minmax(3em,1fr);grid-auto-flow:column;grid-auto-columns:auto;align-items:center;column-gap:6px;width:100%}
+.v9pick .v9pick-head .v9pick-name{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:left}
+.v9pick .v9pick-meta{justify-content:flex-start!important;text-align:left}
+.v9-info{margin:-9px -6px -9px -4px!important;justify-self:end}
+#quest-detail-modal .modalbox,#quest-detail-content{overflow-x:hidden}
 
 </style>
 </head>

@@ -348,6 +348,9 @@ label.pick.v9pick>input{margin:3px 0 0!important;justify-self:start}
 .v9-perk-type{color:#8fd6cf;border-color:rgba(110,200,190,.6)}
 .v9-perk-chip .v9-perk-l{margin-right:.35em}
 
+/* mobile/tablet: roster scrolls with the page, no nested scroll box */
+@media (max-width:900px),(pointer:coarse){.roster.roster-scroll,#roster.roster-scroll,.roster{max-height:none!important;overflow-y:visible!important;overscroll-behavior:auto!important;padding-right:0}}
+
 </style>
 </head>
 <body>

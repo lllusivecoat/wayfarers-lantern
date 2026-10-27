@@ -6,7 +6,7 @@ window.WL_BALANCE=Object.freeze({
   materialPerLevel:.025,
   craftChancePerLevel:.03,
   craftExtra:level=>level>=9?2:1,
-  rationCount:(staffedLevel,skill)=>1+Math.floor((staffedLevel-1)/2)+Math.floor(skill/4),
+  rationCount:building=>Math.max(1,Math.min(5,Number(building)||1)),
   rationBonus:skill=>skill>=6?2:1,
   marketPrice:(base,rate)=>Math.max(1,Math.ceil(base*rate*1.2)),
   marketStock:ring=>Math.min(18,8+ring*2)

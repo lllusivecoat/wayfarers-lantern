@@ -102,3 +102,69 @@ staff retain their saved wages, identities and skills. Staff Office wage reducti
 still apply. Recruitment uses Hall capacity, even if all building slots are filled;
 assignment uses completed building capacity and never creates another staff member.
 Building-page staffing actions lead to the Staff page rather than hiring a specialist.
+
+## Current implementation: one worker and ingredient cooking
+
+This section supersedes earlier headcount and automatic free-ration descriptions.
+Every completed building, including the Warehouse, has one staff slot at all levels.
+A staffed building operates at its actual upgrade level. Existing multi-worker saves
+keep the most experienced assigned worker in each building and retain every extra
+worker, with all wages and skills intact, on the unassigned roster.
+
+The Inventory page contains a daily recipe selector per Kitchen:
+
+| Recipe | Kitchen / Cooking required | Ingredients per ration | Readiness |
+| --- | --- | --- | --- |
+| Trail Rations | Kitchen 1 / Cooking 0 | 1 Meat + 1 Fresh Fish | +1 |
+| Hearty Rations | Kitchen 2 / Cooking 3 | 1 Prime Meat + 1 Deviate Fish | +2 |
+
+One paid daily shift produces up to the Kitchen's level (1–5) in rations, limited by
+the selected recipe's ingredients and guild ration stock (30 remaining uses). No
+free substitution to a cheaper recipe. Players can pause cooking. Production happens
+after costs are settled when resting; same-day calls/reloads do not create more food.
+Existing food, including over-limit stocks, is retained; production waits for room.
+
+Skinning keeps its leather rewards and adds Meat equal to half the returned material
+quantity, rounded up. C-rank-and-higher Skinning adds Prime Meat equal to a quarter of that
+quantity. Fishing keeps Fresh Fish and its existing rare catches; C-rank-and-higher trips add a
+guaranteed extra quarter-haul of Deviate Fish. Partial hauls scale from actual returned
+quantity. Failed expeditions add no food. Drops are committed in the expedition report
+and delivered to storage on return, never by opening a preview.
+
+Provisions provide a single non-stacking readiness bonus up to +2. A stronger item
+can replace a weaker one; equal/weaker use consumes nothing. Provisions cannot be
+used while a hero is away. Kitchen L4+ ration use advances Light-wound recovery once
+per hero per day; it does not heal serious wounds. Existing prepared bonuses and
+queued report results are not rewritten during migration.
+
+Aptitude, personality and daily-candidate changes remain a separate balance proposal
+in STAFF-BALANCE.md; the current cooking implementation adds no random extra output.
+
+## Five Kitchen recipe tiers (latest food rules)
+
+Gathering ranks are displayed as F/E/D/C/B/A/S/SS/Legendary/Renown; numeric rank
+indices are internal only. Each recipe below consumes one of each listed ingredient
+per ration. Production remains ingredient-limited, once daily after costs are paid,
+with one assigned worker and a 30-use guild ration-stock limit.
+
+| Kitchen | Cooking | Recipe | Minimum ingredient rank | Meat + fish | Effect |
+| --- | --- | --- | --- | --- | --- |
+| 1 | 0 | Trail Rations | F | Meat + Fresh Fish | +1 readiness |
+| 2 | 3 | Hearty Rations | C | Prime Meat + Deviate Fish | +2 readiness |
+| 3 | 5 | Restorative Rations | A | Rich Game Meat + Silverfin | +2 readiness, one Light-wound recovery day |
+| 4 | 7 | Fortifying Rations | S | Wild Game Meat + Deepwater Fish | +2 readiness, one Light-wound recovery day, repair up to 1 durability on one equipped item |
+| 5 | 9 | Grand Feast Rations | SS | Primal Meat + Royal Salmon | +2 readiness, one Light-wound recovery day, repair up to 2 durability on one equipped item |
+
+Higher-rank trips retain every lower food grade. Skinning keeps its leather and
+adds Meat at half the returned haul. C/A/S/SS ingredients are additional drops at
+returned haul divided by 4/6/8/10 respectively, rounded up. Fishing's main reward
+remains Fresh Fish; the same additional-grade rule applies. Partial success scales
+food from the actual returned haul; failure grants no food. Original rare loot stays.
+
+Use Provision now opens a choice of stored meals, displaying effects and quantities.
+The player can conserve rare meals; selecting equal readiness is allowed only when
+a recovery effect would actually help. Food never downgrades or stacks readiness.
+All meals share a one-Light-wound-day-per-hero-per-day limit and a two-durability
+repair limit. Fortifying followed by Grand Feast restores at most two total, not
+three; repair affects the most damaged equipped item. Serious/Grievous wounds are
+untouched. Recovery counters and meal effects persist through saves and reloads.

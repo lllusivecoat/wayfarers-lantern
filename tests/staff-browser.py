@@ -104,12 +104,12 @@ with sync_playwright() as p:
       const cost=treatCost(game.player);medic.professionXP['First Aid']=275;
       assert(treatCost(game.player)<cost,'first aid discount');game.player.wound=null;
       hireStaffTo('test-kitchen');const cook=buildingStaff('kitchen');cook.professionXP.Cooking=0;
-      let n=game.consumables.length;v9KitchenDay();assert(game.consumables.length===n+1,'novice rations');
-      v9KitchenDay();assert(game.consumables.length===n+1,'once daily rations');game.day++;cook.professionXP.Cooking=275;n=game.consumables.length;v9KitchenDay();
-      assert(game.consumables.length===n+3&&game.consumables.at(-1).bonus===2,'master rations');
+      game.materials.Meat=10;game.materials['Fresh Fish']=10;game.staffCostsPaidDay=game.day;let n=game.consumables.length;v9KitchenDay();assert(game.consumables.length===n+1,'novice rations');
+      v9KitchenDay();assert(game.consumables.length===n+1,'once daily rations');game.day++;game.staffCostsPaidDay=game.day;v9InstById('test-kitchen').level=2;cook.professionXP.Cooking=275;game.materials['Prime Meat']=10;game.materials['Deviate Fish']=10;setKitchenRecipe('test-kitchen','hearty');n=game.consumables.length;v9KitchenDay();
+      assert(game.consumables.length===n+2&&game.consumables.at(-1).bonus===2,'master rations');
       // Building upgrades and staff skill remain independent.
       assert(buildingLevel('workshop')===1&&staffProfessionLevel(smith)===10,'building/skill separation');
-      game.warehouseLevel=2;hireStaffTo('warehouse');assert(v9StaffOf('warehouse').length===2,'warehouse slots');
+      game.warehouseLevel=2;assert(v9StaffOf('warehouse').length===1,'one warehouse worker after upgrade');
       // Every recipe, including presence rings, has valid requirements.
       assert(renderGearCatalog().every(i=>Object.values(i.requirements).every(n=>Number.isInteger(n)&&n>0)),'recipe requirements');
       // Reject invalid inbound requests without charging the treasury.
@@ -151,7 +151,7 @@ with sync_playwright() as p:
       // Complete an upgrade through the existing construction system.
       const project={key:'waystation',uid:'test-waystation',action:'upgrade',targetLevel:2};
       game.constructionProjects.push(project);completeConstructionProject(project);
-      hireStaffTo('test-waystation');assert(v9StaffOf('test-waystation').length===2,'upgrade staff slot');
+      assert(v9StaffOf('test-waystation').length===1&&v9Eff(v9InstById('test-waystation'))===2,'one worker operates upgraded service');
       assert(Math.abs(waystationTimeCut()-.45)<1e-8,'no stacking from multiple staff');
       const gathering=gatheringQuest('Mining');const now=Date.now();
       queueQuestReport(gathering,['player'],0,'Waystation timer test');
@@ -161,7 +161,7 @@ with sync_playwright() as p:
       const due=report.dueAt;
       v9AssignStaff(guide.id,'warehouse'); // Full warehouse rejects reassignment.
       guide.buildingUid=null;guide.buildingKey=null;
-      const novice=buildingStaff('waystation');novice.buildingUid=null;novice.buildingKey=null;
+
       assert(v9QuestMins(q)===5,'vacant building stops reduction');
       assert(report.dueAt===due,'underway quest deadline preserved');
       v9AssignStaff(guide.id,'test-waystation');
@@ -207,8 +207,8 @@ with sync_playwright() as p:
         assert page.locator(f"#{view}").is_visible()
     run("showView('staff')")
     run("v9InstById('test-kitchen').level=2;renderStaffTab()")
-    page.locator('[data-staff-index=\"0\"]').select_option('test-kitchen')
-    assert run("game.staffMembers[0].buildingKey") == 'kitchen'
+    page.locator('[data-staff-index=\"0\"]').select_option('test-cartographersOffice')
+    assert run("game.staffMembers[0].buildingKey") == 'cartographersOffice'
     page.locator('[data-staff-index=\"0\"]').select_option('warehouse')
     assert run("game.staffMembers[0].buildingKey") == 'warehouse'
     assert 'Skills and next benefits' in page.locator('#staff-roster').inner_text()

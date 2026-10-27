@@ -93,3 +93,12 @@ dispatched through the normal UI. Construction in progress does not unlock it.
 Destroying the office hides future Exploration offers but preserves discovered
 locations, learned skills and reports already underway. Existing saves do not
 automatically receive the building. Other quests and discovered markets remain.
+
+## General staff recruitment
+
+Staff recruitment and building assignments are separate. New hires join unassigned
+with no hiring fee and a 2 gp/day base wage payable only while assigned. Existing
+staff retain their saved wages, identities and skills. Staff Office wage reductions
+still apply. Recruitment uses Hall capacity, even if all building slots are filled;
+assignment uses completed building capacity and never creates another staff member.
+Building-page staffing actions lead to the Staff page rather than hiring a specialist.

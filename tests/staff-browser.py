@@ -7,6 +7,7 @@ from playwright.sync_api import sync_playwright
 with sync_playwright() as p:
     browser = p.chromium.launch(executable_path='/usr/bin/chromium', args=['--no-sandbox'])
     page = browser.new_page(viewport={'width':1280, 'height':900})
+    page.add_init_script("window.hireStaffTo=(uid)=>{if(hireStaff()!=='')throw Error('Hire failed');const st=game.staffMembers.at(-1);if(v9AssignStaff(st.id,uid)!=='')throw Error('Assignment failed')}")
     page.set_default_timeout(15000)
     errors = []
     page.on('pageerror', lambda e: errors.append(str(e)))
@@ -21,7 +22,7 @@ with sync_playwright() as p:
       check(staffSkillLevel(1000)===10,'level cap');
       game.hall=7;game.gold=10000;
       buildingDefs.forEach((b,i)=>game.buildingList.push({uid:'test-'+b.key,key:b.key,level:1,spent:b.cost}));v9Sync();
-      hireStaff('warehouse');hireStaff('test-workshop');
+      hireStaffTo('warehouse');hireStaffTo('test-workshop');
       const st=buildingStaff('warehouse'),smith=buildingStaff('workshop');
       st.professionXP={Storekeeping:50,Medicine:30};staffMigrate(game);
       check(st.professionXP['First Aid']===30&&!('Medicine' in st.professionXP),'Medicine rename');
@@ -91,7 +92,7 @@ with sync_playwright() as p:
       const assert=(ok,msg)=>{if(!ok)throw Error(msg)};
       const smith=buildingStaff('workshop');
       for(const key of ['staffOffice','infirmary','armory','trainingHall','warRoom','huntersLodge','commandPost']){
-        hireStaff('test-'+key);const st=buildingStaff(key);st.professionXP[staffProfessionForKey(key)]=0;
+        hireStaffTo('test-'+key);const st=buildingStaff(key);st.professionXP[staffProfessionForKey(key)]=0;
         assert(staffSkillBonus(key)===0,'novice '+key);st.professionXP[staffProfessionForKey(key)]=275;
         assert(staffSkillBonus(key)===3,'master '+key);
       }
@@ -102,13 +103,13 @@ with sync_playwright() as p:
       const medic=buildingStaff('infirmary');game.player.wound={tier:1,days:5};medic.professionXP['First Aid']=0;
       const cost=treatCost(game.player);medic.professionXP['First Aid']=275;
       assert(treatCost(game.player)<cost,'first aid discount');game.player.wound=null;
-      hireStaff('test-kitchen');const cook=buildingStaff('kitchen');cook.professionXP.Cooking=0;
+      hireStaffTo('test-kitchen');const cook=buildingStaff('kitchen');cook.professionXP.Cooking=0;
       let n=game.consumables.length;v9KitchenDay();assert(game.consumables.length===n+1,'novice rations');
       v9KitchenDay();assert(game.consumables.length===n+1,'once daily rations');game.day++;cook.professionXP.Cooking=275;n=game.consumables.length;v9KitchenDay();
       assert(game.consumables.length===n+3&&game.consumables.at(-1).bonus===2,'master rations');
       // Building upgrades and staff skill remain independent.
       assert(buildingLevel('workshop')===1&&staffProfessionLevel(smith)===10,'building/skill separation');
-      game.warehouseLevel=2;hireStaff('warehouse');assert(v9StaffOf('warehouse').length===2,'warehouse slots');
+      game.warehouseLevel=2;hireStaffTo('warehouse');assert(v9StaffOf('warehouse').length===2,'warehouse slots');
       // Every recipe, including presence rings, has valid requirements.
       assert(renderGearCatalog().every(i=>Object.values(i.requirements).every(n=>Number.isInteger(n)&&n>0)),'recipe requirements');
       // Reject invalid inbound requests without charging the treasury.
@@ -138,7 +139,7 @@ with sync_playwright() as p:
       const q={kind:'Contract',rank:0};
       assert(v9QuestMins(q)===5,'unstaffed Waystation');
       const convoy=v9ConvoyMs('ratchet');
-      hireStaff('test-waystation');const guide=buildingStaff('waystation');
+      hireStaffTo('test-waystation');const guide=buildingStaff('waystation');
       assert(Math.abs(v9QuestMins(q)-4.5)<1e-8,'novice 10% reduction');
       assert(v9DurLabel(q)==='4 min 30 s (Waystation −10%)','duration label');
       guide.professionXP.Pathfinding=275;
@@ -150,7 +151,7 @@ with sync_playwright() as p:
       // Complete an upgrade through the existing construction system.
       const project={key:'waystation',uid:'test-waystation',action:'upgrade',targetLevel:2};
       game.constructionProjects.push(project);completeConstructionProject(project);
-      hireStaff('test-waystation');assert(v9StaffOf('test-waystation').length===2,'upgrade staff slot');
+      hireStaffTo('test-waystation');assert(v9StaffOf('test-waystation').length===2,'upgrade staff slot');
       assert(Math.abs(waystationTimeCut()-.45)<1e-8,'no stacking from multiple staff');
       const gathering=gatheringQuest('Mining');const now=Date.now();
       queueQuestReport(gathering,['player'],0,'Waystation timer test');

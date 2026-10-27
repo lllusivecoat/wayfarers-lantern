@@ -4,6 +4,7 @@ from playwright.sync_api import sync_playwright
 with sync_playwright() as p:
     browser=p.chromium.launch(executable_path='/usr/bin/chromium',args=['--no-sandbox'])
     page=browser.new_page()
+    page.add_init_script("window.hireStaffTo=(uid)=>{if(hireStaff()!=='')throw Error('Hire failed');const st=game.staffMembers.at(-1);if(v9AssignStaff(st.id,uid)!=='')throw Error('Assignment failed')}")
     page.set_default_timeout(5000)
     errors=[]
     page.on('pageerror',lambda e:errors.append(str(e)))
@@ -60,7 +61,7 @@ with sync_playwright() as p:
       Math.random=oldRandom;
       game.questDone={};buildExtension('cartographersOffice');
       completeConstructionProject(game.constructionProjects.find(p=>p.key==='cartographersOffice'));
-      const office=v9Inst('cartographersOffice')[0];hireStaff(office.uid);
+      const office=v9Inst('cartographersOffice')[0];hireStaffTo(office.uid);
       const st=buildingStaff('cartographersOffice');check(st.profession==='Cartography','current skill');
       const original=perkRollChecks;let captured;
       perkRollChecks=function(q,party,dc){captured=dc;return original.apply(this,arguments)};

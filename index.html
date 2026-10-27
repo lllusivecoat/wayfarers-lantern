@@ -1012,6 +1012,7 @@ const buildingDefs=[
  {key:'workshop',name:'Workshop',rank:0,cost:45,upkeep:3,desc:'Craft equipment from gathered materials.',staffRole:'Smith',staffProfession:'Blacksmithing',staffId:'dunric',staffName:'Dunric',wage:2},
  {key:'kitchen',name:'Kitchen',rank:0,cost:35,upkeep:2,desc:'Improves staff morale and supports provisions.',staffRole:'Cook',staffProfession:'Cooking',staffId:'pella',staffName:'Pella',wage:2},
  {key:'infirmary',name:'Infirmary',rank:1,cost:65,upkeep:3,desc:'Reduces casualty risk on dangerous missions.',staffRole:'Medic',staffProfession:'First Aid',staffId:'venn',staffName:'Venn',wage:2},
+ {key:'waystation',name:'Waystation',rank:1,cost:75,upkeep:3,desc:'Staffed route planning shortens newly dispatched quests by 10/25/40/55/80% at building levels 1–5, plus 2% per Pathfinding level (80% cap). Convoy travel is unchanged.',staffRole:'Pathfinder',staffProfession:'Pathfinding',staffId:'tessa',staffName:'Tessa',wage:2},
  {key:'armory',name:'Armory',rank:1,cost:50,upkeep:2,desc:'Lowers personal-gold repair costs.',staffRole:'Armorer',staffProfession:'Armoring',staffId:'hark',staffName:'Hark',wage:2},
  {key:'warRoom',name:'War Room',rank:2,cost:180,upkeep:5,desc:'Required to organize raids.',staffRole:'Strategist',staffProfession:'Tactics',staffId:'orin',staffName:'Orin',wage:4},
  {key:'huntersLodge',name:'Hunter’s Lodge',rank:3,cost:220,upkeep:5,desc:'Required to pursue world bosses.',staffRole:'Master Hunter',staffProfession:'Hunting',staffId:'rusk',staffName:'Rusk',wage:3},
@@ -1041,6 +1042,7 @@ var V9_CONTRACT_MIN=5,V9_GROUP_MIN=3,V9_CONVOY_MIN=2;
 var V9_GROUP_KINDS=['Dungeon','Raid','World Boss','World Raid','World Dungeon'];
 var V9_GATE={warRoom:'Raid',huntersLodge:'World Boss',commandPost:'World Raid'};
 var V9_FX={
+ waystation:['','Quest time −10%; 1 staff slot; Pathfinding adds 2% per skill level (80% cap)','Quest time −25%; 2 staff slots','Quest time −40%; 3 staff slots','Quest time −55%; 4 staff slots','Quest time −80%; 5 staff slots; maximum reduction'],
  staffOffice:['','Staff skill lowers quest DC','Staff practice ×1.25','Staff wages −1 gp each (min 1)','+1 quest offer per day','Staff Office DC cut +1'],
  workshop:['','Craft patterns; 2 crafts per day per Workshop','Crafted gear +1','Crafted gear +10 durability','Crafted gear +2 (cap)','Materials −20%; +20 durability'],
  kitchen:['','Staff morale +1 per day','Rations from Cook level 1','2 rations per day','Rations heal a Light wound 1 day faster','Improved Rations (+2) at any Cook level'],
@@ -1376,9 +1378,11 @@ perkPanel=function(h){if(h.dead&&!(h.perks||[]).length)return '';const chips=v9P
 // ---- real-time quest timers (Shaun): rank base F=5, +5 per rank; kind extras ----
 var V9_DUR_EXTRA={Dungeon:10,Boss:10,Raid:15,'World Dungeon':20,'World Boss':20,'World Raid':30,Gathering:5};
 function v9DurKind(q){if(!q)return '';if(q.kind==='World Boss'&&!q.persistent&&q.jobType==='Boss')return 'Boss';return q.kind}
-function v9QuestMins(q){const r=Math.max(0,Math.min(ranks.length-1,Number(q&&q.rank)||0));return 5*(r+1)+(V9_DUR_EXTRA[v9DurKind(q)]||0)}
+function v9QuestBaseMins(q){const r=Math.max(0,Math.min(ranks.length-1,Number(q&&q.rank)||0));return 5*(r+1)+(V9_DUR_EXTRA[v9DurKind(q)]||0)}
+function waystationTimeCut(){return buildingOperational('waystation')?WL_BALANCE.questTimeCut(staffProfessionLevel(buildingStaff('waystation')),buildingLevel('waystation')):0}
+function v9QuestMins(q){return Math.max(1,v9QuestBaseMins(q)*(1-waystationTimeCut()))}
 function v9QuestMs(q){return v9QuestMins(q)*60000}
-function v9DurLabel(q){const m=v9QuestMins(q);return m>=60?`${Math.floor(m/60)} h${m%60?' '+(m%60)+' min':''}`:`${m} min`}
+function v9DurLabel(q){const total=Math.round(v9QuestMins(q)*60),h=Math.floor(total/3600),m=Math.floor(total%3600/60),s=total%60;return [h?`${h} h`:'',m?`${m} min`:'',s?`${s} s`:''].filter(Boolean).join(' ')+(waystationTimeCut()?` (Waystation −${Math.round(waystationTimeCut()*100)}%)`:'')}
 const _v9QQRdur=queueQuestReport;queueQuestReport=function(q){const before=(game.pendingReports||[]).length;const out=_v9QQRdur.apply(this,arguments);try{if(game.pendingReports.length>before){const r=game.pendingReports[game.pendingReports.length-1];r.durMs=Math.max(60000,Number(r.dueAt)-Date.now())||v9QuestMs(q)}}catch(e){}return out};
 
 // ---- convoy timers by distance: 10 min + 5 per travel leg from Booty Bay ----

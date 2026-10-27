@@ -1,6 +1,6 @@
 /* Staff skills and market convoys. Extends the existing v9 building/report engine. */
 (function(){
-  const skills={warehouse:'Storekeeping',staffOffice:'Quartermastery',workshop:'Blacksmithing',kitchen:'Cooking',infirmary:'First Aid',armory:'Armoring',trainingHall:'Training',warRoom:'Tactics',huntersLodge:'Hunting',commandPost:'Command'};
+  const skills={waystation:'Pathfinding',warehouse:'Storekeeping',staffOffice:'Quartermastery',workshop:'Blacksmithing',kitchen:'Cooking',infirmary:'First Aid',armory:'Armoring',trainingHall:'Training',warRoom:'Tactics',huntersLodge:'Hunting',commandPost:'Command'};
   const thresholds=[0,5,15,30,50,75,105,140,180,225,275];
   const esc=tbwEsc;
   window.staffSkillLevel=points=>thresholds.reduce((level,t,i)=>Number(points)>=t?i:level,0);
@@ -21,7 +21,7 @@
   staffSkillBonus=key=>WL_BALANCE.supportBonus(staffProfessionLevel(buildingStaff(key)));
   staffUnlockText=function(key,level){
     const bonus=WL_BALANCE.supportBonus(level);
-    return ({warehouse:`+${Math.round(level*WL_BALANCE.salePerLevel*100)}% sale prices; convoy danger −${bonus}`,staffOffice:`+${bonus} expedition preparation`,workshop:`${['No gear tier','Basic','Sturdy','Fine','Superior','Masterwork','Relic','Legendary','Heritage'][Math.min(8,level)]}; ${level*WL_BALANCE.materialPerLevel*100}% fewer materials; ${level*WL_BALANCE.craftChancePerLevel*100}% chance of +${WL_BALANCE.craftExtra(level)} extra readiness`,kitchen:`${Math.floor(level/4)} extra rations per kitchen, plus 1/2/3 base rations at staffed building levels 1/3/5; +${WL_BALANCE.rationBonus(level)} readiness`,infirmary:`${Math.min(25,bonus*5)}% treatment discount; improved casualty prevention`,armory:`Repair unit cost reduced by ${bonus*.5} gp`,trainingHall:`${Math.min(15,bonus*5)}% training and respec discount`,warRoom:`+${bonus} raid tactics and ${bonus*5}% extra loot chance`,huntersLodge:`+${bonus} world-boss readiness and ${bonus*5}% extra loot chance`,commandPost:`+${bonus} world-raid readiness and ${bonus*5}% extra loot chance`})[key]||'Assign to a building to train its skill';
+    return ({waystation:`New quest time −${Math.round(WL_BALANCE.questTimeCut(level,buildingLevel('waystation'))*100)}%; building levels grant 10/25/40/55/80% plus 2% per Pathfinding level (80% cap); strongest Pathfinder applies`,warehouse:`+${Math.round(level*WL_BALANCE.salePerLevel*100)}% sale prices; convoy danger −${bonus}`,staffOffice:`+${bonus} expedition preparation`,workshop:`${['No gear tier','Basic','Sturdy','Fine','Superior','Masterwork','Relic','Legendary','Heritage'][Math.min(8,level)]}; ${level*WL_BALANCE.materialPerLevel*100}% fewer materials; ${level*WL_BALANCE.craftChancePerLevel*100}% chance of +${WL_BALANCE.craftExtra(level)} extra readiness`,kitchen:`${Math.floor(level/4)} extra rations per kitchen, plus 1/2/3 base rations at staffed building levels 1/3/5; +${WL_BALANCE.rationBonus(level)} readiness`,infirmary:`${Math.min(25,bonus*5)}% treatment discount; improved casualty prevention`,armory:`Repair unit cost reduced by ${bonus*.5} gp`,trainingHall:`${Math.min(15,bonus*5)}% training and respec discount`,warRoom:`+${bonus} raid tactics and ${bonus*5}% extra loot chance`,huntersLodge:`+${bonus} world-boss readiness and ${bonus*5}% extra loot chance`,commandPost:`+${bonus} world-raid readiness and ${bonus*5}% extra loot chance`})[key]||'Assign to a building to train its skill';
   };
   function assigned(st){return st.buildingUid==='warehouse'?!!game.buildings.warehouse:!!v9InstById(st.buildingUid)}
   function award(st,amount,kind){
@@ -66,6 +66,7 @@
     document.querySelectorAll('[data-dismiss-index]').forEach(el=>el.onclick=()=>staffDismiss(game.staffMembers[Number(el.dataset.dismissIndex)].id));
   };
   v9KitchenDay=function(){v9Ops('kitchen').forEach(i=>{const produced=game.kitchenProduction||(game.kitchenProduction={});if(produced[i.uid]===game.day)return;produced[i.uid]=game.day;const level=Math.max(0,...v9StaffOf(i.uid).map(staffProfessionLevel)),count=WL_BALANCE.rationCount(v9Eff(i),level),bonus=WL_BALANCE.rationBonus(level);for(let n=0;n<count;n++)game.consumables.push({id:`ration-${i.uid}-${game.day}-${n}`,name:bonus>1?'Improved Hearty Rations':'Hearty Rations',uses:1,bonus});practiceStaff('kitchen');addLog('Kitchen provisions prepared',`${count} rations, +${bonus} readiness each.`)})};
+  const oldQuestReport=queueQuestReport;queueQuestReport=function(){const before=game.pendingReports.length;const result=oldQuestReport.apply(this,arguments);if(game.pendingReports.length>before&&buildingOperational('waystation'))practiceStaff('waystation');return result};
   const oldTreat=treatWound;treatWound=function(id){const ok=oldTreat(id);if(ok){practiceStaff('infirmary');save()}return ok};
   const oldTrainTick=v9TrainTick;v9TrainTick=function(h){const days=h.training?.days;oldTrainTick(h);if(h.training&&h.training.days<days)practiceStaff('trainingHall')};
 

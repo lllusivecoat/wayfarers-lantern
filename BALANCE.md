@@ -65,3 +65,16 @@ Serve the checkout with `python3 -m http.server 8000 --bind 127.0.0.1` first.
 Long campaign pacing, player strategy and subjective difficulty still need human
 playtesting. These checks establish bounded rewards and remove obvious local
 arbitrage and duplicate bonuses; they do not establish an optimal economy.
+
+## Waystation
+
+A unique Waystation unlocks at Local guild rank and costs 75 gp, with 3 gp upkeep
+per building level and a 2 gp/day Pathfinder base wage. Any staff member can fill
+its slots and trains Pathfinding using the existing practice rules. A staffed
+Waystation reduces new quest times by 10/25/40/55/80% at building levels 1–5,
+plus 2% per Pathfinding level, capped at 80%. A Level 5 building grants 80%
+even with a novice staff member.
+The strongest assigned Pathfinder applies; bonuses do not stack. Building upgrades
+improve the base reduction and add staff capacity. Quest timers have a
+one-minute minimum. Contracts, gathering, exploration and group quests all benefit;
+convoys and already-dispatched quest timers remain unchanged.

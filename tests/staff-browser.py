@@ -133,6 +133,50 @@ with sync_playwright() as p:
       assert(loaded.buildingKey===null&&loaded.professionXP.Blacksmithing===savedPractice,'unassigned reload');
       v9AssignStaff(smith.id,'test-workshop');
     }""")
+    run("""() => {
+      const assert=(ok,msg)=>{if(!ok)throw Error(msg)};
+      const q={kind:'Contract',rank:0};
+      assert(v9QuestMins(q)===5,'unstaffed Waystation');
+      const convoy=v9ConvoyMs('ratchet');
+      hireStaff('test-waystation');const guide=buildingStaff('waystation');
+      assert(Math.abs(v9QuestMins(q)-4.5)<1e-8,'novice 10% reduction');
+      assert(v9DurLabel(q)==='4 min 30 s (Waystation −10%)','duration label');
+      guide.professionXP.Pathfinding=275;
+      assert(Math.abs(v9QuestMins(q)-3.5)<1e-8,'master 30% reduction');
+      for(const kind of ['Contract','Gathering','Dungeon','Raid','World Boss','World Raid','World Dungeon','Exploration']){
+        for(let rank=0;rank<10;rank++)assert(Math.abs(v9QuestMs({kind,rank})-v9QuestBaseMins({kind,rank})*.7*60000)<1,'quest type timer '+kind);
+      }
+      assert(v9ConvoyMs('ratchet')===convoy,'convoy unchanged');
+      // Complete an upgrade through the existing construction system.
+      const project={key:'waystation',uid:'test-waystation',action:'upgrade',targetLevel:2};
+      game.constructionProjects.push(project);completeConstructionProject(project);
+      hireStaff('test-waystation');assert(v9StaffOf('test-waystation').length===2,'upgrade staff slot');
+      assert(Math.abs(waystationTimeCut()-.45)<1e-8,'no stacking from multiple staff');
+      const gathering=gatheringQuest('Mining');const now=Date.now();
+      queueQuestReport(gathering,['player'],0,'Waystation timer test');
+      const report=game.pendingReports.at(-1),remaining=report.dueAt-now;
+      assert(Math.abs(remaining-v9QuestMs(gathering))<1000,'dispatch actual deadline');
+      assert(guide.professionXP.Pathfinding===276,'Pathfinding service practice');
+      const due=report.dueAt;
+      v9AssignStaff(guide.id,'warehouse'); // Full warehouse rejects reassignment.
+      guide.buildingUid=null;guide.buildingKey=null;
+      const novice=buildingStaff('waystation');novice.buildingUid=null;novice.buildingKey=null;
+      assert(v9QuestMins(q)===5,'vacant building stops reduction');
+      assert(report.dueAt===due,'underway quest deadline preserved');
+      v9AssignStaff(guide.id,'test-waystation');
+      const station=v9InstById('test-waystation');station.level=5;
+      guide.professionXP.Pathfinding=0;
+      assert(waystationTimeCut()===.8,'max building gives 80% with novice staff');
+      assert(v9QuestMins(q)===1,'one-minute minimum');
+      assert(Math.abs(v9QuestMins({kind:'Raid',rank:9})-13)<1e-8,'max upgrade raid duration');
+      guide.professionXP.Pathfinding=276;
+      assert(waystationTimeCut()===.8,'master cannot exceed 80%');
+      assert(report.dueAt===due,'upgrade leaves existing timer unchanged');
+      save();
+      const restored=loadGame();assert(restored.buildingList.some(i=>i.key==='waystation'&&i.level===5),'Waystation saved');
+      assert(restored.staffMembers.find(st=>st.id===guide.id).professionXP.Pathfinding===276,'Pathfinding saved');
+      game.pendingReports=game.pendingReports.filter(r=>r!==report);render();
+    }""")
     # Work awards preserve partial progress and apply to every assigned member.
     run("""() => {const s=buildingStaff('workshop');window.xpBefore=staffPracticeCount(s);nextDay();if(staffPracticeCount(s)!==xpBefore+1)throw Error('daily work award')}""")
     for view in ['hall','roster','staff','buildings','warehouse','trading','quests','permanent-quests','world','chronicle','music']:

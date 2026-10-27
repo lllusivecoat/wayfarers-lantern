@@ -22,6 +22,10 @@ for(const rate of [1,1.05,1.15,1.3,1.35,1.45,1.55,1.6,1.75,1.8,1.9,2.05,2.2,2.35
   }
 }
 for(let level=0;level<=10;level++){
+  for(let building=1;building<=5;building++){
+    assert.ok(b.questTimeCut(level,building)>=.1&&b.questTimeCut(level,building)<=.8);
+    assert.equal(b.questTimeCut(level,5),.8);
+  }
   assert.ok(b.supportBonus(level)<=3);
   assert.ok(level*b.craftChancePerLevel<=.3);
   assert.ok(level*b.materialPerLevel<=.25);

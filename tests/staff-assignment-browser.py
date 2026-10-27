@@ -15,7 +15,7 @@ with sync_playwright() as p:
       game.staffMembers.push({id:'legacy-cook',name:'Custom Old Name',race:'Human',job:'Cook',wage:5,buildingUid:null,buildingKey:null,profession:'Cooking',professionXP:{Cooking:30,Blacksmithing:15}});
       game.buildingList.push({uid:'workshop-test',key:'workshop',level:1,spent:45});v9Sync();render();showView('staff');
     }""")
-    assert page.get_by_role('heading',name='Staff recruitment').is_visible()
+    assert page.get_by_role('heading',name='Recruit staff').is_visible()
     assert page.get_by_role('heading',name='Building vacancies').is_visible()
     assert 'Open positions' not in page.locator('#staff').inner_text()
     assert 'every 3 practice' not in page.locator('#staff').inner_text()

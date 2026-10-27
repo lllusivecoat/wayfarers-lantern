@@ -13,7 +13,7 @@ browser offers it, or use its **Install app / Add to Home Screen** menu. The gam
 can then reopen offline. Installation is optional; the same cached site works in
 a normal browser tab. The Spotify soundtrack still requires internet.
 
-Updates download when the game is online. **Restart to apply update** saves and
+Updates download when the game is online. Use **Check for updates** to check immediately. **Restart to apply update** saves and
 checks progress before switching versions. Close other game tabs/windows first.
 Closing all game windows also lets a fully downloaded update activate for the next
 launch. Updates do not clear saves. Browser saves belong to the browser/profile

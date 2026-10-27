@@ -51,7 +51,7 @@ with tempfile.TemporaryDirectory(prefix='lantern-offline-') as temporary:
                 with (game/'offline.js').open('a') as out:out.write(f'\nwindow.OFFLINE_TEST_RELEASE={number};\n')
                 build()
             def update():
-                page.evaluate("navigator.serviceWorker.getRegistration().then(reg=>reg.update())")
+                page.locator('#check-game-update').click()
                 page.wait_for_function("navigator.serviceWorker.getRegistration().then(reg=>!!reg.waiting)",timeout=30000)
                 page.wait_for_function("!document.querySelector('#apply-game-update').hidden")
             release(2);context.set_offline(False);update()

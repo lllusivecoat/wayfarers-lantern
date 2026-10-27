@@ -2,10 +2,10 @@
 (function(){
   if(!('serviceWorker' in navigator)||!window.isSecureContext)return;
   const panel=document.createElement('aside');panel.className='offline-tools';panel.setAttribute('aria-label','Offline play and updates');
-  panel.innerHTML='<p id="offline-status" role="status">Preparing offline play…</p><button class="btn secondary" id="install-game" hidden>Install game</button><button class="btn" id="apply-game-update" hidden>Restart to apply update</button><details id="install-help"><summary>Install and offline help</summary><p>In your browser menu choose Install app or Add to Home Screen, if available. Wait for “Offline ready” before disconnecting. Saves stay in this browser; export a backup before clearing browser data. The optional Spotify soundtrack needs internet.</p></details>';
+  panel.innerHTML='<p id="offline-status" role="status">Preparing offline play…</p><button class="btn secondary" id="check-game-update">Check for updates</button><button class="btn secondary" id="install-game" hidden>Install game</button><button class="btn" id="apply-game-update" hidden>Restart to apply update</button><details id="install-help"><summary>Install and offline help</summary><p>In your browser menu choose Install app or Add to Home Screen, if available. Wait for “Offline ready” before disconnecting. Saves stay in this browser; export a backup before clearing browser data. The optional Spotify soundtrack needs internet.</p></details>';
   document.querySelector('.top')?.insertAdjacentElement('afterend',panel);
   if(!panel.isConnected)document.body.appendChild(panel);
-  const status=panel.querySelector('#offline-status'),updateButton=panel.querySelector('#apply-game-update'),installButton=panel.querySelector('#install-game');
+  const status=panel.querySelector('#offline-status'),updateButton=panel.querySelector('#apply-game-update'),installButton=panel.querySelector('#install-game'),checkButton=panel.querySelector('#check-game-update');
   if(matchMedia('(display-mode: standalone)').matches||navigator.standalone)panel.querySelector('#install-help').hidden=true;
   let registration,waitingWorker,restarting=false,installPrompt,lastCheck=0;
   function refresh(){
@@ -32,10 +32,24 @@
     };
     waitingWorker.postMessage({type:'APPLY_UPDATE'},[channel.port2]);
   };
-  async function checkForUpdate(){
-    if(!registration||!navigator.onLine||Date.now()-lastCheck<60000)return;
-    lastCheck=Date.now();try{await registration.update();refresh()}catch(e){/* Keep the installed game usable offline. */}
+  async function checkForUpdate(force=false){
+    if(!registration){if(force)status.textContent='Offline setup is still preparing. Try again shortly.';return}
+    if(!navigator.onLine){if(force)status.textContent='Connect to the internet to check for updates. Your installed game is still available offline.';return}
+    if(!force&&Date.now()-lastCheck<60000)return;
+    lastCheck=Date.now();checkButton.disabled=true;
+    if(force)status.textContent='Checking for updates…';
+    try{
+      await registration.update();const worker=registration.installing;
+      if(worker&&!['installed','redundant','activated'].includes(worker.state))await new Promise(resolve=>{
+        const changed=()=>{if(['installed','redundant','activated'].includes(worker.state)){worker.removeEventListener('statechange',changed);resolve()}};
+        worker.addEventListener('statechange',changed);changed();
+      });
+      refresh();
+      if(force&&!registration.waiting)status.textContent=worker?.state==='redundant'?'The update could not be downloaded completely. Keep playing and try again later.':navigator.serviceWorker.controller?'You’re up to date. Offline ready.':'Offline setup is still preparing. Try again shortly.';
+    }catch(e){if(force)status.textContent='Could not check for updates. Keep playing and try again when connected.'}
+    finally{checkButton.disabled=false}
   }
+  checkButton.onclick=()=>checkForUpdate(true);
   window.addEventListener('online',()=>{refresh();checkForUpdate()});
   window.addEventListener('offline',refresh);
   document.addEventListener('visibilitychange',()=>{if(!document.hidden)checkForUpdate()});

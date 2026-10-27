@@ -177,6 +177,28 @@ with sync_playwright() as p:
       assert(restored.staffMembers.find(st=>st.id===guide.id).professionXP.Pathfinding===276,'Pathfinding saved');
       game.pendingReports=game.pendingReports.filter(r=>r!==report);render();
     }""")
+    run("""() => {
+      const assert=(ok,msg)=>{if(!ok)throw Error(msg)};
+      const fits=(name,race)=>{const data=RACE_NAME_CULTURES[race];const [first,last]=name.split(' ');return data.first.includes(first)&&data.roots.some(root=>data.endings.some(end=>root+end===last))};
+      for(const race of APPLICANT_RACES){
+        const cls=APPLICANT_CLASSES.find(cls=>comboAllowed(race,cls));
+        const applicant=makeApplicant({race,className:cls});
+        assert(applicant.race===race&&fits(applicant.name,race),'targeted recruit naming: '+race);
+        game.applicants.push(applicant);
+      }
+      for(let i=0;i<50;i++){
+        const applicant=makeApplicant();assert(fits(applicant.name,applicant.race),'random recruit naming');game.applicants.push(applicant);
+      }
+      assert(game.staffMembers.filter(st=>st.race).every(st=>fits(st.name,st.race)),'staff names fit race');
+      const oldPlayerName=game.player.name;
+      game.heroes.push({id:'custom-naming-test',name:'My Custom Hero',race:'Orc',className:'Warrior',spec:'Arms',ready:true,rank:0,level:1,abilities:defaultAbilities('Warrior')});
+      save();const restored=loadGame();
+      assert(restored.heroes.find(h=>h.id==='custom-naming-test').name==='My Custom Hero','custom name preserved');
+      assert(restored.player.name===oldPlayerName,'guildmaster name preserved');
+      const staff=game.staffMembers[0];assert(restored.staffMembers.find(st=>st.id===staff.id).name===staff.name,'staff name persisted');
+      assert(restored.applicants.at(-1).name===game.applicants.at(-1).name,'applicant name persisted');
+      game.heroes=game.heroes.filter(h=>h.id!=='custom-naming-test');render();
+    }""")
     # Work awards preserve partial progress and apply to every assigned member.
     run("""() => {const s=buildingStaff('workshop');window.xpBefore=staffPracticeCount(s);nextDay();if(staffPracticeCount(s)!==xpBefore+1)throw Error('daily work award')}""")
     for view in ['hall','roster','staff','buildings','warehouse','trading','quests','permanent-quests','world','chronicle','music']:

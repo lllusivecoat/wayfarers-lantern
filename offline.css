@@ -1,0 +1,4 @@
+.offline-tools{max-width:1244px;margin:0 auto 16px;padding:12px 16px;background:#111f31;border:1px solid #304258;border-radius:10px;font:12px/1.5 system-ui,sans-serif;color:#c4cfdd;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.offline-tools[hidden],.offline-tools [hidden]{display:none!important}
+.offline-tools p{margin:0;flex:1 1 220px}.offline-tools details{flex-basis:100%}.offline-tools summary{cursor:pointer}.offline-tools .btn{white-space:normal}
+@media(max-width:850px){.offline-tools{margin:0 14px 16px}}

@@ -1,0 +1,15 @@
+{
+  "id": "./",
+  "name": "The Wayfarer's Lantern",
+  "short_name": "Wayfarer",
+  "description": "An offline guild management adventure. Saves stay in your browser.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#091321",
+  "theme_color": "#101611",
+  "icons": [
+    {"src": "icons/lantern-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable"},
+    {"src": "icons/lantern-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"}
+  ]
+}

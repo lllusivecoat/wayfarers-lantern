@@ -78,3 +78,18 @@ The strongest assigned Pathfinder applies; bonuses do not stack. Building upgrad
 improve the base reduction and add staff capacity. Quest timers have a
 one-minute minimum. Contracts, gathering, exploration and group quests all benefit;
 convoys and already-dispatched quest timers remain unchanged.
+
+## Cartographer’s Office
+
+Unlocks at Hall Tier 2 and Established guild rank (50 reputation). Costs 90 gp,
+with 2 gp upkeep per building level and a 2 gp/day Cartographer base wage.
+Completing construction reveals the permanent Exploration mission; staffing is
+optional for access. The strongest assigned Cartographer reduces Exploration DC
+by 1 at Cartography levels 3, 6 and 9 (up to 3). Exploration reports award service
+practice under the existing daily limit. Upgrades add staff slots, not discoveries.
+
+Without a completed office, Exploration is absent from quest lists and cannot be
+dispatched through the normal UI. Construction in progress does not unlock it.
+Destroying the office hides future Exploration offers but preserves discovered
+locations, learned skills and reports already underway. Existing saves do not
+automatically receive the building. Other quests and discovered markets remain.

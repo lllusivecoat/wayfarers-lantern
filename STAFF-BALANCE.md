@@ -5,13 +5,18 @@ The game does not yet roll these stats or apply these trait effects. Current gam
 assets, saves, cached releases and published behaviour are unchanged by this document.
 Run `node scripts/staff-aptitude-model.cjs` to reproduce the model results.
 
+Current recruitment implementation now supplies **two saved candidates per game day**,
+with hire/pass confirmation, no hiring fee and the existing 2 gp/day assigned wage.
+Candidates start untrained. Aptitudes, personalities and their wage modifiers below
+remain proposed; they are not yet applied by the game.
+
 ## Candidate generation and replacement
 
 - Four permanent aptitudes: Organisation, Craftsmanship, Care and Fieldcraft.
 - Scores range from 1 to 5 and total **12**. Choose uniformly from the 85 valid
   score combinations. A candidate cannot excel at everything; races do not alter scores.
 - One visible trait. Candidates have no building skills at recruitment.
-- Three candidates per game day. Their identities, stats, traits, wage and hire status
+- Two candidates per game day. Their identities, stats, traits, wage and hire status
   are saved. Reloading, closing the game, advancing a browser clock or dismissing
   someone cannot refresh the list. Refresh only on the next in-game day.
 - Hiring fills an unassigned roster slot. Hall capacity and building slots remain

@@ -4,13 +4,13 @@
   const esc=tbwEsc;
   const clone=value=>JSON.parse(JSON.stringify(value));
   const members=g=>[...(g.heroes||[]),g.player].filter(Boolean);
-  const fallen=g=>members(g).filter(h=>h.dead);
+  const fallen=g=>(g.heroes||[]).filter(h=>h.id!=='player'&&h.dead);
   const find=(g,id)=>[...members(g),...(g.dismissedHeroes||[])].find(h=>h.id===id);
   const day=value=>Number.isFinite(Number(value))&&Number(value)>0?Number(value):null;
   const service=(h,g)=>h.serviceRecord||(h.serviceRecord={sinceDay:g.day,reports:0,successes:0,exceptional:0,dangerousVictories:0,convoys:0});
   function archive(r){
     const copy={};
-    for(const key of ['title','kind','questKind','questRank','profession','outcome','summary','extendedSummary','dispatchedDay','returnedDay','partyIds','casualties','rolls','deathAccounts','payout','rep','lootDrops','resource','resourceQty']){
+    for(const key of ['title','kind','questKind','questRank','profession','outcome','summary','extendedSummary','dispatchedDay','returnedDay','partyIds','casualties','rolls','deathAccounts','payout','rep','lootDrops','resource','resourceQty','organizingCost','cargo','deliveredFraction','lostEquipment']){
       if(r[key]!==undefined)copy[key]=clone(r[key]);
     }
     return copy;
@@ -22,7 +22,7 @@
       return {id,name:other?.name||'Unknown companion',value:Number(b.v),tier:bondTier(Number(b.v)).name};
     }).sort((a,b)=>b.value-a.value).slice(0,3);
     const rank=Math.max(0,Number(h.rank)||0),level=heroLevel(h),missions=Math.max(0,Number(h.missions)||0);
-    const achievements=[h.id==='player'?'Guildmaster of the Wayfarer’s Lantern':`Reached ${ranks[rank]||'F'} rank`,`Reached Level ${level}`];
+    const achievements=[`Reached ${ranks[rank]||'F'} rank`,`Reached Level ${level}`];
     if(missions)achievements.push(`${missions} completed mission${missions===1?'':'s'} in guild service`);
     if((h.perks||[]).length)achievements.push(`Mastered ${(h.perks||[]).length} perk${h.perks.length===1?'':'s'}`);
     const record=h.serviceRecord;
@@ -32,7 +32,7 @@
     return h.memorial;
   }
   window.memorialMigrate=function(g){
-    if(!g)return g;
+    if(!g)return g;protectGuildmaster(g);
     const reports=g.todayReports||[];
     for(const h of members(g)){
       if(!h.dead){service(h,g);continue}
@@ -83,23 +83,23 @@
   const oldLoad=loadGame;loadGame=function(){return memorialMigrate(oldLoad.apply(this,arguments))};
   const oldSave=save;save=function(){memorialMigrate(game);return oldSave.apply(this,arguments)};
   window.openFallenMemorial=function(){showFallen=true;showView('roster');renderHeroes()};
-  window.openMemorialRecord=function(id){const h=find(game,id);if(h?.dead)openHeroStats(id)};
+  window.openMemorialRecord=function(id){const h=find(game,id);if(h?.dead&&id!=='player')openHeroStats(id)};
   window.openMemorialReport=function(id){
-    const h=find(game,id),r=h?.dead&&h.memorial?.finalReport;if(r)showReportDetails(r);
+    const h=find(game,id),r=id!=='player'&&h?.dead&&h.memorial?.finalReport;if(r)showReportDetails(r);
   };
   function refresh(){render();if(viewingHeroId&&find(game,viewingHeroId)?.dead)renderHeroStats()}
   window.setMemorialHonor=function(id){
-    const h=find(game,id);if(!h?.dead)return false;memorialMigrate(game);
+    const h=find(game,id);if(!h?.dead||id==='player')return false;memorialMigrate(game);
     const m=h.memorial;if(!m.honored&&fallen(game).filter(x=>x.memorial.honored).length>=LIMIT)return false;
     m.honored=!m.honored;save();refresh();return true;
   };
   window.saveMemorialEpitaph=function(id,text){
-    const h=find(game,id);if(!h?.dead)return false;memorialMigrate(game);
+    const h=find(game,id);if(!h?.dead||id==='player')return false;memorialMigrate(game);
     h.memorial.epitaph=String(text||'').trim().slice(0,EPITAPH_LIMIT);save();refresh();
     const status=document.getElementById('memorial-save-status');if(status)status.textContent='Epitaph saved.';
     return true;
   };
-  function label(h){const m=h.memorial;return `${h.id==='player'?'Guildmaster':(ranks[m.rank]||'F')+' rank'} · Level ${m.level} · ${m.deathDay?'Fell on Day '+m.deathDay:'Date of death unrecorded'}`}
+  function label(h){const m=h.memorial;return `${(ranks[m.rank]||'F')+' rank'} · Level ${m.level} · ${m.deathDay?'Fell on Day '+m.deathDay:'Date of death unrecorded'}`}
   function bindRecords(root,heroes){
     root.querySelectorAll('[data-memorial-open]').forEach(button=>button.onclick=()=>openMemorialRecord(heroes[Number(button.dataset.memorialOpen)].id));
   }

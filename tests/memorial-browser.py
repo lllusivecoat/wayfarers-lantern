@@ -67,11 +67,11 @@ with sync_playwright() as p:
       game.heroes.push(oldReportHero);
       game.todayReports=[report({partyIds:[oldReportHero.id,'player'],casualties:[oldReportHero.id],returnedDay:7,title:'An Older Expedition'})];
       memorialMigrate(game);check(oldReportHero.memorial.finalReport.title==='An Older Expedition'&&oldReportHero.memorial.deathDay===7,'available legacy report recovered');
-      // Fallen guildmasters are included too.
+      // The guildmaster cannot become a fallen hero, including in a stale save.
       game.player.dead=true;memorialMigrate(game);
-      check(game.player.memorial.achievements.includes('Guildmaster of the Wayfarer’s Lantern'),'guildmaster memorial');
+      check(!game.player.dead&&!game.player.memorial,'guildmaster remains alive');
       game.todayReports=[];save();render();openFallenMemorial();
-      check(document.getElementById('hero-list').textContent.includes('Kael Arden'),'fallen guildmaster discoverable');
+      check(!document.getElementById('hero-list').textContent.includes('Kael Arden'),'guildmaster excluded from fallen roster');
       check(document.getElementById('v9-rfilters').style.display==='none','living roster filters hidden in memorial');
       openMemorialRecord(a.id);
       check(document.getElementById('hero-stats-content').textContent.includes('Brann Oak'),'companions visible in record');
@@ -101,7 +101,7 @@ with sync_playwright() as p:
         assert text in page.locator('.memorial-record').inner_text()
     assert page.locator('#memorial-honor').is_disabled()
     page.evaluate("closeHeroStats();openMemorialRecord('player')")
-    assert 'Guildmaster' in page.locator('.memorial-record').inner_text()
+    assert not page.locator('#hero-stats-modal').is_visible()
     page.evaluate('closeHeroStats();openMemorialRecord(memorialIds[0])')
     for width in [390,1280]:
         page.set_viewport_size({'width':width,'height':844})
@@ -126,4 +126,4 @@ with sync_playwright() as p:
     assert 'The Last Beacon' in page.locator('#report-detail-title').inner_text()
     assert not errors,errors
     browser.close()
-    print('PASS: permanent final reports, simultaneous-death bond snapshots, achievements, service dates, legacy migration, fallen guildmaster, epitaphs, honor limits, export/import, reload and mobile/desktop layout; no console errors')
+    print('PASS: permanent final reports, simultaneous-death bond snapshots, achievements, service dates, legacy migration, guildmaster immunity, epitaphs, honor limits, export/import, reload and mobile/desktop layout; no console errors')

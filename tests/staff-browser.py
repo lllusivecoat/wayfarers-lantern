@@ -7,7 +7,7 @@ from playwright.sync_api import sync_playwright
 with sync_playwright() as p:
     browser = p.chromium.launch(executable_path='/usr/bin/chromium', args=['--no-sandbox'])
     page = browser.new_page(viewport={'width':1280, 'height':900})
-    page.add_init_script("window.hireStaffTo=(uid)=>{if(hireStaff()!=='')throw Error('Hire failed');const st=game.staffMembers.at(-1);if(v9AssignStaff(st.id,uid)!=='')throw Error('Assignment failed')}")
+    page.add_init_script("window.hireStaffTo=(uid)=>{const st={id:'fixture-staff-'+game.staffMembers.length,name:'Fixture worker '+game.staffMembers.length,wage:2,morale:3,buildingUid:null,buildingKey:null,profession:'Generalist',professionXP:{},skillAwards:{}};game.staffMembers.push(st);if(v9AssignStaff(st.id,uid)!=='')throw Error('Assignment failed')}")
     page.set_default_timeout(15000)
     errors = []
     page.on('pageerror', lambda e: errors.append(str(e)))
@@ -85,8 +85,7 @@ with sync_playwright() as p:
       tbwApplyReport(r);if(game.materials[cargo.name]!==beforeCargo+2)throw Error('duplicate cargo');
       game.player.ready=true;game.tradeParty=['player'];renderTrading();
     }""")
-    page.locator('#trade-good').select_option(run('cargo.name'))
-    page.locator('#trade-quantity').fill('1')
+    run("game.tradeCargo={[cargo.name]:1};renderTrading()")
     run("""() => {dispatchTrade();const r=game.pendingReports.find(r=>r.kind==='trade');if(!r||r.inboundGoods)throw Error('outbound dispatch');r.dueAt=Date.now()-1;applyPendingReports();Math.random=oldRandom;save()}""")
     run("""() => {
       const assert=(ok,msg)=>{if(!ok)throw Error(msg)};
@@ -118,10 +117,10 @@ with sync_playwright() as p:
       assert(game.gold===gold,'invalid inbound quantity charged');
       // Check service formulas actually consume the trained skill.
       const keeper=buildingStaff('warehouse');game.tradeParty=['player'];renderTrading();
-      document.getElementById('trade-good').value='Copper Ore';document.getElementById('trade-quantity').value='10';
+      game.tradeCargo={'Copper Ore':10};updateTradePreview();
       keeper.professionXP.Storekeeping=0;updateTradePreview();const noviceQuote=document.getElementById('trade-preview').textContent;
       keeper.professionXP.Storekeeping=275;updateTradePreview();const masterQuote=document.getElementById('trade-preview').textContent;
-      const quote=t=>Number(t.match(/estimated (\\d+) gp/)[1]);
+      const quote=t=>Number(t.match(/estimate: (\\d+) gp gross/)[1]);
       assert(quote(masterQuote)>quote(noviceQuote),'storekeeping sale price');
       const q={kind:'Raid',ability:'str',minParty:1};
       assert(staffSkillBonus('staffOffice')===3&&staffSkillBonus('warRoom')===3&&staffSkillBonus('huntersLodge')===3&&staffSkillBonus('commandPost')===3,'expedition skill modifiers');

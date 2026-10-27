@@ -4,7 +4,19 @@
   const thresholds=[0,5,15,30,50,75,105,140,180,225,275];
   const esc=tbwEsc;
   window.staffSkillLevel=points=>thresholds.reduce((level,t,i)=>Number(points)>=t?i:level,0);
+  window.ensureStaffCandidates=function(g=game){
+    if(g.staffCandidateDay===g.day&&Array.isArray(g.staffCandidates))return g.staffCandidates;
+    const used=[...(g.staffMembers||[]),...(g.heroes||[]),...(g.applicants||[]),g.player,...(g.dismissedHeroes||[])].filter(Boolean).map(h=>h.name);
+    g.staffCandidates=[];g.staffCandidateDay=g.day;
+    for(let i=0;i<2;i++){
+      const race=APPLICANT_RACES[Math.floor(Math.random()*APPLICANT_RACES.length)],name=generateRaceName(race,used);used.push(name);
+      g.staffCandidateSequence=(Number(g.staffCandidateSequence)||0)+1;
+      g.staffCandidates.push({id:'staff-candidate-'+g.staffCandidateSequence,name,race,wage:2,status:'available'});
+    }
+    return g.staffCandidates;
+  };
   window.staffMigrate=function(g){
+    ensureStaffCandidates(g);
     (g.staffMembers||[]).forEach(st=>{
       if(typeof st.professionXP==='number')st.professionXP={[st.profession||skills[st.buildingKey]||'Generalist']:st.professionXP};
       st.professionXP=st.professionXP||{};
@@ -65,25 +77,35 @@
   function staffTargets(){return [...(game.buildings.warehouse?[{uid:'warehouse',key:'warehouse',level:game.warehouseLevel||1}]:[]),...(game.buildingList||[])]}
   function staffLocation(st){const target=staffTargets().find(i=>i.uid===st.buildingUid);return target?target.uid==='warehouse'?'Warehouse':v9InstLabel(target):'Unassigned'}
   function staffPay(st){return assigned(st)&&st.wage>0?Math.max(1,st.wage-(v9L('staffOffice')>=3?1:0)):0}
-  hireStaff=function(){
-    if(game.staffMembers.length>=staffCap())return v9Say('Staff capacity is full. Upgrade the Guild Hall to hire more staff.');
-    let id;do{game.staffSeq=(game.staffSeq||0)+1;id='staff-'+game.staffSeq}while(game.staffMembers.some(st=>st.id===id));
-    const race=APPLICANT_RACES[Math.floor(Math.random()*APPLICANT_RACES.length)];
-    const name=generateRaceName(race,[...game.staffMembers,...game.heroes,...game.applicants,game.player,...(game.dismissedHeroes||[])].filter(Boolean).map(h=>h.name));
-    game.staffMembers.push({id,name,race,job:'Staff',wage:2,morale:3,buildingUid:null,buildingKey:null,profession:'Generalist',professionXP:{},skillAwards:{}});
-    addLog('Staff hired',`${name} joins the staff roster, unassigned. Base wage: 2 gp/day when assigned.`);render();save();return '';
+  hireStaff=function(id){
+    const candidate=ensureStaffCandidates().find(c=>c.id===id);
+    if(!candidate||candidate.status!=='available')return 'candidate';
+    if(game.staffMembers.length>=staffCap()){v9Say('Staff capacity is full. Upgrade the Guild Hall to hire more staff.');return 'full'}
+    if(!confirm(`Hire ${candidate.name}? No hiring fee. Base wage: ${candidate.wage} gp/day when assigned; no wage while unassigned. They join your roster unassigned.`))return 'cancelled';
+    if(candidate.status!=='available'||game.staffMembers.some(st=>st.id===candidate.id))return 'candidate';
+    if(game.staffMembers.length>=staffCap())return 'full';
+    game.staffMembers.push({id:candidate.id,name:candidate.name,race:candidate.race,job:'Staff',wage:candidate.wage,morale:3,buildingUid:null,buildingKey:null,profession:'Generalist',professionXP:{},skillAwards:{}});
+    candidate.status='hired';
+    addLog('Staff hired',`${candidate.name} joins the staff roster, unassigned. Base wage: ${candidate.wage} gp/day when assigned.`);render();save();return '';
+  };
+  window.passStaffCandidate=function(id){
+    const candidate=ensureStaffCandidates().find(c=>c.id===id);
+    if(!candidate||candidate.status!=='available')return false;
+    if(!confirm(`Pass on ${candidate.name}? They will leave today's recruitment pool. Two new candidates arrive next game day.`))return false;
+    candidate.status='passed';addLog('Staff candidate passed',`${candidate.name} leaves without being hired.`);render();save();return true;
   };
   staffDismiss=function(id){const st=game.staffMembers.find(s=>s.id===id);if(!st||!confirm(`Dismiss ${st.name}?${assigned(st)?` Their slot at ${staffLocation(st)} will become vacant.`:''}`))return;game.staffMembers=game.staffMembers.filter(s=>s!==st);addLog('Staff departure',`${st.name} leaves the guild staff.`);render();save()};
   renderStaffTab=function(){
     const staff=game.staffMembers||[],targets=staffTargets(),full=staff.length>=staffCap();
     document.getElementById('staff-cap-label').textContent=`${staff.length} / ${staffCap()} staff`;
     document.getElementById('staff-wage-summary').textContent=`Daily wages: ${staffWages()} gp · ${staff.filter(st=>!assigned(st)).length} unassigned`;
-    document.getElementById('staff-profession').innerHTML=`<section aria-labelledby="staff-recruit-title"><h3 id="staff-recruit-title">Recruit staff</h3><button class="btn secondary" id="hire-general-staff" ${full?'disabled':''}>Hire staff · 2 gp/day when assigned</button>${full?`<p class="small muted">Staff limit reached (${staff.length}/${staffCap()}). Upgrade the Guild Hall to recruit more.</p>`:''}</section><div class="divider"></div><section aria-labelledby="staff-vacancies-title"><h3 id="staff-vacancies-title">Building vacancies</h3><p>Assign someone from your roster. Staff assigned elsewhere can move here without being hired again.</p>${targets.map((target,index)=>{
+    document.getElementById('staff-profession').innerHTML=`<section aria-labelledby="staff-recruit-title"><h3 id="staff-recruit-title">Recruit staff</h3><p>Two candidates arrive each game day. Hire or pass on each; new hires are untrained and can learn any building skill through assignment. No hiring fee.</p><div class="staff-candidates">${ensureStaffCandidates().map((c,index)=>`<article class="staff-candidate"><h4>${esc(c.name)}</h4><p>${esc(c.race)} · ${c.wage} gp/day when assigned · no wage while unassigned</p>${c.status==='available'?`<div class="staff-candidate-actions"><button type="button" class="btn secondary" data-hire-candidate="${index}" ${full?'disabled':''}>Hire</button><button type="button" class="btn ghost" data-pass-candidate="${index}">Pass</button></div>`:`<span class="pill">${c.status==='hired'?'Hired':'Passed'}</span>`}</article>`).join('')}</div><p class="small muted">Next candidates arrive on Day ${game.day+1}. Hiring or passing does not refresh today's pool.</p>${full?`<p class="small muted">Staff limit reached (${staff.length}/${staffCap()}). Upgrade the Guild Hall to recruit more.</p>`:''}</section><div class="divider"></div><section aria-labelledby="staff-vacancies-title"><h3 id="staff-vacancies-title">Building vacancies</h3><p>Assign someone from your roster. Staff assigned elsewhere can move here without being hired again.</p>${targets.map((target,index)=>{
       const occupied=v9StaffOf(target.uid).length,free=Math.max(0,1-occupied),skill=skills[target.key];
       const candidates=staff.map((st,i)=>({st,i})).filter(({st})=>st.buildingUid!==target.uid).sort((a,b)=>Number(assigned(a.st))-Number(assigned(b.st)));
       return `<div class="building staff-vacancy"><div class="staff-vacancy-summary"><strong>${esc(target.uid==='warehouse'?'Warehouse':v9InstLabel(target))}</strong><div class="small muted">${occupied}/1 staff · ${free} available · Trains ${esc(skill)}</div></div>${free?`<div class="staff-vacancy-controls"><label>Existing staff<select data-vacancy-index="${index}" aria-label="Assign staff to ${esc(target.uid==='warehouse'?'Warehouse':v9InstLabel(target))}" ${!candidates.length?'disabled':''}><option value="">Select staff</option>${candidates.map(({st,i})=>`<option value="${i}">${esc(st.name)} · ${esc(staffLocation(st))} · ${esc(skill)} Lv ${staffSkillLevel(st.professionXP[skill]||0)} · ${st.wage} gp/day base</option>`).join('')}</select></label><button class="btn secondary" data-fill-vacancy="${index}" disabled>Assign staff</button>${!candidates.length?`<p class="small muted">${full?'No other staff available. Upgrade the Guild Hall to recruit more staff.':'Hire staff above to fill this vacancy.'}</p>`:''}</div>`:'<span class="pill">Fully staffed</span>'}</div>`;
     }).join('')||'<p class="small muted">Complete a building to create assignment slots.</p>'}</section>`;
-    document.getElementById('hire-general-staff').onclick=()=>hireStaff();
+    document.querySelectorAll('[data-hire-candidate]').forEach(el=>el.onclick=()=>hireStaff(game.staffCandidates[Number(el.dataset.hireCandidate)].id));
+    document.querySelectorAll('[data-pass-candidate]').forEach(el=>el.onclick=()=>passStaffCandidate(game.staffCandidates[Number(el.dataset.passCandidate)].id));
     document.querySelectorAll('[data-vacancy-index]').forEach(select=>{const index=Number(select.dataset.vacancyIndex),button=document.querySelector(`[data-fill-vacancy="${index}"]`);select.onchange=()=>{button.disabled=select.value===''};button.onclick=()=>{const st=staff[Number(select.value)];if(select.value!==''&&st&&v9AssignStaff(st.id,targets[index].uid)){alert('That building has no available staff slot.');render()}}});
     document.getElementById('staff-roster').innerHTML=game.staffMembers.map((st,index)=>{
       const options=targets.filter(i=>i.uid===st.buildingUid||v9StaffOf(i.uid).length<1);
@@ -136,5 +158,5 @@
     game.tradeParty=[];addLog('Inbound convoy underway',`${n} ${offer.name} purchased for ${n*offer.price} gp. Arrival in ${v9ConvoyLabel(route)}.`);render();save();
   };
   const oldApply=tbwApplyReport;tbwApplyReport=function(r){const result=oldApply(r);if(r.inboundGoods&&!r.marketDelivered){r.marketDelivered=true;const {name,count}=r.inboundGoods;game.materials[name]=(game.materials[name]||0)+count}return result};
-  staffMigrate(game);render();
+  staffMigrate(game);render();save();
 })();

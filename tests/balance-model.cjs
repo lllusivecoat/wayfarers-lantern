@@ -21,6 +21,26 @@ for(const rate of [1,1.05,1.15,1.3,1.35,1.45,1.55,1.6,1.75,1.8,1.9,2.05,2.2,2.35
     }
   }
 }
+// A mixed manifest must retain the same no-profit bound at a single market,
+// even when one escort fee is shared across cargo types.
+let mixedCases=0;
+for(const rate of [1,1.15,1.45,1.8,2.2])for(const level of [0,3,6,10])for(const building of [1,4,5]){
+  for(const a of [1,2,8,18])for(const c of [1,2,8,18])for(const n of [1,2,8,18])for(const m of [1,2,8,18]){
+    const paid=b.marketPrice(a,rate)*n+b.marketPrice(c,rate)*m;
+    const gross=Math.floor((a*n+c*m)*rate*(1+level*b.salePerLevel)*(building===5?1.1:building===4?1.05:1));
+    const cut=Math.min(gross,Math.max(Math.floor(gross*.2),2));
+    assert.ok(gross-cut<=paid,'same-market mixed-cargo arbitrage');mixedCases++;
+  }
+}
+for(const kind of ['Gathering','Exploration','World Dungeon','World Boss','World Raid'])for(let rank=0;rank<=9;rank++)for(let party=1;party<=40;party++){
+  const cost=b.expeditionCost(kind,rank,party);
+  assert.ok(Number.isSafeInteger(cost)&&cost>0);
+  if(rank<9)assert.equal(b.expeditionCost(kind,rank+1,party),cost+2);
+  assert.equal(b.expeditionCost(kind,rank,party+1),cost+1);
+}
+assert.equal(b.expeditionCost('Gathering',0,1),3);
+assert.equal(b.expeditionCost('Exploration',0,2),6);
+console.log(`PASS: ${mixedCases} mixed-cargo economy scenarios and permanent-expedition fee bounds.`);
 for(let level=0;level<=10;level++){
   for(let building=1;building<=5;building++){
     assert.ok(b.questTimeCut(level,building)>=.1&&b.questTimeCut(level,building)<=.8);

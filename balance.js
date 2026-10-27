@@ -1,6 +1,7 @@
 /* Shared balance rules. Save values are never rewritten when these rules change. */
 window.WL_BALANCE=Object.freeze({
   questTimeCut:(skill,building=1)=>Math.min(.8,[0,.1,.25,.4,.55,.8][Math.max(1,Math.min(5,building))]+.02*Math.max(0,Math.min(10,skill))),
+  expeditionCost:(kind,rank,party)=>({Gathering:2,Exploration:4,'World Dungeon':8,'World Boss':10,'World Raid':16}[kind]||4)+2*Math.max(0,Math.min(9,Number(rank)||0))+Math.max(1,Math.floor(Number(party)||1)),
   supportBonus:level=>Math.floor(Math.max(0,Math.min(10,level))/3),
   salePerLevel:.03,
   materialPerLevel:.025,

@@ -168,3 +168,31 @@ All meals share a one-Light-wound-day-per-hero-per-day limit and a two-durabilit
 repair limit. Fortifying followed by Grand Feast restores at most two total, not
 three; repair affects the most damaged equipped item. Serious/Grievous wounds are
 untouched. Recovery counters and meal effects persist through saves and reloads.
+
+
+## Daily recruitment, funded expeditions, manifests and death losses
+
+- Staff recruitment supplies exactly two candidates on each game day. Their names,
+  races, wages and decisions persist in saves. Hiring and passing require confirmation;
+  neither action refills the pool. Candidates start untrained, cost no hiring fee and
+  earn the existing 2 gp/day base wage only while assigned. Current staff and skill
+  progress are preserved. Aptitudes/personality effects remain a separate proposal.
+- New permanent expeditions pay no client gold. The guild pays at dispatch:
+  **base fee + 2 gp per rank step above F + 1 gp per party member**.
+  Base fees: Gathering 2 gp, Exploration 4 gp, World Dungeon 8 gp, World Boss
+  10 gp, World Raid 16 gp. For example, an F-rank solo gathering trip costs 3 gp;
+  an F-rank, two-member Exploration costs 6 gp. The fee is not refunded on failure.
+  Materials, loot, discovery, skill practice and existing advancement remain.
+  Client contracts retain their payment rules. Already queued reports and ongoing story expeditions retain their
+  stored terms; they are not charged retroactively. Permanent expeditions do not
+  consume client-market demand.
+- An outbound convoy can select multiple material types and quantities. Its cargo
+  manifest is saved, validates all lines before committing stock, and travels with
+  one escort and one shared success/partial/failure result. Values are summed before
+  the existing route, Storekeeping and escort-share rules apply. A failed convoy
+  loses all selected lines. Incoming market purchases retain their existing flow.
+- New hero deaths remove every carried equipment slot, legacy primary gear and
+  personally owned gear from usable inventory. Warehouse stock, survivors' gear and
+  the protected guildmaster's gear remain. Losses are listed in the quest report and
+  preserved final memorial report. Prevented deaths retain equipment. Previously
+  resolved deaths are not charged a second loss during save migration.

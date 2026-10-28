@@ -2,7 +2,7 @@
 from playwright.sync_api import sync_playwright
 with sync_playwright() as p:
     b=p.chromium.launch(executable_path='/usr/bin/chromium',args=['--no-sandbox'])
-    page=b.new_page();errors=[]
+    page=b.new_page(viewport={'width':390,'height':844},is_mobile=True,has_touch=True);errors=[]
     page.on('pageerror',lambda e:errors.append(str(e)))
     page.on('dialog',lambda d:d.accept())
     page.goto('http://127.0.0.1:8000',wait_until='networkidle')
@@ -43,11 +43,12 @@ with sync_playwright() as p:
       const q=gatheringQuest('Mining');if(q.rank<2)throw Error('high-rank fixture required');
       if(!heroEligible(h,q))throw Error('low-rank gatherer blocked');
       if(heroEligible(h,{...q,kind:'Contract',rank:9}))throw Error('contract rank restrictions lost');
-      game.questDone[q.templateKey]=true;game.selected=[];showView('quests');openQuestDetails(q.id);
+      game.questDone[q.templateKey]=true;game.selected=[];showView('permanent-quests');
     }""")
-    page.locator('#quest-detail-content input[type=checkbox]').check()
+    page.locator("#gather-quest-list button[onclick*=\"gather-mining\"]").tap()
+    page.locator('#quest-detail-content .quest-member-list label').tap()
     assert page.locator('#quest-dispatch-btn').is_enabled()
-    page.locator('#quest-dispatch-btn').click()
+    page.locator('#quest-dispatch-btn').tap()
     assert page.evaluate("game.pendingReports.at(-1).partyIds.includes('gather-helper')")
     assert page.evaluate("!game.heroes.find(h=>h.id==='gather-helper').ready")
     assert not errors,errors

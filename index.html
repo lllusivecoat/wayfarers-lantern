@@ -409,7 +409,7 @@ label.pick.v9pick>input{margin:3px 0 0!important;justify-self:start}
     <button class="tab" data-view="roster">Heroes</button>
     <button class="tab" data-view="staff">Staff</button>
     <button class="tab" data-view="buildings">Buildings</button>
-    <div class="nav-dropdown" data-views="warehouse trading"><button class="tab dropdown-trigger" type="button" aria-label="Inventory menu" aria-expanded="false" onclick="toggleNavMenu('warehouse-menu',this)">Inventory <span class="nav-caret" aria-hidden="true">▾</span></button><div class="dropdown-menu" id="warehouse-menu"><button class="dropdown-item" data-view="warehouse">Inventory</button><button class="dropdown-item" data-view="trading">Trading</button></div></div>
+    <div class="nav-dropdown" data-views="warehouse crafting trading"><button class="tab dropdown-trigger" type="button" aria-label="Inventory menu" aria-expanded="false" onclick="toggleNavMenu('warehouse-menu',this)">Inventory <span class="nav-caret" aria-hidden="true">▾</span></button><div class="dropdown-menu" id="warehouse-menu"><button class="dropdown-item" data-view="warehouse">Inventory</button><button class="dropdown-item" data-view="crafting">Crafting</button><button class="dropdown-item" data-view="trading">Trading</button></div></div>
     <div class="nav-dropdown" data-views="quests permanent-quests"><button class="tab dropdown-trigger" type="button" aria-label="Quests menu" aria-expanded="false" onclick="toggleNavMenu('quests-menu',this)">Quests <span class="nav-caret" aria-hidden="true">▾</span></button><div class="dropdown-menu" id="quests-menu"><button class="dropdown-item" data-view="quests">Time-limited contracts</button><button class="dropdown-item" data-view="permanent-quests">Permanent quests</button></div></div>
     <button class="tab" data-view="world">World</button>
     <button class="tab" data-view="chronicle">Chronicle</button>
@@ -450,10 +450,11 @@ label.pick.v9pick>input{margin:3px 0 0!important;justify-self:start}
     <div class="heading"><div><div class="eyebrow">Construction planning</div><h2>Buildings</h2></div><span class="small muted" id="building-rank-label"></span></div>
     <article class="card"><p>Available buildings are shown for your current guild rank and the next rank only. Later-rank options stay undisclosed until you advance.</p><div id="building-options"></div><div class="notice" id="building-plot-summary"></div></article>
   </section>
+  <section class="view" id="crafting"><div class="heading"><div><div class="eyebrow">Inventory</div><h2>Crafting</h2></div></div><article class="card"><div class="eyebrow">Crafting bench</div><p>Use gathered materials to make equipment or limited-use items. Heroes pay from their own stash to equip crafted goods.</p><div id="craft-actions"></div></article></section>
   <section class="view" id="warehouse">
     <div class="heading"><div><div class="eyebrow">Guild stores</div><h2>Inventory</h2></div><span class="small muted">Crafted gear belongs to the guild until a hero buys it.</span></div>
-    <div class="grid two"><article class="card"><div class="eyebrow">Materials & provisions</div><div id="warehouse-materials"></div><div class="divider"></div><div class="eyebrow">Gathering professions</div><div id="gathering-list"></div><div class="divider"></div><div class="eyebrow">Consumables</div><div id="warehouse-consumables"></div></article>
-    <article class="card"><div class="eyebrow">Gear & repairs</div><div id="warehouse-gear"></div><div class="divider"></div><div class="eyebrow">Crafting bench</div><p>Use gathered materials to make equipment or limited-use items. Heroes pay from their own stash to equip crafted goods.</p><div id="craft-actions"></div></article></div>
+    <div class="grid two"><article class="card"><div class="eyebrow">Gathering professions</div><div id="gathering-list"></div><div class="divider"></div><div class="eyebrow">Materials & provisions</div><div id="warehouse-materials"></div><div class="divider"></div><div class="eyebrow">Consumables</div><div id="warehouse-consumables"></div></article>
+    <article class="card"><div class="eyebrow">Gear & repairs</div><div id="warehouse-gear"></div></article></div>
   </section>
   <section class="view" id="quests">
     <div class="heading"><div><div class="eyebrow">Choose an operation</div><h2>Contracts</h2></div><span class="small muted">Time-limited contracts</span></div>
@@ -1893,6 +1894,13 @@ render();
 <script src="field-kits.js"></script>
 <script src="expedition-supplies.js"></script>
 <script src="encounter-system.js"></script>
+<script>
+(function(){
+ const previous=renderWarehouse;
+ renderWarehouse=function(){const result=previous.apply(this,arguments);for(const id of ['kitchen-recipes','alchemy-panel','field-kits-panel']){const panel=document.getElementById(id);if(panel)document.getElementById('crafting').appendChild(panel)}return result};
+ renderWarehouse();
+})();
+</script>
 <script src="offline.js"></script>
 </body>
 </html>

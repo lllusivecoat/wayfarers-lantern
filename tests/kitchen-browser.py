@@ -72,17 +72,17 @@ with sync_playwright() as p:
  eatOnDeparture('player','feast');check(game.gear.at(-1).durability===7&&game.player.wound.days===5,'Feast upgrades recovery without stacking');
  const remaining=game.consumables.find(i=>i.id==='feast').uses;useDraught('player','feast');check(consumeExpeditionSupplies([game.player]).length===0,'no wasted advanced meal at daily cap');for(const slot of ['utility1','utility2','utility3'])equipSlot('player',slot,'');check(game.consumables.find(i=>i.id==='feast').uses===remaining,'unused reservation returned');
  game.player.preparedBonus=0;game.player.wound={tier:2,days:5};save();const mealSave=loadGame();check(mealSave.rationRepairDays.player.amount===2,'daily repair saved');check(mealSave.consumables.some(i=>i.repair===2),'meal effects saved');
- showView('warehouse');
+ showView('crafting');
  }""")
  page.evaluate("useDraught('player')")
  page.locator('.slot-utility1 select').select_option('supply:food:feast')
- page.evaluate("consumeExpeditionSupplies([game.player]);closeHeroStats();showView('warehouse')")
+ page.evaluate("consumeExpeditionSupplies([game.player]);closeHeroStats();showView('crafting')")
  assert page.evaluate('game.player.preparedBonus')==2
  assert page.evaluate('game.player.wound.days')==5, 'Serious wounds must not heal from food'
  page.locator('[data-kitchen-index]').select_option('feast')
  assert page.evaluate("game.kitchenRecipes['kitchen-test']")=='feast'
  page.reload(wait_until='networkidle');page.wait_for_function("typeof kitchenRecipes==='function'")
- page.evaluate("showView('warehouse')")
+ page.evaluate("showView('crafting')")
  assert page.locator('[data-kitchen-index]').input_value()=='feast'
  assert page.locator('#kitchen-recipes').is_visible()
  assert 'Prime Meat' in page.locator('#kitchen-recipes').inner_text() or page.locator('[data-kitchen-index]').count()==1

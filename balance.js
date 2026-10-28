@@ -33,6 +33,7 @@ window.WL_BALANCE=Object.freeze({
   // The spread still covers maximum Storekeeping + Warehouse bonuses and the
   // largest town discount, even when a mixed load shares one escort fee.
   marketPrice:(base,rate,discount=0)=>Math.max(1,Math.ceil(base*rate*1.3*(1-Math.min(.04,Math.max(0,discount))))),
+  gatheringYieldMultiplier:members=>1+.25*Math.max(0,(Number.isSafeInteger(members)?members:1)-1),
   convoyCapacity:members=>Number.isSafeInteger(members)&&members>0?members*20:0,
   convoySupport:count=>Math.min(4,Math.max(0,count-1)),
   convoyFraction:(total,dc)=>total>=dc?1:total>=dc-4?.75:0,

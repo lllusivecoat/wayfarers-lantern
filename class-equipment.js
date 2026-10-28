@@ -21,20 +21,28 @@
   if(group!=='weapon')return group;
   return /greatsword|claymore|zweihander/.test(text)?'greatsword':/warglaive/.test(text)?'warglaive':/crossbow|arbalest/.test(text)?'crossbow':/bow/.test(text)?'bow':/gun|rifle|flintlock|cannon/.test(text)?'gun':/polearm|pike|spear|halberd/.test(text)?'polearm':/staff|stave/.test(text)?'staff':/wand/.test(text)?'wand':/dagger|knife|stiletto/.test(text)?'dagger':/axe|hatchet|cleaver/.test(text)?'axe':/mace|hammer|cudgel|maul/.test(text)?'mace':/fist|knuckle|talon/.test(text)?'fist':({INT:'staff',WIS:'mace',DEX:'dagger'}[g.stat]||'sword');
  }
- const twoHand=g=>g&&(g.hands===2||['greatsword','bow','crossbow','gun','polearm','staff'].includes(family(g)));
+ const twoHand=g=>!!g&&(g.hands===2||g.hands!==1&&['greatsword','bow','crossbow','gun','polearm','staff'].includes(family(g)));
+ window.gearIsTwoHanded=twoHand;
+ window.gearReadinessBonus=g=>(Number(g?.bonus)||0)*(twoHand(g)?2:1);
  window.gearProficiencyFamily=family;
  window.canHeroEquip=function(h,g){
   if(!h||!g)return false;const r=rules[h.className];if(!r)return false;const group=gearGroup(g),f=family(g);
   if(group==='armor')return armor.indexOf(f)>=0&&armor.indexOf(f)<=r[0];
-  if(group==='weapon'||f==='shield')return r[1].split(' ').includes(f);
+  if(group==='weapon'||f==='shield')return r[1].split(' ').includes(f==='pistol'?'gun':f);
   if(group==='offhand')return !['Hunter','Death Knight','Demon Hunter'].includes(h.className);
   return true;
+ };
+ window.canHeroEquipInSlot=function(h,g,slot){
+  if(!canHeroEquip(h,g))return false;
+  const def=equipmentSlotDefs.find(s=>s.key===slot);if(!def)return false;
+  if(slot==='offhand'&&gearGroup(g)==='weapon')return !twoHand(g)&&(h.className==='Demon Hunter'&&family(g)==='warglaive'||['Warrior','Rogue','Hunter'].includes(h.className)&&['dagger','pistol'].includes(family(g)));
+  return gearGroup(g)===def.group;
  };
  function clean(h){
   if(!h||h.dead||!h.ready||hasActiveQuestFor(h.id))return;
   const eq=h.equipment||{},weapon=game.gear.find(g=>g.id===(eq.weapon||h.gear));
   for(const g of game.gear.filter(g=>g.owner===h.id||g.id===h.gear||Object.values(eq).includes(g.id))){
-   if(!canHeroEquip(h,g)||gearGroup(g)==='offhand'&&twoHand(weapon)){
+   if(!canHeroEquip(h,g)||Object.entries(eq).some(([slot,id])=>id===g.id&&(!canHeroEquipInSlot(h,g,slot)||slot==='offhand'&&twoHand(weapon)))){
     Object.keys(eq).forEach(k=>{if(eq[k]===g.id)eq[k]=null});if(h.gear===g.id)h.gear=null;if(g.owner===h.id)g.owner=null;
    }
   }
@@ -42,7 +50,7 @@
  const oldEnsure=ensureHeroEquipment;ensureHeroEquipment=function(h){clean(h);return oldEnsure.apply(this,arguments)};
  const oldEquip=equipSlot;equipSlot=function(id,slot,value){
   const h=purse(id),g=game.gear.find(g=>g.id===value);if(!h||!h.ready||hasActiveQuestFor(id))return false;
-  if(g&&!canHeroEquip(h,g)){alert(`${h.className} cannot equip ${family(g)} equipment.`);return false}
+  if(g&&!canHeroEquipInSlot(h,g,slot)){alert(`${h.className} cannot equip ${family(g)} equipment.`);return false}
   const eq=ensureHeroEquipment(h),weapon=game.gear.find(g=>g.id===eq.weapon);
   if(g&&slot==='offhand'&&twoHand(weapon)){alert('Unequip the two-handed weapon before equipping an offhand.');return false}
   const result=oldEquip.apply(this,arguments);clean(h);if(viewingHeroId===id)renderHeroStats();return result;
@@ -50,7 +58,7 @@
  const oldEquipment=renderHeroEquipment;renderHeroEquipment=function(h){
   const box=document.createElement('div');box.innerHTML=oldEquipment.apply(this,arguments);
   box.querySelectorAll('option').forEach(o=>{const g=game.gear.find(g=>g.id===o.value);if(g&&!canHeroEquip(h,g))o.remove()});
-  return box.innerHTML+`<p class="small muted">${tbwEsc(h.className)} proficiencies: ${armor.slice(0,(rules[h.className]?.[0]||0)+1).join(', ')} armor; ${rules[h.className]?.[1]||'no known weapons'}. Two-handed weapons use the offhand space. Incompatible equipment returns to guild storage.</p>`;
+  return box.innerHTML+`<p class="small muted">${tbwEsc(h.className)} proficiencies: ${armor.slice(0,(rules[h.className]?.[0]||0)+1).join(', ')} armor; ${rules[h.className]?.[1]||'no known weapons'}. Daggers and pistols can use either hand for Warriors, Rogues and Hunters. Demon Hunters can use warglaives in either hand. Rifles remain two-handed. Two-handed weapons use the offhand space and double their listed stat contribution; total gear readiness remains capped at +6. Incompatible equipment returns to guild storage.</p>`;
  };
  const oldBase=readinessBase;readinessBase=function(h){clean(h);return oldBase.apply(this,arguments)};
  const oldSave=save;save=function(){[game.player,...game.heroes].forEach(clean);return oldSave.apply(this,arguments)};

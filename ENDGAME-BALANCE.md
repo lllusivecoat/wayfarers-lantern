@@ -1,4 +1,4 @@
-# Endgame outcome study
+# Deployed endgame outcome study — +2 supply readiness
 
 The permanent elixir now grants one raw ability point total per hero, across all
 six stat variants. Further elixirs are rejected without consuming stock. The
@@ -6,7 +6,7 @@ Alchemy browser checks cover same-stat and different-stat repeat attempts.
 
 ## Method
 
-Run `python3 scripts/analyze-endgame.py` against a local game on port 8000.
+Run `python3 scripts/analyze-endgame.py --supplies 2` against a local game on port 8000.
 The script uses a disposable Chromium context and the actual perk preparation,
 trait/bond preparation, individual checks, role quotas, encounters and tier engine.
 The current rank adjustments are included. Full output is written to
@@ -32,7 +32,7 @@ success is excluded from the success column. Wounds, deaths, resource efficiency
 and complete campaign strategy are outside this outcome-only calculation.
 Sampling uncertainty is roughly up to ±1.6 percentage points near 50%.
 
-## Current example builds, full parties
+## Deployed example builds, full parties
 
 “Full success” means Success or Exceptional Success, excluding Partial Success.
 The old column uses the same equipped example parties before this patch.
@@ -43,7 +43,7 @@ The old column uses the same equipped example parties before this patch.
 | Dungeon — The Sunken Reliquary | 5 | 99.35% | 69.05% | 78.08% |
 | World Dungeon — Blackrock Depths | 8 | 16.88% | 9.70% | 16.88% |
 | Raid — Siege of the Blackwater Hold | 20 | 99.95% | 58.35% | 78.13% |
-| World Boss — The Thornmaw Colossus | 20 | 99.98% | 62.78% | 77.40% |
+| Daily Boss — The Thornmaw Colossus | 20 | 99.98% | 62.78% | 77.40% |
 | World Raid — Zul’Gurub | 20 | 99.83% | 59.33% | 79.48% |
 
 These are representative prepared parties with strong legal perk choices, not
@@ -73,3 +73,10 @@ their existing curves. The tested World Dungeon is still much harder than the
 other encounters: review its location/rank growth, role quotas, reward and
 casualty model in the next world-content scaling discussion. Validate more party
 compositions and casualty rates before treating these initial targets as final.
+
+
+The current supply system allows one ration and one potion to combine
+for +4 readiness. These historical +2 rows describe commit fcb66a2; see
+WORLD-SCALING-REVIEW.md for the new comparison across actual discovered world
+locations. The old Thornmaw example is a daily Boss contract using the shared
+World Boss engine, rather than one of the discovered World Boss locations.

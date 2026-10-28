@@ -40,7 +40,7 @@ with tempfile.TemporaryDirectory(prefix='lantern-offline-') as temporary:
             assert len(manifest['icons'])==2
             page.evaluate("game.gold=6543;save();caches.open('unrelated-app-cache')")
             context.set_offline(True);page.reload(wait_until='networkidle')
-            page.wait_for_function("typeof generateRaceName==='function' && typeof dispatchInbound==='function'")
+            page.wait_for_function("typeof generateRaceName==='function' && typeof dispatchInbound==='function' && typeof fieldKitRecipes==='function' && typeof craftFieldKit==='function' && typeof encounterPartyError==='function'")
             assert page.evaluate('game.gold')==6543
             page.close();page=context.new_page();page.on('pageerror',lambda e:errors.append(str(e)))
             page.goto(url+'index.html',wait_until='networkidle')

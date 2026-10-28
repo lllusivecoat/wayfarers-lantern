@@ -264,7 +264,7 @@ A raw stat point is not necessarily a full point of readiness.
 Alchemy potions have their own inventory and recipient interface. Recovery is
 capped at two days per hero/game day across all alchemy recipes. Potions cannot
 resurrect heroes, erase scars, be used while away, or waste a duplicate permanent
-boost. Temporary readiness shares food's non-stacking +2 cap. Existing Field
+boost. Readiness potions contribute up to +2 and combine with one ration for up to +4 total. Existing Field
 Draughts remain usable through the old provision interface, but new brewing now
 requires the Lab. Jewelry and gem/ring recipes are unchanged.
 
@@ -278,9 +278,11 @@ same three utility slots. Save/reload preserves reservations. Dismissal returns
 supplies; death loses every carried use alongside the hero's gear.
 
 Only the equipped hero receives the benefit. A successful dispatch consumes at
-most one useful supply per hero, choosing the highest readiness bonus, then the
-first slot to break ties. Bonuses replace weaker preparation rather than stack,
-with a +2 cap. Supplies that cannot improve readiness, Light-wound recovery or
+most one useful ration and one useful potion per hero. Each category selects its
+highest readiness bonus, then its first slot to break ties. Rations contribute
+up to +2 and potions up to +2, combining for +4 total. Duplicate rations or potions
+never combine. Legacy Field Draughts count as potions regardless of their old
+inventory location. Categorized preparation persists while away and clears on return. Supplies that cannot improve readiness, Light-wound recovery or
 gear repair stay equipped. No use is consumed by a cancelled, blocked or
 unaffordable dispatch. Quests and both convoy directions use the same rule.
 Readiness previews include equipped supplies. Equipment changes are locked while
@@ -293,7 +295,67 @@ Permanent elixirs also stay in storage and use the lifetime one-point limit.
 
 High-rank Dungeon/World Boss DC additions are 1/3/4/5/7 for A/S/SS/Legendary/Renown;
 Raid/World Raid additions are 2/4/5/7/9. F–B and other quest types retain their
-current difficulty. The strongest tested prepared endgame parties now have
-roughly 77–79% full success in sampled Dungeon/Raid/Boss encounters, compared
-with over 99% previously. ENDGAME-BALANCE.md records assumptions, rates and the
-remaining World Dungeon scaling mismatch.
+current difficulty. The deployed update was tested at +2 total supply readiness, with roughly
+77–79% full success in sampled Dungeon/Raid/Boss encounters, compared with over
+99% previously. The current supply system permits +4 combined supply readiness; see
+WORLD-SCALING-REVIEW.md for the updated comparison. ENDGAME-BALANCE.md retains
+the deployed study and its assumptions.
+
+
+## Field kits
+
+The Staff Office prepares field kits manually in Warehouse. Its level allows
+1–5 batches per game day; each batch makes three single-expedition uses.
+Quartermastery unlocks recipes. Preparation requires a completed staffed Office,
+no upgrade in progress, enough treasury gold and every listed ingredient. A
+successful batch gives the existing once-per-skill/day Quartermastery service
+practice; failed gates consume nothing. Prices and ingredients are fixed; kits
+have no extra aptitude discount or quality roll.
+
+| Kit | Office / Quartermastery | Gold per batch | Ingredients per three uses | Ordinary wound reduction |
+| --- | --- | ---: | --- | ---: |
+| Trail | 1 / 0 | 4 | 2 Wool Cloth + 1 Light Leather | 10% |
+| Reinforced | 2 / 3 | 8 | 2 Silk Cloth + 1 Medium Leather | 12% |
+| Expedition | 3 / 5 | 12 | 2 Arcane Thread + 1 Heavy Leather | 15% |
+| Veteran | 4 / 7 | 18 | 2 Runecloth + 1 Thick Leather | 18% |
+| Masterwork | 5 / 9 | 25 | 3 Runecloth + 2 Rugged Leather + 1 Kingsblood | 20% |
+
+One kit fits any real utility slot alongside a ration and potion. Departure uses
+the strongest kit, then the earliest slot for ties; other kits stay as backups.
+It supplies no readiness and never stacks with another kit. Its relative ordinary
+wound reduction multiplies with existing healer/trait protection, capped at 20%.
+For example, a 20% ordinary wound chance becomes 16%, not zero. Mandatory
+natural-1 wounds, existing-wound worsening and direct death checks keep their
+existing formulas; preventing an ordinary Grievous wound can indirectly avoid
+that wound's associated risk. This is prevention, not healing or resurrection.
+
+Kits share reservation, refund, away locking, dismiss/death loss and report rules
+with the other utility supplies. Stock, production counters, reservations and
+active protection persist through saves/imports. All preparation clears on return.
+Already queued results are not recalculated. Both convoy directions use the same
+protection and consumption rules. Consumed supplies are listed in full reports.
+
+
+## Explicit Boss and World Raid party balance
+
+Daily Boss contracts require 12 heroes with at least 2 tanks and 2 healers;
+World Bosses require 20 with at least 2 tanks and 4 healers; World Raids require
+32 with at least 5 tanks and 10 healers. Suggested DPS counts are 8/14/17. Per-phase
+successful-check targets are 2/2/6, 2/3/10 and 4/7/12, respectively. Success
+requirements use the reference party, not a changing percentage of selected
+heroes. Tank/healer role minimums, full sizes and enough DPS for those success
+targets are mandatory before any dispatch costs or supplies are committed.
+
+The earlier high-rank additions remain, with additional tuning for the requested
+compositions. At S/SS/Legendary/Renown, extra DC is 1/1/1/1 for Daily Bosses,
+1/1/2/2 for World Bosses and ordinary Raids, 1/1/2/2 for Zul'Gurub/Onyxia, and
+1/2/3/3 for later World Raids. Naxxramas adds +1 to its final phase at SS+.
+World Dungeons subtract floor(rank/4) DC from their old curve. Other quest curves
+are unchanged. WORLD-SCALING-REVIEW.md contains the 4,000-trial results.
+
+World Raid Campaign Spoils scale from 2–4 to 4–7 before outcome multipliers.
+Hunter's Lodge/Command Post L4+ reduce their staffed world's organizing fees
+10% (rounded down, minimum 1 gp). Daily Boss contract payout bonuses remain;
+world client payouts remain zero. Future 32-person Renown raids cost 66 gp,
+or 59 gp with the Command Post discount. Existing reports and legacy story
+sessions retain their stored/original terms; no retroactive fee or loot change.

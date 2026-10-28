@@ -14,7 +14,7 @@
  function migrate(g){g.alchemyPotions=Array.isArray(g.alchemyPotions)?g.alchemyPotions:[];g.alchemyBatches=g.alchemyBatches||{};g.alchemyRecoveryDays=g.alchemyRecoveryDays||{};return g}
  function lab(){return v9Inst('alchemyLab')[0]}
  function worker(){return buildingStaff('alchemyLab')}
- function effect(r){return r.stat?`Permanently +1 ${abilityNames[r.stat]} (raw stat, not readiness). One permanent stat point total per hero; retained through respecialisation.`:r.bonus?`+${r.bonus} next-expedition readiness · ${r.uses} uses. Shares the +2 non-stacking food/draught cap.`:`Wound recovery −${r.heal} day(s), up to ${WOUND_TIERS[r.tier].name}. Combined alchemy recovery limit: 2 days per hero/game day. No resurrection or scar removal.`}
+ function effect(r){return r.stat?`Permanently +1 ${abilityNames[r.stat]} (raw stat, not readiness). One permanent stat point total per hero; retained through respecialisation.`:r.bonus?`+${r.bonus} next-expedition readiness · ${r.uses} uses. One potion per expedition; combines with one ration for up to +4 total readiness.`:`Wound recovery −${r.heal} day(s), up to ${WOUND_TIERS[r.tier].name}. Combined alchemy recovery limit: 2 days per hero/game day. No resurrection or scar removal.`}
  function quote(r){const e=WL_STAFF.service('alchemyLab');return {gold:r.stat?r.gold:Math.max(1,Math.ceil(r.gold*e.goldFactor)),ingredients:Object.fromEntries(Object.entries(r.ingredients).map(([k,n])=>[k,r.stat?n:Math.max(1,Math.ceil(n*(1-e.materialDiscount)))]))}}
  function used(){const entry=game.alchemyBatches[lab()?.uid];return entry?.day===game.day?entry.count:0}
  function reason(r){

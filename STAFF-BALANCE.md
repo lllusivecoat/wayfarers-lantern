@@ -268,3 +268,18 @@ one worker gives twelve meaningful hiring decisions and makes swapping workers
 clearer. Add assistants later only if the player explicitly wants that extra depth.
 
 Implementation note: kitchen-system.js implements single-worker, ingredient-backed cooking, including the bounded aptitude/trait extra-ration roll. All five current recipes and recovery limits are retained; see BALANCE.md.
+
+
+Quartermastery also unlocks the five Field kit recipes at skill levels
+0/3/5/7/9. Staff Office levels 1–5 control batch capacity and recipe building gates,
+with three uses per batch. Kit protection is fixed by recipe (10–20%), never a
+second readiness or preparation-DC bonus. The normal Quartermastery service
+award remains once per game day across kit preparation and expedition service.
+Fixed batch costs, ingredients and prevention limits are in BALANCE.md.
+
+
+Hunter's Lodge L4 retains its daily Boss contract payout bonus and now gives
+10% lower organizing fees on guild-funded World Boss expeditions. Command Post
+L4 gives that 10% organizing-fee reduction on World Raids. Both require an
+operating staffed building; staff loot/DC formulas and healer protection caps
+are unchanged. World Raids now use 32 heroes with at least 5 tanks/10 healers.

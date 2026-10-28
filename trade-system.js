@@ -64,6 +64,29 @@
     return `Lead: ${profile.lead.name} · d20 ${v9SignSp(profile.modifier)} + ${profile.support} support · ${full*5}% full delivery, ${partial*5}% partial. Up to four additional escorts give +1 each; weaker escorts never lower delivery odds. Includes equipped readiness supplies; they are consumed at dispatch.`;
   }
   function validCargo(cargo,available){return cargo.length>0&&cargo.every(c=>Number.isSafeInteger(c.count)&&c.count>0&&c.count<=available(c.material))}
+  function blockers(route,cargo,heroes,purchase=null){
+    const reasons=[];
+    if(!route)reasons.push('Choose a discovered town or city.');
+    if(!buildingOperational('warehouse'))reasons.push(!buildingStaff('warehouse')?'Assign a staff member to the Warehouse.':'Finish Warehouse construction or upgrades before dispatch.');
+    if(!heroes.length)reasons.push((game.tradeParty||[]).length?'Your selected escorts are unavailable. Choose ready, living heroes without Grievous wounds.':'Select at least one ready convoy member above.');
+    if(!cargo.length)reasons.push(purchase?'Select goods to buy and their quantities.':'Select warehouse goods to sell and their quantities.');
+    const goods=purchase?.goods;
+    for(const c of cargo){
+      if(!Number.isSafeInteger(c.count)||c.count<1){reasons.push(`${c.material}: enter a positive whole quantity.`);continue}
+      const available=purchase?(goods.find(o=>o.material===c.material)?.stock||0):Number(game.materials[c.material]||0);
+      if(c.count>available)reasons.push(`${c.material}: ${c.count} selected, but only ${available} ${purchase?'in market stock':'in warehouse storage'}.`);
+    }
+    if(heroes.length&&load(cargo)>capacity())reasons.push(`Cargo exceeds convoy capacity: ${load(cargo)}/${capacity()} items. Reduce quantities or select more members (20 items each).`);
+    if(purchase?.valid&&purchase.total>game.gold)reasons.push(`Not enough guild gold: need ${purchase.total} gp (${purchase.goodsCost} goods + ${purchase.escortPay} escort pay), have ${game.gold} gp.`);
+    return reasons;
+  }
+  function showBlockers(button,reasons){
+    if(!button)return;
+    const id=button.id+'-reason';let notice=document.getElementById(id);
+    if(!notice){notice=document.createElement('p');notice.id=id;notice.className='notice';notice.setAttribute('role','status');notice.setAttribute('aria-live','polite');notice.style.whiteSpace='pre-line';notice.style.flexBasis='100%';notice.style.maxWidth='100%';button.insertAdjacentElement('afterend',notice)}
+    notice.hidden=!reasons.length;notice.textContent=reasons.length?'Cannot dispatch:\n'+reasons.join('\n'):'';
+    button.disabled=!!reasons.length;button.title=reasons.join(' ');button.setAttribute('aria-describedby',id);
+  }
   function inboundQuote(route){
     const cargo=cart(route),goods=offers(route),heroes=party();
     const valid=validCargo(cargo,name=>goods.find(o=>o.material===name)?.stock||0);
@@ -80,7 +103,7 @@
     const route=currentRoute(),cargo=tradeCargo(),heroes=party();
     const valid=validCargo(cargo,name=>Number(game.materials[name]||0)),units=load(cargo);
     const button=document.getElementById('trade-dispatch'),root=document.getElementById('trade-preview');
-    if(button)button.disabled=!route||!valid||units>capacity()||!heroes.length||!buildingOperational('warehouse');
+    showBlockers(button,blockers(route,cargo,heroes));
     if(root)root.textContent=!route?'Choose a discovered market.':!valid?'Select cargo with whole quantities within warehouse stock.':
       `${manifest(cargo)} · Cargo ${units}/${capacity()} units${units>capacity()?' — over capacity':''} · Full-delivery estimate: ${tradeQuote(route,cargo,heroes.length).gross} gp gross, ${tradeQuote(route,cargo,heroes.length).memberCut} gp escort pay, ${tradeQuote(route,cargo,heroes.length).guildGold} gp to treasury · Travel ${v9ConvoyLabel(route)} · Danger DC ${danger(route)}. An ambush may lose cargo; partial delivery keeps 75% of each line, rounded down.`;
     const note=document.getElementById('trade-party-note');if(note&&route)note.textContent=`${heroes.length} selected · Convoy capacity ${capacity()} items (20 per member) · ${odds(heroes,route)}`;
@@ -89,7 +112,7 @@
     const q=inboundQuote(route),units=load(q.cargo),root=document.getElementById('market-cost');
     if(root)root.textContent=`${q.valid?`Total ${q.total} gp (${q.goodsCost} goods + ${q.escortPay} escort pay) · ${game.gold} gp treasury`:'Choose whole quantities within available market stock.'} · Cargo ${units}/${capacity()} units${units>capacity()?' — over capacity':''} · Travel ${v9ConvoyLabel(route)} · Danger DC ${danger(route)}.`;
     const button=document.getElementById('market-buy');
-    if(button)button.disabled=!q.valid||units>capacity()||!q.heroes.length||q.total>game.gold||!buildingOperational('warehouse');
+    showBlockers(button,blockers(route,q.cargo,q.heroes,q));
   }
   const oldTrading=renderTrading;
   renderTrading=function(){
@@ -140,7 +163,7 @@
   }
   dispatchTrade=function(){
     const route=currentRoute(),cargo=tradeCargo(),heroes=party();
-    if(!route||!buildingOperational('warehouse')||!heroes.length||!validCargo(cargo,name=>Number(game.materials[name]||0))||load(cargo)>capacity())return alert('Choose a discovered market, staffed Warehouse, ready escort and whole cargo quantities within stock and capacity.');
+    const reasons=blockers(route,cargo,heroes);if(reasons.length){updateTradePreview();return alert(reasons.join('\n'))}
     const suppliesUsed=consumeExpeditionSupplies(heroes),result=rollConvoy(heroes,route);
     const delivered=cargo.map(c=>({...c,count:Math.floor(c.count*result.fraction)})),quote=tradeQuote(route,delivered,heroes.length);
     cargo.forEach(c=>{game.materials[c.material]-=c.count;if(!game.materials[c.material])delete game.materials[c.material]});
@@ -153,7 +176,7 @@
   window.dispatchInbound=function(){
     const route=currentRoute();if(!route)return alert('Choose a discovered market.');
     const q=inboundQuote(route);
-    if(!buildingOperational('warehouse')||!q.valid||!q.heroes.length||load(q.cargo)>capacity()||q.total>game.gold)return alert('Choose a staffed Warehouse, ready escort, whole available quantities within capacity, and enough gold for goods and escort pay.');
+    const reasons=blockers(route,q.cargo,q.heroes,q);if(reasons.length){previewInbound(route);return alert(reasons.join('\n'))}
     const suppliesUsed=consumeExpeditionSupplies(q.heroes),result=rollConvoy(q.heroes,route);
     const delivered=q.cargo.map(c=>({...c,count:Math.floor(c.count*result.fraction)}));
     game.gold-=q.total;

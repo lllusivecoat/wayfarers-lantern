@@ -35,6 +35,10 @@ try:
       check(novice.professionXP.Blacksmithing===1,'successful crafting grants practice');
       craftGear(basic.id);
       check(game.gear.length===initialGear+2&&novice.professionXP.Blacksmithing===1,'further crafting respects daily service-practice cap');
+      game.craftLog={day:game.day,n:999};
+      for(let n=0;n<5;n++)craftGear(basic.id);
+      check(game.gear.length===initialGear+7,'craft beyond old daily cap and saved craft count');
+      check(novice.professionXP.Blacksmithing===1,'unlimited crafting keeps daily practice cap');
       novice.professionXP.Blacksmithing=275;
       for(const rec of alchemyRecipes()){
         game.day++;check(brewAlchemy(rec.id),'brew '+rec.id);check(game.gold===0,'potion gold unchanged');

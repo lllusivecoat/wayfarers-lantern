@@ -37,6 +37,19 @@ with sync_playwright() as p:
     snapshot=page.evaluate('yieldSnapshot')
     page.reload(wait_until='networkidle');page.wait_for_function("typeof WL_TRADE==='object'")
     assert page.evaluate('JSON.stringify(game.pendingReports.at(-1))')==snapshot
+    page.evaluate("""() => {
+      game.pendingReports=[];game.gold=100000;game.reputation=100000;game.player.ready=false;
+      const h=game.heroes.find(h=>h.id==='gather-helper');h.rank=0;h.ready=true;h.dead=false;h.wound=null;
+      const q=gatheringQuest('Mining');if(q.rank<2)throw Error('high-rank fixture required');
+      if(!heroEligible(h,q))throw Error('low-rank gatherer blocked');
+      if(heroEligible(h,{...q,kind:'Contract',rank:9}))throw Error('contract rank restrictions lost');
+      game.questDone[q.templateKey]=true;game.selected=[];showView('quests');openQuestDetails(q.id);
+    }""")
+    page.locator('#quest-detail-content input[type=checkbox]').check()
+    assert page.locator('#quest-dispatch-btn').is_enabled()
+    page.locator('#quest-dispatch-btn').click()
+    assert page.evaluate("game.pendingReports.at(-1).partyIds.includes('gather-helper')")
+    assert page.evaluate("!game.heroes.find(h=>h.id==='gather-helper').ready")
     assert not errors,errors
     b.close()
     print('PASS: all gathering professions/ranks/outcomes, member yield scaling, non-gathering rewards, preview, actual dispatch, food drops and saved reports')

@@ -396,6 +396,19 @@ label.pick.v9pick>input{margin:3px 0 0!important;justify-self:start}
 #staff .staff-vacancy>.pill{justify-self:end}
 @media(max-width:600px){#staff .staff-vacancy{grid-template-columns:minmax(0,1fr)}#staff .staff-vacancy-controls .btn{width:100%}#staff .staff-vacancy>.pill{justify-self:start}}
 #kitchen-recipes{margin-top:16px}#kitchen-recipes label{display:grid;gap:8px}#kitchen-recipes select{min-height:44px;width:100%;min-width:0;font:inherit;background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:8px;padding:8px}#kitchen-recipes .kitchen-list{display:grid;gap:16px}
+
+/* Inventory chips and convoy controls keep their own space at every width. */
+#warehouse-materials{display:flex;flex-wrap:wrap;align-items:flex-start;gap:12px;margin:16px 0 22px;min-width:0}
+#warehouse-materials .item{display:block;flex:0 1 auto;max-width:100%;margin:0;padding:10px 14px;line-height:1.6;white-space:normal;overflow-wrap:anywhere}
+#inbound-market{margin-top:28px;padding-top:24px;line-height:1.75;min-width:0;overflow-wrap:anywhere}
+#inbound-market h3{margin:0 0 20px}
+#inbound-market p{margin:18px 0 24px}
+#inbound-market label{display:block;margin:22px 0}
+#inbound-market select,#inbound-market input{display:block;width:100%;max-width:100%;min-width:0;margin-top:10px;padding:12px;border:1px solid var(--line);border-radius:8px;background:var(--panel,#111912);color:var(--text);font:inherit;font-size:16px;line-height:1.5}
+#inbound-market #market-cost{margin:26px 0;line-height:1.8}
+#inbound-market button{margin-top:4px;max-width:100%;white-space:normal;padding:12px 18px;line-height:1.6}
+@media(max-width:600px){#inbound-market{margin-top:24px}#trade-dispatch{margin-top:12px}#inbound-market button{width:100%}}
+
 </style>
 </head>
 <body>
@@ -1894,6 +1907,7 @@ render();
 <script src="field-kits.js"></script>
 <script src="expedition-supplies.js"></script>
 <script src="encounter-system.js"></script>
+<script src="class-equipment.js"></script>
 <script>
 (function(){
  const previous=renderWarehouse;

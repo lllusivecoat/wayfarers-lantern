@@ -1098,9 +1098,9 @@ player:{id:'player',name:'Kael Arden',race:'Human',className:'Warrior',spec:'Arm
 // Training Hall, building levels 1-5 with per-level effects, Guild Hall tiers 1-7, duplicate buildings,
 // destroy, hero purse shares, new quest board rules, selectable ranks on permanent quests, save v9.
 // Design: training-hall-v3.xlsx plus Shaun's approved clash fixes (Oct 2026).
-var V9_HALL={1:{members:15,staff:2,plots:4,rep:0,cost:0},2:{members:32,staff:5,plots:7,rep:50,cost:100},3:{members:60,staff:10,plots:11,rep:150,cost:450},4:{members:100,staff:20,plots:16,rep:350,cost:1100},5:{members:160,staff:30,plots:20,rep:700,cost:2500},
- 6:{members:220,staff:40,plots:24,rep:1000,cost:5000}, // TBC: placeholder extending Shaun's pattern
- 7:{members:300,staff:50,plots:28,rep:1400,cost:9000}}; // TBC: placeholder extending Shaun's pattern
+var V9_HALL={1:{members:15,staff:4,plots:4,rep:0,cost:0},2:{members:32,staff:7,plots:7,rep:50,cost:100},3:{members:60,staff:11,plots:11,rep:150,cost:450},4:{members:100,staff:16,plots:16,rep:350,cost:1100},5:{members:160,staff:20,plots:20,rep:700,cost:2500},
+ 6:{members:220,staff:24,plots:24,rep:1000,cost:5000}, // TBC: placeholder extending Shaun's pattern
+ 7:{members:300,staff:28,plots:28,rep:1400,cost:9000}}; // TBC: placeholder extending Shaun's pattern
 Object.assign(QUEST_RANK_CAP_BY_HALL,{1:6,2:6,3:6,4:6,5:7,6:8,7:9}); // tier 5 SS, tier 6 Legendary (TBC), tier 7 Renown (TBC)
 buildingDefs.push({key:'trainingHall',name:'Training Hall',rank:1,cost:80,upkeep:3,desc:'Trait training and perk respecs, paid from the hero’s purse.',staffRole:'Trainer',staffProfession:'Training',staffId:'brannoc',staffName:'Brannoc',wage:3});
 buildingDefs.push({key:'alchemyLab',name:'Alchemy Lab',rank:1,cost:150,upkeep:3,desc:'Brew potions and permanent endgame elixirs. Requires Guild Hall Level 2.',staffRole:'Alchemist',staffProfession:'Alchemy',staffId:'alchemist',wage:2});
@@ -1139,7 +1139,7 @@ function v9SyncX(x){x.buildings=x.buildings||{};x.buildingLevels=x.buildingLevel
 function v9Sync(){v9SyncX(game)}
 // ---------- core building overrides ----------
 cap=function(){return (V9_HALL[game.hall||1]||V9_HALL[1]).members};
-staffCap=function(){return (V9_HALL[game.hall||1]||V9_HALL[1]).staff};
+staffCap=function(){return plotCap()};
 plotCap=function(){return (V9_HALL[game.hall||1]||V9_HALL[1]).plots};
 buildingCount=function(){return (game.buildingList||[]).length};
 buildingLevel=function(key){if(key==='warehouse')return game.warehouseLevel||1;const L=v9Inst(key);if(!L.length)return game.buildingLevels?.[key]||1;const e=Math.max(0,...L.map(v9Eff));return e||Math.max(...L.map(i=>i.level))};
@@ -1254,7 +1254,7 @@ const _v9Qlist=qlist;qlist=function(){if((game.hall||1)<2)game.questBoard=(game.
 // ---------- permanent quests with selectable ranks ----------
 function v9PermMax(){const top=Math.max(0,...game.heroes.filter(h=>!h.dead).map(h=>h.rank||0));return Math.max(0,Math.min(maxQuestRankForHall(),top+1,9))}
 function v9PermRank(key,def){const r=game.permRanks&&game.permRanks[key]!==undefined?Number(game.permRanks[key]):def;return Math.max(0,Math.min(v9PermMax(),Number(r)||0))}
-function setPermRank(key,r){game.permRanks=game.permRanks||{};game.permRanks[key]=Number(r);renderQuests();save()}
+function setPermRank(key,r){game.permRanks=game.permRanks||{};game.permRanks[key]=Number(r);renderQuests();if(document.getElementById('quest-detail-modal').classList.contains('open'))renderQuestDetails();save()}
 function v9GatherReward(r){return 4+6*r}
 function v9WorldDungeonReward(r){return 20+20*r}
 const _v9Gather=gatheringQuest;gatheringQuest=function(p){const q=_v9Gather(p),r=v9PermRank(q.templateKey,q.rank);return {...q,rank:r,dc:10+r*2,resourceQtyBase:2+r*2,minParty:1+Math.floor(r/2),reward:v9GatherReward(r)}};

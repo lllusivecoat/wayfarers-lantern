@@ -40,6 +40,7 @@ with sync_playwright() as p:
     page.evaluate("""() => {
       game.pendingReports=[];game.gold=100000;game.reputation=100000;game.player.ready=false;
       const h=game.heroes.find(h=>h.id==='gather-helper');h.rank=0;h.ready=true;h.dead=false;h.wound=null;
+      const veteran=structuredClone(h);veteran.id='rank-veteran';veteran.rank=9;veteran.level=19;veteran.ready=false;game.heroes.push(veteran);
       const q=gatheringQuest('Mining');if(q.rank<2)throw Error('high-rank fixture required');
       if(!heroEligible(h,q))throw Error('low-rank gatherer blocked');
       if(heroEligible(h,{...q,kind:'Contract',rank:9}))throw Error('contract rank restrictions lost');

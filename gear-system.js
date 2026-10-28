@@ -111,12 +111,12 @@
   if(!gatherProfessions.includes('Jewelcrafting'))gatherProfessions.push('Jewelcrafting');
   window.gatheringQuest=function(profession){
     if(!['Woodcutting','Tailoring','Jewelcrafting'].includes(profession)){
-      const q=previousGatheringQuest(profession);if(!q)return q;q.rank=Math.min(9,guildTierIndex());q.dc=10+q.rank*2;q.resourceQtyBase=2+q.rank*2;
+      const q=previousGatheringQuest(profession);if(!q)return q;q.rank=v9PermRank(q.templateKey,Math.min(9,guildTierIndex()));q.dc=10+q.rank*2;q.resourceQtyBase=2+q.rank*2;q.minParty=1+Math.floor(q.rank/2);q.reward=0;
       if(profession==='Mining')q.rareResource=q.rank>=8?'Eternium Ore':q.rank>=6?'Thorium Ore':q.rank>=4?'Mithril Ore':'Silver Ore';
       if(profession==='Skinning')q.rareResource=q.rank>=8?'Rugged Leather':q.rank>=6?'Thick Leather':q.rank>=4?'Heavy Leather':'Medium Leather';
       return q;
     }
-    const rank=Math.min(9,guildTierIndex()),data={Woodcutting:['Timber',rank>=7?'Ancient Timber':rank>=4?'Enchanted Timber':rank>=2?'Seasoned Timber':'Timber','str','Gather wood from safe trails; higher-rank routes reach ancient and enchanted groves.'],Tailoring:['Wool Cloth',rank>=6?'Runecloth':rank>=4?'Arcane Thread':rank>=2?'Silk Cloth':'Wool Cloth','int','Recover and prepare cloth supplies; higher-rank missions reach rare weave and arcane thread.'],Jewelcrafting:['Raw Gem',rank>=5?'Arcane Crystal':rank>=2?'Flawless Gem':'Raw Gem','int','Seek and cut rough stones; higher-rank routes uncover flawless gems and arcane crystals.']}[profession];
+    const rank=v9PermRank(`gather-${profession.toLowerCase()}`,Math.min(9,guildTierIndex())),data={Woodcutting:['Timber',rank>=7?'Ancient Timber':rank>=4?'Enchanted Timber':rank>=2?'Seasoned Timber':'Timber','str','Gather wood from safe trails; higher-rank routes reach ancient and enchanted groves.'],Tailoring:['Wool Cloth',rank>=6?'Runecloth':rank>=4?'Arcane Thread':rank>=2?'Silk Cloth':'Wool Cloth','int','Recover and prepare cloth supplies; higher-rank missions reach rare weave and arcane thread.'],Jewelcrafting:['Raw Gem',rank>=5?'Arcane Crystal':rank>=2?'Flawless Gem':'Raw Gem','int','Seek and cut rough stones; higher-rank routes uncover flawless gems and arcane crystals.']}[profession];
     const id=`gather-${profession.toLowerCase()}`;return {id,templateKey:id,kind:'Gathering',jobType:'Gathering expedition',profession,title:`${profession} Expedition`,desc:data[3],ability:data[2],rank,dc:10+rank*2,reward:0,rep:0,resource:data[0],resourceQtyBase:2+rank*2,minParty:1+Math.floor(rank/2),icon:'✦',persistent:true,expiresDay:null,bonusKind:'Gathering',rareResource:data[1]};
   };
   const previousQueueQuestReport=queueQuestReport;

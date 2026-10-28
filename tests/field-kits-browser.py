@@ -30,7 +30,7 @@ with sync_playwright() as p:
   }
   game.day++;game.fieldKitBatches={};office.level=5;st.professionXP.Quartermastery=275;const xp=st.professionXP.Quartermastery;
   for(let n=0;n<5;n++)check(craftFieldKit('trail'),'Office 5 batch '+n);check(!craftFieldKit('trail'),'Office 5 five-batch cap');check(st.professionXP.Quartermastery===xp+1,'one service practice per day');
-  game.day++;game.fieldKitBatches={};game.gold=0;const noGold=JSON.stringify(game.fieldKits);check(!craftFieldKit('trail')&&JSON.stringify(game.fieldKits)===noGold,'gold gate');game.gold=100000;
+  game.day++;game.fieldKitBatches={};game.gold=0;const noGold=JSON.stringify(game.fieldKits);check(craftFieldKit('trail')&&game.gold===0,'no gold charge');game.day++;game.gold=100000;
   game.materials['Wool Cloth']=0;check(!craftFieldKit('trail'),'ingredient gate');game.materials['Wool Cloth']=100;
   game.constructionProjects.push({key:'staffOffice',uid:office.uid,action:'upgrade',daysRemaining:2});check(!craftFieldKit('trail'),'upgrading Office pauses production');game.constructionProjects=[];
   check(craftFieldKit('trail'),'capacity refreshed on new game day');save();const loaded=loadGame();check(loaded.fieldKitBatches[office.uid].count===1&&loaded.fieldKits.length===game.fieldKits.length,'stock/capacity saved');
@@ -71,7 +71,7 @@ with sync_playwright() as p:
   game.pendingReports=[{kind:'operation',questKind:'Dungeon',title:'Kit loss',outcome:'Failure',summary:'A fatal loss.',partyIds:[fallen.id],casualties:[fallen.id],payout:0,rep:0,rolls:[],growthAwards:[],dueAt:Date.now()-1}];applyPendingReports();check(!Object.keys(fallen.utilitySupplies).length&&JSON.stringify(game.fieldKits)===stock,'carried kit lost on death');check(fallen.memorial.finalReport.lostEquipment[0].items.some(x=>x.name==='Trail Field Kit'),'kit loss named in memorial');
   showView('crafting');save();
  }""")
- page.select_option('#field-kit-recipe','masterwork');assert '25 gp per batch' in page.locator('#field-kits-panel').inner_text()
+ page.select_option('#field-kit-recipe','masterwork');assert 'no gold charge' in page.locator('#field-kits-panel').inner_text()
  assert page.locator('#field-kits-panel').evaluate('e=>e.scrollWidth<=e.clientWidth+1')
  with page.expect_download() as download:page.evaluate('exportSave()')
  payload=Path(download.value.path()).read_bytes();stock=page.evaluate('JSON.stringify(game.fieldKits)');page.evaluate('game.fieldKits=[]')

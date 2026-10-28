@@ -132,9 +132,9 @@ with sync_playwright() as p:
       for(let i=0;i<3;i++){const a=makeApplicant({race:'Human',className:'Warrior',spec:'Arms'});game.applicants.push(a);openRecruit(a.id);confirmHire()}
       const [a,b,c]=game.heroes;for(const h of [a,b,c,game.player]){h.level=1;h.traits=[];h.perks=[];h.wound=null;h.ready=true;for(const k of abilityKeys)h.abilities[k]=10}
       game.materials={'Copper Ore':10,Timber:10};game.tradeCargo={'Copper Ore':3,Timber:3};game.tradeParty=['player',a.id,b.id];
-      const random=Math.random,rolls=[.99,.99,0];Math.random=()=>rolls.length?rolls.shift():.99;
+      const random=Math.random;const route=tradeDestinations().find(r=>r.id===selectedTradeRoute),profile=WL_TRADE.escortProfile([game.player,a,b]);const roll=WL_TRADE.danger(route)-2-profile.modifier-profile.support;check(roll>=1&&roll<=20,'partial fixture');Math.random=()=> (roll-.5)/20;
       dispatchTrade();Math.random=random;const partial=game.pendingReports.at(-1);
-      check(partial.outcome==='Partial Success'&&partial.deliveredFraction===2/3,'partial shipment shares one travel outcome');
+      check(partial.outcome==='Partial Success'&&partial.deliveredFraction===.75,'partial shipment shares one travel outcome');
       check(game.materials['Copper Ore']===7&&game.materials.Timber===7,'partial shipment commits all lines');
       partial.dueAt=Date.now()-1;applyPendingReports();
       game.player.ready=true;game.player.wound=null;game.tradeCargo={'Copper Ore':2,Timber:2};game.tradeParty=['player'];Math.random=()=>0;

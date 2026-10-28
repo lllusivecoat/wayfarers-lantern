@@ -30,6 +30,12 @@ window.WL_BALANCE=Object.freeze({
   craftExtra:level=>level>=9?2:1,
   rationCount:building=>Math.max(1,Math.min(5,Number(building)||1)),
   rationBonus:skill=>skill>=6?2:1,
-  marketPrice:(base,rate)=>Math.max(1,Math.ceil(base*rate*1.2)),
+  // The spread still covers maximum Storekeeping + Warehouse bonuses and the
+  // largest town discount, even when a mixed load shares one escort fee.
+  marketPrice:(base,rate,discount=0)=>Math.max(1,Math.ceil(base*rate*1.3*(1-Math.min(.04,Math.max(0,discount))))),
+  convoyCapacity:level=>[0,20,35,50,70,90][Math.max(1,Math.min(5,Number(level)||1))],
+  convoySupport:count=>Math.min(4,Math.max(0,count-1)),
+  convoyFraction:(total,dc)=>total>=dc?1:total>=dc-4?.75:0,
+  convoyPay:(gross,count)=>gross&&count?Math.min(gross,Math.max(Math.floor(gross*Math.min(.3,.2+.02*Math.max(0,count-1))),2*count)):0,
   marketStock:ring=>Math.min(18,8+ring*2)
 });

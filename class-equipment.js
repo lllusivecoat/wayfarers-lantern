@@ -54,5 +54,13 @@
  };
  const oldBase=readinessBase;readinessBase=function(h){clean(h);return oldBase.apply(this,arguments)};
  const oldSave=save;save=function(){[game.player,...game.heroes].forEach(clean);return oldSave.apply(this,arguments)};
+ const layout=document.createElement('style');layout.textContent=`
+#hero-stats-content .equipment-slot-grid{grid-template-columns:minmax(0,1fr)!important;grid-template-rows:none!important;grid-template-areas:none!important;gap:10px!important;max-width:none!important}
+#hero-stats-content .equipment-slot-grid .equipment-slot{grid-area:auto!important;grid-column:1/-1!important;display:grid;grid-template-columns:22px minmax(0,1fr);align-items:center;text-align:left;gap:5px 8px;min-height:0!important;padding:9px 11px!important;margin:0!important}
+#hero-stats-content .equipment-slot-grid .equipment-slot .equipment-slot-icon{height:20px!important;font-size:18px!important;line-height:1}
+#hero-stats-content .equipment-slot-grid .equipment-slot .slot-name{min-height:0;line-height:1.4;white-space:normal;overflow-wrap:anywhere}
+#hero-stats-content .equipment-slot-grid .equipment-slot select{grid-column:1/-1;width:100%;min-width:0;min-height:44px;margin:0!important;padding:7px 9px!important;font-size:16px!important;line-height:1.5}
+#hero-stats-content .equipment-slot-grid .equipment-slot .slot-durability{grid-column:1/-1;display:block;margin:0!important;white-space:normal;overflow-wrap:anywhere;line-height:1.4}
+`;document.head.appendChild(layout);
  render();
 })();

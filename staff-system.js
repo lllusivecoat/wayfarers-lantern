@@ -142,38 +142,5 @@
   // Only exploration discoveries grant market routes, including the starting town.
   const oldRoutes=tradeDestinations;
   tradeDestinations=function(){const legacy=oldRoutes();return V9_WORLD.locations.filter(l=>['town','city'].includes(l.type)&&v9Known(l.id)).map(l=>({...legacy.find(d=>d.id===l.id),id:l.id,name:l.name,region:l.zone,dc:legacy.find(d=>d.id===l.id)?.dc||10+l.ring*2,rate:legacy.find(d=>d.id===l.id)?.rate||1+l.ring*.15,repRate:1+l.ring*.2,unlock:0,desc:l.flavour}))};
-  const oldTrading=renderTrading,oldDispatch=dispatchTrade;
-  function storeLevel(){return staffProfessionLevel(buildingStaff('warehouse'))}
-  function danger(route){return Math.max(6,route.dc-staffSkillBonus('warehouse')-v9RouteDcCut())}
-  function offers(route){
-    const loc=V9_LOC[route.id],index=V9_WORLD.locations.indexOf(loc),groups=[['Copper Ore','Timber','Light Leather'],['Peacebloom','Wool Cloth','Meat'],['Silver Ore','Medium Leather','Kingsblood'],['Seasoned Timber','Silk Cloth','Flawless Gem']];
-    return [...new Set([...groups[(index+(loc.ring<2?2:4))%(loc.ring<2?2:4)],...(loc.type==='city'&&loc.ring>=4?['Mithril Ore','Arcane Thread']:[])])].map(name=>({name,price:WL_BALANCE.marketPrice(tradeValues[name]||2,route.rate),stock:WL_BALANCE.marketStock(loc.ring)}));
-  }
-  function stock(route,offer){const market=game.marketStock||(game.marketStock={});if(market.day!==game.day){market.day=game.day;market.used={}}return offer.stock-(market.used[route.id+':'+offer.name]||0)}
-  renderTrading=function(){
-    const routes=tradeDestinations();if(!routes.some(r=>r.id===selectedTradeRoute))selectedTradeRoute=routes[0]?.id;
-    oldTrading();
-    document.querySelectorAll('#trade-destinations .card').forEach((el,i)=>{const pill=el.querySelector('.pill');if(pill)pill.textContent=`Danger DC ${danger(routes[i])}`});
-    const route=routes.find(r=>r.id===selectedTradeRoute);if(!route)return;
-    document.getElementById('trade-route-risk').textContent=`Danger DC ${danger(route)} · ${v9ConvoyLabel(route)}`;
-    let root=document.getElementById('inbound-market');if(!root){root=document.createElement('article');root.id='inbound-market';root.className='card';document.getElementById('trading').appendChild(root)}
-    root.innerHTML=`<h3>Inbound market convoy · ${esc(route.name)}</h3><p>Buy supplies for crafting or resale. Stock refreshes each game day. Payment and stock are committed at dispatch; an ambush can lose cargo. Select the escort above. Travel ${v9ConvoyLabel(route)} · Danger DC ${danger(route)}.</p><label>Goods <select id="market-good">${offers(route).map(o=>`<option value="${esc(o.name)}">${esc(o.name)} · ${o.price} gp each · ${stock(route,o)} in stock</option>`).join('')}</select></label> <label>Quantity <input id="market-quantity" type="number" min="1" value="1"></label><p id="market-cost"></p><button class="btn" id="market-buy">Dispatch inbound convoy</button>`;
-    function preview(){const offer=offers(route).find(o=>o.name===document.getElementById('market-good').value),n=Number(document.getElementById('market-quantity').value);document.getElementById('market-cost').textContent=`Total ${offer.price*n} gp · ${game.gold} gp treasury · ${stock(route,offer)} available · ${v9ConvoyLabel(route)} · Danger DC ${danger(route)}`}
-    root.querySelectorAll('input,select').forEach(el=>el.onchange=preview);document.getElementById('market-buy').onclick=dispatchInbound;preview();
-  };
-  // Keep existing outbound casualty, travel, payout and wage-sharing rules.
-  dispatchTrade=function(){if(!tradeDestinations().some(r=>r.id===selectedTradeRoute))return alert('Explore this location first.');return oldDispatch.apply(this,arguments)};
-  window.dispatchInbound=function(){
-    const route=tradeDestinations().find(r=>r.id===selectedTradeRoute);if(!route||!buildingOperational('warehouse'))return alert('Assign staff to the Warehouse and choose a discovered market.');
-    const offer=offers(route).find(o=>o.name===document.getElementById('market-good').value),n=Number(document.getElementById('market-quantity').value),ids=[...new Set(game.tradeParty||[])].filter(id=>{const h=purse(id);return h&&h.ready&&tbwConvoyEligible(h)});
-    if(!offer||!Number.isSafeInteger(n)||n<1||n>stock(route,offer)||!ids.length||game.gold<offer.price*n)return alert('Choose available stock, enough gold, and a ready escort.');
-    const suppliesUsed=consumeExpeditionSupplies(ids.map(purse));
-    const party=ids.map(purse),dc=danger(route),checks=party.map(h=>{const roll=1+Math.floor(Math.random()*20),modifier=readiness(h)+(h.id==='player'?0:(h.rank||0)>0?1:0)-(h.wound&&h.wound.tier<3?WOUND_TIERS[h.wound.tier].pen:0);return {id:h.id,name:h.name,roll,modifier,total:roll+modifier,success:roll+modifier>=dc,critical:roll===1}}),success=checks.filter(c=>c.success).length,outcome=success===party.length?'Success':success>=Math.ceil(party.length*2/3)?'Partial Success':'Failure',qty=outcome==='Success'?n:outcome==='Partial Success'?Math.floor(n*success/party.length):0,TW=tbwConvoyCasualties(party,checks,outcome);
-    game.gold-=offer.price*n;game.marketStock.used[route.id+':'+offer.name]=(game.marketStock.used[route.id+':'+offer.name]||0)+n;
-    party.forEach(h=>{h.ready=false;h.lastQuestDay=game.day});
-    game.pendingReports.push({kind:'trade',suppliesUsed,inboundGoods:{name:offer.name,count:qty},durMs:v9ConvoyMs(route),dueAt:Date.now()+v9ConvoyMs(route),dueDay:game.day+1,dispatchedDay:game.day,title:`Inbound convoy from ${route.name}`,outcome,summary:`${qty}/${n} ${offer.name} delivered from ${route.name}; ${n*offer.price} gp paid. Danger DC ${dc}.`,partyIds:ids,payout:0,rep:0,casualties:TW.dead,wounds:TW.wounds,near:TW.near,tbwNotes:TW.notes,rolls:checks,growthAwards:[]});
-    game.tradeParty=[];addLog('Inbound convoy underway',`${n} ${offer.name} purchased for ${n*offer.price} gp. Arrival in ${v9ConvoyLabel(route)}.`);render();save();
-  };
-  const oldApply=tbwApplyReport;tbwApplyReport=function(r){const result=oldApply(r);if(r.inboundGoods&&!r.marketDelivered){r.marketDelivered=true;const {name,count}=r.inboundGoods;game.materials[name]=(game.materials[name]||0)+count}return result};
   staffMigrate(game);render();save();
 })();

@@ -6,7 +6,7 @@ with sync_playwright() as p:
  b=p.chromium.launch(executable_path='/usr/bin/chromium',args=['--no-sandbox'])
  page=b.new_page(viewport={'width':390,'height':844},is_mobile=True,has_touch=True);errors=[]
  page.on('pageerror',lambda e:errors.append(str(e)));page.on('console',lambda m:errors.append(m.text) if m.type=='error' else None);page.on('dialog',lambda d:d.accept())
- page.goto('http://127.0.0.1:8000',wait_until='networkidle')
+ page.goto('http://127.0.0.1:8000',wait_until='networkidle');page.wait_for_function("typeof WL_TRADE==='object'")
  page.evaluate("""() => {
   window.check=(ok,msg)=>{if(!ok)throw Error(msg)};
   game.hall=7;game.gold=100000;game.reputation=100000;
@@ -69,7 +69,7 @@ with sync_playwright() as p:
   equipFieldKit(h.id,weak.id);const reserved=game.fieldKits.find(x=>x.id===weak.id)?.uses||0;openDismissHero(h.id);confirmDismissHero();check(game.fieldKits.find(x=>x.id===weak.id).uses===reserved+1,'dismissal refunds kit once');
   const f=makeApplicant({race:'Human',className:'Warrior',spec:'Fury'});game.applicants.push(f);openRecruit(f.id);confirmHire();const fallen=game.heroes.at(-1);equipFieldKit(fallen.id,weak.id);const stock=JSON.stringify(game.fieldKits);
   game.pendingReports=[{kind:'operation',questKind:'Dungeon',title:'Kit loss',outcome:'Failure',summary:'A fatal loss.',partyIds:[fallen.id],casualties:[fallen.id],payout:0,rep:0,rolls:[],growthAwards:[],dueAt:Date.now()-1}];applyPendingReports();check(!Object.keys(fallen.utilitySupplies).length&&JSON.stringify(game.fieldKits)===stock,'carried kit lost on death');check(fallen.memorial.finalReport.lostEquipment[0].items.some(x=>x.name==='Trail Field Kit'),'kit loss named in memorial');
-  showView('warehouse');save();
+  showView('crafting');save();
  }""")
  page.select_option('#field-kit-recipe','masterwork');assert '25 gp per batch' in page.locator('#field-kits-panel').inner_text()
  assert page.locator('#field-kits-panel').evaluate('e=>e.scrollWidth<=e.clientWidth+1')

@@ -59,7 +59,7 @@ with sync_playwright() as p:
     page.reload(wait_until='networkidle')
     page.wait_for_function("typeof staffSkillLevel==='function'")
     assert run("staffPracticeCount(buildingStaff('workshop'))") == 25
-    run("buildingStaff('workshop').professionXP.Blacksmithing=275;render();showView('warehouse')")
+    run("buildingStaff('workshop').professionXP.Blacksmithing=275;render();showView('crafting')")
     assert page.locator('.gear-craft-controls select').count() == 3
     page.get_by_role('button',name='Craft Iron Shortblade',exact=True).click()
     popup=page.locator('#gear-crafted-modal')
@@ -72,10 +72,10 @@ with sync_playwright() as p:
       selectedTradeRoute='ratchet';game.player.ready=true;game.tradeParty=['player'];game.player.abilities.str=100;game.player.abilities.dex=100;
       render();showView('trading');
     }""")
-    page.locator('#market-quantity').fill('2')
-    page.locator('#market-quantity').dispatch_event('change')
+    page.locator('[data-market-quantity="0"]').fill('2')
+    page.locator('[data-market-quantity="0"]').dispatch_event('change')
     assert 'Total ' in page.locator('#market-cost').inner_text()
-    run("""() => {window.beforeGold=game.gold;window.beforeStock=Number(document.getElementById('market-good').selectedOptions[0].textContent.match(/(\\d+) in stock/)[1]);window.oldRandom=Math.random;Math.random=()=>.99}""")
+    run("""() => {window.beforeGold=game.gold;window.beforeStock=WL_TRADE.offers(tradeDestinations().find(r=>r.id===selectedTradeRoute))[0].stock;window.oldRandom=Math.random;Math.random=()=>.99}""")
     page.locator('#market-buy').click()
     run("""() => {
       const r=game.pendingReports.find(r=>r.inboundGoods);if(!r)throw Error('missing inbound report');
@@ -113,7 +113,7 @@ with sync_playwright() as p:
       assert(renderGearCatalog().every(i=>Object.values(i.requirements).every(n=>Number.isInteger(n)&&n>0)),'recipe requirements');
       // Reject invalid inbound requests without charging the treasury.
       game.tradeParty=['player'];renderTrading();const gold=game.gold;
-      document.getElementById('market-quantity').value='-2';window.alert=()=>{};dispatchInbound();
+      game.marketCargo[selectedTradeRoute]={[WL_TRADE.offers(tradeDestinations().find(r=>r.id===selectedTradeRoute))[0].material]:-2};window.alert=()=>{};dispatchInbound();
       assert(game.gold===gold,'invalid inbound quantity charged');
       // Check service formulas actually consume the trained skill.
       const keeper=buildingStaff('warehouse');game.tradeParty=['player'];renderTrading();

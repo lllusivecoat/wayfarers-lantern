@@ -139,19 +139,19 @@ with sync_playwright() as p:
       assert(v9QuestMins(q)===5,'unstaffed Waystation');
       const convoy=v9ConvoyMs('ratchet');
       hireStaffTo('test-waystation');const guide=buildingStaff('waystation');
-      assert(Math.abs(v9QuestMins(q)-4.5)<1e-8,'novice 10% reduction');
-      assert(v9DurLabel(q)==='4 min 30 s (Waystation −10%)','duration label');
+      assert(Math.abs(v9QuestMins(q)-4.4)<1e-8,'novice 12% reduction with neutral aptitude');
+      assert(v9DurLabel(q)==='4 min 24 s (Waystation −12%)','duration label');
       guide.professionXP.Pathfinding=275;
-      assert(Math.abs(v9QuestMins(q)-3.5)<1e-8,'master 30% reduction');
+      assert(Math.abs(v9QuestMins(q)-3.4)<1e-8,'master 32% reduction with neutral aptitude');
       for(const kind of ['Contract','Gathering','Dungeon','Raid','World Boss','World Raid','World Dungeon','Exploration']){
-        for(let rank=0;rank<10;rank++)assert(Math.abs(v9QuestMs({kind,rank})-v9QuestBaseMins({kind,rank})*.7*60000)<1,'quest type timer '+kind);
+        for(let rank=0;rank<10;rank++)assert(Math.abs(v9QuestMs({kind,rank})-v9QuestBaseMins({kind,rank})*.68*60000)<1,'quest type timer '+kind);
       }
       assert(v9ConvoyMs('ratchet')===convoy,'convoy unchanged');
       // Complete an upgrade through the existing construction system.
       const project={key:'waystation',uid:'test-waystation',action:'upgrade',targetLevel:2};
       game.constructionProjects.push(project);completeConstructionProject(project);
       assert(v9StaffOf('test-waystation').length===1&&v9Eff(v9InstById('test-waystation'))===2,'one worker operates upgraded service');
-      assert(Math.abs(waystationTimeCut()-.45)<1e-8,'no stacking from multiple staff');
+      assert(Math.abs(waystationTimeCut()-.47)<1e-8,'no stacking from multiple staff');
       const gathering=gatheringQuest('Mining');const now=Date.now();
       queueQuestReport(gathering,['player'],0,'Waystation timer test');
       const report=game.pendingReports.at(-1),remaining=report.dueAt-now;

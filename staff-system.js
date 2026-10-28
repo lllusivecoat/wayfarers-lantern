@@ -5,13 +5,13 @@
   const esc=tbwEsc;
   window.staffSkillLevel=points=>thresholds.reduce((level,t,i)=>Number(points)>=t?i:level,0);
   window.ensureStaffCandidates=function(g=game){
-    if(g.staffCandidateDay===g.day&&Array.isArray(g.staffCandidates))return g.staffCandidates;
+    if(g.staffCandidateDay===g.day&&Array.isArray(g.staffCandidates)){g.staffCandidates.forEach(c=>{if(!c.staffProfileVersion){if(c.status==='available')Object.assign(c,WL_STAFF.roll());else{const st=(g.staffMembers||[]).find(st=>st.id===c.id);if(st?.aptitudes)Object.assign(c,{aptitudes:{...st.aptitudes},personality:st.personality});WL_STAFF.migrate(c)}}});return g.staffCandidates;}
     const used=[...(g.staffMembers||[]),...(g.heroes||[]),...(g.applicants||[]),g.player,...(g.dismissedHeroes||[])].filter(Boolean).map(h=>h.name);
     g.staffCandidates=[];g.staffCandidateDay=g.day;
     for(let i=0;i<2;i++){
       const race=APPLICANT_RACES[Math.floor(Math.random()*APPLICANT_RACES.length)],name=generateRaceName(race,used);used.push(name);
       g.staffCandidateSequence=(Number(g.staffCandidateSequence)||0)+1;
-      g.staffCandidates.push({id:'staff-candidate-'+g.staffCandidateSequence,name,race,wage:2,status:'available'});
+      g.staffCandidates.push({id:'staff-candidate-'+g.staffCandidateSequence,name,race,...WL_STAFF.roll(),status:'available'});
     }
     return g.staffCandidates;
   };
@@ -23,7 +23,8 @@
       if(st.professionXP.Medicine!==undefined){st.professionXP['First Aid']=Math.max(Number(st.professionXP['First Aid'])||0,Number(st.professionXP.Medicine)||0);delete st.professionXP.Medicine}
       if(st.profession==='Medicine')st.profession='First Aid';
       if(skills[st.buildingKey])st.profession=skills[st.buildingKey];
-      st.skillAwards=st.skillAwards||{};
+      st.skillAwards=st.skillAwards||{};WL_STAFF.migrate(st);
+      if(st.lastWorkDay===undefined)st.lastWorkDay=Math.max(0,...Object.entries(st.skillAwards).filter(([k])=>k.endsWith(':work')).map(([,day])=>Number(day)||0));
     });
     const occupied=new Set();
     const posts=new Map((g.buildingList||[]).map(i=>[i.uid,i.key]));
@@ -37,16 +38,13 @@
       if(!posts.has(st.buildingUid)||occupied.has(st.buildingUid)){st.buildingUid=null;st.buildingKey=null;delete st.homeKey;return}
       occupied.add(st.buildingUid);st.buildingKey=posts.get(st.buildingUid);st.profession=skills[st.buildingKey];
     });
-    return g;
+    g.staffMembers.forEach(WL_STAFF.migrate);return g;
   };
   staffProfessionForKey=key=>skills[key]||'Generalist';
   staffPracticeCount=st=>st?Math.max(0,Number(st.professionXP?.[skills[st.buildingKey]||st.profession])||0):0;
   staffProfessionLevel=st=>st?staffSkillLevel(staffPracticeCount(st)):0;
-  staffSkillBonus=key=>WL_BALANCE.supportBonus(staffProfessionLevel(buildingStaff(key)));
-  staffUnlockText=function(key,level){
-    const bonus=WL_BALANCE.supportBonus(level);
-    return ({cartographersOffice:`Exploration checks improved by +${bonus}; exploration unlocks when construction completes, even without staff`,waystation:`New quest time −${Math.round(WL_BALANCE.questTimeCut(level,buildingLevel('waystation'))*100)}%; building levels grant 10/25/40/55/80% plus 2% per Pathfinding level (80% cap); strongest Pathfinder applies`,warehouse:`+${Math.round(level*WL_BALANCE.salePerLevel*100)}% sale prices; convoy danger −${bonus}`,staffOffice:`+${bonus} expedition preparation`,workshop:`${['No gear tier','Basic','Sturdy','Fine','Superior','Masterwork','Relic','Legendary','Heritage'][Math.min(8,level)]}; ${level*WL_BALANCE.materialPerLevel*100}% fewer materials; ${level*WL_BALANCE.craftChancePerLevel*100}% chance of +${WL_BALANCE.craftExtra(level)} extra readiness`,kitchen:`Cooking 0/3/5/7/9 unlocks recipes for Kitchen 1/2/3/4/5. Better recipes require higher-rank meat and fish; food readiness caps at +2, with limited recovery on advanced meals.`,infirmary:`${Math.min(25,bonus*5)}% treatment discount; improved casualty prevention`,armory:`Repair unit cost reduced by ${bonus*.5} gp`,trainingHall:`${Math.min(15,bonus*5)}% training and respec discount`,warRoom:`+${bonus} raid tactics and ${bonus*5}% extra loot chance`,huntersLodge:`+${bonus} world-boss readiness and ${bonus*5}% extra loot chance`,commandPost:`+${bonus} world-raid readiness and ${bonus*5}% extra loot chance`})[key]||'Assign to a building to train its skill';
-  };
+  staffSkillBonus=key=>WL_STAFF.service(key).support;
+  staffUnlockText=function(key,level){const st=buildingStaff(key);return WL_STAFF.describe(key,st,buildingLevel(key),st?.buildingUid,level)};
   function assigned(st){return st.buildingUid==='warehouse'?!!game.buildings.warehouse:!!v9InstById(st.buildingUid)}
   function award(st,amount,kind){
     if(!assigned(st)||!skills[st.buildingKey])return;
@@ -54,11 +52,27 @@
     if(st.skillAwards[token]===game.day)return;
     st.skillAwards[token]=game.day;
     const before=staffProfessionLevel(st);st.professionXP[skill]=(Number(st.professionXP[skill])||0)+amount;
-    const after=staffProfessionLevel(st);if(after>before)addLog('Staff skill advanced',`${st.name}: ${skill} Level ${after}. ${staffUnlockText(st.buildingKey,after)}.`);
+    const after=staffProfessionLevel(st);if(after>before)addLog('Staff skill advanced',`${st.name}: ${skill} Level ${after}. ${WL_STAFF.describe(st.buildingKey,st,buildingLevel(st.buildingKey),st.buildingUid,after)}`);
   }
   practiceStaff=function(key,amount=1){staffMigrate(game);if(amount>0)(game.staffMembers||[]).filter(st=>st.buildingKey===key).forEach(st=>award(st,amount,'service'))};
   const oldDay=nextDay;
-  nextDay=function(){staffMigrate(game);game.staffMembers.forEach(st=>award(st,1,'work'));return oldDay.apply(this,arguments)};
+  nextDay=function(){
+    staffMigrate(game);game.staffWorkSnapshot={day:game.day,office:v9L('staffOffice')>=2,workers:game.staffMembers.filter(assigned).map(st=>({id:st.id,uid:st.buildingUid,key:st.buildingKey}))};
+    return oldDay.apply(this,arguments);
+  };
+  window.completeStaffWorkDay=function(){
+    const shift=game.staffWorkSnapshot;delete game.staffWorkSnapshot;
+    if(!shift||shift.day!==game.day-1)return;
+    if(game.staffCostsPaidDay!==game.day){for(const worker of shift.workers){const st=game.staffMembers.find(s=>s.id===worker.id);if(st)st.loyalDays=0}return;}
+    for(const worker of shift.workers){
+      const st=game.staffMembers.find(s=>s.id===worker.id);
+      if(!st||st.buildingUid!==worker.uid||!assigned(st)||st.lastWorkDay>=game.day)continue;
+      if(st.lastWorkDay!==shift.day)st.loyalDays=0;
+      st.lastWorkDay=game.day;st.loyalDays++;
+      st.passiveCredit+=WL_STAFF.passiveRate(st,shift.office);
+      const points=Math.floor(st.passiveCredit/100);st.passiveCredit%=100;award(st,points,'work');
+    }
+  };
   const oldRender=render;
   render=function(){staffMigrate(game);return oldRender.apply(this,arguments)};
   // Normal load and import both call render; migrate before the next save as well.
@@ -84,7 +98,7 @@
     if(!confirm(`Hire ${candidate.name}? No hiring fee. Base wage: ${candidate.wage} gp/day when assigned; no wage while unassigned. They join your roster unassigned.`))return 'cancelled';
     if(candidate.status!=='available'||game.staffMembers.some(st=>st.id===candidate.id))return 'candidate';
     if(game.staffMembers.length>=staffCap())return 'full';
-    game.staffMembers.push({id:candidate.id,name:candidate.name,race:candidate.race,job:'Staff',wage:candidate.wage,morale:3,buildingUid:null,buildingKey:null,profession:'Generalist',professionXP:{},skillAwards:{}});
+    game.staffMembers.push({id:candidate.id,name:candidate.name,race:candidate.race,job:'Staff',wage:candidate.wage,morale:3,buildingUid:null,buildingKey:null,profession:'Generalist',professionXP:{},skillAwards:{},aptitudes:{...candidate.aptitudes},personality:candidate.personality,staffProfileVersion:1,passiveCredit:0,loyalDays:0});
     candidate.status='hired';
     addLog('Staff hired',`${candidate.name} joins the staff roster, unassigned. Base wage: ${candidate.wage} gp/day when assigned.`);render();save();return '';
   };
@@ -99,10 +113,10 @@
     const staff=game.staffMembers||[],targets=staffTargets(),full=staff.length>=staffCap();
     document.getElementById('staff-cap-label').textContent=`${staff.length} / ${staffCap()} staff`;
     document.getElementById('staff-wage-summary').textContent=`Daily wages: ${staffWages()} gp · ${staff.filter(st=>!assigned(st)).length} unassigned`;
-    document.getElementById('staff-profession').innerHTML=`<section aria-labelledby="staff-recruit-title"><h3 id="staff-recruit-title">Recruit staff</h3><p>Two candidates arrive each game day. Hire or pass on each; new hires are untrained and can learn any building skill through assignment. No hiring fee.</p><div class="staff-candidates">${ensureStaffCandidates().map((c,index)=>`<article class="staff-candidate"><h4>${esc(c.name)}</h4><p>${esc(c.race)} · ${c.wage} gp/day when assigned · no wage while unassigned</p>${c.status==='available'?`<div class="staff-candidate-actions"><button type="button" class="btn secondary" data-hire-candidate="${index}" ${full?'disabled':''}>Hire</button><button type="button" class="btn ghost" data-pass-candidate="${index}">Pass</button></div>`:`<span class="pill">${c.status==='hired'?'Hired':'Passed'}</span>`}</article>`).join('')}</div><p class="small muted">Next candidates arrive on Day ${game.day+1}. Hiring or passing does not refresh today's pool.</p>${full?`<p class="small muted">Staff limit reached (${staff.length}/${staffCap()}). Upgrade the Guild Hall to recruit more.</p>`:''}</section><div class="divider"></div><section aria-labelledby="staff-vacancies-title"><h3 id="staff-vacancies-title">Building vacancies</h3><p>Assign someone from your roster. Staff assigned elsewhere can move here without being hired again.</p>${targets.map((target,index)=>{
+    document.getElementById('staff-profession').innerHTML=`<section aria-labelledby="staff-recruit-title"><h3 id="staff-recruit-title">Recruit staff</h3><p>Two candidates arrive each game day. Hire or pass on each; new hires are untrained and can learn any building skill through assignment. No hiring fee.</p><div class="staff-candidates">${ensureStaffCandidates().map((c,index)=>`<article class="staff-candidate"><h4>${esc(c.name)}</h4><p>${esc(c.race)} · ${c.wage} gp/day when assigned · no wage while unassigned</p>${WL_STAFF.profileHTML(c)}<details class="staff-fit-preview"><summary>Building compatibility</summary><p>Projected effects at current building levels, or Level 1 for buildings not yet built. New staff start at skill Level 0.</p>${Object.keys(skills).map(key=>`<p><strong>${esc(buildingDefs.find(b=>b.key===key)?.name||key)} · ${skills[key]} · ${c.aptitudes[WL_STAFF.jobs[key]]}/5 ${WL_STAFF.jobs[key]}</strong><br>${esc(WL_STAFF.describe(key,c,buildingLevel(key),null))}</p>`).join('')}</details>${c.status==='available'?`<div class="staff-candidate-actions"><button type="button" class="btn secondary" data-hire-candidate="${index}" ${full?'disabled':''}>Hire</button><button type="button" class="btn ghost" data-pass-candidate="${index}">Pass</button></div>`:`<span class="pill">${c.status==='hired'?'Hired':'Passed'}</span>`}</article>`).join('')}</div><p class="small muted">Next candidates arrive on Day ${game.day+1}. Hiring or passing does not refresh today's pool.</p>${full?`<p class="small muted">Staff limit reached (${staff.length}/${staffCap()}). Upgrade the Guild Hall to recruit more.</p>`:''}</section><div class="divider"></div><section aria-labelledby="staff-vacancies-title"><h3 id="staff-vacancies-title">Building vacancies</h3><p>Assign someone from your roster. Staff assigned elsewhere can move here without being hired again.</p>${targets.map((target,index)=>{
       const occupied=v9StaffOf(target.uid).length,free=Math.max(0,1-occupied),skill=skills[target.key];
       const candidates=staff.map((st,i)=>({st,i})).filter(({st})=>st.buildingUid!==target.uid).sort((a,b)=>Number(assigned(a.st))-Number(assigned(b.st)));
-      return `<div class="building staff-vacancy"><div class="staff-vacancy-summary"><strong>${esc(target.uid==='warehouse'?'Warehouse':v9InstLabel(target))}</strong><div class="small muted">${occupied}/1 staff · ${free} available · Trains ${esc(skill)}</div></div>${free?`<div class="staff-vacancy-controls"><label>Existing staff<select data-vacancy-index="${index}" aria-label="Assign staff to ${esc(target.uid==='warehouse'?'Warehouse':v9InstLabel(target))}" ${!candidates.length?'disabled':''}><option value="">Select staff</option>${candidates.map(({st,i})=>`<option value="${i}">${esc(st.name)} · ${esc(staffLocation(st))} · ${esc(skill)} Lv ${staffSkillLevel(st.professionXP[skill]||0)} · ${st.wage} gp/day base</option>`).join('')}</select></label><button class="btn secondary" data-fill-vacancy="${index}" disabled>Assign staff</button>${!candidates.length?`<p class="small muted">${full?'No other staff available. Upgrade the Guild Hall to recruit more staff.':'Hire staff above to fill this vacancy.'}</p>`:''}</div>`:'<span class="pill">Fully staffed</span>'}</div>`;
+      return `<div class="building staff-vacancy"><div class="staff-vacancy-summary"><strong>${esc(target.uid==='warehouse'?'Warehouse':v9InstLabel(target))}</strong><div class="small muted">${occupied}/1 staff · ${free} available · Trains ${esc(skill)}</div></div>${free?`<div class="staff-vacancy-controls"><label>Existing staff<select data-vacancy-index="${index}" aria-label="Assign staff to ${esc(target.uid==='warehouse'?'Warehouse':v9InstLabel(target))}" ${!candidates.length?'disabled':''}><option value="">Select staff</option>${candidates.map(({st,i})=>`<option value="${i}">${esc(st.name)} · ${esc(staffLocation(st))} · ${esc(skill)} Lv ${staffSkillLevel(st.professionXP[skill]||0)} · ${st.aptitudes[WL_STAFF.jobs[target.key]]}/5 fit · ${st.wage} gp/day base</option>`).join('')}</select></label><button class="btn secondary" data-fill-vacancy="${index}" disabled>Assign staff</button>${!candidates.length?`<p class="small muted">${full?'No other staff available. Upgrade the Guild Hall to recruit more staff.':'Hire staff above to fill this vacancy.'}</p>`:''}</div>`:'<span class="pill">Fully staffed</span>'}</div>`;
     }).join('')||'<p class="small muted">Complete a building to create assignment slots.</p>'}</section>`;
     document.querySelectorAll('[data-hire-candidate]').forEach(el=>el.onclick=()=>hireStaff(game.staffCandidates[Number(el.dataset.hireCandidate)].id));
     document.querySelectorAll('[data-pass-candidate]').forEach(el=>el.onclick=()=>passStaffCandidate(game.staffCandidates[Number(el.dataset.passCandidate)].id));
@@ -111,9 +125,9 @@
       const options=targets.filter(i=>i.uid===st.buildingUid||v9StaffOf(i.uid).length<1);
       const progress=Object.entries(skills).map(([key,skill])=>{
         const xp=Number(st.professionXP[skill])||0,level=staffSkillLevel(xp),toward=xp-thresholds[level],need=thresholds[level+1]-thresholds[level];
-        return `<div class="building"><div><strong>${skill} · Level ${level}${st.buildingKey===key?' · Training here':''}</strong><div class="small muted">${level===10?`Mastered · ${xp} total practice`:`${toward}/${need} practice toward Level ${level+1} · ${xp} total`}</div><p>${esc(staffUnlockText(key,level))}${level<10?`<br>Next: ${esc(staffUnlockText(key,level+1))}`:''}</p></div></div>`;
+        return `<div class="building"><div><strong>${skill} · Level ${level}${st.buildingKey===key?' · Training here':''}</strong><div class="small muted">${level===10?`Mastered · ${xp} total practice`:`${toward}/${need} practice toward Level ${level+1} · ${xp} total`}</div><p>${esc(WL_STAFF.describe(key,st,buildingLevel(key),key===st.buildingKey?st.buildingUid:null,level))}${level<10?`<br>Next: ${esc(WL_STAFF.describe(key,st,buildingLevel(key),key===st.buildingKey?st.buildingUid:null,level+1))}`:''}</p></div></div>`;
       }).join('');
-      return `<article class="card"><h3>${esc(st.name)}</h3>${st.race?`<div class="small muted">${esc(st.race)}</div>`:''}<p>${staffPay(st)} gp/day current wage (${st.wage} gp/day base) · ${esc(staffLocation(st))} · Earn 1 practice per working day and at most 1 service award per skill per day.</p><label>Assignment <select data-staff-index="${index}"><option value="">Unassigned</option>${options.map(i=>`<option value="${esc(i.uid)}" ${i.uid===st.buildingUid?'selected':''}>${esc(i.uid==='warehouse'?'Warehouse':v9InstLabel(i))} · ${v9StaffOf(i.uid).length}/1 staff</option>`).join('')}</select></label><details><summary>Skills and next benefits</summary>${progress}</details><button class="btn ghost" data-dismiss-index="${index}">Dismiss</button></article>`;
+      return `<article class="card"><h3>${esc(st.name)}</h3>${st.race?`<div class="small muted">${esc(st.race)}</div>`:''}<p>${staffPay(st)} gp/day current wage (${st.wage} gp/day base) · ${esc(staffLocation(st))} · Passive practice on paid workdays, plus at most 1 service award per skill per day. Next paid shift: ${st.buildingUid?WL_STAFF.passiveRate(st,v9L('staffOffice')>=2)/100:0} practice. Saved passive credit: ${st.passiveCredit}/100.</p>${WL_STAFF.profileHTML(st)}${st.buildingKey?`<p class="staff-current-effect">${esc(WL_STAFF.describe(st.buildingKey,st,buildingLevel(st.buildingKey),st.buildingUid))}</p>`:''}<label>Assignment <select data-staff-index="${index}"><option value="">Unassigned</option>${options.map(i=>`<option value="${esc(i.uid)}" ${i.uid===st.buildingUid?'selected':''}>${esc(i.uid==='warehouse'?'Warehouse':v9InstLabel(i))} · ${v9StaffOf(i.uid).length}/1 staff · ${st.aptitudes[WL_STAFF.jobs[i.key]]}/5 ${WL_STAFF.jobs[i.key]}</option>`).join('')}</select></label><details><summary>Skills and next benefits</summary>${progress}</details><button class="btn ghost" data-dismiss-index="${index}">Dismiss</button></article>`;
     }).join('')||'<div class="empty">No staff hired yet. Recruit staff, then assign them to a building vacancy.</div>';
     document.querySelectorAll('[data-staff-index]').forEach(el=>el.onchange=()=>{const st=game.staffMembers[Number(el.dataset.staffIndex)];if(!el.value){st.buildingUid=null;st.buildingKey=null;render();save()}else if(v9AssignStaff(st.id,el.value)){alert('That building has no available staff slot.');render()}});
     document.querySelectorAll('[data-dismiss-index]').forEach(el=>el.onclick=()=>staffDismiss(game.staffMembers[Number(el.dataset.dismissIndex)].id));
@@ -128,7 +142,7 @@
   tradeDestinations=function(){const legacy=oldRoutes();return V9_WORLD.locations.filter(l=>['town','city'].includes(l.type)&&v9Known(l.id)).map(l=>({...legacy.find(d=>d.id===l.id),id:l.id,name:l.name,region:l.zone,dc:legacy.find(d=>d.id===l.id)?.dc||10+l.ring*2,rate:legacy.find(d=>d.id===l.id)?.rate||1+l.ring*.15,repRate:1+l.ring*.2,unlock:0,desc:l.flavour}))};
   const oldTrading=renderTrading,oldDispatch=dispatchTrade;
   function storeLevel(){return staffProfessionLevel(buildingStaff('warehouse'))}
-  function danger(route){return Math.max(6,route.dc-WL_BALANCE.supportBonus(storeLevel())-v9RouteDcCut())}
+  function danger(route){return Math.max(6,route.dc-staffSkillBonus('warehouse')-v9RouteDcCut())}
   function offers(route){
     const loc=V9_LOC[route.id],index=V9_WORLD.locations.indexOf(loc),groups=[['Copper Ore','Timber','Light Leather'],['Peacebloom','Wool Cloth','Meat'],['Silver Ore','Medium Leather','Kingsblood'],['Seasoned Timber','Silk Cloth','Flawless Gem']];
     return [...new Set([...groups[(index+(loc.ring<2?2:4))%(loc.ring<2?2:4)],...(loc.type==='city'&&loc.ring>=4?['Mithril Ore','Arcane Thread']:[])])].map(name=>({name,price:WL_BALANCE.marketPrice(tradeValues[name]||2,route.rate),stock:WL_BALANCE.marketStock(loc.ring)}));

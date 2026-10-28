@@ -1,14 +1,17 @@
 # Staff aptitudes and personalities: balance specification
 
-Status: a proposed numerical model with executable checks, ready to implement.
-The game does not yet roll these stats or apply these trait effects. Current game
-assets, saves, cached releases and published behaviour are unchanged by this document.
-Run `node scripts/staff-aptitude-model.cjs` to reproduce the model results.
+Status: implemented for all twelve existing building types. Runtime formulas live
+in `staff-aptitudes.js`; the candidate/assignment interface and saved paid-day
+practice live in `staff-system.js`. New staff receive four saved aptitude scores,
+one personality and a fixed 2–4 gp/day base wage. Existing staff receive neutral
+3/3/3/3 aptitudes and no trait, preserving their wages, assignments and all practice.
+Current unhired candidates receive their profile once, without replacing names or
+races; their new quoted wage is confirmed before hiring. Reloads do not reroll them.
 
-Current recruitment implementation now supplies **two saved candidates per game day**,
-with hire/pass confirmation, no hiring fee and the existing 2 gp/day assigned wage.
-Candidates start untrained. Aptitudes, personalities and their wage modifiers below
-remain proposed; they are not yet applied by the game.
+Run `node tests/staff-aptitudes-model.cjs` to verify the live formulas and
+`python3 tests/staff-aptitudes-browser.py` against a local server for service,
+migration, paid-work, loyalty and UI checks. `scripts/staff-aptitude-model.cjs`
+remains an independent balance reference. The future buildings below remain planned.
 
 ## Candidate generation and replacement
 
@@ -62,12 +65,12 @@ The initial list now contains **ten traits**.
 `S` = lead skill (0–10); `E` = effective fit (0–0.16). Percentages below are decimal
 fractions in the executable model. Building requirements and discovery gates stay.
 
-| Building / aptitude | Existing building growth retained | Proposed aptitude benefit and cap |
+| Building / aptitude | Existing building growth retained | Implemented aptitude benefit and cap |
 | --- | --- | --- |
 | Warehouse / Organisation | Storage 20/40/60/90/135; sale multiplier ×1.05 at L4, ×1.10 at L5; danger −1 at L5 | Staff sale bonus = 3% × S × (1+E), then trait adjustments; **35% maximum**. Skill danger reduction remains floor(S/3), with trait adjustment. No location unlocks. |
 | Staff Office / Organisation | Existing preparation upgrades; practice ×1.25 at L2, wages −1 at L3 (minimum 1), extra offer at L4, office DC benefit at L5 | E chance per dispatch of one additional preparation DC reduction. Guaranteed skill support stays floor(S/3). Shared staff DC-reduction cap **6** includes this proc. |
 | Workshop / Craftsmanship | Skill gates Basic through Heritage at S1–8; 2 crafts per operational Workshop/day; building quality +1 at L2/+2 at L4, durability +10 at L3/+20 at L5; L5 material factor ×0.8 | Skill material discount = 2.5% × S × (1+E), plus Resourceful if applicable; combined building/staff discount **45% maximum**. Quality proc = 3% × S + E/2 + trait adjustment, **40% maximum**. No duplicate free items. |
-| Kitchen / Craftsmanship | Base ration count **1/2/3/4/5** at building L1–5, with exactly one cook. Ration readiness +2 at Cooking 6 or Kitchen L5, otherwise +1 | One extra-ration roll per daily batch: E + 5 percentage points at Cooking 4 and 8 + 15 for Industrious; **30% chance maximum**. At most one extra ration, **6/day/building hard cap**. No render/reassignment farming. |
+| Kitchen / Craftsmanship | Base ration count **1/2/3/4/5** at building L1–5, with exactly one cook. Five ingredient-backed recipe tiers retain their skill/building gates and +1/+2 readiness; advanced recovery effects stay separate | One extra-ration roll per daily batch: E + 5 percentage points at Cooking 4 and 8 + 15 for Industrious; **30% chance maximum**. At most one extra ration, **6/day/building hard cap**. No render/reassignment farming. |
 | Infirmary / Care | Treatment slots, wound recovery, weekly free treatments and casualty protections; building L4 treatment factor ×0.75 | Skill discount = floor(S/3) × 5% × (1+E), at most 20%; then trait cost adjustment. Combined non-free gold cost is at least **50% of the base treatment charge**, rounded to at least 1 gp. Free slots remain free. No extra stacking death prevention. |
 | Armory / Craftsmanship | Repair factors 70/60/50/45/40%; existing wear protection | Unit = (5 × building factor − 0.5 × floor(S/3)) × (1−E/2), then trait cost adjustment; **minimum 1 gp/unit**. Apply existing hero repair perks and rounding once. No free infinite repairs. |
 | Training Hall / Care | Existing slots, prices, day reductions, respec options and cooldowns | Staff discount = floor(S/3) × 5% × (1+E), at most 20%. Training gold cost = sheet price × 0.75 × building factor × staff factor × trait factor, with a **30%-of-sheet floor**. Respecs retain their own price tables, at least 1 gp; no extra aptitude time reduction. |
@@ -113,7 +116,7 @@ or capped effects explicitly in candidate/assignment previews.
 | Adaptable | +0.25 passive practice credit/day while current skill is below their highest skill | Stops at parity. New workers with all skills 0 do not receive it yet. |
 | Cautious | +1 support/danger reduction for expedition preparation, convoy safety or exploration, subject to shared caps | Warehouse sale bonus −3 percentage points; expedition bonus-loot modifier −3 points. No extra death-prevention stack. |
 | Daring | Warehouse sale bonus +4 percentage points or expedition loot modifier +3 points | Support/danger reduction −1, minimum 0. Sale/loot hard caps remain. |
-| Loyal | +1 percentage point fit per seven consecutive completed workdays at the same building, up to +4 after 28 | Moving/unassignment resets the streak, never skills. Reselecting the same building does not reset or advance it. |
+| Loyal | +1 percentage point fit per seven consecutive completed workdays at the same building, up to +4 after 28 | Moving/unassignment or an unpaid day resets the streak, never skills. Reselecting the same building does not reset or advance it. |
 | Ambitious | +4 percentage points fit in a building upgraded to L4 or L5 | Permanent base wage +1 gp/day, even while working in a lower-level building. |
 
 ## Practice and progression
@@ -157,24 +160,25 @@ runtime matrix. Retain their proposed unlock tiers when implementing them later.
 | 6 | Grand Expedition Office / Organisation | 2/2/3/3/4-stage expeditions; one active chain. Total loot budget follows the stages' normal combined rewards. Apply Waystation once per stage, never again to the chain total. |
 | 6 | Hall of Legends / Care | Five achievement/cosmetic/heritage-recipe milestones. No stacking permanent combat or staff-XP multipliers; recipes keep resource and skill gates. |
 
-## Runtime discrepancies to reconcile during implementation
+## Integration notes
 
-Code inspection found that some current upgrade descriptions advertise benefits
-which their replacement service functions do not apply:
-
-- Workshop quality and durability helpers exist, but the active `gear-system.js`
-  craft function currently builds items without those building bonuses.
-- Kitchen upgrade descriptions and `staff-system.js` ration production disagree
-  on yields and the building-L5 readiness guarantee.
-- Staff Office's description advertises ×1.25 practice; the active staff practice
-  code currently awards flat work/service points. Use the passive-credit rule above
-  when restoring it, with matching UI text.
-
-These are implementation prerequisites for this proposal, not fixes applied by the
-balance script. The current code also permits staff slots up to building level. Replace that with
-one slot per building, retaining extra existing staff as unassigned without losing
-their identity, wage or skills. Single-staff production must use building level
-rather than headcount; full aptitude-aware previews still need implementation.
+- Workshop building quality and durability now apply to crafted items and their
+  previews. The final readiness cap is +6; a quality proc at that cap grants +5
+  durability instead. Material and gold charges shown before crafting are final.
+- Kitchens roll for one extra ration per completed paid batch. Every extra ration
+  consumes its full selected recipe ingredients and respects the shared stock cap.
+  Current five-tier cooking, healing and repair effects are preserved.
+- Staff Office L2 adds 25 hundredths of passive practice per paid workday. Studious
+  adds 20, eligible Adaptable adds 25. Unpaid/unassigned shifts earn none. Whole
+  points go to the assigned skill, fractions remain saved, and the service award
+  stays capped at one per skill/day. Loyalty also counts only paid completed days.
+- All building levels retain one staff slot. Traits do not add staff, training slots,
+  craft capacity, free material, automatic discoveries or a second speed multiplier.
+- Expedition preparation is capped at six staff DC reduction including the Office
+  proc, and it is applied once. Exploration's partial-discovery chance is saved at
+  dispatch, so reassignment/upgrading cannot rewrite underway results.
+- Gold-funded permanent expeditions retain their organising fees and zero client
+  payment. Aptitude/loot support never restores those removed client payouts.
 
 ## Verification and practical limits
 
@@ -186,10 +190,10 @@ It also checks **18,900** maximum-bonus same-market price scenarios, including
 integer rounding, Warehouse multipliers, stock sizes up to 30 and escort pay.
 No tested purchase/resale loop returns more treasury gold than was spent.
 
-This is a deterministic balance specification, not a playtest or proof of optimal
-strategy. It does not yet simulate complete campaigns, every hero perk interaction,
-casualty outcomes or the future buildings' operating costs. Integration and player
-playtesting should follow before publishing these new recruitment mechanics.
+The live model tests cover 850 candidate profiles, 36,300 building/skill/aptitude/trait
+combinations and 4,410 maximum-sale market scenarios. Browser integration checks
+exercise the actual services, saves, current recipes and assignment interface. These
+checks do not establish an optimal campaign strategy; player playtesting remains useful.
 
 ## Revised Kitchen and ration balance
 
@@ -208,7 +212,7 @@ This gives each Kitchen upgrade a guaranteed benefit without recruiting extra co
 Cooking 4 adds five percentage points to the extra-ration chance; Cooking 8 adds
 another five. Aptitude/conditional fit contributes at most sixteen, and Industrious
 adds fifteen, with a combined thirty-point ceiling. Roll once per completed daily
-batch. With enough selected ingredients, the aptitude proposal would produce five, occasionally six,
+batch. With enough selected ingredients, an upgraded Kitchen produces five, occasionally six,
 without making food buffs stronger than +2. Skill and aptitude retain a modest output
 benefit even when the building's quality guarantee has reached its cap.
 
@@ -262,4 +266,4 @@ and more capped/low-value assignments. With twelve building types already presen
 one worker gives twelve meaningful hiring decisions and makes swapping workers
 clearer. Add assistants later only if the player explicitly wants that extra depth.
 
-Implementation note: kitchen-system.js now implements single-worker, ingredient-backed daily cooking with no aptitude/trait extra ration. The six-ration chance remains proposed. Current limits, recipes and gathering rewards are documented in the final section of BALANCE.md.
+Implementation note: kitchen-system.js implements single-worker, ingredient-backed cooking, including the bounded aptitude/trait extra-ration roll. All five current recipes and recovery limits are retained; see BALANCE.md.

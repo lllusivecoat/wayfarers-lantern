@@ -137,8 +137,8 @@ used while a hero is away. Kitchen L4+ ration use advances Light-wound recovery 
 per hero per day; it does not heal serious wounds. Existing prepared bonuses and
 queued report results are not rewritten during migration.
 
-Aptitude, personality and daily-candidate changes remain a separate balance proposal
-in STAFF-BALANCE.md; the current cooking implementation adds no random extra output.
+Aptitude, personality and daily-candidate changes are now implemented. The bounded
+extra-ration chance is documented in the final section and STAFF-BALANCE.md.
 
 ## Five Kitchen recipe tiers (latest food rules)
 
@@ -176,7 +176,7 @@ untouched. Recovery counters and meal effects persist through saves and reloads.
   races, wages and decisions persist in saves. Hiring and passing require confirmation;
   neither action refills the pool. Candidates start untrained, cost no hiring fee and
   earn the existing 2 gp/day base wage only while assigned. Current staff and skill
-  progress are preserved. Aptitudes/personality effects remain a separate proposal.
+  progress are preserved. Aptitudes/personality effects are described in the final section.
 - New permanent expeditions pay no client gold. The guild pays at dispatch:
   **base fee + 2 gp per rank step above F + 1 gp per party member**.
   Base fees: Gathering 2 gp, Exploration 4 gp, World Dungeon 8 gp, World Boss
@@ -196,3 +196,39 @@ untouched. Recovery counters and meal effects persist through saves and reloads.
   the protected guildmaster's gear remain. Losses are listed in the quest report and
   preserved final memorial report. Prevented deaths retain equipment. Previously
   resolved deaths are not charged a second loss during save migration.
+
+
+## Staff aptitudes and personalities
+
+New candidates have four aptitudes (Organisation, Craftsmanship, Care, Fieldcraft),
+1–5 each and total 12, plus one of ten traits. Two candidates still arrive each game
+day. Names, profiles, fixed 2–4 gp/day base wages and hire/pass decisions are saved.
+Existing staff keep their agreed wage, every skill point and assignment, and receive
+neutral 3/3/3/3 scores with no personality. Reassignment never changes the wage.
+
+Matching aptitude supplies 0/3/6/9/12% fit. Conditional traits can raise this to 16%.
+Fit affects each service's own formula, not building capacity or a universal bonus.
+Storekeeping sale bonus caps at 35%; combined expedition staff support at six DC;
+specialist staff/building loot modifier at 35 percentage points, with 95% final drop
+chance; exploration partial discovery at 50%; Waystation time reduction at 80%.
+Exploration chance and final roll results are saved on dispatch. Skills do not
+reveal locations. Paid permanent-expedition fees and zero client payment stay.
+
+Crafting now includes Workshop building quality/durability and staff effects.
+Combined material discount caps at 45%, recipe ingredients round up to at least one,
+and Blacksmithing still gates Basic–Heritage. Crafted readiness caps at +6; a quality
+proc with no remaining readiness room gives +5 durability. Meticulous's crafting
+charge is shown before crafting. There are still two crafts per operating Workshop/day.
+
+Kitchens can produce at most one extra ration per paid daily batch (30% chance cap,
+six rations per building maximum). Every extra uses meat/fish, respects recipe gates
+and stock space, and keeps the current +2 readiness/recovery caps. No extra rolls
+occur on render, reload or same-day cook changes.
+
+Paid work earns one passive practice point, plus 0.25 with an operational Staff
+Office L2, 0.20 for Studious, or 0.25 while Adaptable is catching up. These add rather
+than multiply. Hundredths persist across days and moves; only the current skill
+receives points. One service award per skill/day remains. Loyal gains one fit
+percentage point per seven consecutive paid days in the same building, up to four.
+Moving, unassignment or an unpaid day resets loyalty, never earned practice or fractional credit.
+Full effect formulas and all trait conditions are in STAFF-BALANCE.md.

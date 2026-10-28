@@ -25,7 +25,7 @@ with sync_playwright() as p:
     accept[0]=False
     page.locator('[data-hire-candidate="0"]').click()
     assert page.evaluate('game.staffMembers.length')==0
-    assert 'Base wage: 2 gp/day' in dialogs[-1]
+    assert f"Base wage: {json.loads(pool)[0]['wage']} gp/day" in dialogs[-1]
     accept[0]=True
     page.locator('[data-hire-candidate="0"]').click()
     assert page.evaluate('game.staffMembers[0].name')==json.loads(pool)[0]['name']

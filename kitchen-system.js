@@ -24,7 +24,8 @@
   function plan(i){
     const r=selected(i),paused=game.kitchenRecipes?.[i.uid]==='paused',room=Math.max(0,30-storedRations());
     const count=!paused&&eligible(i,r)?Math.max(0,Math.min(i.level,Math.floor(Number(game.materials[r.meat])||0),Math.floor(Number(game.materials[r.fish])||0),room)):0;
-    return {r,count,paused};
+    const extraChance=WL_STAFF.service('kitchen',cookFor(i),i.level,i.uid).extraRationChance,canExtra=count>0&&room>count&&(game.materials[r.meat]||0)>count&&(game.materials[r.fish]||0)>count;
+    return {r,count,paused,extraChance,canExtra};
   }
   window.kitchenRecipes=()=>recipes.map(r=>({...r}));
   window.setKitchenRecipe=function(uid,id){
@@ -39,8 +40,9 @@
     v9Ops('kitchen').forEach(i=>{
       if(done[i.uid]===game.day)return;
       done[i.uid]=game.day;
-      const {r,count}=plan(i);
+      const batch=plan(i),r=batch.r;let count=batch.count;
       if(!count)return;
+      if(batch.canExtra&&Math.random()<batch.extraChance)count++;
       game.materials[r.meat]-=count;game.materials[r.fish]-=count;
       for(let n=0;n<count;n++)game.consumables.push({id:`ration-${i.uid}-${game.day}-${n}`,name:r.name,uses:1,bonus:r.bonus,heal:r.heal||0,repair:r.repair||0,ration:true,recipe:r.id});
       practiceStaff('kitchen');addLog('Kitchen provisions prepared',`${v9InstLabel(i)} cooked ${count} ${r.name} (${effects(r)} each), using ${count} ${r.meat} and ${count} ${r.fish}.`);
@@ -107,8 +109,8 @@
     document.getElementById('warehouse-consumables').innerHTML=game.consumables.map(item=>`<div class="building"><strong>${esc(item.name)}</strong><span class="pill">${item.uses} uses left</span><p>${esc(effects(item))}. Choose a provision from the hero’s Use Provision action.</p></div>`).join('')||'<p class="small muted">No provisions stored.</p>';
     let root=document.getElementById('kitchen-recipes');if(!root){root=document.createElement('article');root.id='kitchen-recipes';root.className='card';document.getElementById('warehouse').appendChild(root)}
     root.innerHTML=`<h3>Kitchen recipes</h3><p>Each ration consumes 1 meat and 1 fish from storage. Cooking happens when resting until tomorrow, after operating costs are paid. Kitchen level sets the daily limit (1–5); Cooking unlocks better recipes. Ration stock: ${storedRations()}/30. Food readiness is capped at +2 and does not stack.</p><details><summary>All recipes and ingredient ranks</summary>${recipes.map((rec,n)=>`<p><strong>${rec.name}</strong> · Kitchen ${rec.building}, Cooking ${rec.skill} · ${ranks[grades[n].rank]}+ ingredients: 1 ${rec.meat} + 1 ${rec.fish}. ${effects(rec)}.</p>`).join('')}</details><div class="kitchen-list">${v9Inst('kitchen').map((i,index)=>{
-      const {r,count,paused}=plan(i),cook=cookFor(i),skill=staffProfessionLevel(cook),made=game.kitchenProduction?.[i.uid]===game.day;
-      return `<section><h3>${esc(v9InstLabel(i))} · Level ${i.level}</h3><p>${cook?`${esc(cook.name)} · Cooking ${skill}`:'Assign a staff member to cook.'}</p><label>Daily recipe<select data-kitchen-index="${index}"><option value="paused" ${paused?'selected':''}>Pause cooking</option>${recipes.map(rec=>`<option value="${rec.id}" ${!paused&&rec.id===r.id?'selected':''} ${!eligible(i,rec)?'disabled':''}>${rec.name} · Kitchen ${rec.building}, Cooking ${rec.skill}</option>`).join('')}</select></label><p>${paused?'Cooking paused.':`${effects(r)}. Per ration: 1 ${r.meat} (have ${Number(game.materials[r.meat])||0}) + 1 ${r.fish} (have ${Number(game.materials[r.fish])||0}). Based on current stock: ${count}/${i.level} rations next day; consumes ${count} of each ingredient.`}</p><p class="small muted">${made?'Today’s batch is complete. Recipe changes apply next day.':'No production without the recipe’s ingredients, required skill, assigned worker and paid operating costs.'}</p></section>`;
+      const {r,count,paused,extraChance,canExtra}=plan(i),cook=cookFor(i),skill=staffProfessionLevel(cook),made=game.kitchenProduction?.[i.uid]===game.day;
+      return `<section><h3>${esc(v9InstLabel(i))} · Level ${i.level}</h3><p>${cook?`${esc(cook.name)} · Cooking ${skill}`:'Assign a staff member to cook.'}</p><label>Daily recipe<select data-kitchen-index="${index}"><option value="paused" ${paused?'selected':''}>Pause cooking</option>${recipes.map(rec=>`<option value="${rec.id}" ${!paused&&rec.id===r.id?'selected':''} ${!eligible(i,rec)?'disabled':''}>${rec.name} · Kitchen ${rec.building}, Cooking ${rec.skill}</option>`).join('')}</select></label><p>${paused?'Cooking paused.':`${effects(r)}. Per ration: 1 ${r.meat} (have ${Number(game.materials[r.meat])||0}) + 1 ${r.fish} (have ${Number(game.materials[r.fish])||0}). Based on current stock: ${count}/${i.level} rations next day; consumes ${count} of each ingredient. ${WL_STAFF.percent(extraChance)} chance of one extra ration, consuming one more of each ingredient (six-ration maximum). ${canExtra?'Ingredients and storage permit the extra ration.':'Extra ration unavailable with current ingredients or storage.'}`}</p><p class="small muted">${made?'Today’s batch is complete. Recipe changes apply next day.':'No production without the recipe’s ingredients, required skill, assigned worker and paid operating costs.'}</p></section>`;
     }).join('')||'<p>Build a Kitchen and assign one staff member to begin cooking.</p>'}</div><p class="small muted">Skinning supplies Meat alongside leather. Fishing supplies Fresh Fish. Better ingredients unlock at C, A, S and SS gathering ranks. Higher-rank trips retain lower-grade supplies.</p>`;
     root.querySelectorAll('[data-kitchen-index]').forEach(select=>select.onchange=()=>{const i=v9Inst('kitchen')[Number(select.dataset.kitchenIndex)];if(!setKitchenRecipe(i.uid,select.value))renderWarehouse()});
   };

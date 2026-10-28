@@ -6,6 +6,8 @@ with sync_playwright() as p:
  page.goto('http://127.0.0.1:8000',wait_until='networkidle');page.wait_for_function("typeof kitchenRecipes==='function'")
  page.evaluate("""() => {
  window.check=(ok,msg)=>{if(!ok)throw Error(msg)};
+ // Isolate base batches here; aptitude tests exercise the extra-ration roll.
+ Math.random=()=>.99;
  game.hall=7;game.gold=10000;game.buildingList=[{uid:'kitchen-test',key:'kitchen',level:5,spent:35},{uid:'training-test',key:'trainingHall',level:5,spent:80}];v9Sync();
  // Simulate a pre-update save with several workers at a leveled building.
  game.staffMembers=[{id:'cook-low',name:'Kept Name',wage:5,buildingUid:'kitchen-test',buildingKey:'kitchen',profession:'Cooking',professionXP:{Cooking:15,Blacksmithing:50}},{id:'cook-high',name:'Better Cook',wage:2,buildingUid:'kitchen-test',buildingKey:'kitchen',profession:'Cooking',professionXP:{Cooking:30}}];

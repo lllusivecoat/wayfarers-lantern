@@ -16,6 +16,9 @@ try:
     page.on('dialog',lambda d:d.accept())
     page.evaluate("""() => {
       const check=(ok,msg)=>{if(!ok)throw Error(msg)};
+      check(document.getElementById('alchemy-brew').textContent==='Requires Alchemy Lab','missing Lab label');
+      check(document.getElementById('field-kit-craft').textContent==='Requires Staff Office','missing Office label');
+      check(document.querySelector('#craft-actions button').textContent==='Requires Workshop','missing Workshop label');
       game.hall=7;game.gold=0;game.pendingReports=[];
       for(const key of ['workshop','alchemyLab','staffOffice']){
         const uid='free-'+key;game.buildingList.push({uid,key,level:5,spent:100});v9Sync();

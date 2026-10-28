@@ -1494,7 +1494,7 @@ const _v9RenderHeroes=renderHeroes;renderHeroes=function(){_v9RenderHeroes.apply
  bar.innerHTML=F.map(([k,l])=>{const n=vis.filter(h=>v9RosterMatch(h,k)).length;return `<button class="v9-chip" data-f="${k}" onclick="v9RosterSet('${k}')">${l} <span>${n}</span></button>`}).join('');bar.style.display=vis.length?'':'none';
  if(cards.length!==vis.length)return;
  cards.forEach((c,i)=>{const h=vis[i],[st,cl]=v9RosterStatus(h);c.classList.add('v9-rcard');const r=document.createElement('button');r.className='v9-rrow';r.dataset.id=h.id;r.setAttribute('onclick',`v9RosterToggle('${h.id}')`);
-  r.innerHTML=`${imageSrc(h)?`<img class="v9-rpic" src="${imageSrc(h)}" alt="">`:`<span class="v9-rpic">${tbwEsc((h.name||'?')[0])}</span>`}<span class="v9-rmain"><b>${tbwEsc(h.name)}</b><small>${tbwEsc(h.className||'Warrior')} · ${tbwEsc(h.spec||'Arms')}</small></span><span class="v9-rrank">${ranks[h.rank]||'F'}</span><span class="pill ${cl}">${st}</span>`;root.insertBefore(r,c)});
+  r.innerHTML=`${imageSrc(h)?`<img class="v9-rpic" src="${imageSrc(h)}" alt="">`:`<span class="v9-rpic">${tbwEsc((h.name||'?')[0])}</span>`}<span class="v9-rmain"><b>${tbwEsc(h.name)}</b><small>${tbwEsc(h.className||'Warrior')} · ${tbwEsc(h.spec||'Arms')} · Lv ${heroLevel(h)}</small></span><span class="v9-rrank">${ranks[h.rank]||'F'}</span><span class="pill ${cl}">${st}</span>`;root.insertBefore(r,c)});
  v9RosterApply()};
 
 let game=loadGame();if(game._v9NeedStarters){delete game._v9NeedStarters;v9RandomStarters(game)}let recruitId=null;let chosenQuest=null;let playerRespecDraft=null;let viewingHeroId=null;let showFallen=false;let saveTimer;setInterval(tickQuestTimers,1000);

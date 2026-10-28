@@ -28,6 +28,14 @@ try:
       for(const rec of [...renderGearCatalog(),...alchemyRecipes(),...fieldKitRecipes()]){
         for(const name of Object.keys(rec.requirements||rec.ingredients||{}))game.materials[name]=100000;
       }
+      const novice=buildingStaff('workshop');novice.professionXP.Blacksmithing=0;
+      const basic=renderGearCatalog().find(r=>r.tier===0),initialGear=game.gear.length;
+      craftGear(basic.id);
+      check(game.gear.length===initialGear+1,'newly assigned Level 0 smith crafts Basic gear');
+      check(novice.professionXP.Blacksmithing===1,'successful crafting grants practice');
+      craftGear(basic.id);
+      check(game.gear.length===initialGear+2&&novice.professionXP.Blacksmithing===1,'further crafting respects daily service-practice cap');
+      novice.professionXP.Blacksmithing=275;
       for(const rec of alchemyRecipes()){
         game.day++;check(brewAlchemy(rec.id),'brew '+rec.id);check(game.gold===0,'potion gold unchanged');
       }

@@ -32,7 +32,10 @@ try:
     assert page.locator('#quick-equip-modal .modalbox').evaluate('e=>e.scrollWidth<=e.clientWidth+1')
     page.locator('#quick-equip-close').tap()
     page.evaluate("showView('roster')")
-    page.locator('.v9-rrow[data-id="quick-hero"] button').tap()
+    assert page.locator('.v9-rrow[data-id="quick-hero"] button').count()==0
+    page.locator('.v9-rrow[data-id="quick-hero"]').tap()
+    assert page.locator('.v9-rcard.v9-open').count()==1
+    page.locator('#quick-equip-open').tap()
     assert page.locator('#quick-equip-modal').evaluate("e=>e.classList.contains('open')")
     page.evaluate("game.heroes.find(h=>h.id==='quick-hero').ready=false;render()")
     assert page.locator('#quick-equip-slots select:enabled').count()==0
@@ -41,5 +44,5 @@ try:
     page.reload(wait_until='networkidle');page.wait_for_function("typeof openQuickEquip==='function'")
     assert page.evaluate("game.heroes.find(h=>h.id==='quick-hero').equipment.weapon")== 'quick-sword'
     assert not errors,errors
-    b.close();print('PASS: global and mobile roster shortcuts, hero switching, actual gear equip, ration reservation/refund, away locks, mobile layout, save/reload; no browser errors')
+    b.close();print('PASS: global shortcut and mobile roster without per-row Equip buttons, hero switching, actual gear equip, ration reservation/refund, away locks, mobile layout, save/reload; no browser errors')
 finally:server.shutdown()

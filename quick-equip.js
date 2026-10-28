@@ -34,7 +34,7 @@
     #quick-equip-modal .equipment-slot-grid{display:grid!important;grid-template-columns:minmax(0,1fr)!important;grid-template-areas:none!important;gap:12px}
     #quick-equip-modal .equipment-slot{grid-area:auto!important;grid-column:1/-1!important;min-width:0;min-height:0!important;padding:12px!important;text-align:left}
     #quick-equip-modal .equipment-slot-icon{display:none}#quick-equip-modal .slot-name{display:block;margin-bottom:8px}#quick-equip-modal .slot-durability{margin-top:8px;overflow-wrap:anywhere}
-    #quick-equip-status{line-height:1.7;margin:18px 0} .v9-rrow>.btn{flex-shrink:0;min-height:44px}
+    #quick-equip-status{line-height:1.7;margin:18px 0}
   `;document.head.appendChild(style);
   renderHeroes();
 })();

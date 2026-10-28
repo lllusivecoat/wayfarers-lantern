@@ -232,3 +232,68 @@ receives points. One service award per skill/day remains. Loyal gains one fit
 percentage point per seven consecutive paid days in the same building, up to four.
 Moving, unassignment or an unpaid day resets loyalty, never earned practice or fractional credit.
 Full effect formulas and all trait conditions are in STAFF-BALANCE.md.
+
+## Alchemy Lab and permanent elixirs
+
+The unique Alchemy Lab unlocks at Hall 2, costs 150 gp and uses one plot and one
+staff slot. Upkeep is 3 gp per Lab level. Upgrades follow the Hall/building cap.
+Alchemy is a saved staff skill with the standard 0–10 practice thresholds, paid
+work, fractional credits and one brewing service award/day. Craftsmanship supplies
+fit; ordinary ingredients receive up to 25% discount, and Resourceful/Meticulous
+adjust ordinary gold charges. Elixirs receive no material or gold adjustments.
+
+| Recipe | Lab / skill | Base gold | Result |
+| --- | --- | --- | --- |
+| Field Draught | 1 / 0 | 5 | Three uses, +1 next-expedition readiness |
+| Mending Potion | 1 / 1 | 12 | Recover one Light-wound day |
+| Expedition Tonic | 2 / 3 | 25 | One use, +2 next-expedition readiness |
+| Restorative Potion | 3 / 5 | 60 | Recover two wound days, up to Serious |
+| Panacea | 4 / 7 | 150 | Recover two wound days, including Grievous |
+| Ascension Elixir, six stat variants | 5 / 10, Hall 7 | 25,000 | Permanently +1 selected raw ability score |
+
+Lab levels provide 1–5 brews/day. An Ascension Elixir consumes five capacity and
+requires 100 each Eternium Ore, Rugged Leather, Ancient Timber, Runecloth and
+Kingsblood; 50 each Arcane Crystal, Primal Meat and Royal Salmon; 20 Heritage Ore;
+and 30 each World Dungeon Relic, Rare Raid Relic, Campaign Spoils and Boss Trophy.
+Both brewing and consuming permanent elixirs require confirmation. Each hero may
+use only one permanent-stat elixir in total, choosing one of the six stats. Gains are saved in the raw
+abilities plus a separate per-stat enhancement record; respecialisation reapplies
+that record to the new build without multiplying it on save/reload or import.
+A raw stat point is not necessarily a full point of readiness.
+
+Alchemy potions have their own inventory and recipient interface. Recovery is
+capped at two days per hero/game day across all alchemy recipes. Potions cannot
+resurrect heroes, erase scars, be used while away, or waste a duplicate permanent
+boost. Temporary readiness shares food's non-stacking +2 cap. Existing Field
+Draughts remain usable through the old provision interface, but new brewing now
+requires the Lab. Jewelry and gem/ring recipes are unchanged.
+
+
+## Hero expedition supplies and high-rank encounters
+
+Rations, legacy Field Draughts and new readiness potions reserve one use in an
+actual hero utility slot. Reservation removes the use from Warehouse stock;
+emptying/replacing the slot returns exactly one use. Gear and supplies share the
+same three utility slots. Save/reload preserves reservations. Dismissal returns
+supplies; death loses every carried use alongside the hero's gear.
+
+Only the equipped hero receives the benefit. A successful dispatch consumes at
+most one useful supply per hero, choosing the highest readiness bonus, then the
+first slot to break ties. Bonuses replace weaker preparation rather than stack,
+with a +2 cap. Supplies that cannot improve readiness, Light-wound recovery or
+gear repair stay equipped. No use is consumed by a cancelled, blocked or
+unaffordable dispatch. Quests and both convoy directions use the same rule.
+Readiness previews include equipped supplies. Equipment changes are locked while
+away. Existing saved preparation and already-rolled reports are preserved.
+
+Meal recovery occurs on departure and retains the existing once/day Light-wound
+and two-durability/day limits. Recovery potions stay in storage for available
+injured heroes; their combined recovery remains two wound days per hero/day.
+Permanent elixirs also stay in storage and use the lifetime one-point limit.
+
+High-rank Dungeon/World Boss DC additions are 1/3/4/5/7 for A/S/SS/Legendary/Renown;
+Raid/World Raid additions are 2/4/5/7/9. F–B and other quest types retain their
+current difficulty. The strongest tested prepared endgame parties now have
+roughly 77–79% full success in sampled Dungeon/Raid/Boss encounters, compared
+with over 99% previously. ENDGAME-BALANCE.md records assumptions, rates and the
+remaining World Dungeon scaling mismatch.

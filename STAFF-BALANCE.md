@@ -1,6 +1,6 @@
 # Staff aptitudes and personalities: balance specification
 
-Status: implemented for all twelve existing building types. Runtime formulas live
+Status: implemented for all thirteen existing building types, including the Alchemy Lab. Runtime formulas live
 in `staff-aptitudes.js`; the candidate/assignment interface and saved paid-day
 practice live in `staff-system.js`. New staff receive four saved aptitude scores,
 one personality and a fixed 2–4 gp/day base wage. Existing staff receive neutral
@@ -60,13 +60,14 @@ buildings each have their own single worker; unique/global effects do not stack.
 Sociable and Independent are removed because their conditions do not fit this rule.
 The initial list now contains **ten traits**.
 
-## All twelve existing building types
+## Existing building types
 
 `S` = lead skill (0–10); `E` = effective fit (0–0.16). Percentages below are decimal
 fractions in the executable model. Building requirements and discovery gates stay.
 
 | Building / aptitude | Existing building growth retained | Implemented aptitude benefit and cap |
 | --- | --- | --- |
+| Alchemy Lab / Craftsmanship | Hall 2 unlock; one worker; 1–5 brews/day; skill recipe gates | Ordinary material discount = 2% × S × (1+E), plus 3 points for Resourceful, capped at 25%. Ordinary service charges use trait adjustments. Permanent elixirs are never discounted. |
 | Warehouse / Organisation | Storage 20/40/60/90/135; sale multiplier ×1.05 at L4, ×1.10 at L5; danger −1 at L5 | Staff sale bonus = 3% × S × (1+E), then trait adjustments; **35% maximum**. Skill danger reduction remains floor(S/3), with trait adjustment. No location unlocks. |
 | Staff Office / Organisation | Existing preparation upgrades; practice ×1.25 at L2, wages −1 at L3 (minimum 1), extra offer at L4, office DC benefit at L5 | E chance per dispatch of one additional preparation DC reduction. Guaranteed skill support stays floor(S/3). Shared staff DC-reduction cap **6** includes this proc. |
 | Workshop / Craftsmanship | Skill gates Basic through Heritage at S1–8; 2 crafts per operational Workshop/day; building quality +1 at L2/+2 at L4, durability +10 at L3/+20 at L5; L5 material factor ×0.8 | Skill material discount = 2.5% × S × (1+E), plus Resourceful if applicable; combined building/staff discount **45% maximum**. Quality proc = 3% × S + E/2 + trait adjustment, **40% maximum**. No duplicate free items. |
@@ -190,7 +191,7 @@ It also checks **18,900** maximum-bonus same-market price scenarios, including
 integer rounding, Warehouse multipliers, stock sizes up to 30 and escort pay.
 No tested purchase/resale loop returns more treasury gold than was spent.
 
-The live model tests cover 850 candidate profiles, 36,300 building/skill/aptitude/trait
+The live model tests cover 850 candidate profiles, 39,325 building/skill/aptitude/trait
 combinations and 4,410 maximum-sale market scenarios. Browser integration checks
 exercise the actual services, saves, current recipes and assignment interface. These
 checks do not establish an optimal campaign strategy; player playtesting remains useful.

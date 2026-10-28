@@ -17,6 +17,7 @@ for(const key of Object.keys(m.jobs))for(let building=1;building<=5;building++)f
  const r=m.evaluate(key,building,skill,scores,trait,28,10);assert.ok(r.fit>=0&&r.fit<=.16);assert.ok(r.support>=0&&r.support<=4);
  if(key==='warehouse')assert.ok(r.sale>=0&&r.sale<=.35);
  if(key==='workshop'){assert.ok(r.materialDiscount<=.45&&r.quality<=.4);assert.ok(r.buildingBonus<=2&&r.durability<=25);assert.ok(r.extra<=2)}
+ if(key==='alchemyLab')assert.ok(r.materialDiscount<=.25&&r.goldFactor>=.95&&r.goldFactor<=1.05);
  if(key==='kitchen')assert.ok(r.extraRationChance<=.3);
  if(key==='infirmary')assert.ok(r.treatmentFactor>=.5);
  if(key==='armory')assert.ok(r.repairUnit>=1);

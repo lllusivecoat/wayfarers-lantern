@@ -5,7 +5,7 @@ with sync_playwright() as p:
  page.on('pageerror',lambda e:errors.append(str(e)));page.on('console',lambda m:errors.append(m.text) if m.type=='error' else None)
  page.goto('http://127.0.0.1:8000',wait_until='networkidle');page.wait_for_function("typeof kitchenRecipes==='function'")
  page.evaluate("""() => {
- window.check=(ok,msg)=>{if(!ok)throw Error(msg)};
+ window.check=(ok,msg)=>{if(!ok)throw Error(msg)};window.eatOnDeparture=(id,item)=>{useDraught(id,item);consumeExpeditionSupplies([purse(id)])};
  // Isolate base batches here; aptitude tests exercise the extra-ration roll.
  Math.random=()=>.99;
  game.hall=7;game.gold=10000;game.buildingList=[{uid:'kitchen-test',key:'kitchen',level:5,spent:35},{uid:'training-test',key:'trainingHall',level:5,spent:80}];v9Sync();
@@ -29,8 +29,8 @@ with sync_playwright() as p:
  game.consumables.push({id:'legacy',name:'Legacy Rations',uses:40,bonus:3});const oldStock=JSON.stringify(game.consumables);nextDay();check(JSON.stringify(game.consumables)===oldStock,'legacy over-cap food retained without new production');
  game.consumables=[{id:'one',name:'Trail Rations',uses:1,bonus:1,ration:true},{id:'two',name:'Hearty Rations',uses:2,bonus:2,ration:true}];
  game.player.ready=true;game.player.dead=false;game.player.preparedBonus=0;game.player.wound={tier:1,days:5};game.pendingReports=[];
- useDraught('player','one');check(game.player.preparedBonus===1&&game.player.wound.days===4,'ration and light-wound recovery');
- useDraught('player','two');check(game.player.preparedBonus===2&&game.player.wound.days===4,'stronger replaces, healing once daily');
+ eatOnDeparture('player','one');check(game.player.preparedBonus===1&&game.player.wound.days===4,'ration and light-wound recovery');
+ eatOnDeparture('player','two');check(game.player.preparedBonus===2&&game.player.wound.days===4,'stronger replaces, healing once daily');
  window.alert=()=>{};const uses=game.consumables[0].uses;useDraught('player');check(game.consumables[0].uses===uses,'no equal bonus waste/stacking');
  game.player.preparedBonus=0;game.player.ready=false;useDraught('player');check(game.consumables[0].uses===uses,'no feeding dispatched hero');game.player.ready=true;
  // Successful actual gathering reports add food without replacing leather/fish.
@@ -67,15 +67,16 @@ with sync_playwright() as p:
  Math.random=random;
  game.gear.push({id:'ration-repair-test',name:'Test Blade',owner:'player',durability:5,maxDurability:20,bonus:1,stat:'STR'});game.player.gear='ration-repair-test';game.player.equipment={Weapon:'ration-repair-test'};game.player.wound={tier:1,days:6};game.player.preparedBonus=2;
  game.pendingReports=[];game.rationHealedDays={};game.rationRepairDays={};game.consumables=kitchenRecipes().slice(2).map(r=>({id:r.id,...r,ration:true,recipe:r.id,uses:2}));
- useDraught('player','restorative');check(game.player.wound.days===5,'Restorative recovery');
- useDraught('player','fortifying');check(game.gear.at(-1).durability===6,'Fortifying repair');
- useDraught('player','feast');check(game.gear.at(-1).durability===7&&game.player.wound.days===5,'Feast upgrades recovery without stacking');
- const remaining=game.consumables.find(i=>i.id==='feast').uses;useDraught('player','feast');check(game.consumables.find(i=>i.id==='feast').uses===remaining,'no wasted advanced meal at daily cap');
+ eatOnDeparture('player','restorative');check(game.player.wound.days===5,'Restorative recovery');
+ eatOnDeparture('player','fortifying');check(game.gear.at(-1).durability===6,'Fortifying repair');
+ eatOnDeparture('player','feast');check(game.gear.at(-1).durability===7&&game.player.wound.days===5,'Feast upgrades recovery without stacking');
+ const remaining=game.consumables.find(i=>i.id==='feast').uses;useDraught('player','feast');check(consumeExpeditionSupplies([game.player]).length===0,'no wasted advanced meal at daily cap');for(const slot of ['utility1','utility2','utility3'])equipSlot('player',slot,'');check(game.consumables.find(i=>i.id==='feast').uses===remaining,'unused reservation returned');
  game.player.preparedBonus=0;game.player.wound={tier:2,days:5};save();const mealSave=loadGame();check(mealSave.rationRepairDays.player.amount===2,'daily repair saved');check(mealSave.consumables.some(i=>i.repair===2),'meal effects saved');
  showView('warehouse');
  }""")
  page.evaluate("useDraught('player')")
- page.get_by_role('button',name='Use Grand Feast Rations',exact=True).click()
+ page.locator('.slot-utility1 select').select_option('supply:food:feast')
+ page.evaluate("consumeExpeditionSupplies([game.player]);closeHeroStats();showView('warehouse')")
  assert page.evaluate('game.player.preparedBonus')==2
  assert page.evaluate('game.player.wound.days')==5, 'Serious wounds must not heal from food'
  page.locator('[data-kitchen-index]').select_option('feast')

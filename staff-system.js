@@ -1,6 +1,6 @@
 /* Staff skills and market convoys. Extends the existing v9 building/report engine. */
 (function(){
-  const skills={cartographersOffice:'Cartography',waystation:'Pathfinding',warehouse:'Storekeeping',staffOffice:'Quartermastery',workshop:'Blacksmithing',kitchen:'Cooking',infirmary:'First Aid',armory:'Armoring',trainingHall:'Training',warRoom:'Tactics',huntersLodge:'Hunting',commandPost:'Command'};
+  const skills={alchemyLab:'Alchemy',cartographersOffice:'Cartography',waystation:'Pathfinding',warehouse:'Storekeeping',staffOffice:'Quartermastery',workshop:'Blacksmithing',kitchen:'Cooking',infirmary:'First Aid',armory:'Armoring',trainingHall:'Training',warRoom:'Tactics',huntersLodge:'Hunting',commandPost:'Command'};
   const thresholds=[0,5,15,30,50,75,105,140,180,225,275];
   const esc=tbwEsc;
   window.staffSkillLevel=points=>thresholds.reduce((level,t,i)=>Number(points)>=t?i:level,0);
@@ -165,10 +165,11 @@
     const route=tradeDestinations().find(r=>r.id===selectedTradeRoute);if(!route||!buildingOperational('warehouse'))return alert('Assign staff to the Warehouse and choose a discovered market.');
     const offer=offers(route).find(o=>o.name===document.getElementById('market-good').value),n=Number(document.getElementById('market-quantity').value),ids=[...new Set(game.tradeParty||[])].filter(id=>{const h=purse(id);return h&&h.ready&&tbwConvoyEligible(h)});
     if(!offer||!Number.isSafeInteger(n)||n<1||n>stock(route,offer)||!ids.length||game.gold<offer.price*n)return alert('Choose available stock, enough gold, and a ready escort.');
+    const suppliesUsed=consumeExpeditionSupplies(ids.map(purse));
     const party=ids.map(purse),dc=danger(route),checks=party.map(h=>{const roll=1+Math.floor(Math.random()*20),modifier=readiness(h)+(h.id==='player'?0:(h.rank||0)>0?1:0)-(h.wound&&h.wound.tier<3?WOUND_TIERS[h.wound.tier].pen:0);return {id:h.id,name:h.name,roll,modifier,total:roll+modifier,success:roll+modifier>=dc,critical:roll===1}}),success=checks.filter(c=>c.success).length,outcome=success===party.length?'Success':success>=Math.ceil(party.length*2/3)?'Partial Success':'Failure',qty=outcome==='Success'?n:outcome==='Partial Success'?Math.floor(n*success/party.length):0,TW=tbwConvoyCasualties(party,checks,outcome);
     game.gold-=offer.price*n;game.marketStock.used[route.id+':'+offer.name]=(game.marketStock.used[route.id+':'+offer.name]||0)+n;
     party.forEach(h=>{h.ready=false;h.lastQuestDay=game.day});
-    game.pendingReports.push({kind:'trade',inboundGoods:{name:offer.name,count:qty},durMs:v9ConvoyMs(route),dueAt:Date.now()+v9ConvoyMs(route),dueDay:game.day+1,dispatchedDay:game.day,title:`Inbound convoy from ${route.name}`,outcome,summary:`${qty}/${n} ${offer.name} delivered from ${route.name}; ${n*offer.price} gp paid. Danger DC ${dc}.`,partyIds:ids,payout:0,rep:0,casualties:TW.dead,wounds:TW.wounds,near:TW.near,tbwNotes:TW.notes,rolls:checks,growthAwards:[]});
+    game.pendingReports.push({kind:'trade',suppliesUsed,inboundGoods:{name:offer.name,count:qty},durMs:v9ConvoyMs(route),dueAt:Date.now()+v9ConvoyMs(route),dueDay:game.day+1,dispatchedDay:game.day,title:`Inbound convoy from ${route.name}`,outcome,summary:`${qty}/${n} ${offer.name} delivered from ${route.name}; ${n*offer.price} gp paid. Danger DC ${dc}.`,partyIds:ids,payout:0,rep:0,casualties:TW.dead,wounds:TW.wounds,near:TW.near,tbwNotes:TW.notes,rolls:checks,growthAwards:[]});
     game.tradeParty=[];addLog('Inbound convoy underway',`${n} ${offer.name} purchased for ${n*offer.price} gp. Arrival in ${v9ConvoyLabel(route)}.`);render();save();
   };
   const oldApply=tbwApplyReport;tbwApplyReport=function(r){const result=oldApply(r);if(r.inboundGoods&&!r.marketDelivered){r.marketDelivered=true;const {name,count}=r.inboundGoods;game.materials[name]=(game.materials[name]||0)+count}return result};

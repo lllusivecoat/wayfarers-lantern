@@ -10,7 +10,7 @@
   const service=(h,g)=>h.serviceRecord||(h.serviceRecord={sinceDay:g.day,reports:0,successes:0,exceptional:0,dangerousVictories:0,convoys:0});
   function archive(r){
     const copy={};
-    for(const key of ['title','kind','questKind','questRank','profession','outcome','summary','extendedSummary','dispatchedDay','returnedDay','partyIds','casualties','rolls','deathAccounts','payout','rep','lootDrops','resource','resourceQty','organizingCost','cargo','deliveredFraction','lostEquipment']){
+    for(const key of ['title','kind','questKind','questRank','profession','outcome','summary','extendedSummary','dispatchedDay','returnedDay','partyIds','casualties','rolls','deathAccounts','payout','rep','lootDrops','resource','resourceQty','organizingCost','cargo','deliveredFraction','lostEquipment','suppliesUsed','highRankDcBonus']){
       if(r[key]!==undefined)copy[key]=clone(r[key]);
     }
     return copy;

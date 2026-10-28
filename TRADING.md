@@ -7,7 +7,10 @@ selection serve incoming purchases and outgoing sales.
 ## Cargo and routes
 
 Both directions accept mixed manifests. Each material item uses one cargo unit.
-Warehouse levels 1–5 allow 20, 35, 50, 70 and 90 units respectively. The whole
+Warehouse storage is unlimited. Each selected, ready convoy member carries 20
+items: 1 member carries 20, 2 carry 40, 3 carry 60, and 5 carry 100. Warehouse
+level does not affect carrying capacity. Duplicate selections and members who
+are dead, away or too injured to travel add no capacity. The whole
 manifest is checked before any money, supplies, goods or heroes are committed.
 Cart selections survive reloads; stock and prices are rechecked at dispatch.
 

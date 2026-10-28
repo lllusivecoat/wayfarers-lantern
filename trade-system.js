@@ -10,7 +10,7 @@
     ratchet:25,nethergarde:28,stormwind:30,orgrimmar:35,lakeshire:32,gadgetzan:38,
     theramore:34,ironforge:40,'thunder-bluff':42,undercity:50,'lights-hope':48};
   const currentRoute=()=>tradeDestinations().find(r=>r.id===selectedTradeRoute);
-  const capacity=()=>WL_BALANCE.convoyCapacity(buildingLevel('warehouse'));
+  const capacity=()=>WL_BALANCE.convoyCapacity(party().length);
   const load=cargo=>cargo.reduce((n,c)=>n+c.count,0);
   const value=cargo=>cargo.reduce((n,c)=>n+(tradeValues[c.material]||2)*c.count,0);
   const manifest=cargo=>cargo.map(c=>`${c.count} ${c.material}`).join(', ');
@@ -83,7 +83,7 @@
     if(button)button.disabled=!route||!valid||units>capacity()||!heroes.length||!buildingOperational('warehouse');
     if(root)root.textContent=!route?'Choose a discovered market.':!valid?'Select cargo with whole quantities within warehouse stock.':
       `${manifest(cargo)} · Cargo ${units}/${capacity()} units${units>capacity()?' — over capacity':''} · Full-delivery estimate: ${tradeQuote(route,cargo,heroes.length).gross} gp gross, ${tradeQuote(route,cargo,heroes.length).memberCut} gp escort pay, ${tradeQuote(route,cargo,heroes.length).guildGold} gp to treasury · Travel ${v9ConvoyLabel(route)} · Danger DC ${danger(route)}. An ambush may lose cargo; partial delivery keeps 75% of each line, rounded down.`;
-    const note=document.getElementById('trade-party-note');if(note&&route)note.textContent=`${heroes.length} selected · ${odds(heroes,route)}`;
+    const note=document.getElementById('trade-party-note');if(note&&route)note.textContent=`${heroes.length} selected · Convoy capacity ${capacity()} items (20 per member) · ${odds(heroes,route)}`;
   };
   function previewInbound(route){
     const q=inboundQuote(route),units=load(q.cargo),root=document.getElementById('market-cost');
@@ -112,8 +112,8 @@
       <p>${rel.level}% purchase discount · +${rel.stock} stock per good · ${Math.round(rel.timeCut*100)}% faster travel · −${rel.dangerCut} danger.</p>
       <p>Earn 1 relationship point per 10 gp of delivered goods' base value, up to 10 points here per game day. Purchases and sales both count on return.</p>
       <details><summary>Relationship levels and bonuses</summary><ul>${tiers.map((t,i)=>`<li>${t.name} · ${t.points} points: ${i}% discount, +${i*2} stock, ${i*5}% faster, −${Math.floor(i/2)} danger.</li>`).join('')}</ul></details></div>
-      <p>Select several goods for one shipment. Warehouse Level ${buildingLevel('warehouse')} carries ${capacity()} items. Select escorts above; goods and escort pay are charged at dispatch.</p>
-      <details><summary>Cargo limits, stock and ambushes</summary><p>Each item uses one cargo unit. Warehouse levels 1–5 carry 20 / 35 / 50 / 70 / 90 units. Stock refreshes each game day. An ambush may lose cargo: partial delivery keeps 75% of each line, rounded down; failure loses the entire shipment.</p></details>
+      <p>Select several goods for one shipment. Your convoy can carry ${capacity()} items (20 per selected member). Select escorts above; goods and escort pay are charged at dispatch.</p>
+      <details><summary>Cargo limits, stock and ambushes</summary><p>Warehouse storage is unlimited. Each ready convoy member carries 20 items: 1 member carries 20, 2 carry 40, and 5 carry 100. Additional escorts also improve safety, up to +4 support. Stock refreshes each game day. An ambush may lose cargo: partial delivery keeps 75% of each line, rounded down; failure loses the entire shipment.</p></details>
       <div id="inbound-cargo">${goods.map((o,i)=>{const selected=cargo.find(c=>c.material===o.material);return `<div class="trade-cargo-row"><label><input type="checkbox" data-market-select="${i}" ${selected?'checked':''} ${!o.stock&&!selected?'disabled':''}><span>${tbwEsc(o.material)}<small>${o.price} gp each · ${o.stock} in stock</small></span></label><label class="trade-cargo-quantity">Quantity<input aria-label="Buy ${tbwEsc(o.material)} quantity" data-market-quantity="${i}" type="number" min="1" max="${o.stock}" step="1" value="${selected?tbwEsc(selected.count):1}" ${!selected?'disabled':''}></label></div>`}).join('')}</div>
       <p id="market-cost" role="status"></p><button class="btn" id="market-buy">Dispatch inbound convoy</button>`;
     const change=(i,on,n)=>{const name=goods[i].material;if(on)game.marketCargo[route.id][name]=n;else delete game.marketCargo[route.id][name];previewInbound(route);save()};

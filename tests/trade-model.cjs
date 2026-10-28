@@ -20,7 +20,8 @@ for(let dc=6;dc<=20;dc++)for(let lead=-5;lead<=20;lead++)for(let roll=1;roll<=20
   assert.ok(fraction>=previous);previous=fraction;escorts++;
  }
 }
-assert.deepEqual([1,2,3,4,5].map(b.convoyCapacity),[20,35,50,70,90]);
+assert.deepEqual([0,1,2,3,4,5,8,32].map(b.convoyCapacity),[0,20,40,60,80,100,160,640]);
+for(const count of [-1,NaN,Infinity,1.5])assert.equal(b.convoyCapacity(count),0);
 assert.equal(b.convoySupport(32),4);
 for(const n of [1,2,5,20,90])for(const fraction of [0,.75,1])assert.ok(Math.floor(n*fraction)<=n);
-console.log(`PASS: ${economy} mixed-manifest maximum-bonus price scenarios; ${escorts} escort outcomes are monotone; capacity tiers and loss rounding.`);
+console.log(`PASS: ${economy} mixed-manifest maximum-bonus price scenarios; ${escorts} escort outcomes are monotone; member carrying capacity and loss rounding.`);

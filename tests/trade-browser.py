@@ -56,11 +56,40 @@ with sync_playwright() as p:
     page.evaluate("""() => {
       const before=JSON.stringify([game.gold,game.materials,game.player.ready,game.pendingReports,game.marketStock]);dispatchTrade();
       check(JSON.stringify([game.gold,game.materials,game.player.ready,game.pendingReports,game.marketStock])===before,'overloaded outbound atomic');
+      // Capacity follows eligible members, independently of Warehouse upgrades.
+      const helper=structuredClone(game.player);helper.id='cargo-helper';helper.name='Cargo Helper';game.heroes.push(helper);
+      game.tradeParty=['player',helper.id,helper.id,'missing-hero'];renderTrading();
+      check(WL_TRADE.capacity()===40&&!document.getElementById('trade-dispatch').disabled,'second member allows larger outbound shipment; duplicates do not add capacity');
+      check(document.getElementById('market-cost').textContent.includes('/40 units'),'inbound capacity updates with escort selection');
+      const oldWarehouse=game.warehouseLevel,oldLevel=game.buildingLevels.warehouse;
+      game.warehouseLevel=5;game.buildingLevels.warehouse=5;check(WL_TRADE.capacity()===40,'Warehouse upgrades do not add capacity');
+      game.warehouseLevel=oldWarehouse;game.buildingLevels.warehouse=oldLevel;
+      for(const state of ['away','dead','injured']){
+        helper.ready=true;helper.dead=false;helper.training=null;helper.wound=null;
+        if(state==='away')helper.ready=false;if(state==='dead')helper.dead=true;
+        if(state==='injured')helper.wound={tier:3,days:2};
+        renderTrading();check(WL_TRADE.capacity()===20&&document.getElementById('trade-dispatch').disabled,'ineligible member adds no capacity: '+state);
+      }
+      helper.ready=true;helper.dead=false;helper.training={days:2};helper.wound=null;renderTrading();
+      check(WL_TRADE.capacity()===40,'ready heroes may still travel while their training pauses');
+      helper.training=null;game.tradeParty=['player'];
       const goods=WL_TRADE.offers(tradeDestinations().find(r=>r.id===selectedTradeRoute));
       game.day++;renderTrading();
       game.marketCargo[selectedTradeRoute]=Object.fromEntries(goods.map(g=>[g.material,8]));renderTrading();
-      const stock=JSON.stringify([game.gold,game.marketStock,game.player.ready,game.pendingReports]);dispatchInbound();
+      let stock=JSON.stringify([game.gold,game.marketStock,game.player.ready,game.pendingReports]);dispatchInbound();
       check(JSON.stringify([game.gold,game.marketStock,game.player.ready,game.pendingReports])===stock,'overloaded inbound atomic');
+      game.tradeParty=['player',helper.id];renderTrading();
+      check(!document.getElementById('market-buy').disabled,'second member allows larger mixed inbound shipment');
+      helper.ready=false;renderTrading();check(document.getElementById('market-buy').disabled,'inbound capacity shrinks when escort becomes unavailable');
+      dispatchInbound();check(JSON.stringify([game.gold,game.marketStock,game.player.ready,game.pendingReports])===stock,'dispatch revalidates available convoy carriers');
+      helper.ready=true;Math.random=()=>.99;
+      const largeBuy=dispatchInbound();Math.random=random;
+      check(largeBuy.purchasedCargo.reduce((n,c)=>n+c.count,0)===24&&largeBuy.partyIds.length===2,'two members dispatch more than twenty items');
+      check(WL_TRADE.capacity()===0,'departed members cannot carry a second shipment');
+      largeBuy.dueAt=Date.now()-1;applyPendingReports();
+      check(largeBuy.inboundCargo.every(c=>c.count===8),'larger mixed shipment reaches unlimited warehouse');
+      game.day++;WL_TRADE.offers(tradeDestinations().find(r=>r.id===selectedTradeRoute));
+      game.tradeParty=['player'];stock=JSON.stringify([game.gold,game.marketStock,game.player.ready,game.pendingReports]);
       for(const bad of [0,-1,1.5,NaN,999]){
         game.marketCargo[selectedTradeRoute]={[goods[0].material]:bad};dispatchInbound();
         check(JSON.stringify([game.gold,game.marketStock,game.player.ready,game.pendingReports])===stock,'invalid inbound atomic');
@@ -68,10 +97,10 @@ with sync_playwright() as p:
       game.marketCargo[selectedTradeRoute]={[goods[0].material]:2};game.gold=0;dispatchInbound();
       check(!game.pendingReports.length&&game.player.ready,'unaffordable inbound rejected');game.gold=10000;
       // A boundary-sized outbound load succeeds, all goods leave together.
-      game.tradeCargo={'Copper Ore':12,Timber:8};Math.random=()=>.99;
+      const outboundBefore={...game.materials};game.tradeCargo={'Copper Ore':12,Timber:8};Math.random=()=>.99;
       const successful=dispatchTrade();Math.random=random;
       check(successful.cargo.length===2&&successful.outcome==='Success','full capacity outbound');
-      check(game.materials['Copper Ore']===88&&game.materials.Timber===92,'mixed outbound deduction');
+      check(game.materials['Copper Ore']===outboundBefore['Copper Ore']-12&&game.materials.Timber===outboundBefore.Timber-8,'mixed outbound deduction');
       successful.dueAt=Date.now()-1;applyPendingReports();
       // Repeating the same shared roll with more escorts cannot worsen delivery.
       game.gear=[];game.heroes=[];game.staffMembers[0].professionXP.Storekeeping=0;game.tradeRelations={};
@@ -128,9 +157,11 @@ with sync_playwright() as p:
       for(const threshold of [0,20,60,140,260]){game.tradeRelations['booty-bay']={points:threshold};const rel=WL_TRADE.relationship('booty-bay');check(rel.discount<=.04&&rel.stock<=8&&rel.timeCut<=.2&&rel.dangerCut<=2,'bounded relation perks')}
       const booty=routes.find(r=>r.id==='booty-bay');check(v9ConvoyMins(booty)===8,'allied travel discount');
       game.tradeRelations['booty-bay'].points=260;game.tradeParty=['player'];game.player.ready=true;game.player.wound=null;renderTrading();save();
+      game.materials.Timber=100000;renderWarehouse();save();check(game.materials.Timber===100000,'warehouse storage remains unlimited');
     }""")
     page.reload(wait_until='networkidle');page.wait_for_function("typeof WL_TRADE==='object'");page.evaluate("showView('trading')")
     assert page.evaluate("WL_TRADE.relationship('booty-bay').points")==260
+    assert page.evaluate('game.materials.Timber')==100000
     for width in [360,390,768,1280]:
         page.set_viewport_size({'width':width,'height':844})
         assert page.locator('#inbound-market').evaluate('e=>e.scrollWidth<=e.clientWidth+1')

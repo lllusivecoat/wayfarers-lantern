@@ -1,4 +1,4 @@
-"""Opening supply, daily minimums and one-time existing-save top-up."""
+"""Convoy blockers and unstaffed Warehouse dispatch in both directions."""
 from pathlib import Path
 from functools import partial
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
@@ -17,11 +17,12 @@ try:
     page.evaluate("""() => {
       window.check=(ok,msg)=>{if(!ok)throw Error(msg)};
       game.tradeParty=[];game.tradeCargo={};renderTrading();showView('trading');
-      check(document.getElementById('trade-dispatch-reason').textContent.includes('Assign a staff member'),'Warehouse staffing blocker');
+      check(!document.getElementById('trade-dispatch-reason').textContent.includes('Assign a staff member'),'Warehouse staffing optional');
       check(document.getElementById('trade-dispatch-reason').textContent.includes('Select at least one'),'escort blocker');
       check(document.getElementById('trade-dispatch-reason').textContent.includes('goods to sell'),'cargo blocker');
       game.staffMembers.push({id:'convoy-keeper',name:'Keeper',wage:2,buildingUid:null,buildingKey:null,professionXP:{}});
       check(v9AssignStaff('convoy-keeper','warehouse')==='','assign staff');
+      game.staffMembers=game.staffMembers.filter(s=>s.id!=='convoy-keeper');
       game.player.ready=true;game.player.wound=null;game.tradeParty=['player'];game.materials['Copper Ore']=100;game.tradeCargo={'Copper Ore':21};renderTrading();
       check(document.getElementById('trade-dispatch-reason').textContent.includes('21/20'),'capacity blocker');
       game.tradeCargo={'Copper Ore':101};renderTrading();
@@ -31,6 +32,12 @@ try:
       game.tradeCargo={'Copper Ore':2};game.gold=0;renderTrading();
       check(!document.getElementById('trade-dispatch').disabled&&document.getElementById('trade-dispatch-reason').hidden,'valid sale allowed without upfront gold');
       check(document.getElementById('market-buy-reason').textContent.includes('Not enough guild gold'),'purchase treasury blocker');
+      const route=tradeDestinations().find(r=>r.id===selectedTradeRoute);
+      const base=tradeQuote(route,[{material:'Copper Ore',count:100}],1).gross;
+      game.staffMembers.push({id:'bonus-keeper',name:'Expert',wage:2,buildingUid:'warehouse',buildingKey:'warehouse',professionXP:{Storekeeping:275}});staffMigrate(game);
+      check(tradeQuote(route,[{material:'Copper Ore',count:100}],1).gross>base,'staff improves sale price');
+      game.staffMembers=game.staffMembers.filter(s=>s.id!=='bonus-keeper');renderTrading();
+      check(document.getElementById('trade-party-note').textContent.includes('no Storekeeping bonuses'),'unstaffed explanation');
       window.random=Math.random;Math.random=()=>.99;
     }""")
     page.locator('#trade-dispatch').click()
@@ -43,5 +50,5 @@ try:
     page.locator('#market-buy').click()
     page.evaluate("Math.random=random;check(game.pendingReports.at(-1).inboundCargo.length>0,'inbound button dispatches')")
     assert not errors,errors
-    b.close();print('PASS: explicit staffing/escort/cargo/quantity/stock/capacity/treasury blockers; actual outbound and inbound button dispatch; no page errors')
+    b.close();print('PASS: optional Warehouse staff, staff sale bonus, explicit escort/cargo/quantity/stock/capacity/treasury blockers; actual outbound and inbound button dispatch; no page errors')
 finally:server.shutdown()

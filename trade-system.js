@@ -22,7 +22,7 @@
     return {...r,level,name:tiers[level].name,discount:level*.01,stock:level*2,
       timeCut:level*.05,dangerCut:Math.floor(level/2),next:tiers[level+1]};
   }
-  function danger(route){return Math.max(6,route.dc-staffSkillBonus('warehouse')-v9RouteDcCut()-relationship(route.id).dangerCut)}
+  function danger(route){return Math.max(6,route.dc-(buildingStaff('warehouse')?staffSkillBonus('warehouse'):0)-v9RouteDcCut()-relationship(route.id).dangerCut)}
   v9ConvoyMins=function(route){
     const id=typeof route==='string'?route:route?.id;
     const base=minutes[id]||10+8*(V9_LOC[id]?.ring||0);
@@ -67,7 +67,6 @@
   function blockers(route,cargo,heroes,purchase=null){
     const reasons=[];
     if(!route)reasons.push('Choose a discovered town or city.');
-    if(!buildingOperational('warehouse'))reasons.push(!buildingStaff('warehouse')?'Assign a staff member to the Warehouse.':'Finish Warehouse construction or upgrades before dispatch.');
     if(!heroes.length)reasons.push((game.tradeParty||[]).length?'Your selected escorts are unavailable. Choose ready, living heroes without Grievous wounds.':'Select at least one ready convoy member above.');
     if(!cargo.length)reasons.push(purchase?'Select goods to buy and their quantities.':'Select warehouse goods to sell and their quantities.');
     const goods=purchase?.goods;
@@ -95,7 +94,7 @@
     return {cargo,goods,heroes,valid,goodsCost,escortPay,total:goodsCost+escortPay};
   }
   tradeQuote=function(route,cargo,partySize){
-    const rate=route.rate*(1+WL_STAFF.service('warehouse').sale)*v9TradeMul();
+    const rate=route.rate*(1+(buildingStaff('warehouse')?WL_STAFF.service('warehouse').sale:0))*v9TradeMul();
     const gross=Math.floor(value(cargo)*rate),memberCut=WL_BALANCE.convoyPay(gross,partySize);
     return {rate,gross,memberCut,guildGold:gross-memberCut};
   };
@@ -106,7 +105,7 @@
     showBlockers(button,blockers(route,cargo,heroes));
     if(root)root.textContent=!route?'Choose a discovered market.':!valid?'Select cargo with whole quantities within warehouse stock.':
       `${manifest(cargo)} · Cargo ${units}/${capacity()} units${units>capacity()?' — over capacity':''} · Full-delivery estimate: ${tradeQuote(route,cargo,heroes.length).gross} gp gross, ${tradeQuote(route,cargo,heroes.length).memberCut} gp escort pay, ${tradeQuote(route,cargo,heroes.length).guildGold} gp to treasury · Travel ${v9ConvoyLabel(route)} · Danger DC ${danger(route)}. An ambush may lose cargo; partial delivery keeps 75% of each line, rounded down.`;
-    const note=document.getElementById('trade-party-note');if(note&&route)note.textContent=`${heroes.length} selected · Convoy capacity ${capacity()} items (20 per member) · ${odds(heroes,route)}`;
+    const note=document.getElementById('trade-party-note');if(note&&route)note.textContent=`${heroes.length} selected · Convoy capacity ${capacity()} items (20 per member) · ${odds(heroes,route)} ${buildingStaff('warehouse')?'Warehouse staff bonuses applied.':'Warehouse unstaffed: no Storekeeping bonuses.'}`;
   };
   function previewInbound(route){
     const q=inboundQuote(route),units=load(q.cargo),root=document.getElementById('market-cost');

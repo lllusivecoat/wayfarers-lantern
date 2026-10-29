@@ -132,7 +132,7 @@
     root.innerHTML=`<h3>Inbound market convoy · ${tbwEsc(route.name)}</h3>
       <div class="trade-relationship"><strong>${rel.name} · ${rel.points}${rel.next?` / ${rel.next.points}`:' / 260'} relationship</strong>
       <p>${rel.level}% purchase discount · +${rel.stock} stock per good · ${Math.round(rel.timeCut*100)}% faster travel · −${rel.dangerCut} danger.</p>
-      <p>Earn 1 relationship point per 10 gp of delivered goods' base value, up to 10 points here per game day. Purchases and sales both count on return.</p>
+      <p>Earn 1 relationship point per 10 gp of delivered goods' base value, up to 10 points here per game day. Purchases and sales both count on return. Trading does not grant guild reputation.</p>
       <details><summary>Relationship levels and bonuses</summary><ul>${tiers.map((t,i)=>`<li>${t.name} · ${t.points} points: ${i}% discount, +${i*2} stock, ${i*5}% faster, −${Math.floor(i/2)} danger.</li>`).join('')}</ul></details></div>
       <p>Select several goods for one shipment. Your convoy can carry ${capacity()} items (20 per selected member). Select escorts above; goods and escort pay are charged at dispatch.</p>
       <details><summary>Cargo limits, stock and ambushes</summary><p>Warehouse storage is unlimited. Each ready convoy member carries 20 items: 1 member carries 20, 2 carry 40, and 5 carry 100. Additional escorts also improve safety, up to +4 support. Stock refreshes each game day. An ambush may lose cargo: partial delivery keeps 75% of each line, rounded down; failure loses the entire shipment.</p></details>
@@ -169,7 +169,7 @@
     game.tradeCargo={};
     return queue(route,heroes,result,{title:`Trade convoy to ${route.name}`,suppliesUsed,cargo,deliveredCargo:delivered,
       relationshipValue:value(delivered),payout:quote.guildGold,memberCut:quote.memberCut,
-      rep:quote.gross?Math.max(1,Math.floor(quote.gross/30*route.repRate)):0,
+      rep:0,
       summary:`Committed cargo: ${manifest(cargo)}. Delivered: ${manifest(delivered)}. ${quote.gross} gp gross; ${quote.guildGold} gp to treasury and ${quote.memberCut} gp escort pay. ${result.description}`});
   };
   window.dispatchInbound=function(){

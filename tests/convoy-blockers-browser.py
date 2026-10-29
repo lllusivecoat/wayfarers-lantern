@@ -43,12 +43,12 @@ try:
     page.locator('#trade-dispatch').click()
     page.evaluate("""() => {
       Math.random=random;const r=game.pendingReports.at(-1);
-      check(r.kind==='trade'&&r.cargo[0].count===2,'outbound button dispatches');r.dueAt=Date.now()-1;applyPendingReports();
+      check(r.kind==='trade'&&r.cargo[0].count===2,'outbound button dispatches');check(r.rep===0,'no new trade reputation');const reputation=game.reputation;r.rep=99;r.relationshipValue=100;r.dueAt=Date.now()-1;applyPendingReports();check(game.reputation===reputation&&r.rep===0,'legacy pending trade reputation ignored');check(r.relationshipPoints>0,'market relationship still earned');
       game.gold=1000;game.player.ready=true;game.player.wound=null;game.tradeParty=['player'];renderTrading();
       check(!document.getElementById('market-buy').disabled&&document.getElementById('market-buy-reason').hidden,'purchase unblocked');Math.random=()=>.99;
     }""")
     page.locator('#market-buy').click()
-    page.evaluate("Math.random=random;check(game.pendingReports.at(-1).inboundCargo.length>0,'inbound button dispatches')")
+    page.evaluate("Math.random=random;const r=game.pendingReports.at(-1);check(r.inboundCargo.length>0,'inbound button dispatches');const rep=game.reputation;r.dueAt=Date.now()-1;applyPendingReports();check(game.reputation===rep,'inbound earns no reputation')")
     assert not errors,errors
     b.close();print('PASS: optional Warehouse staff, staff sale bonus, explicit escort/cargo/quantity/stock/capacity/treasury blockers; actual outbound and inbound button dispatch; no page errors')
 finally:server.shutdown()

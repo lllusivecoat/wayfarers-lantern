@@ -1,0 +1,31 @@
+/* Reusable utility tools: one matching tool supports the entire expedition. */
+(() => {
+ const jobs={Mining:'Pickaxe',Fishing:'Fishing Rod',Herbalism:'Herbalist’s Sickle',Skinning:'Skinning Knife',Woodcutting:'Woodcutting Axe',Tailoring:'Tailor’s Shears',Jewelcrafting:'Gemcutting Kit',Hunting:'Hunting Kit'};
+ const tiers=['Basic','Sturdy','Fine','Superior','Masterwork'],skills=[0,3,5,7,9];
+ if(!gatherProfessions.includes('Hunting'))gatherProfessions.push('Hunting');
+ const gather=gatheringQuest;gatheringQuest=function(profession){if(profession!=='Hunting')return gather(profession);
+ const rank=v9PermRank('gather-hunting',0),meat=rank>=7?'Primal Meat':rank>=6?'Wild Game Meat':rank>=5?'Rich Game Meat':rank>=3?'Prime Meat':'Meat';
+ return {id:'gather-hunting',templateKey:'gather-hunting',persistent:true,kind:'Gathering',jobType:'Meat hunting expedition',profession:'Hunting',title:'Meat Hunting Expedition',desc:'Hunt game for Kitchen ingredients. F: Meat; C: Prime Meat; A: Rich Game Meat; S: Wild Game Meat; SS+: Primal Meat. Higher ranks also bring home lower grades. Party size increases yield.',ability:'dex',rank,dc:10+rank*2,reward:0,rep:0,minParty:1+Math.floor(rank/2),icon:'♧',resource:meat,resourceQtyBase:2+rank*2,expiresDay:null};
+ };
+ function recipes(){return Object.entries(jobs).flatMap(([profession,name])=>tiers.map((tier,t)=>({id:profession+'-'+t,profession,name:tier+' '+name,tier:t,skill:skills[t],cut:t+1,requirements:{[['Copper Ore','Silver Ore','Mithril Ore','Thorium Ore','Eternium Ore'][t]]:2+t,[['Timber','Seasoned Timber','Enchanted Timber','Ancient Timber','Ancient Timber'][t]]:1+t}})))}
+ window.gatheringToolRecipes=recipes;
+ window.gatheringToolFor=function(q,party){if(q?.kind!=='Gathering')return null;return party.flatMap(h=>['utility1','utility2','utility3'].map(slot=>game.gear.find(g=>g.id===h.equipment?.[slot]&&g.owner===h.id&&g.gatherTool===q.profession&&g.durability>0))).filter(Boolean).sort((a,b)=>b.toolCut-a.toolCut)[0]||null};
+ window.gatheringToolReduction=(q,party)=>gatheringToolFor(q,party)?.toolCut||0;
+ window.craftGatheringTool=function(id){const r=recipes().find(r=>r.id===id);if(!r||!buildingOperational('workshop')||staffProfessionLevel(buildingStaff('workshop'))<r.skill||Object.entries(r.requirements).some(([k,n])=>(game.materials[k]||0)<n))return false;
+ for(const [k,n] of Object.entries(r.requirements))game.materials[k]-=n;
+ game.gatherToolSequence=(Number(game.gatherToolSequence)||0)+1;
+ game.gear.push({id:'gather-tool-'+game.gatherToolSequence,name:r.name,kind:'Utility',slot:'Utility',gatherTool:r.profession,toolCut:r.cut,stat:'Gathering tool',bonus:0,price:0,madeByPlayer:true,durability:30+10*r.tier,maxDurability:30+10*r.tier,effectText:`${r.profession} expedition DC −${r.cut}. Strongest matching tool only; loses 1 durability per use.`,owner:null});practiceStaff('workshop');render();save();return true;
+ };
+ const queue=queueQuestReport;queueQuestReport=function(q,ids){const party=teamMembers(ids),tool=gatheringToolFor(q,party),before=game.pendingReports.length,result=queue.apply(this,arguments);if(game.pendingReports.length>before){const r=game.pendingReports.at(-1);if(tool){tool.durability=Math.max(0,tool.durability-1);r.toolReduction=tool.toolCut;const text=` Gathering tool: ${tool.name}, DC −${tool.toolCut} (one tool applied).`;r.summary+=text;r.extendedSummary=(r.extendedSummary||'')+text}
+ if(q.profession==='Hunting'&&r.resourceQty>0){const meat=['Meat','Prime Meat','Rich Game Meat','Wild Game Meat','Primal Meat'],gates=[0,3,5,6,7];meat.forEach((m,i)=>{if(q.rank>=gates[i]&&m!==q.resource)r.lootDrops.push({material:m,count:Math.max(1,Math.ceil(r.resourceQty/4)),foodDrop:true})})}}return result};
+ let selected='Mining-0';
+ function panel(){let root=document.getElementById('gathering-tools');if(!root){root=document.createElement('article');root.id='gathering-tools';root.className='card';document.getElementById('crafting').append(root)}
+ const r=recipes().find(r=>r.id===selected),blocked=!buildingOperational('workshop')?'Requires staffed Workshop':staffProfessionLevel(buildingStaff('workshop'))<r.skill?'Requires Blacksmithing '+r.skill:Object.entries(r.requirements).some(([k,n])=>(game.materials[k]||0)<n)?'Not enough materials':'';
+ root.innerHTML=`<h3>Gathering tools</h3><p>Reusable utility equipment for any class. Equip before departure. Only the strongest matching tool in the party reduces DC, up to −5; tools do not stack. Each use costs 1 durability. Tools occupy one of the three utility slots, so choose between a tool and a third provision.</p><label>Tool recipe<select>${recipes().map(x=>`<option value="${x.id}" ${x.id===selected?'selected':''}>${x.name} · ${x.profession} DC −${x.cut}</option>`).join('')}</select></label><p>Blacksmithing ${r.skill}. ${Object.entries(r.requirements).map(([k,n])=>`${n} ${k} (${game.materials[k]||0} stored)`).join(' + ')}. Materials only; free to equip.</p><button class="btn secondary" ${blocked?'disabled':''}>${blocked||'Craft '+r.name}</button>`;
+ root.querySelector('select').onchange=e=>{selected=e.target.value;panel()};root.querySelector('button').onclick=()=>craftGatheringTool(selected);
+ }
+ const equipment=renderHeroEquipment;renderHeroEquipment=function(h){const box=document.createElement('div');box.innerHTML=equipment(h);box.querySelectorAll('option').forEach(o=>{const g=game.gear.find(g=>g.id===o.value);if(g?.gatherTool)o.textContent=`${g.name} · ${g.gatherTool} DC −${g.toolCut} · ${g.durability}/${g.maxDurability} durability`});return box.innerHTML};
+ const warehouse=renderWarehouse;renderWarehouse=function(){const r=warehouse.apply(this,arguments);panel();return r};
+ const details=renderQuestDetails;renderQuestDetails=function(){const r=details.apply(this,arguments),q=questById(chosenQuest);if(q?.kind==='Gathering'){document.getElementById('gather-tool-preview')?.remove();const p=document.createElement('p');p.id='gather-tool-preview';p.textContent=`Matching gathering tool: DC −${gatheringToolReduction(q,teamMembers().filter(h=>h.ready&&heroEligible(h,q)))}. Only one tool applies; broken or unrelated tools give no benefit.`;document.getElementById('quest-detail-content').prepend(p)}return r};
+ render();
+})();

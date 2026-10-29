@@ -33,7 +33,7 @@ try:
     game.heroes=Array.from({length:8},(_,i)=>({...structuredClone(game.player),id:'dungeon-'+i,name:'Tester '+i,rank:9,ready:true,dead:false,wound:null,equipment:{},gear:null}));
     const ids=game.heroes.map(h=>h.id),oldTier=perkTier,random=Math.random;Math.random=()=>.99;
     for(const d of WL_DUNGEONS.all){
-      const q=v9WorldQuest(V9_LOC[d.id]);
+      const q={...v9WorldQuest(V9_LOC[d.id]),stageRun:'isolated-final-stage',stageIndex:2,stageCount:3};
       for(const tier of [0,1,2,3]){
         perkTier=()=>tier;const n=game.pendingReports.length;queueQuestReport(q,ids,0,'Testing');check(game.pendingReports.length===n+1,'queued');const r=game.pendingReports.at(-1),drop=r.lootDrops.find(x=>x.signatureDrop);
         check(tier<2?!drop:drop?.material===d.material&&drop.count===(tier===3?3:2),'outcome signature quantity');
@@ -51,7 +51,7 @@ try:
     document.getElementById('gear-crafted-modal').classList.remove('open');
     game.world.discovered=[...new Set([...discoveries,'sunken-temple','well-of-eternity'])];game.materials['Old Custom Material']=17;save();render();showView('permanent-quests');
   }""")
-  assert page.locator('#permanent-quests .v9-rank-pick').count()==7 # gathering pickers, no dungeon selector
+  assert page.locator('#permanent-quests .v9-rank-pick').count()==page.evaluate('gatherProfessions.length') # gathering pickers, no dungeon selector
   page.reload(wait_until='networkidle')
   assert page.evaluate("game.world.discovered.includes('sunken-temple')&&game.materials['Old Custom Material']===17")
   assert page.evaluate("v9WorldQuest(V9_LOC['well-of-eternity']).rank===9")

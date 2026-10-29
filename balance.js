@@ -19,7 +19,7 @@ window.WL_BALANCE=Object.freeze({
     return 0;
   },
   questDc:q=>Number(q.dc)+window.WL_BALANCE.highRankDcBonus(q)+window.WL_BALANCE.worldDcAdjustment(q),
-  encounters:(q,list)=>q&&!q.legacyEncounter&&q.kind==='World Raid'&&/Naxxramas/.test(q.title||'')&&q.rank>=7?list.map((e,i)=>({...e,dc:e.dc+(i===list.length-1?1:0)})):list,
+  encounters:(q,list)=>q&&!q.legacyEncounter&&q.kind==='World Raid'&&(!q.stageRun||q.stageIndex===q.stageCount-1)&&/Naxxramas/.test(q.title||'')&&q.rank>=7?list.map((e,i)=>({...e,dc:e.dc+(i===list.length-1?1:0)})):list,
   questTimeCut:(skill,building=1)=>Math.min(.8,[0,.1,.25,.4,.55,.8][Math.max(1,Math.min(5,building))]+.02*Math.max(0,Math.min(10,skill))),
   highRankDcBonus:q=>({Dungeon:[0,0,0,0,0,1,3,4,5,7],Raid:[0,0,0,0,0,2,4,5,7,9],'World Boss':[0,0,0,0,0,1,3,4,5,7],'World Raid':[0,0,0,0,0,2,4,5,7,9]}[q.kind]?.[Math.max(0,Math.min(9,Number(q.rank)||0))]||0),
   expeditionCost:(kind,rank,party)=>({Gathering:2,Exploration:4,'World Dungeon':8,'World Boss':10,'World Raid':16}[kind]||4)+2*Math.max(0,Math.min(9,Number(rank)||0))+Math.max(1,Math.floor(Number(party)||1)),

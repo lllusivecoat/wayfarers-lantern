@@ -8,8 +8,8 @@
 - Exploration rank must meet the location rank. Reputation gates by rank: 0 / 50 / 100 / 200 / 400 / 700 / 1000 / 1400 / 1900 / 2500. Existing frontier discovery rules still apply.
 - Eight heroes recommended; existing role checks, short-party penalties and hero eligibility remain.
 - Base DC is 12 + 2 × rank, from 12 to 30. Existing World Dungeon DC adjustments and individual encounter offsets still apply. No extra ring-based difficulty is added.
-- Existing organizing costs, rank-based travel duration, Waystation reduction and once-per-game-day dispatch limit remain.
-- Each location has one exclusive signature material: 2 on Success, 3 on Exceptional Success, none on Partial Success or Failure. Standard non-exclusive combat crafting drops remain separate.
+- Existing organizing costs, rank-based travel duration, Waystation reduction and daily full-clear limit remain; failed staged runs may be attempted again from stage 1.
+- Each location has one exclusive signature material: 2 on final-stage Success, 3 on final-stage Exceptional Success, none before the final clear. Standard non-exclusive combat crafting drops remain separate.
 - Rewards are sealed at dispatch and enter storage on return. Previously queued reports retain their original rewards.
 
 ## Locations
@@ -66,3 +66,11 @@ Sturdy–Relic require one of each selected signature ingredient before staff di
 Masterwork Field Kits additionally require 1 Echo of Lost Time per three-use batch. Their protection remains capped at 20%. Permanent-stat elixirs additionally require 20 Eternal Wellspring Essence, 10 Darkmaster’s Essence and 10 Nether Prison Crystal. Existing endgame ingredients and the one-point-total-per-hero limit remain; permanent elixirs receive no ingredient discounts.
 
 Existing gear, stored consumables and materials are retained. This patch makes newly crafted higher tiers require dungeon farming. Gathering remains necessary for their base ingredients. No additional combat bonus stacking was introduced. Farming pace and mixed-role party difficulty still warrant player feedback after release.
+
+## Staged expedition update
+
+World Bosses use 2 stages, World Dungeons 3, and World Raids 5. Ordinary dungeons and daily bosses use a single stage. Each stage resolves independently; Partial Success or Failure ends the expedition. Earlier cleared-stage rewards are kept, and another attempt starts at stage 1.
+
+The original total duration is divided exactly among stages. The organizing fee and equipped ration/potion/kit use are charged once per run. Supply bonuses persist between stages. Heroes remain away until completion or failure; a casualty or Grievous wound prevents continuation. Existing in-flight reports retain their original rules.
+
+XP, payable gold and common reward budgets receive a 15% increase and are divided among stages using integer shares. Guild-funded expeditions still pay no client gold. Existing rare rewards, tiered crafting drops and exclusive signature materials remain behind the final stage. World Dungeon legacy relics also remain final-stage rewards. Parties face independent stage checks instead of averaging the entire dungeon/raid into one result; full clears are consequently harder. Each stage can inflict wounds and equipment wear. Live playtesting is still needed to tune this added risk.

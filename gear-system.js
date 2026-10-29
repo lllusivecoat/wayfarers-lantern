@@ -131,7 +131,7 @@
   };
   const previousQueueQuestReport=queueQuestReport;
   window.queueQuestReport=function(q,partyIds,storyBonus,storySummary,dueAt){
-    previousQueueQuestReport.apply(this,arguments);const r=game.pendingReports[game.pendingReports.length-1];if(!r||r.questKind==='Gathering'||!['Success','Exceptional Success'].includes(r.outcome))return;
+    previousQueueQuestReport.apply(this,arguments);const r=game.pendingReports[game.pendingReports.length-1];if(!r||q.stageRun&&q.stageIndex<q.stageCount-1||r.questKind==='Gathering'||!['Success','Exceptional Success'].includes(r.outcome))return;
     const band=Math.max(0,Math.min(4,Math.floor((Number(q.rank)||0)/2))),pools=[['Copper Ore','Light Leather','Timber','Wool Cloth','Raw Gem','Peacebloom'],['Silver Ore','Medium Leather','Seasoned Timber','Silk Cloth','Flawless Gem','Kingsblood'],['Mithril Ore','Heavy Leather','Enchanted Timber','Arcane Thread','Arcane Crystal','Kingsblood'],['Thorium Ore','Thick Leather','Ancient Timber','Runecloth','Arcane Crystal','Kingsblood'],['Eternium Ore','Rugged Leather','Ancient Timber','Runecloth','Arcane Crystal','Kingsblood']];
     const combatLoot=['Dungeon','World Dungeon','Raid','World Boss','World Raid'].includes(q.kind),rank=Number(q.rank)||0;
     if(combatLoot||rank>=2){const pool=pools[band],pick=pool[Math.floor(Math.random()*pool.length)],n=r.outcome==='Exceptional Success'?2:1;r.lootDrops=r.lootDrops||[];r.lootDrops.push({material:pick,count:n,craftingDrop:true})}

@@ -380,13 +380,16 @@ label.pick.v9pick>input{margin:3px 0 0!important;justify-self:start}
 }
 
 #staff-roster{display:grid;gap:16px}
-#staff-roster>.card{display:grid;gap:16px}
-#staff-roster>.card>p{margin:0}
-#staff-roster>.card>label{display:grid;gap:10px}
-#staff-roster>.card>label>select{min-height:44px;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--text)}
-#staff-roster>.card>details{padding:12px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-#staff-roster>.card>details>summary{min-height:32px;cursor:pointer}
-#staff-roster>.card>button{justify-self:start;min-height:44px;margin-top:4px}
+#staff-roster>.staff-member>summary{cursor:pointer;min-height:44px;overflow-wrap:anywhere}
+#staff-roster>.staff-member>summary>strong{font-size:1.1rem}
+#staff-roster>.staff-member>summary>span{display:block;margin-top:8px;line-height:1.5}
+#staff-roster .staff-member-body{display:grid;gap:16px;margin-top:20px;min-width:0}
+#staff-roster .staff-member-body>p{margin:0}
+#staff-roster .staff-member-body>label{display:grid;gap:10px}
+#staff-roster .staff-member-body>label>select{min-height:44px;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--text)}
+#staff-roster .staff-member-body>details{padding:12px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+#staff-roster .staff-member-body>details>summary{min-height:32px;cursor:pointer}
+#staff-roster .staff-member-body>button{justify-self:start;min-height:44px;margin-top:4px}
 #staff select{width:100%;max-width:100%;min-width:0}#staff .building>div{min-width:0}
 #staff .staff-vacancy{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start;gap:12px}
 #staff .staff-vacancy-controls{display:grid;gap:8px}

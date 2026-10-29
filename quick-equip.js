@@ -2,7 +2,7 @@
 (() => {
   let selected='player',opener=null;
   const modal=document.createElement('div');modal.id='quick-equip-modal';modal.className='modal';
-  modal.innerHTML='<div class="modalbox" role="dialog" aria-modal="true" aria-labelledby="quick-equip-title"><div class="row"><h2 id="quick-equip-title">Equip heroes</h2><button class="btn ghost" id="quick-equip-close">Close</button></div><label>Hero<select id="quick-equip-hero"></select></label><p id="quick-equip-status" role="status"></p><div id="quick-equip-slots"></div></div>';
+  modal.innerHTML='<div class="modalbox" role="dialog" aria-modal="true" aria-labelledby="quick-equip-title"><div class="row"><h2 id="quick-equip-title">Equip heroes</h2><button class="btn ghost" id="quick-equip-close">Close</button></div><button type="button" class="btn secondary" id="quick-equip-provisions">Equip all provisions</button><p class="small muted">Highest rank first, then highest level. Fills empty utility slots with the strongest available ration, potion and kit; keeps existing equipment. Away heroes are skipped.</p><p id="quick-equip-result" role="status"></p><label>Hero<select id="quick-equip-hero"></select></label><p id="quick-equip-status" role="status"></p><div id="quick-equip-slots"></div></div>';
   document.body.appendChild(modal);
   function refresh(){
     if(!modal.classList.contains('open'))return;
@@ -15,6 +15,25 @@
     const slots=modal.querySelector('#quick-equip-slots');slots.innerHTML=renderHeroEquipment(h);
     slots.querySelectorAll('select').forEach(s=>{if(locked)s.disabled=true});
   }
+  window.quickEquipAllProvisions=function(){
+    const heroes=[game.player,...game.heroes].filter(h=>h&&!h.dead&&h.ready&&!hasActiveQuestFor(h.id)).sort((a,b)=>(b.rank||0)-(a.rank||0)||heroLevel(b)-heroLevel(a));
+    let uses=0,people=0;
+    const category=p=>p.source==='kit'?'kit':p.ration||/rations/i.test(p.name||'')?'ration':'potion';
+    for(const h of heroes){let added=0;const eq=ensureHeroEquipment(h);
+      for(const kind of ['ration','potion','kit']){
+        if(Object.values(h.utilitySupplies||{}).some(p=>p&&category(p)===kind))continue;
+        const slot=['utility1','utility2','utility3'].find(k=>!eq[k]&&!h.utilitySupplies?.[k]);if(!slot)break;
+        const source=kind==='kit'?'kit':kind==='potion'?'alchemy':'food';
+        const stock=source==='kit'?game.fieldKits:source==='alchemy'?game.alchemyPotions:game.consumables;
+        const candidates=(stock||[]).filter(x=>x.uses>0).map(item=>({item,info:source==='kit'?fieldKitRecipes().find(r=>r.id===item.recipe):source==='alchemy'?alchemyRecipes().find(r=>r.id===item.recipe):item})).filter(x=>kind==='kit'?x.info?.protection:kind==='potion'?x.info?.bonus:x.item.ration||/rations/i.test(x.item.name||''));
+        candidates.sort((a,b)=>(b.info?.protection||b.info?.bonus||0)-(a.info?.protection||a.info?.bonus||0)||(b.info?.heal||0)-(a.info?.heal||0)||(b.info?.repair||0)-(a.info?.repair||0));
+        if(candidates[0]&&equipUtilitySupply(h.id,slot,`supply:${source}:${candidates[0].item.id}`)){uses++;added++}
+      }if(added)people++;
+    }
+    modal.querySelector('#quick-equip-result').textContent=`Equipped ${uses} provision uses across ${people} heroes. Existing supplies kept; empty categories remain when stock or slots run out.`;
+    return {uses,heroes:people};
+  };
+  modal.querySelector('#quick-equip-provisions').onclick=quickEquipAllProvisions;
   function close(){modal.classList.remove('open');if(opener?.isConnected)opener.focus()}
   window.openQuickEquip=function(id='player'){
     const h=purse(id);if(!h||h.dead)return;

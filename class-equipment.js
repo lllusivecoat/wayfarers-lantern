@@ -13,6 +13,7 @@
   Priest:[0,'dagger mace staff wand'],Mage:[0,'sword dagger staff wand'],Warlock:[0,'sword dagger staff wand']
  };
  function family(g){
+  if(g.weaponFamily)return g.weaponFamily;
   if(g.family)return g.family;
   const recipe=recipeFamilies.get(g.name);if(recipe)return recipe;
   const text=String(g.name||'').toLowerCase(),group=gearGroup(g);
@@ -28,19 +29,28 @@
  window.canHeroEquip=function(h,g){
   if(!h||!g)return false;const r=rules[h.className];if(!r)return false;const group=gearGroup(g),f=family(g);
   if(group==='armor')return armor.indexOf(f)>=0&&armor.indexOf(f)<=r[0];
-  if(group==='weapon'||f==='shield')return r[1].split(' ').includes(f==='pistol'?'gun':f);
-  if(group==='offhand')return !['Hunter','Death Knight','Demon Hunter'].includes(h.className);
+  if(group==='weapon'){const p=WL_SPEC_WEAPONS.forHero(h);return !!p&&f===p.family&&(!g.signatureKey||g.signatureKey===p.key)}
+  if(group==='offhand'){const p=WL_SPEC_WEAPONS.forHero(h);return !!p&&(p.offhand==='shield'?f==='shield':p.offhand==='focus'?['focus','holdable'].includes(f):p.offhand==='tome'?['tome','holdable'].includes(f):false)}
   return true;
  };
  window.canHeroEquipInSlot=function(h,g,slot){
   if(!canHeroEquip(h,g))return false;
   const def=equipmentSlotDefs.find(s=>s.key===slot);if(!def)return false;
-  if(slot==='offhand'&&gearGroup(g)==='weapon')return !twoHand(g)&&(h.className==='Demon Hunter'&&family(g)==='warglaive'||['Warrior','Rogue','Hunter'].includes(h.className)&&['dagger','pistol'].includes(family(g)));
+  if(slot==='offhand'&&gearGroup(g)==='weapon')return WL_SPEC_WEAPONS.forHero(h)?.offhand==='dual';
   return gearGroup(g)===def.group;
  };
+ function bind(h,g){
+  const p=WL_SPEC_WEAPONS.forHero(h);
+  if(!p||!g||g.signatureKey||gearGroup(g)!=='weapon'||family(g)!==p.family)return;
+  g.originalName=g.originalName||g.name;g.originalStat=g.originalStat||g.stat;
+  Object.assign(g,{signatureKey:p.key,hands:p.hands,stat:p.stat,name:`${g.tierName||'Legacy'} ${p.name}`});
+  g.effectText=`+${gearReadinessBonus(g)} readiness on ${p.stat} checks while durable. Total gear readiness is capped at +6.`;
+ }
+ window.weaponStatForHero=function(g,h){const p=WL_SPEC_WEAPONS.forHero(h);return p&&['weapon','offhand'].includes(gearGroup(g))&&canHeroEquip(h,g)?p.stat:g.stat};
  function clean(h){
   if(!h||h.dead||!h.ready||hasActiveQuestFor(h.id))return;
-  const eq=h.equipment||{},weapon=game.gear.find(g=>g.id===(eq.weapon||h.gear));
+  const eq=h.equipment||{};for(const id of Object.values(eq)){const g=game.gear.find(g=>g.id===id);if(g)bind(h,g)}
+  const weapon=game.gear.find(g=>g.id===(eq.weapon||h.gear));
   for(const g of game.gear.filter(g=>g.owner===h.id||g.id===h.gear||Object.values(eq).includes(g.id))){
    if(!canHeroEquip(h,g)||Object.entries(eq).some(([slot,id])=>id===g.id&&(!canHeroEquipInSlot(h,g,slot)||slot==='offhand'&&twoHand(weapon)))){
     Object.keys(eq).forEach(k=>{if(eq[k]===g.id)eq[k]=null});if(h.gear===g.id)h.gear=null;if(g.owner===h.id)g.owner=null;
@@ -53,12 +63,13 @@
   if(g&&!canHeroEquipInSlot(h,g,slot)){alert(`${h.className} cannot equip ${family(g)} equipment.`);return false}
   const eq=ensureHeroEquipment(h),weapon=game.gear.find(g=>g.id===eq.weapon);
   if(g&&slot==='offhand'&&twoHand(weapon)){alert('Unequip the two-handed weapon before equipping an offhand.');return false}
-  const result=oldEquip.apply(this,arguments);clean(h);if(viewingHeroId===id)renderHeroStats();return result;
+  const result=oldEquip.apply(this,arguments);if(g&&g.owner===id)bind(h,g);clean(h);if(viewingHeroId===id)renderHeroStats();return result;
  };
  const oldEquipment=renderHeroEquipment;renderHeroEquipment=function(h){
   const box=document.createElement('div');box.innerHTML=oldEquipment.apply(this,arguments);
   box.querySelectorAll('option').forEach(o=>{const g=game.gear.find(g=>g.id===o.value);if(g&&!canHeroEquip(h,g))o.remove()});
-  return box.innerHTML+`<p class="small muted">${tbwEsc(h.className)} proficiencies: ${armor.slice(0,(rules[h.className]?.[0]||0)+1).join(', ')} armor; ${rules[h.className]?.[1]||'no known weapons'}. Daggers and pistols can use either hand for Warriors, Rogues and Hunters. Demon Hunters can use warglaives in either hand. Rifles remain two-handed. Two-handed weapons use the offhand space and double their listed stat contribution; total gear readiness remains capped at +6. Incompatible equipment returns to guild storage.</p>`;
+  const p=WL_SPEC_WEAPONS.forHero(h);
+  return box.innerHTML+`<p class="small muted">${p?`${tbwEsc(h.className)} · ${tbwEsc(h.spec)}: ${tbwEsc(p.name)} (+${p.stat}). ${p.offhand==='dual'?'Equip two copies, one per hand.':p.offhand==='none'?'Two-handed weapon; offhand must be empty.':'Use a '+p.offhand+' in the offhand.'}`:'Choose a valid specialization.'} Total gear readiness remains capped at +6. Incompatible gear returns to storage.</p>`;
  };
  const oldBase=readinessBase;readinessBase=function(h){clean(h);return oldBase.apply(this,arguments)};
  const oldSave=save;save=function(){[game.player,...game.heroes].forEach(clean);return oldSave.apply(this,arguments)};

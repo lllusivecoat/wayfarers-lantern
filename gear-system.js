@@ -65,6 +65,7 @@
     if(item.mat==='gemArcane'||item.mat==='herbGem'){const m=item.mat==='herbGem'?['Raw Gem','Raw Gem','Flawless Gem','Flawless Gem','Arcane Crystal','Arcane Crystal','Arcane Crystal','Arcane Crystal'][t]:['Peacebloom','Peacebloom','Kingsblood','Kingsblood','Kingsblood','Kingsblood','Arcane Crystal','Arcane Crystal'][t];req[m]=(req[m]||0)+1}
     const extra=extraByTier[t];if(extra)req[extra]=t>=6?2:1;
     if(t===7&&(item.weaponFamily||item.family)==='sword')req['Heritage Ore']=1;
+    Object.assign(req,WL_DUNGEONS.gearIngredients(item));
     return Object.fromEntries(Object.entries(req).map(([name,n])=>[name,Math.max(1,Math.ceil(n*(1-WL_STAFF.service('workshop').materialDiscount)))]));
   }
   function craftInfo(item){
@@ -79,6 +80,7 @@
   function selectedRecipe(){return catalog.find(x=>x.category===selectedCategory&&x.family===selectedFamily&&x.tier===Number(selectedTier))||catalog.find(x=>x.category===selectedCategory)||catalog[0]}
   function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
   function sourceFor(name){
+    if(WL_DUNGEONS.source(name))return 'Exclusive World Dungeon: '+WL_DUNGEONS.source(name);
     if(name==='Heritage Ore')return 'Renown-rank contract success only';
     if(/Ore/.test(name))return 'Mining missions · rank-appropriate dungeon and raid caches';
     if(/Crystal|Gem/.test(name))return 'Mining or Jewelcrafting missions · rank-appropriate dungeon and raid caches';

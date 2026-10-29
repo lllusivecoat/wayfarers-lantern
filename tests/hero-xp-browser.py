@@ -11,10 +11,11 @@ try:
   b=p.chromium.launch(executable_path='/usr/bin/chromium',args=['--no-sandbox']);page=b.new_page(viewport={'width':390,'height':844});errors=[];page.on('pageerror',lambda e:errors.append(str(e)));page.on('dialog',lambda d:d.accept());page.goto(f'http://127.0.0.1:{s.server_port}',wait_until='networkidle')
   page.evaluate('''() => {
  const check=(ok,msg)=>{if(!ok)throw Error(msg)};
+ for(let level=1;level<20;level++)check(growthNeeded(level)===250+25*(level<=4?4:level<=9?6:8+2*(level-10)),'threshold '+level);check(growthNeeded(20)===0,'cap threshold');
  check(staffCap()===plotCap()+1,'staff plus warehouse');
  for(const p of WL_SPEC_WEAPONS.all)check(p.hands===2&&p.offhand==='none'||p.hands===1&&['dual','shield','focus'].includes(p.offhand),'complete hands '+p.key);
  const old={id:'old',level:5,growth:3};migrateProgression(old);check(old.level===5&&old.growth===75,'old progress fraction preserved');migrateProgression(old);check(old.growth===75,'idempotent migration');
- const h={id:'xp-test',level:1,growth:75,heroXPVersion:1};check(addGrowthBase(h,250)===3&&h.level===4&&h.growth===25,'multiple levels and carryover');h.level=19;h.growth=0;addGrowthBase(h,10000);check(h.level===20&&h.growth===0,'level cap');
+ const h={id:'xp-test',level:1,growth:75,heroXPVersion:1};check(addGrowthBase(h,1000)===3&&h.level===4&&h.growth===25,'multiple levels and carryover');h.level=19;h.growth=0;addGrowthBase(h,10000);check(h.level===20&&h.growth===0,'level cap');
  const reports=[{kind:'operation',dueAt:Date.now()+10000,growthAwards:[{id:'old',amount:2}]}];migratePendingReports(reports,1);migratePendingReports(reports,1);check(reports[0].growthAwards[0].amount===50,'legacy pending rewards convert once');
  for(const kind of ['Contract','Gathering','Exploration','Dungeon','World Dungeon','Raid','World Boss','World Raid']){check(questHeroXP({kind,rank:9},{level:1})>questHeroXP({kind,rank:0},{level:1}),'rank XP '+kind);check(questHeroXP({kind,rank:0},{level:20})<questHeroXP({kind,rank:0},{level:1}),'overlevel '+kind)}
  game.hall=7;game.gold=100000;game.buildingList.push({uid:'xp-shop',key:'workshop',level:5});game.staffMembers.push({id:'xp-smith',name:'Smith',wage:2,buildingUid:'xp-shop',buildingKey:'workshop',professionXP:{Blacksmithing:275}});v9Sync();staffMigrate(game);

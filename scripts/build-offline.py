@@ -6,7 +6,7 @@ import json
 import sys
 
 ROOT=Path(__file__).resolve().parent.parent
-ASSETS=['world-expansion.js','gathering-expertise.js','report-presentation.js','gear-pricing.js','gear-recycling.js','index.html','gear-cap.js','gear-enhancement.js','gear-effects.js','staged-expeditions.js','gathering-tools.js','quality-update.js','world-dungeons.js','names.js','balance.js','staff-aptitudes.js','spec-weapons.js','gear-system.js','staff-system.js','kitchen-system.js','memorial-system.js','alchemy-system.js','field-kits.js','expedition-supplies.js','encounter-system.js','class-equipment.js','trade-system.js','quick-equip.js','offline.js','offline.css','manifest.webmanifest','icons/lantern-192.png','icons/lantern-512.png']
+ASSETS=['quest-stat-checks.js','world-expansion.js','gathering-expertise.js','report-presentation.js','gear-pricing.js','gear-recycling.js','index.html','gear-cap.js','gear-enhancement.js','gear-effects.js','staged-expeditions.js','gathering-tools.js','quality-update.js','world-dungeons.js','names.js','balance.js','staff-aptitudes.js','spec-weapons.js','gear-system.js','staff-system.js','kitchen-system.js','memorial-system.js','alchemy-system.js','field-kits.js','expedition-supplies.js','encounter-system.js','class-equipment.js','trade-system.js','quick-equip.js','offline.js','offline.css','manifest.webmanifest','icons/lantern-192.png','icons/lantern-512.png']
 files=[{'path':name,'integrity':'sha256-'+base64.b64encode(hashlib.sha256((ROOT/name).read_bytes()).digest()).decode()} for name in ASSETS]
 template=(ROOT/'scripts/sw-template.js').read_text()
 serialized=json.dumps(files,separators=(',',':'))

@@ -19,7 +19,7 @@ try:
  const q=v9WorldQuest(V9_LOC.deadmines),gold=game.gold,duration=v9QuestMs(q);queueQuestReport(q,['player'],0,'stage test');
  check(game.pendingReports.length===1,'only first stage queued');let r=game.pendingReports[0];check(r.stageCount===3&&r.stageIndex===0,'first stage');check(!r.lootDrops.some(d=>d.signatureDrop),'signature locked');check(r.durMs===stageShare(duration,0,3),'split time');check(game.gold===gold-permanentExpeditionCost(q,1),'fee once');
  window.runDuration=duration;window.runGold=game.gold;window.firstDue=r.dueAt;window.firstXP=r.growthAwards[0].amount;r.dueAt=Date.now()-1;applyPendingReports();
- check(!game.player.ready&&game.pendingReports[0].stageIndex===1,'party continues');check(game.gold===runGold,'no second fee');check(game.player.preparedBonus===3&&game.player.expeditionKitProtection===.1,'supplies persist');check(game.consumables[0].uses===2&&game.alchemyPotions[0].uses===2&&game.fieldKits[0].uses===2,'no repeated consumption');check(!game.pendingReports[0].lootDrops.some(d=>d.signatureDrop),'rare still locked');save();
+ check(!game.player.ready&&game.pendingReports[0].stageIndex===1,'party continues');check(game.gold===runGold,'no second fee');check(game.player.preparedBonus===3&&game.player.expeditionKitProtection===.1,'supplies persist');check(game.player.utilitySupplies.utility1.uses===2&&game.player.utilitySupplies.utility2.uses===2&&game.player.utilitySupplies.utility3.uses===2,'no repeated consumption');check(!game.pendingReports[0].lootDrops.some(d=>d.signatureDrop),'rare still locked');save();
  }''')
   page.reload(wait_until='networkidle')
   page.evaluate('''() => {

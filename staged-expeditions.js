@@ -25,7 +25,7 @@
  }
  const queue=queueQuestReport;
  function enqueue(run,i,due){const q=stageQuest(run,i),before=game.pendingReports.length,prior=continuing;continuing=i>0;let result;try{result=queue(q,run.partyIds,run.storyBonus,run.storySummary,due)}finally{continuing=prior}
- if(game.pendingReports.length>before){const r=game.pendingReports.at(-1);r.stagePlan=run;r.stageIndex=i;r.stageCount=run.count;r.stageCleared=cleared(r);r.durMs=share(run.duration,i,run.count);
+ if(game.pendingReports.length>before){const r=game.pendingReports.at(-1);r.bossName=run.encounters[i].name;r.stagePlan=run;r.stageIndex=i;r.stageCount=run.count;r.stageCleared=cleared(r);r.durMs=share(run.duration,i,run.count);
  if(!cleared(r)){r.payout=0;r.memberCut=0;r.memberAwards=[];r.rep=0;r.lootDrops=[];r.growthAwards=[];r.resourceQty=0}
  r.summary=`Stage ${i+1}/${run.count} — ${run.encounters[i].name}: ${r.outcome}. ${cleared(r)?r.summary:'Stage not cleared; no stage rewards. The next attempt restarts at stage 1.'}`;
  r.extendedSummary=(r.extendedSummary||'')+` Stage ${i+1}/${run.count}: ${cleared(r)?'cleared; its rewards are retained.':'not cleared; no rewards for this stage, and the run ends. Restart from stage 1 on the next attempt.'}`;

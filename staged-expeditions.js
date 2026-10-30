@@ -32,11 +32,14 @@
 
  return true}return result;
  }
- queueQuestReport=function(q,ids,storyBonus,storySummary,dueAt){const n=count(q);if(n===1||q.stageRun||game.storySession?.quest===q)return queue.apply(this,arguments);
+ function startRun(q,ids,storyBonus,storySummary,dueAt){const n=count(q);if(n===1||q.stageRun||game.storySession?.quest===q)return queue.apply(this,arguments);
  game.stageRunSequence=(Number(game.stageRunSequence)||0)+1;
  const run={id:'world-run-'+game.stageRunSequence,quest:structuredClone(q),partyIds:[...ids],storyBonus,storySummary,count:n,encounters:encounters(q),duration:Math.max(n,Math.round(v9QuestMs(q)))};
  return enqueue(run,0,Date.now()+share(run.duration,0,n));
  };
+ function syncClears(){game.worldClearDays=game.worldClearDays||{};for(const r of game.todayReports||[]){if(!r.runComplete||!r.stagePlan)continue;const key=r.stagePlan.quest.templateKey;const day=r.worldClearedDay??game.day;r.worldClearedDay=day;game.worldClearDays[key]=Math.max(game.worldClearDays[key]??-1,day)}for(const [key,day] of Object.entries(game.worldClearDays))if(day===game.day)game.questDone[key]=true;}
+ queueQuestReport=function(q){syncClears();if(!q.stageRun&&game.worldClearDays[q.templateKey]===game.day){alert('This world event has already been cleared today. Failed runs may be retried; successful clears reset next game day.');return false}return startRun.apply(this,arguments)};
+ const quests=renderQuests;renderQuests=function(){syncClears();return quests.apply(this,arguments)};
  const apply=applyPendingReports;
  applyPendingReports=function(){const combined=[];let loops=0;
  do{const snapshots=new Map(game.pendingReports.filter(r=>r.stagePlan&&r.dueAt<=Date.now()).map(r=>[r.stagePlan.id,r.partyIds.map(id=>{const h=purse(id);return {id,preparedBonus:h?.preparedBonus||0,preparedSupplyBonuses:structuredClone(h?.preparedSupplyBonuses||{ration:0,potion:0,legacy:0}),expeditionKitProtection:h?.expeditionKitProtection||0}})]));
@@ -47,7 +50,7 @@
  enqueue(run,r.stageIndex+1,Number(r.dueAt)+share(run.duration,r.stageIndex+1,run.count));r.runContinues=true;
  r.summary+=' Party continues to the next stage.';
  }else{r.runComplete=cleared(r)&&r.stageIndex===run.count-1;r.summary+=r.runComplete?' Expedition fully cleared.':' Expedition ended; the next attempt begins at stage 1.';
- if(!r.runComplete)delete game.questDone[run.quest.templateKey];
+ if(r.runComplete){r.worldClearedDay=game.day;game.worldClearDays=game.worldClearDays||{};game.worldClearDays[run.quest.templateKey]=game.day;game.questDone[run.quest.templateKey]=true}else if(game.worldClearDays?.[run.quest.templateKey]!==game.day)delete game.questDone[run.quest.templateKey];
  }
  }
  if(!done.length)break;

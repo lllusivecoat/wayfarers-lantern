@@ -1366,7 +1366,7 @@ var V9_XTYPES=Object.fromEntries(V9_WORLD.types.map(t=>[t.id,t]));
 var V9_BASE_POOLS=V9_TYPES.map(t=>t.pool.slice());
 var V9_RING_NAMES=['Booty Bay & the Cape','Stranglethorn Vale','Neighbouring lands','The kingdoms and the Kalimdor coast','The far realms','Beyond the plaguelands and the desert','The edge of the world'];
 var V9_LOC_ICON={town:'⚓',city:'♜',camp:'⛺',landmark:'✧',region:'⌖',dungeon:'⚔',raid:'✹',boss:'☠'};
-function v9WorldEnsure(g){g=g||game;if(!g)return;if(!g.world||!Array.isArray(g.world.discovered))g.world={discovered:V9_WORLD.locations.filter(l=>l.start).map(l=>l.id),found:{},explorations:0};g.world.found=g.world.found||{};V9_WORLD.locations.filter(l=>l.start).forEach(l=>{if(!g.world.discovered.includes(l.id))g.world.discovered.push(l.id)});g.world.discovered=[...new Set(g.world.discovered.filter(id=>V9_LOC[id]))];v9ApplyWorldPools(g)}
+function v9WorldEnsure(g){g=g||game;if(!g)return;if(!g.world||!Array.isArray(g.world.discovered))g.world={discovered:V9_WORLD.locations.filter(l=>l.start).map(l=>l.id),found:{},explorations:0};g.world.found=g.world.found||{};V9_WORLD.locations.filter(l=>l.start).forEach(l=>{if(!g.world.discovered.includes(l.id))g.world.discovered.push(l.id)});g.world.discovered=[...new Set(g.world.discovered.filter(id=>typeof id==='string'))];v9ApplyWorldPools(g)}
 function v9Known(id,g){return !!((g||game)?.world?.discovered||[]).includes(id)}
 function v9Frontier(g){return Math.max(0,...((g||game).world.discovered||[]).map(id=>V9_LOC[id]?.ring||0))}
 function v9ApplyWorldPools(g){V9_TYPES.forEach((t,i)=>{t.pool=V9_BASE_POOLS[i].slice()});(g.world.discovered||[]).forEach(id=>{(V9_LOC[id]?.sites||[]).forEach(([i,title,place])=>{const pool=V9_TYPES[i]&&V9_TYPES[i].pool;if(pool&&!pool.some(x=>x[0]===title))pool.push([title,place])})})}
@@ -1935,6 +1935,7 @@ render();
 <script src="gear-effects.js"></script>
 <script src="gear-recycling.js"></script>
 <script src="gathering-expertise.js"></script>
+<script src="world-expansion.js"></script>
 <script src="report-presentation.js"></script>
 <script src="offline.js"></script>
 </body>

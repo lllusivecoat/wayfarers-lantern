@@ -21,15 +21,18 @@ An existing crafted item retains its stored flat stats, durability and damage. H
 - Quality chance: existing skill/aptitude/trait formula, capped at 40%.
 - Stat-quality maximum depends on tier:
 
-| Tier | +1 quality starts | +2 quality starts |
-| --- | --- | --- |
-| Basic–Superior | Blacksmithing 1 | Blacksmithing 2 |
-| Masterwork | 3 | 4 |
-| Relic | 5 | 6 |
-| Legendary | 7 | 8 |
-| Heritage | 9 | 10 |
+| Tier | Recipe unlock | +1 quality starts | +2 quality starts |
+| --- | --- | --- | --- |
+| Basic | 0 | 1 | 2 |
+| Sturdy | 2 | 2 | 3 |
+| Fine | 3 | 3 | 4 |
+| Superior | 4 | 4 | 5 |
+| Masterwork | 5 | 5 | 6 |
+| Relic | 6 | 6 | 7 |
+| Legendary | 7 | 7 | 8 |
+| Heritage | 8 | 9 | 10 |
 
-Recipe unlock requirements remain unchanged and must also be met. These are possible quality bonuses, not guaranteed additions. A quality proc before stat-quality eligibility gives +5 durability instead.
+Recipe unlock requirements remain unchanged. The +1 milestone is never earlier than the recipe unlock, so every tier has an attainable +1 stage before +2. Basic remains available at skill 0; Heritage still gains stat quality only at 9/10. These are possible quality bonuses, not guaranteed additions. A quality proc before stat-quality eligibility gives +5 durability instead.
 
 ## Effect strengths and caps
 
@@ -50,3 +53,7 @@ A neutral Blacksmithing 10 smith gives 20 extra durability and a 30% chance to c
 | 4 | 20.5% | 8% |
 
 Penetration procs grant +1 on the owner's combat check. Precision procs enable natural 19–20 criticals for that stage; they are not an 8% direct critical chance. Natural-1 wound protection and direct death rules remain unchanged.
+
+## Balance review — fix 4
+
+Crafting quality and enhancement eligibility use the shared tier progression helper. The preview shows both quality milestones. Existing crafted items are not recalculated, including items with +2 quality earned under the earlier rules. All 88 tier/skill combinations (eight tiers, skills 0–10) are tested against actual crafting with forced quality rolls, locked recipes, UI text and save/reload. This fix changes quality eligibility only; discounts and maximum-level set benefits remain separate review items.

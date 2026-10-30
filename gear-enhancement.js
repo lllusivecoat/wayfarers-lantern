@@ -1,6 +1,5 @@
 /* Material-paid refinements replace automatic Workshop stat bonuses. */
 (() => {
- const unlock=[0,2,3,4,5,6,7,8];
  function migrate(){for(const g of game.gear){if(!g.madeByPlayer||g.gatherTool||!Number.isInteger(g.tier)||g.enhancementVersion===2)continue;
  const credit=Math.max(0,Math.min(4,Number(g.enhancement)||Number(g.buildingBonus)||0));g.legacyWorkshopBonus=Number(g.buildingBonus)||0;g.baseCraftBonus=Number(g.bonus)||0;g.enhancement=credit;g.enhancementVersion=2;g.buildingBonus=0;}}
  window.gearBaseReadinessBonus=g=>gearReadinessBonus(g);
@@ -8,7 +7,7 @@
  function workshop(){return v9Ops('workshop').sort((a,b)=>b.level-a.level)[0]}
  function recipe(g){return renderGearCatalog().find(r=>r.id===(g.signatureKey||g.family)+'-'+g.tier)}
  window.gearEnhancementQuote=function(id){migrate();const g=game.gear.find(g=>g.id===id),i=workshop(),next=(Number(g?.enhancement)||0)+1,r=g&&recipe(g);let reason='';
- if(!g?.madeByPlayer||g.gatherTool||!r)reason='Only crafted equipment can be enhanced';else if(!i)reason='Requires staffed Workshop';else if(projectForBuilding(i.uid))reason='Finish Workshop upgrades first';else if(next>4)reason='All four effect stages complete';else if(next>i.level-1)reason=`Requires Workshop Level ${next+1}`;else if(g.owner&&(!purse(g.owner)?.ready||hasActiveQuestFor(g.owner)))reason='Hero must return before enhancing';else if(staffProfessionLevel(buildingStaff('workshop'))<unlock[g.tier])reason=`Requires Blacksmithing ${unlock[g.tier]}`;
+ if(!g?.madeByPlayer||g.gatherTool||!r)reason='Only crafted equipment can be enhanced';else if(!i)reason='Requires staffed Workshop';else if(projectForBuilding(i.uid))reason='Finish Workshop upgrades first';else if(next>4)reason='All four effect stages complete';else if(next>i.level-1)reason=`Requires Workshop Level ${next+1}`;else if(g.owner&&(!purse(g.owner)?.ready||hasActiveQuestFor(g.owner)))reason='Hero must return before enhancing';else if(staffProfessionLevel(buildingStaff('workshop'))<blacksmithTierProgression(g.tier).unlock)reason=`Requires Blacksmithing ${blacksmithTierProgression(g.tier).unlock}`;
  const materials=r?Object.fromEntries(Object.entries(r.requirements).map(([k,n])=>[k,n*next])):{};
  if(!reason&&Object.entries(materials).some(([k,n])=>(game.materials[k]||0)<n))reason='Not enough enhancement materials';
  return {next,materials,reason,cap:i?i.level-1:0};

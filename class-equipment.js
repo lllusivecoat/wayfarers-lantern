@@ -44,7 +44,7 @@
   if(!p||!g||g.signatureKey||gearGroup(g)!=='weapon'||family(g)!==p.family)return;
   g.originalName=g.originalName||g.name;g.originalStat=g.originalStat||g.stat;
   Object.assign(g,{signatureKey:p.key,hands:p.hands,stat:p.stat,name:`${g.tierName||'Legacy'} ${p.name}`});
-  g.effectText=`+${gearReadinessBonus(g)} readiness on ${p.stat} checks while durable. Total gear readiness is capped at +6.`;
+  g.effectText=`+${gearReadinessBonus(g)} readiness on ${p.stat} checks while durable. Flat gear readiness is capped at +6 to +9 according to the equipped loadout; enhancements improve special effects.`;
  }
  window.weaponStatForHero=function(g,h){const p=WL_SPEC_WEAPONS.forHero(h);return p&&['weapon','offhand'].includes(gearGroup(g))&&canHeroEquip(h,g)?p.stat:g.stat};
  function clean(h){
@@ -69,7 +69,7 @@
   const box=document.createElement('div');box.innerHTML=oldEquipment.apply(this,arguments);
   box.querySelectorAll('option').forEach(o=>{const g=game.gear.find(g=>g.id===o.value);if(g&&!canHeroEquip(h,g))o.remove()});
   const p=WL_SPEC_WEAPONS.forHero(h);
-  return box.innerHTML+`<p class="small muted">${p?`${tbwEsc(h.className)} · ${tbwEsc(h.spec)}: ${tbwEsc(p.name)} (+${p.stat}). ${p.offhand==='dual'?'Equip two copies, one per hand.':p.offhand==='none'?'Two-handed weapon; offhand must be empty.':'Use a '+p.offhand+' in the offhand.'}`:'Choose a valid specialization.'} Total gear readiness remains capped at +6. Incompatible gear returns to storage.</p>`;
+  return box.innerHTML+`<p class="small muted">${p?`${tbwEsc(h.className)} · ${tbwEsc(h.spec)}: ${tbwEsc(p.name)} (+${p.stat}). ${p.offhand==='dual'?'Equip two copies, one per hand.':p.offhand==='none'?'Two-handed weapon; offhand must be empty.':'Use a '+p.offhand+' in the offhand.'}`:'Choose a valid specialization.'} Flat gear readiness is capped at +6 to +9 according to the equipped loadout; enhancements improve special effects. Incompatible gear returns to storage.</p>`;
  };
  const oldBase=readinessBase;readinessBase=function(h){clean(h);return oldBase.apply(this,arguments)};
  const oldSave=save;save=function(){[game.player,...game.heroes].forEach(clean);return oldSave.apply(this,arguments)};

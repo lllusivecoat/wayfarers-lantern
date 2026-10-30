@@ -1,0 +1,1920 @@
+{
+  "thresholds": [
+    {
+      "tier": 0,
+      "unlock": 0,
+      "qualityAtUnlock": 0,
+      "firstPlusOne": 1
+    },
+    {
+      "tier": 1,
+      "unlock": 2,
+      "qualityAtUnlock": 2,
+      "firstPlusOne": 1
+    },
+    {
+      "tier": 2,
+      "unlock": 3,
+      "qualityAtUnlock": 2,
+      "firstPlusOne": 1
+    },
+    {
+      "tier": 3,
+      "unlock": 4,
+      "qualityAtUnlock": 2,
+      "firstPlusOne": 1
+    },
+    {
+      "tier": 4,
+      "unlock": 5,
+      "qualityAtUnlock": 2,
+      "firstPlusOne": 3
+    },
+    {
+      "tier": 5,
+      "unlock": 6,
+      "qualityAtUnlock": 2,
+      "firstPlusOne": 5
+    },
+    {
+      "tier": 6,
+      "unlock": 7,
+      "qualityAtUnlock": 1,
+      "firstPlusOne": 7
+    },
+    {
+      "tier": 7,
+      "unlock": 8,
+      "qualityAtUnlock": 0,
+      "firstPlusOne": 9
+    }
+  ],
+  "costs": [
+    {
+      "tier": 0,
+      "dagger": {
+        "Copper Ore": 2,
+        "Light Leather": 1
+      },
+      "sword": {
+        "Copper Ore": 2
+      },
+      "twohand": {
+        "Copper Ore": 2
+      },
+      "rawQuantityPair": 6,
+      "rawQuantityTwohand": 2
+    },
+    {
+      "tier": 3,
+      "dagger": {
+        "Silver Ore": 3,
+        "Medium Leather": 1,
+        "Dungeon Salvage": 1,
+        "Sandfury Runestone": 1
+      },
+      "sword": {
+        "Silver Ore": 3,
+        "Dungeon Salvage": 1,
+        "Sandfury Runestone": 1
+      },
+      "twohand": {
+        "Silver Ore": 3,
+        "Dungeon Salvage": 1,
+        "Sandfury Runestone": 1
+      },
+      "rawQuantityPair": 12,
+      "rawQuantityTwohand": 5
+    },
+    {
+      "tier": 7,
+      "dagger": {
+        "Eternium Ore": 5,
+        "Rugged Leather": 2,
+        "World Dungeon Relic": 2,
+        "Origination Spark": 3
+      },
+      "sword": {
+        "Eternium Ore": 5,
+        "World Dungeon Relic": 2,
+        "Heritage Ore": 1,
+        "Origination Spark": 3
+      },
+      "twohand": {
+        "Eternium Ore": 5,
+        "World Dungeon Relic": 2,
+        "Origination Spark": 3
+      },
+      "rawQuantityPair": 24,
+      "rawQuantityTwohand": 10
+    }
+  ],
+  "slots": [
+    {
+      "slot": "weapon",
+      "baseline": {
+        "roll": 0.41000000000000003,
+        "precision": 0.16,
+        "protection": 0.15639999999999998,
+        "xp": 0.05
+      },
+      "unenhanced": {
+        "roll": 0.41000000000000003,
+        "precision": 0.16,
+        "protection": 0.15639999999999998,
+        "xp": 0.05
+      }
+    },
+    {
+      "slot": "offhand",
+      "baseline": {
+        "roll": 0.41000000000000003,
+        "precision": 0.16,
+        "protection": 0.15639999999999998,
+        "xp": 0.05
+      },
+      "unenhanced": {
+        "roll": 0.41000000000000003,
+        "precision": 0.16,
+        "protection": 0.15639999999999998,
+        "xp": 0.05
+      }
+    },
+    {
+      "slot": "armor",
+      "baseline": {
+        "roll": 0.41000000000000003,
+        "precision": 0.16,
+        "protection": 0.15639999999999998,
+        "xp": 0.05
+      },
+      "unenhanced": {
+        "roll": 0.41000000000000003,
+        "precision": 0.16,
+        "protection": 0.15639999999999998,
+        "xp": 0.05
+      }
+    },
+    {
+      "slot": "cape",
+      "baseline": {
+        "roll": 0.41000000000000003,
+        "precision": 0.16,
+        "protection": 0.15639999999999998,
+        "xp": 0.05
+      },
+      "unenhanced": {
+        "roll": 0.41000000000000003,
+        "precision": 0.16,
+        "protection": 0.15639999999999998,
+        "xp": 0.05
+      }
+    },
+    {
+      "slot": "amulet1",
+      "baseline": {
+        "roll": 0.41000000000000003,
+        "precision": 0.16,
+        "protection": 0.15639999999999998,
+        "xp": 0.05
+      },
+      "unenhanced": {
+        "roll": 0.41000000000000003,
+        "precision": 0.16,
+        "protection": 0.15639999999999998,
+        "xp": 0.05
+      }
+    },
+    {
+      "slot": "amulet2",
+      "baseline": {
+        "roll": 0.41000000000000003,
+        "precision": 0.16,
+        "protection": 0.15639999999999998,
+        "xp": 0.05
+      },
+      "unenhanced": {
+        "roll": 0.41000000000000003,
+        "precision": 0.16,
+        "protection": 0.15639999999999998,
+        "xp": 0.05
+      }
+    },
+    {
+      "slot": "amulet3",
+      "baseline": {
+        "roll": 0.41000000000000003,
+        "precision": 0.16,
+        "protection": 0.15639999999999998,
+        "xp": 0.05
+      },
+      "unenhanced": {
+        "roll": 0.41000000000000003,
+        "precision": 0.16,
+        "protection": 0.15639999999999998,
+        "xp": 0.05
+      }
+    }
+  ],
+  "runs": [
+    {
+      "setup": "ordinary",
+      "profile": "Basic",
+      "kind": "World Dungeon",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 3,
+      "readiness": 9,
+      "fullClearPercent": 0,
+      "meanStagesCleared": 0.07
+    },
+    {
+      "setup": "ordinary",
+      "profile": "Basic",
+      "kind": "World Boss",
+      "challenge": "default",
+      "rank": 3,
+      "stages": 2,
+      "readiness": 9,
+      "fullClearPercent": 36.4,
+      "meanStagesCleared": 1.06
+    },
+    {
+      "setup": "ordinary",
+      "profile": "Basic",
+      "kind": "World Boss",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 2,
+      "readiness": 9,
+      "fullClearPercent": 0,
+      "meanStagesCleared": 0
+    },
+    {
+      "setup": "ordinary",
+      "profile": "Basic",
+      "kind": "World Raid",
+      "challenge": "default",
+      "rank": 7,
+      "stages": 5,
+      "readiness": 9,
+      "fullClearPercent": 0,
+      "meanStagesCleared": 0
+    },
+    {
+      "setup": "ordinary",
+      "profile": "Basic",
+      "kind": "World Raid",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 5,
+      "readiness": 9,
+      "fullClearPercent": 0,
+      "meanStagesCleared": 0
+    },
+    {
+      "setup": "ordinary",
+      "profile": "Basic enhanced",
+      "kind": "World Dungeon",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 3,
+      "readiness": 9,
+      "fullClearPercent": 0,
+      "meanStagesCleared": 0.07
+    },
+    {
+      "setup": "ordinary",
+      "profile": "Basic enhanced",
+      "kind": "World Boss",
+      "challenge": "default",
+      "rank": 3,
+      "stages": 2,
+      "readiness": 9,
+      "fullClearPercent": 42.2,
+      "meanStagesCleared": 1.16
+    },
+    {
+      "setup": "ordinary",
+      "profile": "Basic enhanced",
+      "kind": "World Boss",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 2,
+      "readiness": 9,
+      "fullClearPercent": 0,
+      "meanStagesCleared": 0
+    },
+    {
+      "setup": "ordinary",
+      "profile": "Basic enhanced",
+      "kind": "World Raid",
+      "challenge": "default",
+      "rank": 7,
+      "stages": 5,
+      "readiness": 9,
+      "fullClearPercent": 0,
+      "meanStagesCleared": 0
+    },
+    {
+      "setup": "ordinary",
+      "profile": "Basic enhanced",
+      "kind": "World Raid",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 5,
+      "readiness": 9,
+      "fullClearPercent": 0,
+      "meanStagesCleared": 0
+    },
+    {
+      "setup": "ordinary",
+      "profile": "Superior",
+      "kind": "World Dungeon",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 3,
+      "readiness": 9,
+      "fullClearPercent": 0,
+      "meanStagesCleared": 0.06
+    },
+    {
+      "setup": "ordinary",
+      "profile": "Superior",
+      "kind": "World Boss",
+      "challenge": "default",
+      "rank": 3,
+      "stages": 2,
+      "readiness": 9,
+      "fullClearPercent": 39.13,
+      "meanStagesCleared": 1.11
+    },
+    {
+      "setup": "ordinary",
+      "profile": "Superior",
+      "kind": "World Boss",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 2,
+      "readiness": 9,
+      "fullClearPercent": 0,
+      "meanStagesCleared": 0
+    },
+    {
+      "setup": "ordinary",
+      "profile": "Superior",
+      "kind": "World Raid",
+      "challenge": "default",
+      "rank": 7,
+      "stages": 5,
+      "readiness": 9,
+      "fullClearPercent": 0,
+      "meanStagesCleared": 0.01
+    },
+    {
+      "setup": "ordinary",
+      "profile": "Superior",
+      "kind": "World Raid",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 5,
+      "readiness": 9,
+      "fullClearPercent": 0,
+      "meanStagesCleared": 0
+    },
+    {
+      "setup": "ordinary",
+      "profile": "Superior enhanced",
+      "kind": "World Dungeon",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 3,
+      "readiness": 9,
+      "fullClearPercent": 0,
+      "meanStagesCleared": 0.08
+    },
+    {
+      "setup": "ordinary",
+      "profile": "Superior enhanced",
+      "kind": "World Boss",
+      "challenge": "default",
+      "rank": 3,
+      "stages": 2,
+      "readiness": 9,
+      "fullClearPercent": 43.13,
+      "meanStagesCleared": 1.17
+    },
+    {
+      "setup": "ordinary",
+      "profile": "Superior enhanced",
+      "kind": "World Boss",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 2,
+      "readiness": 9,
+      "fullClearPercent": 0,
+      "meanStagesCleared": 0
+    },
+    {
+      "setup": "ordinary",
+      "profile": "Superior enhanced",
+      "kind": "World Raid",
+      "challenge": "default",
+      "rank": 7,
+      "stages": 5,
+      "readiness": 9,
+      "fullClearPercent": 0,
+      "meanStagesCleared": 0
+    },
+    {
+      "setup": "ordinary",
+      "profile": "Superior enhanced",
+      "kind": "World Raid",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 5,
+      "readiness": 9,
+      "fullClearPercent": 0,
+      "meanStagesCleared": 0
+    },
+    {
+      "setup": "ordinary",
+      "profile": "Relic enhanced",
+      "kind": "World Dungeon",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 3,
+      "readiness": 9,
+      "fullClearPercent": 0,
+      "meanStagesCleared": 0.08
+    },
+    {
+      "setup": "ordinary",
+      "profile": "Relic enhanced",
+      "kind": "World Boss",
+      "challenge": "default",
+      "rank": 3,
+      "stages": 2,
+      "readiness": 9,
+      "fullClearPercent": 50,
+      "meanStagesCleared": 1.29
+    },
+    {
+      "setup": "ordinary",
+      "profile": "Relic enhanced",
+      "kind": "World Boss",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 2,
+      "readiness": 9,
+      "fullClearPercent": 0,
+      "meanStagesCleared": 0
+    },
+    {
+      "setup": "ordinary",
+      "profile": "Relic enhanced",
+      "kind": "World Raid",
+      "challenge": "default",
+      "rank": 7,
+      "stages": 5,
+      "readiness": 9,
+      "fullClearPercent": 0,
+      "meanStagesCleared": 0.01
+    },
+    {
+      "setup": "ordinary",
+      "profile": "Relic enhanced",
+      "kind": "World Raid",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 5,
+      "readiness": 9,
+      "fullClearPercent": 0,
+      "meanStagesCleared": 0
+    },
+    {
+      "setup": "ordinary",
+      "profile": "Legendary enhanced",
+      "kind": "World Dungeon",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 3,
+      "readiness": 9,
+      "fullClearPercent": 0,
+      "meanStagesCleared": 0.06
+    },
+    {
+      "setup": "ordinary",
+      "profile": "Legendary enhanced",
+      "kind": "World Boss",
+      "challenge": "default",
+      "rank": 3,
+      "stages": 2,
+      "readiness": 9,
+      "fullClearPercent": 43.33,
+      "meanStagesCleared": 1.17
+    },
+    {
+      "setup": "ordinary",
+      "profile": "Legendary enhanced",
+      "kind": "World Boss",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 2,
+      "readiness": 9,
+      "fullClearPercent": 0,
+      "meanStagesCleared": 0
+    },
+    {
+      "setup": "ordinary",
+      "profile": "Legendary enhanced",
+      "kind": "World Raid",
+      "challenge": "default",
+      "rank": 7,
+      "stages": 5,
+      "readiness": 9,
+      "fullClearPercent": 0,
+      "meanStagesCleared": 0.01
+    },
+    {
+      "setup": "ordinary",
+      "profile": "Legendary enhanced",
+      "kind": "World Raid",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 5,
+      "readiness": 9,
+      "fullClearPercent": 0,
+      "meanStagesCleared": 0
+    },
+    {
+      "setup": "ordinary",
+      "profile": "Heritage enhanced",
+      "kind": "World Dungeon",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 3,
+      "readiness": 9,
+      "fullClearPercent": 0,
+      "meanStagesCleared": 0.09
+    },
+    {
+      "setup": "ordinary",
+      "profile": "Heritage enhanced",
+      "kind": "World Boss",
+      "challenge": "default",
+      "rank": 3,
+      "stages": 2,
+      "readiness": 9,
+      "fullClearPercent": 49.6,
+      "meanStagesCleared": 1.28
+    },
+    {
+      "setup": "ordinary",
+      "profile": "Heritage enhanced",
+      "kind": "World Boss",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 2,
+      "readiness": 9,
+      "fullClearPercent": 0,
+      "meanStagesCleared": 0
+    },
+    {
+      "setup": "ordinary",
+      "profile": "Heritage enhanced",
+      "kind": "World Raid",
+      "challenge": "default",
+      "rank": 7,
+      "stages": 5,
+      "readiness": 9,
+      "fullClearPercent": 0,
+      "meanStagesCleared": 0.01
+    },
+    {
+      "setup": "ordinary",
+      "profile": "Heritage enhanced",
+      "kind": "World Raid",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 5,
+      "readiness": 9,
+      "fullClearPercent": 0,
+      "meanStagesCleared": 0
+    },
+    {
+      "setup": "prepared",
+      "profile": "Basic",
+      "kind": "World Dungeon",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 3,
+      "readiness": 14,
+      "fullClearPercent": 6.27,
+      "meanStagesCleared": 0.76
+    },
+    {
+      "setup": "prepared",
+      "profile": "Basic",
+      "kind": "World Boss",
+      "challenge": "default",
+      "rank": 3,
+      "stages": 2,
+      "readiness": 14,
+      "fullClearPercent": 86.13,
+      "meanStagesCleared": 1.78
+    },
+    {
+      "setup": "prepared",
+      "profile": "Basic",
+      "kind": "World Boss",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 2,
+      "readiness": 14,
+      "fullClearPercent": 0,
+      "meanStagesCleared": 0.03
+    },
+    {
+      "setup": "prepared",
+      "profile": "Basic",
+      "kind": "World Raid",
+      "challenge": "default",
+      "rank": 7,
+      "stages": 5,
+      "readiness": 14,
+      "fullClearPercent": 1.33,
+      "meanStagesCleared": 1.59
+    },
+    {
+      "setup": "prepared",
+      "profile": "Basic",
+      "kind": "World Raid",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 5,
+      "readiness": 14,
+      "fullClearPercent": 0,
+      "meanStagesCleared": 0.01
+    },
+    {
+      "setup": "prepared",
+      "profile": "Basic enhanced",
+      "kind": "World Dungeon",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 3,
+      "readiness": 14,
+      "fullClearPercent": 6.2,
+      "meanStagesCleared": 0.74
+    },
+    {
+      "setup": "prepared",
+      "profile": "Basic enhanced",
+      "kind": "World Boss",
+      "challenge": "default",
+      "rank": 3,
+      "stages": 2,
+      "readiness": 14,
+      "fullClearPercent": 82.8,
+      "meanStagesCleared": 1.74
+    },
+    {
+      "setup": "prepared",
+      "profile": "Basic enhanced",
+      "kind": "World Boss",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 2,
+      "readiness": 14,
+      "fullClearPercent": 0.07,
+      "meanStagesCleared": 0.05
+    },
+    {
+      "setup": "prepared",
+      "profile": "Basic enhanced",
+      "kind": "World Raid",
+      "challenge": "default",
+      "rank": 7,
+      "stages": 5,
+      "readiness": 14,
+      "fullClearPercent": 1.93,
+      "meanStagesCleared": 1.67
+    },
+    {
+      "setup": "prepared",
+      "profile": "Basic enhanced",
+      "kind": "World Raid",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 5,
+      "readiness": 14,
+      "fullClearPercent": 0,
+      "meanStagesCleared": 0.01
+    },
+    {
+      "setup": "prepared",
+      "profile": "Superior",
+      "kind": "World Dungeon",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 3,
+      "readiness": 14,
+      "fullClearPercent": 5.8,
+      "meanStagesCleared": 0.75
+    },
+    {
+      "setup": "prepared",
+      "profile": "Superior",
+      "kind": "World Boss",
+      "challenge": "default",
+      "rank": 3,
+      "stages": 2,
+      "readiness": 14,
+      "fullClearPercent": 83.6,
+      "meanStagesCleared": 1.74
+    },
+    {
+      "setup": "prepared",
+      "profile": "Superior",
+      "kind": "World Boss",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 2,
+      "readiness": 14,
+      "fullClearPercent": 0.13,
+      "meanStagesCleared": 0.05
+    },
+    {
+      "setup": "prepared",
+      "profile": "Superior",
+      "kind": "World Raid",
+      "challenge": "default",
+      "rank": 7,
+      "stages": 5,
+      "readiness": 14,
+      "fullClearPercent": 2.07,
+      "meanStagesCleared": 1.77
+    },
+    {
+      "setup": "prepared",
+      "profile": "Superior",
+      "kind": "World Raid",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 5,
+      "readiness": 14,
+      "fullClearPercent": 0,
+      "meanStagesCleared": 0.01
+    },
+    {
+      "setup": "prepared",
+      "profile": "Superior enhanced",
+      "kind": "World Dungeon",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 3,
+      "readiness": 14,
+      "fullClearPercent": 8.67,
+      "meanStagesCleared": 0.83
+    },
+    {
+      "setup": "prepared",
+      "profile": "Superior enhanced",
+      "kind": "World Boss",
+      "challenge": "default",
+      "rank": 3,
+      "stages": 2,
+      "readiness": 14,
+      "fullClearPercent": 86.27,
+      "meanStagesCleared": 1.79
+    },
+    {
+      "setup": "prepared",
+      "profile": "Superior enhanced",
+      "kind": "World Boss",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 2,
+      "readiness": 14,
+      "fullClearPercent": 0.07,
+      "meanStagesCleared": 0.05
+    },
+    {
+      "setup": "prepared",
+      "profile": "Superior enhanced",
+      "kind": "World Raid",
+      "challenge": "default",
+      "rank": 7,
+      "stages": 5,
+      "readiness": 14,
+      "fullClearPercent": 3,
+      "meanStagesCleared": 1.87
+    },
+    {
+      "setup": "prepared",
+      "profile": "Superior enhanced",
+      "kind": "World Raid",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 5,
+      "readiness": 14,
+      "fullClearPercent": 0,
+      "meanStagesCleared": 0.02
+    },
+    {
+      "setup": "prepared",
+      "profile": "Relic enhanced",
+      "kind": "World Dungeon",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 3,
+      "readiness": 14,
+      "fullClearPercent": 8.67,
+      "meanStagesCleared": 0.85
+    },
+    {
+      "setup": "prepared",
+      "profile": "Relic enhanced",
+      "kind": "World Boss",
+      "challenge": "default",
+      "rank": 3,
+      "stages": 2,
+      "readiness": 14,
+      "fullClearPercent": 86.53,
+      "meanStagesCleared": 1.8
+    },
+    {
+      "setup": "prepared",
+      "profile": "Relic enhanced",
+      "kind": "World Boss",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 2,
+      "readiness": 14,
+      "fullClearPercent": 0.07,
+      "meanStagesCleared": 0.06
+    },
+    {
+      "setup": "prepared",
+      "profile": "Relic enhanced",
+      "kind": "World Raid",
+      "challenge": "default",
+      "rank": 7,
+      "stages": 5,
+      "readiness": 14,
+      "fullClearPercent": 3,
+      "meanStagesCleared": 1.88
+    },
+    {
+      "setup": "prepared",
+      "profile": "Relic enhanced",
+      "kind": "World Raid",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 5,
+      "readiness": 14,
+      "fullClearPercent": 0,
+      "meanStagesCleared": 0.01
+    },
+    {
+      "setup": "prepared",
+      "profile": "Legendary enhanced",
+      "kind": "World Dungeon",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 3,
+      "readiness": 14,
+      "fullClearPercent": 7.93,
+      "meanStagesCleared": 0.83
+    },
+    {
+      "setup": "prepared",
+      "profile": "Legendary enhanced",
+      "kind": "World Boss",
+      "challenge": "default",
+      "rank": 3,
+      "stages": 2,
+      "readiness": 14,
+      "fullClearPercent": 85.07,
+      "meanStagesCleared": 1.77
+    },
+    {
+      "setup": "prepared",
+      "profile": "Legendary enhanced",
+      "kind": "World Boss",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 2,
+      "readiness": 14,
+      "fullClearPercent": 0.2,
+      "meanStagesCleared": 0.06
+    },
+    {
+      "setup": "prepared",
+      "profile": "Legendary enhanced",
+      "kind": "World Raid",
+      "challenge": "default",
+      "rank": 7,
+      "stages": 5,
+      "readiness": 14,
+      "fullClearPercent": 2.47,
+      "meanStagesCleared": 1.75
+    },
+    {
+      "setup": "prepared",
+      "profile": "Legendary enhanced",
+      "kind": "World Raid",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 5,
+      "readiness": 14,
+      "fullClearPercent": 0,
+      "meanStagesCleared": 0.01
+    },
+    {
+      "setup": "prepared",
+      "profile": "Heritage enhanced",
+      "kind": "World Dungeon",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 3,
+      "readiness": 14,
+      "fullClearPercent": 10.27,
+      "meanStagesCleared": 0.89
+    },
+    {
+      "setup": "prepared",
+      "profile": "Heritage enhanced",
+      "kind": "World Boss",
+      "challenge": "default",
+      "rank": 3,
+      "stages": 2,
+      "readiness": 14,
+      "fullClearPercent": 84.07,
+      "meanStagesCleared": 1.77
+    },
+    {
+      "setup": "prepared",
+      "profile": "Heritage enhanced",
+      "kind": "World Boss",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 2,
+      "readiness": 14,
+      "fullClearPercent": 0.33,
+      "meanStagesCleared": 0.06
+    },
+    {
+      "setup": "prepared",
+      "profile": "Heritage enhanced",
+      "kind": "World Raid",
+      "challenge": "default",
+      "rank": 7,
+      "stages": 5,
+      "readiness": 14,
+      "fullClearPercent": 4.53,
+      "meanStagesCleared": 2.04
+    },
+    {
+      "setup": "prepared",
+      "profile": "Heritage enhanced",
+      "kind": "World Raid",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 5,
+      "readiness": 14,
+      "fullClearPercent": 0,
+      "meanStagesCleared": 0.02
+    },
+    {
+      "setup": "high support",
+      "profile": "Basic",
+      "kind": "World Dungeon",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 3,
+      "readiness": 15,
+      "fullClearPercent": 44.93,
+      "meanStagesCleared": 1.99
+    },
+    {
+      "setup": "high support",
+      "profile": "Basic",
+      "kind": "World Boss",
+      "challenge": "default",
+      "rank": 3,
+      "stages": 2,
+      "readiness": 15,
+      "fullClearPercent": 83.33,
+      "meanStagesCleared": 1.75
+    },
+    {
+      "setup": "high support",
+      "profile": "Basic",
+      "kind": "World Boss",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 2,
+      "readiness": 15,
+      "fullClearPercent": 5.07,
+      "meanStagesCleared": 0.32
+    },
+    {
+      "setup": "high support",
+      "profile": "Basic",
+      "kind": "World Raid",
+      "challenge": "default",
+      "rank": 7,
+      "stages": 5,
+      "readiness": 15,
+      "fullClearPercent": 84.07,
+      "meanStagesCleared": 4.6
+    },
+    {
+      "setup": "high support",
+      "profile": "Basic",
+      "kind": "World Raid",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 5,
+      "readiness": 15,
+      "fullClearPercent": 0,
+      "meanStagesCleared": 0.24
+    },
+    {
+      "setup": "high support",
+      "profile": "Basic enhanced",
+      "kind": "World Dungeon",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 3,
+      "readiness": 15,
+      "fullClearPercent": 44.87,
+      "meanStagesCleared": 2
+    },
+    {
+      "setup": "high support",
+      "profile": "Basic enhanced",
+      "kind": "World Boss",
+      "challenge": "default",
+      "rank": 3,
+      "stages": 2,
+      "readiness": 15,
+      "fullClearPercent": 84.67,
+      "meanStagesCleared": 1.77
+    },
+    {
+      "setup": "high support",
+      "profile": "Basic enhanced",
+      "kind": "World Boss",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 2,
+      "readiness": 15,
+      "fullClearPercent": 5.8,
+      "meanStagesCleared": 0.34
+    },
+    {
+      "setup": "high support",
+      "profile": "Basic enhanced",
+      "kind": "World Raid",
+      "challenge": "default",
+      "rank": 7,
+      "stages": 5,
+      "readiness": 15,
+      "fullClearPercent": 85.6,
+      "meanStagesCleared": 4.65
+    },
+    {
+      "setup": "high support",
+      "profile": "Basic enhanced",
+      "kind": "World Raid",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 5,
+      "readiness": 15,
+      "fullClearPercent": 0,
+      "meanStagesCleared": 0.28
+    },
+    {
+      "setup": "high support",
+      "profile": "Superior",
+      "kind": "World Dungeon",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 3,
+      "readiness": 15,
+      "fullClearPercent": 45.87,
+      "meanStagesCleared": 2.01
+    },
+    {
+      "setup": "high support",
+      "profile": "Superior",
+      "kind": "World Boss",
+      "challenge": "default",
+      "rank": 3,
+      "stages": 2,
+      "readiness": 15,
+      "fullClearPercent": 83,
+      "meanStagesCleared": 1.74
+    },
+    {
+      "setup": "high support",
+      "profile": "Superior",
+      "kind": "World Boss",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 2,
+      "readiness": 15,
+      "fullClearPercent": 5,
+      "meanStagesCleared": 0.33
+    },
+    {
+      "setup": "high support",
+      "profile": "Superior",
+      "kind": "World Raid",
+      "challenge": "default",
+      "rank": 7,
+      "stages": 5,
+      "readiness": 15,
+      "fullClearPercent": 86,
+      "meanStagesCleared": 4.63
+    },
+    {
+      "setup": "high support",
+      "profile": "Superior",
+      "kind": "World Raid",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 5,
+      "readiness": 15,
+      "fullClearPercent": 0,
+      "meanStagesCleared": 0.26
+    },
+    {
+      "setup": "high support",
+      "profile": "Superior enhanced",
+      "kind": "World Dungeon",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 3,
+      "readiness": 15,
+      "fullClearPercent": 49.33,
+      "meanStagesCleared": 2.07
+    },
+    {
+      "setup": "high support",
+      "profile": "Superior enhanced",
+      "kind": "World Boss",
+      "challenge": "default",
+      "rank": 3,
+      "stages": 2,
+      "readiness": 15,
+      "fullClearPercent": 84.47,
+      "meanStagesCleared": 1.77
+    },
+    {
+      "setup": "high support",
+      "profile": "Superior enhanced",
+      "kind": "World Boss",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 2,
+      "readiness": 15,
+      "fullClearPercent": 6.93,
+      "meanStagesCleared": 0.39
+    },
+    {
+      "setup": "high support",
+      "profile": "Superior enhanced",
+      "kind": "World Raid",
+      "challenge": "default",
+      "rank": 7,
+      "stages": 5,
+      "readiness": 15,
+      "fullClearPercent": 86.87,
+      "meanStagesCleared": 4.64
+    },
+    {
+      "setup": "high support",
+      "profile": "Superior enhanced",
+      "kind": "World Raid",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 5,
+      "readiness": 15,
+      "fullClearPercent": 0,
+      "meanStagesCleared": 0.33
+    },
+    {
+      "setup": "high support",
+      "profile": "Relic enhanced",
+      "kind": "World Dungeon",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 3,
+      "readiness": 15,
+      "fullClearPercent": 52.2,
+      "meanStagesCleared": 2.12
+    },
+    {
+      "setup": "high support",
+      "profile": "Relic enhanced",
+      "kind": "World Boss",
+      "challenge": "default",
+      "rank": 3,
+      "stages": 2,
+      "readiness": 15,
+      "fullClearPercent": 85.73,
+      "meanStagesCleared": 1.79
+    },
+    {
+      "setup": "high support",
+      "profile": "Relic enhanced",
+      "kind": "World Boss",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 2,
+      "readiness": 15,
+      "fullClearPercent": 6.67,
+      "meanStagesCleared": 0.39
+    },
+    {
+      "setup": "high support",
+      "profile": "Relic enhanced",
+      "kind": "World Raid",
+      "challenge": "default",
+      "rank": 7,
+      "stages": 5,
+      "readiness": 15,
+      "fullClearPercent": 86.2,
+      "meanStagesCleared": 4.61
+    },
+    {
+      "setup": "high support",
+      "profile": "Relic enhanced",
+      "kind": "World Raid",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 5,
+      "readiness": 15,
+      "fullClearPercent": 0,
+      "meanStagesCleared": 0.34
+    },
+    {
+      "setup": "high support",
+      "profile": "Legendary enhanced",
+      "kind": "World Dungeon",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 3,
+      "readiness": 15,
+      "fullClearPercent": 49.87,
+      "meanStagesCleared": 2.1
+    },
+    {
+      "setup": "high support",
+      "profile": "Legendary enhanced",
+      "kind": "World Boss",
+      "challenge": "default",
+      "rank": 3,
+      "stages": 2,
+      "readiness": 15,
+      "fullClearPercent": 85.87,
+      "meanStagesCleared": 1.79
+    },
+    {
+      "setup": "high support",
+      "profile": "Legendary enhanced",
+      "kind": "World Boss",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 2,
+      "readiness": 15,
+      "fullClearPercent": 6.93,
+      "meanStagesCleared": 0.37
+    },
+    {
+      "setup": "high support",
+      "profile": "Legendary enhanced",
+      "kind": "World Raid",
+      "challenge": "default",
+      "rank": 7,
+      "stages": 5,
+      "readiness": 15,
+      "fullClearPercent": 87.07,
+      "meanStagesCleared": 4.66
+    },
+    {
+      "setup": "high support",
+      "profile": "Legendary enhanced",
+      "kind": "World Raid",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 5,
+      "readiness": 15,
+      "fullClearPercent": 0,
+      "meanStagesCleared": 0.3
+    },
+    {
+      "setup": "high support",
+      "profile": "Heritage enhanced",
+      "kind": "World Dungeon",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 3,
+      "readiness": 15,
+      "fullClearPercent": 54.53,
+      "meanStagesCleared": 2.18
+    },
+    {
+      "setup": "high support",
+      "profile": "Heritage enhanced",
+      "kind": "World Boss",
+      "challenge": "default",
+      "rank": 3,
+      "stages": 2,
+      "readiness": 15,
+      "fullClearPercent": 86.6,
+      "meanStagesCleared": 1.79
+    },
+    {
+      "setup": "high support",
+      "profile": "Heritage enhanced",
+      "kind": "World Boss",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 2,
+      "readiness": 15,
+      "fullClearPercent": 8.53,
+      "meanStagesCleared": 0.43
+    },
+    {
+      "setup": "high support",
+      "profile": "Heritage enhanced",
+      "kind": "World Raid",
+      "challenge": "default",
+      "rank": 7,
+      "stages": 5,
+      "readiness": 15,
+      "fullClearPercent": 88.07,
+      "meanStagesCleared": 4.66
+    },
+    {
+      "setup": "high support",
+      "profile": "Heritage enhanced",
+      "kind": "World Raid",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 5,
+      "readiness": 15,
+      "fullClearPercent": 0,
+      "meanStagesCleared": 0.36
+    },
+    {
+      "setup": "optimized sensitivity",
+      "profile": "Basic",
+      "kind": "World Dungeon",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 3,
+      "readiness": 15,
+      "fullClearPercent": 80.47,
+      "meanStagesCleared": 2.59
+    },
+    {
+      "setup": "optimized sensitivity",
+      "profile": "Basic",
+      "kind": "World Boss",
+      "challenge": "default",
+      "rank": 3,
+      "stages": 2,
+      "readiness": 15,
+      "fullClearPercent": 83.87,
+      "meanStagesCleared": 1.75
+    },
+    {
+      "setup": "optimized sensitivity",
+      "profile": "Basic",
+      "kind": "World Boss",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 2,
+      "readiness": 15,
+      "fullClearPercent": 78.47,
+      "meanStagesCleared": 1.7
+    },
+    {
+      "setup": "optimized sensitivity",
+      "profile": "Basic",
+      "kind": "World Raid",
+      "challenge": "default",
+      "rank": 7,
+      "stages": 5,
+      "readiness": 15,
+      "fullClearPercent": 88.2,
+      "meanStagesCleared": 4.63
+    },
+    {
+      "setup": "optimized sensitivity",
+      "profile": "Basic",
+      "kind": "World Raid",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 5,
+      "readiness": 15,
+      "fullClearPercent": 36.4,
+      "meanStagesCleared": 3.64
+    },
+    {
+      "setup": "optimized sensitivity",
+      "profile": "Basic enhanced",
+      "kind": "World Dungeon",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 3,
+      "readiness": 15,
+      "fullClearPercent": 81.33,
+      "meanStagesCleared": 2.6
+    },
+    {
+      "setup": "optimized sensitivity",
+      "profile": "Basic enhanced",
+      "kind": "World Boss",
+      "challenge": "default",
+      "rank": 3,
+      "stages": 2,
+      "readiness": 15,
+      "fullClearPercent": 85.67,
+      "meanStagesCleared": 1.77
+    },
+    {
+      "setup": "optimized sensitivity",
+      "profile": "Basic enhanced",
+      "kind": "World Boss",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 2,
+      "readiness": 15,
+      "fullClearPercent": 78.67,
+      "meanStagesCleared": 1.7
+    },
+    {
+      "setup": "optimized sensitivity",
+      "profile": "Basic enhanced",
+      "kind": "World Raid",
+      "challenge": "default",
+      "rank": 7,
+      "stages": 5,
+      "readiness": 15,
+      "fullClearPercent": 89.2,
+      "meanStagesCleared": 4.65
+    },
+    {
+      "setup": "optimized sensitivity",
+      "profile": "Basic enhanced",
+      "kind": "World Raid",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 5,
+      "readiness": 15,
+      "fullClearPercent": 36.33,
+      "meanStagesCleared": 3.7
+    },
+    {
+      "setup": "optimized sensitivity",
+      "profile": "Superior",
+      "kind": "World Dungeon",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 3,
+      "readiness": 15,
+      "fullClearPercent": 80.07,
+      "meanStagesCleared": 2.6
+    },
+    {
+      "setup": "optimized sensitivity",
+      "profile": "Superior",
+      "kind": "World Boss",
+      "challenge": "default",
+      "rank": 3,
+      "stages": 2,
+      "readiness": 15,
+      "fullClearPercent": 83.13,
+      "meanStagesCleared": 1.74
+    },
+    {
+      "setup": "optimized sensitivity",
+      "profile": "Superior",
+      "kind": "World Boss",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 2,
+      "readiness": 15,
+      "fullClearPercent": 80.13,
+      "meanStagesCleared": 1.71
+    },
+    {
+      "setup": "optimized sensitivity",
+      "profile": "Superior",
+      "kind": "World Raid",
+      "challenge": "default",
+      "rank": 7,
+      "stages": 5,
+      "readiness": 15,
+      "fullClearPercent": 89.2,
+      "meanStagesCleared": 4.65
+    },
+    {
+      "setup": "optimized sensitivity",
+      "profile": "Superior",
+      "kind": "World Raid",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 5,
+      "readiness": 15,
+      "fullClearPercent": 39.47,
+      "meanStagesCleared": 3.7
+    },
+    {
+      "setup": "optimized sensitivity",
+      "profile": "Superior enhanced",
+      "kind": "World Dungeon",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 3,
+      "readiness": 15,
+      "fullClearPercent": 82.4,
+      "meanStagesCleared": 2.63
+    },
+    {
+      "setup": "optimized sensitivity",
+      "profile": "Superior enhanced",
+      "kind": "World Boss",
+      "challenge": "default",
+      "rank": 3,
+      "stages": 2,
+      "readiness": 15,
+      "fullClearPercent": 84.13,
+      "meanStagesCleared": 1.77
+    },
+    {
+      "setup": "optimized sensitivity",
+      "profile": "Superior enhanced",
+      "kind": "World Boss",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 2,
+      "readiness": 15,
+      "fullClearPercent": 81.27,
+      "meanStagesCleared": 1.74
+    },
+    {
+      "setup": "optimized sensitivity",
+      "profile": "Superior enhanced",
+      "kind": "World Raid",
+      "challenge": "default",
+      "rank": 7,
+      "stages": 5,
+      "readiness": 15,
+      "fullClearPercent": 89.53,
+      "meanStagesCleared": 4.68
+    },
+    {
+      "setup": "optimized sensitivity",
+      "profile": "Superior enhanced",
+      "kind": "World Raid",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 5,
+      "readiness": 15,
+      "fullClearPercent": 43.2,
+      "meanStagesCleared": 3.84
+    },
+    {
+      "setup": "optimized sensitivity",
+      "profile": "Relic enhanced",
+      "kind": "World Dungeon",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 3,
+      "readiness": 15,
+      "fullClearPercent": 79.6,
+      "meanStagesCleared": 2.59
+    },
+    {
+      "setup": "optimized sensitivity",
+      "profile": "Relic enhanced",
+      "kind": "World Boss",
+      "challenge": "default",
+      "rank": 3,
+      "stages": 2,
+      "readiness": 15,
+      "fullClearPercent": 83.33,
+      "meanStagesCleared": 1.75
+    },
+    {
+      "setup": "optimized sensitivity",
+      "profile": "Relic enhanced",
+      "kind": "World Boss",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 2,
+      "readiness": 15,
+      "fullClearPercent": 81.6,
+      "meanStagesCleared": 1.74
+    },
+    {
+      "setup": "optimized sensitivity",
+      "profile": "Relic enhanced",
+      "kind": "World Raid",
+      "challenge": "default",
+      "rank": 7,
+      "stages": 5,
+      "readiness": 15,
+      "fullClearPercent": 90.93,
+      "meanStagesCleared": 4.72
+    },
+    {
+      "setup": "optimized sensitivity",
+      "profile": "Relic enhanced",
+      "kind": "World Raid",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 5,
+      "readiness": 15,
+      "fullClearPercent": 45.2,
+      "meanStagesCleared": 3.84
+    },
+    {
+      "setup": "optimized sensitivity",
+      "profile": "Legendary enhanced",
+      "kind": "World Dungeon",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 3,
+      "readiness": 15,
+      "fullClearPercent": 81.07,
+      "meanStagesCleared": 2.61
+    },
+    {
+      "setup": "optimized sensitivity",
+      "profile": "Legendary enhanced",
+      "kind": "World Boss",
+      "challenge": "default",
+      "rank": 3,
+      "stages": 2,
+      "readiness": 15,
+      "fullClearPercent": 85.13,
+      "meanStagesCleared": 1.77
+    },
+    {
+      "setup": "optimized sensitivity",
+      "profile": "Legendary enhanced",
+      "kind": "World Boss",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 2,
+      "readiness": 15,
+      "fullClearPercent": 79,
+      "meanStagesCleared": 1.71
+    },
+    {
+      "setup": "optimized sensitivity",
+      "profile": "Legendary enhanced",
+      "kind": "World Raid",
+      "challenge": "default",
+      "rank": 7,
+      "stages": 5,
+      "readiness": 15,
+      "fullClearPercent": 90.6,
+      "meanStagesCleared": 4.73
+    },
+    {
+      "setup": "optimized sensitivity",
+      "profile": "Legendary enhanced",
+      "kind": "World Raid",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 5,
+      "readiness": 15,
+      "fullClearPercent": 43.2,
+      "meanStagesCleared": 3.83
+    },
+    {
+      "setup": "optimized sensitivity",
+      "profile": "Heritage enhanced",
+      "kind": "World Dungeon",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 3,
+      "readiness": 15,
+      "fullClearPercent": 80.6,
+      "meanStagesCleared": 2.61
+    },
+    {
+      "setup": "optimized sensitivity",
+      "profile": "Heritage enhanced",
+      "kind": "World Boss",
+      "challenge": "default",
+      "rank": 3,
+      "stages": 2,
+      "readiness": 15,
+      "fullClearPercent": 85.13,
+      "meanStagesCleared": 1.78
+    },
+    {
+      "setup": "optimized sensitivity",
+      "profile": "Heritage enhanced",
+      "kind": "World Boss",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 2,
+      "readiness": 15,
+      "fullClearPercent": 82.6,
+      "meanStagesCleared": 1.75
+    },
+    {
+      "setup": "optimized sensitivity",
+      "profile": "Heritage enhanced",
+      "kind": "World Raid",
+      "challenge": "default",
+      "rank": 7,
+      "stages": 5,
+      "readiness": 15,
+      "fullClearPercent": 89.87,
+      "meanStagesCleared": 4.67
+    },
+    {
+      "setup": "optimized sensitivity",
+      "profile": "Heritage enhanced",
+      "kind": "World Raid",
+      "challenge": "Renown",
+      "rank": 9,
+      "stages": 5,
+      "readiness": 15,
+      "fullClearPercent": 48.2,
+      "meanStagesCleared": 3.97
+    }
+  ],
+  "trials": 1500,
+  "seed": 20261030,
+  "discounts": [
+    {
+      "skill": 0,
+      "tier": 0,
+      "nominalDiscount": 0,
+      "requirements": {
+        "Copper Ore": 2
+      },
+      "durability": 25,
+      "qualityChance": 0.03,
+      "qualityBonus": 0
+    },
+    {
+      "skill": 0,
+      "tier": 2,
+      "nominalDiscount": 0,
+      "requirements": {
+        "Silver Ore": 3,
+        "Irradiated Gearwork": 1
+      },
+      "durability": 35,
+      "qualityChance": 0.03,
+      "qualityBonus": 0
+    },
+    {
+      "skill": 0,
+      "tier": 4,
+      "nominalDiscount": 0,
+      "requirements": {
+        "Mithril Ore": 4,
+        "Dungeon Salvage": 1,
+        "Primal Earth Crystal": 1
+      },
+      "durability": 45,
+      "qualityChance": 0.03,
+      "qualityBonus": 0
+    },
+    {
+      "skill": 0,
+      "tier": 7,
+      "nominalDiscount": 0,
+      "requirements": {
+        "Eternium Ore": 5,
+        "World Dungeon Relic": 2,
+        "Heritage Ore": 1,
+        "Origination Spark": 3
+      },
+      "durability": 60,
+      "qualityChance": 0.03,
+      "qualityBonus": 0
+    },
+    {
+      "skill": 5,
+      "tier": 0,
+      "nominalDiscount": 0.159,
+      "requirements": {
+        "Copper Ore": 2
+      },
+      "durability": 35,
+      "qualityChance": 0.18,
+      "qualityBonus": 2
+    },
+    {
+      "skill": 5,
+      "tier": 2,
+      "nominalDiscount": 0.159,
+      "requirements": {
+        "Silver Ore": 3,
+        "Irradiated Gearwork": 1
+      },
+      "durability": 45,
+      "qualityChance": 0.18,
+      "qualityBonus": 2
+    },
+    {
+      "skill": 5,
+      "tier": 4,
+      "nominalDiscount": 0.159,
+      "requirements": {
+        "Mithril Ore": 4,
+        "Dungeon Salvage": 1,
+        "Primal Earth Crystal": 1
+      },
+      "durability": 55,
+      "qualityChance": 0.18,
+      "qualityBonus": 2
+    },
+    {
+      "skill": 5,
+      "tier": 7,
+      "nominalDiscount": 0.159,
+      "requirements": {
+        "Eternium Ore": 5,
+        "World Dungeon Relic": 2,
+        "Heritage Ore": 1,
+        "Origination Spark": 3
+      },
+      "durability": 70,
+      "qualityChance": 0.18,
+      "qualityBonus": 0
+    },
+    {
+      "skill": 10,
+      "tier": 0,
+      "nominalDiscount": 0.318,
+      "requirements": {
+        "Copper Ore": 2
+      },
+      "durability": 45,
+      "qualityChance": 0.32999999999999996,
+      "qualityBonus": 2
+    },
+    {
+      "skill": 10,
+      "tier": 2,
+      "nominalDiscount": 0.318,
+      "requirements": {
+        "Silver Ore": 3,
+        "Irradiated Gearwork": 1
+      },
+      "durability": 55,
+      "qualityChance": 0.32999999999999996,
+      "qualityBonus": 2
+    },
+    {
+      "skill": 10,
+      "tier": 4,
+      "nominalDiscount": 0.318,
+      "requirements": {
+        "Mithril Ore": 3,
+        "Dungeon Salvage": 1,
+        "Primal Earth Crystal": 1
+      },
+      "durability": 65,
+      "qualityChance": 0.32999999999999996,
+      "qualityBonus": 2
+    },
+    {
+      "skill": 10,
+      "tier": 7,
+      "nominalDiscount": 0.318,
+      "requirements": {
+        "Eternium Ore": 4,
+        "World Dungeon Relic": 2,
+        "Heritage Ore": 1,
+        "Origination Spark": 3
+      },
+      "durability": 80,
+      "qualityChance": 0.32999999999999996,
+      "qualityBonus": 2
+    }
+  ],
+  "repairs": {
+    "lostDurability": 10,
+    "twohandCost": 10,
+    "twoOnehandCost": 20
+  }
+}

@@ -33,7 +33,7 @@ try:
       for(const p of all){
         h.className=p.className;h.spec=p.spec;
         const r=recipes.find(r=>r.signatureKey===p.key&&r.tier===0),n=game.gear.length;craftGear(r.id);
-        const g=game.gear.at(-1);check(game.gear.length===n+1&&g.signatureKey===p.key&&g.family===p.family&&g.stat===p.stat,'craft signature '+p.key);
+        const g=game.gear.at(-1);check(gearReadinessBonus(g)===(p.hands===2?g.bonus*2:g.bonus),'Hand weighting includes building and quality bonuses');check(game.gear.length===n+1&&g.signatureKey===p.key&&g.family===p.family&&g.stat===p.stat,'craft signature '+p.key);
         equipSlot('player','weapon',g.id);check(h.equipment.weapon===g.id,'equip '+p.key);
         const base=readinessBase(h,p.stat.toLowerCase());
         if(p.offhand==='dual'){
@@ -51,6 +51,7 @@ try:
       document.getElementById('gear-crafted-modal').classList.remove('open');render();showView('crafting');save();
       window.kept=game.gear.length;
     }""")
+    page.evaluate("document.querySelectorAll('#crafting details').forEach(d=>d.open=true)")
     page.locator('.gear-craft-controls select').nth(0).select_option('weapon')
     assert page.locator('.gear-craft-controls select').nth(1).locator('option').count()==40
     count=page.evaluate('kept')

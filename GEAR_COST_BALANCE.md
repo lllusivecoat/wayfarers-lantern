@@ -1,8 +1,8 @@
 # Gear cost balance — change 3
 
-Two-handed weapons consume two hand units. One-handed weapons and offhands consume one. Crafting rounds each material after the current staff discount, then multiplies by hand units. Therefore one two-handed weapon exactly matches two one-handed weapons using the same material pattern, at every tier and discount. Explicit one-handed signature weapons such as Fury's greatswords remain one unit each.
+Two-handed weapons consume two hand units. One-handed weapons and offhands consume one. Crafting processes each hand unit with the current staff discount and saved fractional material credit. One two-handed weapon exactly matches two sequential one-handed crafts using the same material pattern and starting credit, at every tier and discount. Explicit one-handed signature weapons such as Fury's greatswords remain one unit each.
 
-Enhancements use these same recipe quantities multiplied by stage 1–4. All materials, including exclusive dungeon ingredients, follow the hand budget. Existing items retain their stats, durability and enhancement progress; past costs are not charged retroactively.
+Enhancements repeat the same per-hand ingredient calculation by stage 1–4, carrying fractional credit between units. All materials, including exclusive dungeon ingredients, follow the hand budget. Existing items retain their stats, durability and enhancement progress; past costs are not charged retroactively.
 
 Heritage weapons and offhands all require one Heritage Ore per hand unit. This removes the sword-specific material requirement. Armor, rings, capes and gathering tools retain their existing requirements. Different weapon material patterns still use different gathering and dungeon resources; equal hand budgets do not imply identical ingredient lists across every class.
 

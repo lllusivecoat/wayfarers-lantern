@@ -14,13 +14,13 @@ try:
  game.hall=7;game.buildingList.push({uid:'cost-shop',key:'workshop',level:5});game.staffMembers.push({id:'cost-smith',name:'Smith',wage:2,buildingUid:'cost-shop',buildingKey:'workshop',professionXP:{Blacksmithing:275}});v9Sync();staffMigrate(game);
  const smith=game.staffMembers.find(s=>s.id==='cost-smith');
  for(const xp of [0,75,275]){smith.professionXP.Blacksmithing=xp;for(let t=0;t<8;t++){
- const one=gearCraftInfo('sword-'+t).requirements,two=gearCraftInfo('greatsword-'+t).requirements;
- check(Object.keys(one).length===Object.keys(two).length,'same materials');for(const [k,n] of Object.entries(one))check(two[k]===2*n,'twohand materials '+xp+' '+t+' '+k);
+ const r=renderGearCatalog().find(r=>r.id==='sword-'+t),a=gearMaterialQuote(r);game.gearMaterialCredits=a.credits;const b=gearMaterialQuote(r);game.gearMaterialCredits={};const one=Object.fromEntries(Object.keys(a.materials).map(k=>[k,a.materials[k]+b.materials[k]])),two=gearCraftInfo('greatsword-'+t).requirements;
+ check(Object.keys(one).length===Object.keys(two).length,'same materials');for(const [k,n] of Object.entries(one))check(two[k]===n,'twohand materials '+xp+' '+t+' '+k);
  }}
  const h=game.player;h.ready=true;h.gold=10000;h.equipment={};h.className='Warrior';h.spec='Arms';
  const one={id:'cost-one',name:'Sword',kind:'Weapon',family:'sword',tier:7,bonus:4,madeByPlayer:true,owner:h.id,durability:50,maxDurability:60,enhancement:0,enhancementVersion:2};
  const two={...one,id:'cost-two',name:'Greatsword',family:'greatsword',hands:2};game.gear.push(one,two);
- for(const step of [0,1,2,3]){one.enhancement=two.enhancement=step;const a=gearEnhancementQuote(one.id),b=gearEnhancementQuote(two.id);for(const [k,n] of Object.entries(a.materials))check(b.materials[k]===2*n,'enhancement parity '+step)}
+ for(const step of [0,1,2,3]){one.enhancement=two.enhancement=step;game.gearMaterialCredits={};const a=gearEnhancementQuote(one.id);game.gearMaterialCredits=a.credits;const second=gearEnhancementQuote(one.id);game.gearMaterialCredits={};const b=gearEnhancementQuote(two.id);for(const [k,n] of Object.entries(a.materials))check(b.materials[k]===n+second.materials[k],'enhancement parity '+step)}
  for(const missing of [1,5,6,10,60]){one.durability=two.durability=60-missing;check(gearRepairCost(two)===2*gearRepairCost(one),'repair parity '+missing)}
  one.durability=two.durability=50;const expected=gearRepairCost(two),gold=h.gold;repairGear(two.id);check(h.gold===gold-expected&&two.durability===60,'actual repair charge');check(gearRepairCost(two)===0,'full repair zero');
  const catalog=renderGearCatalog();for(const r of catalog.filter(r=>r.tier===7&&['weapon','offhand'].includes(r.category)))check(r.requirements['Heritage Ore']>=1,'all Heritage hand patterns use ore');

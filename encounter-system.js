@@ -36,8 +36,13 @@
  // Legacy story expeditions have not rolled yet. Retain their original party/DC
  // rules and object identity so the existing organizing-fee exemption still applies.
  const oldQueue=queueQuestReport;queueQuestReport=function(q){
+  const daily=q.kind==='Dungeon'&&!q.persistent;
+  if(daily&&game.dailyDungeonDispatchedDay===game.day){alert('The Sunken Reliquary has already been dispatched today. A new expedition is available next game day.');return false}
+  if(daily){const before=game.pendingReports.length,result=oldQueue.apply(this,arguments);if(game.pendingReports.length>before)game.dailyDungeonDispatchedDay=game.day;return result}
+
   if(game.storySession?.quest!==q||q.encounterVersion)return oldQueue.apply(this,arguments);
   const previous=q.legacyEncounter;q.legacyEncounter=true;try{return oldQueue.apply(this,arguments)}finally{if(previous===undefined)delete q.legacyEncounter;else q.legacyEncounter=previous}
  };
+ for(const r of [...(game.pendingReports||[]),...(game.todayReports||[])])if(r.questKind==='Dungeon'&&!r.questPersistent&&r.dispatchedDay===game.day)game.dailyDungeonDispatchedDay=game.day;
  render();
 })();

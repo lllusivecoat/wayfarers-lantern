@@ -13,7 +13,7 @@
   const capacity=()=>WL_BALANCE.convoyCapacity(party().length);
   const load=cargo=>cargo.reduce((n,c)=>n+c.count,0);
   const value=cargo=>cargo.reduce((n,c)=>n+(c.unitValue??tradeValues[c.material]??2)*c.count,0);
-  const manifest=cargo=>cargo.map(c=>`${c.count} ${c.label||c.material}`).join(', ');
+  const manifest=cargo=>{const groups=new Map();for(const c of cargo){const label=c.label||c.material,key=JSON.stringify([label,c.unitValue]);if(!groups.has(key))groups.set(key,{label,count:0});groups.get(key).count+=c.count}return [...groups.values()].map(c=>`${c.count} ${c.label}`).join(', ')};
   function stock(){
     const rows=Object.entries(game.materials||{}).filter(([,n])=>n>0).map(([key,count])=>({key,count,label:key,unitValue:tradeValues[key]||2,type:'material'}));
     for(const g of game.gear||[])if(!g.owner&&!g.heroOwner&&![game.player,...game.heroes].filter(Boolean).some(h=>h.gear===g.id||Object.values(h.equipment||{}).includes(g.id))){const condition=Math.max(0,Math.min(1,(g.durability||0)/(g.maxDurability||1)));rows.push({key:'gear:'+g.id,count:1,label:g.name+' (gear)',unitValue:gearEconomyQuote(g).convoyValue,type:'gear',id:g.id})}
@@ -24,11 +24,22 @@
   const cargoOld=tradeCargo;tradeCargo=function(){const rows=stock();return cargoOld().map(c=>{const r=rows.find(r=>r.key===c.material);return {...c,label:r?.label||c.material,unitValue:r?.unitValue??0}})};
   function available(name){return stock().find(r=>r.key===name)?.count||0}
   function commitCargo(cargo){for(const c of cargo){const r=stock().find(r=>r.key===c.material);if(r.type==='material'){game.materials[c.material]-=c.count;if(!game.materials[c.material])delete game.materials[c.material]}else if(r.type==='gear')game.gear=game.gear.filter(g=>g.id!==r.id);else{const item=game[r.source].find(i=>i.id===r.id);item.uses-=c.count;game[r.source]=game[r.source].filter(i=>i.uses>0)}}}
-  renderTradeCargo=function(){const root=document.getElementById('outbound-cargo');if(!root)return;const rows=stock(),cargo=game.tradeCargo||{};
-    root.innerHTML='<p>Sell materials, guild-owned gear and stored consumable uses. Hero-owned or equipped items are excluded. Each item/use takes one cargo unit. Ambushed cargo may be lost.</p>'+rows.map((r,i)=>`<div class="trade-cargo-row"><label><input type="checkbox" data-sale-check="${i}" ${Object.hasOwn(cargo,r.key)?'checked':''}><span>${tbwEsc(r.label)}<small>${r.count} available · ${r.unitValue} gp base each</small></span></label><label class="trade-cargo-quantity">Quantity<input type="number" min="1" max="${r.count}" step="1" data-sale-count="${i}" value="${tbwEsc(cargo[r.key]??1)}" ${Object.hasOwn(cargo,r.key)?'':'disabled'}></label></div>`).join('');
-    const change=i=>{const r=rows[i],box=root.querySelector(`[data-sale-check="${i}"]`),input=root.querySelector(`[data-sale-count="${i}"]`);game.tradeCargo=game.tradeCargo||{};input.disabled=!box.checked;if(box.checked)game.tradeCargo[r.key]=Number(input.value);else delete game.tradeCargo[r.key];updateTradePreview();save()};
+  function canonical(value){if(Array.isArray(value))return value.map(canonical);if(value&&typeof value==='object')return Object.fromEntries(Object.keys(value).sort().map(k=>[k,canonical(value[k])]));return value}
+  function groupedStock(){const groups=new Map();for(const r of stock()){
+    const item=r.type==='gear'?game.gear.find(g=>g.id===r.id):r.type==='supply'?game[r.source].find(i=>i.id===r.id):null;
+    const attributes=item?Object.fromEntries(Object.entries(item).filter(([k])=>!['id','owner','heroOwner','purchaseValue','uses'].includes(k))):null;
+    const key=JSON.stringify(canonical([r.type,r.source,r.type==='material'?r.key:r.label,r.unitValue,attributes]));
+    if(!groups.has(key))groups.set(key,{...r,count:0,members:[],variant:r.type==='gear'?`+${item.bonus||0} ${item.stat||'readiness'} · ${item.durability||0}/${item.maxDurability||0} durability · enhancement ${item.enhancement||0}`:''});const group=groups.get(key);group.count+=r.count;group.members.push(r);
+  }return [...groups.values()]}
+  window.tradeSaleGroups=groupedStock;
+  renderTradeCargo=function(){const root=document.getElementById('outbound-cargo');if(!root)return;const rows=groupedStock(),cargo=game.tradeCargo||{};
+    const chosen=r=>r.members.some(m=>Object.hasOwn(cargo,m.key)),amount=r=>r.members.reduce((n,m)=>n+Number(cargo[m.key]||0),0);
+    root.innerHTML='<p>Matching gear and supplies share one row. Different stats, enhancements, condition or values stay separate. Each item/use takes one cargo unit; hero-owned or equipped items are excluded.</p>'+rows.map((r,i)=>`<div class="trade-cargo-row"><label><input type="checkbox" data-sale-check="${i}" ${chosen(r)?'checked':''}><span>${tbwEsc(r.label)}<small>${r.count} available · ${r.unitValue} gp base each${r.variant?'<br>'+tbwEsc(r.variant):''}</small></span></label><label class="trade-cargo-quantity">Quantity<input type="number" min="1" max="${r.count}" step="1" data-sale-count="${i}" value="${tbwEsc(chosen(r)?amount(r):1)}" ${chosen(r)?'':'disabled'}></label></div>`).join('');
+    const change=i=>{const r=rows[i],box=root.querySelector(`[data-sale-check="${i}"]`),input=root.querySelector(`[data-sale-count="${i}"]`);game.tradeCargo=game.tradeCargo||{};for(const m of r.members)delete game.tradeCargo[m.key];input.disabled=!box.checked;
+      if(box.checked){let remaining=Number(input.value);if(!Number.isSafeInteger(remaining)||remaining<1)game.tradeCargo[r.members[0].key]=remaining;else{for(const m of r.members){const n=Math.min(m.count,remaining);if(n>0)game.tradeCargo[m.key]=n;remaining-=n}if(remaining>0)game.tradeCargo[r.members[0].key]=(game.tradeCargo[r.members[0].key]||0)+remaining}}
+      updateTradePreview();save()};
     root.querySelectorAll('[data-sale-check]').forEach(b=>b.onchange=()=>change(Number(b.dataset.saleCheck)));root.querySelectorAll('[data-sale-count]').forEach(b=>b.oninput=()=>change(Number(b.dataset.saleCount)));
-    for(const key of Object.keys(cargo))if(!rows.some(r=>r.key===key)){const b=document.createElement('button');b.className='btn secondary';b.textContent='Remove unavailable cargo: '+key;b.onclick=()=>{delete game.tradeCargo[key];renderTrading();save()};root.append(b)}
+    for(const key of Object.keys(cargo))if(!rows.some(r=>r.members.some(m=>m.key===key))){const b=document.createElement('button');b.className='btn secondary';b.textContent='Remove unavailable cargo: '+key;b.onclick=()=>{delete game.tradeCargo[key];renderTrading();save()};root.append(b)}
   };
   function relationship(id){
     game.tradeRelations=game.tradeRelations||{};

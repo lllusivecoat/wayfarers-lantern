@@ -15,7 +15,7 @@
  const sort=document.createElement('label');sort.textContent='Sort heroes: ';
  sort.innerHTML+='<select id="hero-sort">'+['rank','level',...abilityKeys].map(k=>`<option value="${k}">${k.toUpperCase()} · highest first</option>`).join('')+'</select>';
  document.getElementById('hero-list').before(sort);sort.querySelector('select').onchange=e=>{sorting=e.target.value;renderHeroes()};
- const repairCost=g=>{const h=purse(g.owner);return h&&g.durability<g.maxDurability?perkRepairCost(h,Math.max(1,Math.ceil((g.maxDurability-g.durability)/5)*v9RepairUnit())):0};
+ const repairCost=g=>gearRepairCost(g);
  const opened=new Set();
  function repairs(){const root=document.getElementById('warehouse-gear');if(!root)return;
  const groups=new Map();for(const g of game.gear){const key=g.owner||'storage';if(!groups.has(key))groups.set(key,[]);groups.get(key).push(g)}

@@ -9,7 +9,22 @@
  const tag=v9StatTag;v9StatTag=function(q){return q?.gatherAbilities?`<span class="pill v9-stat" title="One roll per hero using their higher readiness stat">${v9StatName(q)} check</span>`:tag(q)};
  function bestStat(h,q){return q.gatherAbilities.reduce((best,a)=>readiness(h,a)>readiness(h,best)?a:best,q.gatherAbilities[0])}
  const stat=perkStatFor;perkStatFor=function(h,q){return q?.kind==='Gathering'&&q.gatherAbilities?bestStat(h,q):stat.apply(this,arguments)};
- const extra=v9PickExtra;v9PickExtra=function(h,q){return q?.gatherAbilities?q.gatherAbilities.map(a=>`${a.toUpperCase()} ${v9ReadyPill(readiness(h,a))}`).join(' · ')+` · Uses ${bestStat(h,q).toUpperCase()}`:extra.apply(this,arguments)};
+ const extra=v9PickExtra;v9PickExtra=function(h,q){if(!q?.gatherAbilities)return extra.apply(this,arguments);const selected=bestStat(h,q);return '<span class="gather-stat-options">'+q.gatherAbilities.map(a=>{const n=readiness(h,a),used=a===selected;return `<span class="gather-stat ${used?'selected':''} ${n<0?'negative':''}" title="${a.toUpperCase()} readiness ${n>=0?'+':''}${n}${used?' — automatically used':''}">${a.toUpperCase()} <b>${n>=0?'+':''}${n}</b>${used?'<small>Used</small>':''}</span>`}).join('')+'</span>'};
+ const head=v9PickHead;v9PickHead=function(h,q,extra){const html=head.apply(this,arguments);if(!q?.gatherAbilities)return html;const box=document.createElement('div');box.innerHTML=html;const row=box.firstElementChild;row.classList.add('gather-pick-head');const dot=row.querySelector('.v9-tdot');if(dot)row.querySelector('.v9pick-name').append(dot);return box.innerHTML};
+ const style=document.createElement('style');style.textContent=`
+ .v9pick-head.gather-pick-head{display:grid;grid-template-columns:minmax(0,1fr) 26px;gap:10px 8px;width:100%;align-items:start}
+ .gather-pick-head .v9pick-name{grid-column:1;grid-row:1;white-space:normal!important;overflow:visible!important;text-overflow:clip!important;max-width:none!important;line-height:1.4;overflow-wrap:anywhere}
+ .gather-pick-head .v9-info{grid-column:2;grid-row:1;justify-self:end;margin-top:1px}
+ .gather-pick-head .v9-tdot{display:inline-block;margin-left:8px;vertical-align:middle}
+ .gather-stat-options{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px;min-width:0}
+ .gather-stat{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);border-radius:7px;padding:4px 8px;font:12px/1.4 system-ui,sans-serif;color:var(--muted);white-space:nowrap}
+ .gather-stat.selected{border-color:#a68c4d;background:#a68c4d18;color:var(--gold2)}
+ .gather-stat.negative b{color:#ffaaa0}.gather-stat small{font-size:10px;opacity:.85}
+ .v9pick:has(.gather-pick-head){padding:12px!important}
+ .v9pick:has(.gather-pick-head) .v9pick-body{gap:10px!important}
+ .v9pick:has(.gather-pick-head) .v9pick-meta{flex-wrap:wrap!important;line-height:1.5}
+ .v9pick:has(.gather-pick-head) .v9pick-class{white-space:normal!important;overflow:visible!important;text-overflow:clip!important;line-height:1.5;overflow-wrap:anywhere}
+ `;document.head.append(style);
  window.resolveGatheringChecks=function(q,party,dc,PK,TB,storyBonus){
  const selected=new Map(party.map(h=>[h.id,bestStat(h,q)]));
  const checks=perkRollChecks(q,party,dc,PK,h=>readiness(h,selected.get(h.id))+(h.rank>0?1:0)+(h.id==='player'?storyBonus:0)+tbwRollMod(h,TB));

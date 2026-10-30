@@ -12,8 +12,24 @@
   const currentRoute=()=>tradeDestinations().find(r=>r.id===selectedTradeRoute);
   const capacity=()=>WL_BALANCE.convoyCapacity(party().length);
   const load=cargo=>cargo.reduce((n,c)=>n+c.count,0);
-  const value=cargo=>cargo.reduce((n,c)=>n+(tradeValues[c.material]||2)*c.count,0);
-  const manifest=cargo=>cargo.map(c=>`${c.count} ${c.material}`).join(', ');
+  const value=cargo=>cargo.reduce((n,c)=>n+(c.unitValue??tradeValues[c.material]??2)*c.count,0);
+  const manifest=cargo=>cargo.map(c=>`${c.count} ${c.label||c.material}`).join(', ');
+  function stock(){
+    const rows=Object.entries(game.materials||{}).filter(([,n])=>n>0).map(([key,count])=>({key,count,label:key,unitValue:tradeValues[key]||2,type:'material'}));
+    for(const g of game.gear||[])if(!g.owner&&!g.heroOwner&&![game.player,...game.heroes].filter(Boolean).some(h=>h.gear===g.id||Object.values(h.equipment||{}).includes(g.id))){const condition=Math.max(0,Math.min(1,(g.durability||0)/(g.maxDurability||1)));rows.push({key:'gear:'+g.id,count:1,label:g.name+' (gear)',unitValue:gearEconomyQuote(g).convoyValue,type:'gear',id:g.id})}
+    for(const source of ['consumables','alchemyPotions','fieldKits'])for(const item of game[source]||[])if(Number.isSafeInteger(item.uses)&&item.uses>0){const recipe=source==='alchemyPotions'?alchemyRecipes().find(r=>r.id===item.recipe):source==='fieldKits'?fieldKitRecipes().find(r=>r.id===item.recipe):null;rows.push({key:source+':'+item.id,count:item.uses,label:(item.name||recipe?.name||'Supply')+' (per use)',unitValue:Math.max(1,Math.min(25,2+2*(Number(recipe?.skill)||Number(item.bonus)||0))),type:'supply',source,id:item.id})}
+    return rows;
+  }
+  window.tradeSaleStock=stock;
+  const cargoOld=tradeCargo;tradeCargo=function(){const rows=stock();return cargoOld().map(c=>{const r=rows.find(r=>r.key===c.material);return {...c,label:r?.label||c.material,unitValue:r?.unitValue??0}})};
+  function available(name){return stock().find(r=>r.key===name)?.count||0}
+  function commitCargo(cargo){for(const c of cargo){const r=stock().find(r=>r.key===c.material);if(r.type==='material'){game.materials[c.material]-=c.count;if(!game.materials[c.material])delete game.materials[c.material]}else if(r.type==='gear')game.gear=game.gear.filter(g=>g.id!==r.id);else{const item=game[r.source].find(i=>i.id===r.id);item.uses-=c.count;game[r.source]=game[r.source].filter(i=>i.uses>0)}}}
+  renderTradeCargo=function(){const root=document.getElementById('outbound-cargo');if(!root)return;const rows=stock(),cargo=game.tradeCargo||{};
+    root.innerHTML='<p>Sell materials, guild-owned gear and stored consumable uses. Hero-owned or equipped items are excluded. Each item/use takes one cargo unit. Ambushed cargo may be lost.</p>'+rows.map((r,i)=>`<div class="trade-cargo-row"><label><input type="checkbox" data-sale-check="${i}" ${Object.hasOwn(cargo,r.key)?'checked':''}><span>${tbwEsc(r.label)}<small>${r.count} available · ${r.unitValue} gp base each</small></span></label><label class="trade-cargo-quantity">Quantity<input type="number" min="1" max="${r.count}" step="1" data-sale-count="${i}" value="${tbwEsc(cargo[r.key]??1)}" ${Object.hasOwn(cargo,r.key)?'':'disabled'}></label></div>`).join('');
+    const change=i=>{const r=rows[i],box=root.querySelector(`[data-sale-check="${i}"]`),input=root.querySelector(`[data-sale-count="${i}"]`);game.tradeCargo=game.tradeCargo||{};input.disabled=!box.checked;if(box.checked)game.tradeCargo[r.key]=Number(input.value);else delete game.tradeCargo[r.key];updateTradePreview();save()};
+    root.querySelectorAll('[data-sale-check]').forEach(b=>b.onchange=()=>change(Number(b.dataset.saleCheck)));root.querySelectorAll('[data-sale-count]').forEach(b=>b.oninput=()=>change(Number(b.dataset.saleCount)));
+    for(const key of Object.keys(cargo))if(!rows.some(r=>r.key===key)){const b=document.createElement('button');b.className='btn secondary';b.textContent='Remove unavailable cargo: '+key;b.onclick=()=>{delete game.tradeCargo[key];renderTrading();save()};root.append(b)}
+  };
   function relationship(id){
     game.tradeRelations=game.tradeRelations||{};
     const r=game.tradeRelations[id]||(game.tradeRelations[id]={points:0});
@@ -72,8 +88,8 @@
     const goods=purchase?.goods;
     for(const c of cargo){
       if(!Number.isSafeInteger(c.count)||c.count<1){reasons.push(`${c.material}: enter a positive whole quantity.`);continue}
-      const available=purchase?(goods.find(o=>o.material===c.material)?.stock||0):Number(game.materials[c.material]||0);
-      if(c.count>available)reasons.push(`${c.material}: ${c.count} selected, but only ${available} ${purchase?'in market stock':'in warehouse storage'}.`);
+      const quantityAvailable=purchase?(goods.find(o=>o.material===c.material)?.stock||0):available(c.material);
+      if(c.count>quantityAvailable)reasons.push(`${c.material}: ${c.count} selected, but only ${quantityAvailable} ${purchase?'in market stock':'in warehouse storage'}.`);
     }
     if(heroes.length&&load(cargo)>capacity())reasons.push(`Cargo exceeds convoy capacity: ${load(cargo)}/${capacity()} items. Reduce quantities or select more members (20 items each).`);
     if(purchase?.valid&&purchase.total>game.gold)reasons.push(`Not enough guild gold: need ${purchase.total} gp (${purchase.goodsCost} goods + ${purchase.escortPay} escort pay), have ${game.gold} gp.`);
@@ -100,7 +116,7 @@
   };
   updateTradePreview=function(){
     const route=currentRoute(),cargo=tradeCargo(),heroes=party();
-    const valid=validCargo(cargo,name=>Number(game.materials[name]||0)),units=load(cargo);
+    const valid=validCargo(cargo,name=>available(name)),units=load(cargo);
     const button=document.getElementById('trade-dispatch'),root=document.getElementById('trade-preview');
     showBlockers(button,blockers(route,cargo,heroes));
     if(root)root.textContent=!route?'Choose a discovered market.':!valid?'Select cargo with whole quantities within warehouse stock.':
@@ -163,9 +179,10 @@
   dispatchTrade=function(){
     const route=currentRoute(),cargo=tradeCargo(),heroes=party();
     const reasons=blockers(route,cargo,heroes);if(reasons.length){updateTradePreview();return alert(reasons.join('\n'))}
+    if(cargo.some(c=>c.material.startsWith('gear:')||c.material.startsWith('consumables:')||c.material.startsWith('alchemyPotions:')||c.material.startsWith('fieldKits:'))&&!confirm(`Dispatch cargo for sale? ${manifest(cargo)}. Full delivery: ${tradeQuote(route,cargo,heroes.length).guildGold} gp to the guild after escort pay. Cargo leaves storage now and may be lost in transit.`))return false;
     const suppliesUsed=consumeExpeditionSupplies(heroes),result=rollConvoy(heroes,route);
     const delivered=cargo.map(c=>({...c,count:Math.floor(c.count*result.fraction)})),quote=tradeQuote(route,delivered,heroes.length);
-    cargo.forEach(c=>{game.materials[c.material]-=c.count;if(!game.materials[c.material])delete game.materials[c.material]});
+    commitCargo(cargo);
     game.tradeCargo={};
     return queue(route,heroes,result,{title:`Trade convoy to ${route.name}`,suppliesUsed,cargo,deliveredCargo:delivered,
       relationshipValue:value(delivered),payout:quote.guildGold,memberCut:quote.memberCut,

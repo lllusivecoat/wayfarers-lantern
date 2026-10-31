@@ -473,7 +473,7 @@ label.pick.v9pick>input{margin:3px 0 0!important;justify-self:start}
     <article class="card"><div class="eyebrow">Gear & repairs</div><div id="warehouse-gear"></div></article></div>
   </section>
   <section class="view" id="quests">
-    <div class="heading"><div><div class="eyebrow">Choose an operation</div><h2>Contracts</h2></div><span class="small muted">Time-limited contracts</span></div>
+    <div class="heading"><div><div class="eyebrow">Choose an operation</div><h2>Contracts</h2></div><div class="quest-testing-actions"><span class="small muted">Time-limited contracts</span><button id="test-complete-quests" class="btn secondary" onclick="testCompleteAllQuests()" title="Temporary testing: finish active quests, world stages and convoys with their normal outcomes, without advancing the game day.">Complete all quests · Test</button></div></div><p id="test-quest-status" class="small muted" role="status" aria-live="polite"></p>
     <article class="card" style="margin-bottom:13px"><div class="cardhead"><div><div class="eyebrow">Quest tracker</div><h3>Mission status</h3></div><span class="pill" id="report-count">No reports</span></div><div class="tracker-columns"><section><div class="eyebrow">Underway</div><div id="active-quest-list"></div></section><div class="tracker-divider" aria-hidden="true"></div><section><div class="eyebrow">Return summary</div><div id="report-list" class="log"></div></section></div><p class="small muted">Quest timers depend on rank and type: F rank takes 5 minutes, +5 per rank, with extra time for Gathering, Dungeons, Bosses and Raids. Resting until tomorrow resolves all quests still underway immediately and shows their reports.</p></article>
     <div class="grid three" id="quest-list"></div>
     <article class="card" style="margin-top:13px"><div class="notice" style="margin-top:0">Each hero rolls one d20 + readiness. Success requires at least two-thirds of the party to meet the DC; one-third earns a partial success. A natural 20 improves the result, while a natural 1 worsens it. Full dungeon and raid parties are strongly recommended.</div></article>
@@ -1940,6 +1940,7 @@ render();
 <script src="world-expansion.js"></script>
 <script src="report-presentation.js"></script>
 <script src="quest-stat-checks.js"></script>
+<script src="testing-controls.js"></script>
 <script src="offline.js"></script>
 </body>
 </html>

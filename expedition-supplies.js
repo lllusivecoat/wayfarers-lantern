@@ -1,6 +1,14 @@
 /* Up to three stored uses occupy one utility slot; departure spends one. */
 (function(){
  const slots=['utility1','utility2','utility3'];
+ function migrateBatches(){if(game.supplyBatchVersion===2)return;
+  const upgrade=(item,source)=>{if(!item||item.supplyBatchVersion===2)return;const ration=source==='food'&&(item.ration||/rations/i.test(item.name||'')),tonic=source==='alchemy'&&item.recipe==='tonic';if(ration||tonic)item.uses=Math.max(0,Number(item.uses)||0)*3;item.supplyBatchVersion=2;};
+  for(const item of game.consumables||[])upgrade(item,'food');for(const item of game.alchemyPotions||[])upgrade(item,'alchemy');
+  for(const h of [game.player,...game.heroes].filter(Boolean))for(const pack of Object.values(h.utilitySupplies||{}))upgrade(pack,pack.source);
+  game.supplyBatchVersion=2;
+ }
+ migrateBatches();const batchSave=save;save=function(){migrateBatches();return batchSave.apply(this,arguments)};
+
  const inventory=source=>source==='kit'?game.fieldKits:source==='alchemy'?game.alchemyPotions:game.consumables;
  function info(pack){return pack.source==='kit'?fieldKitRecipes().find(r=>r.id===pack.recipe):pack.source==='alchemy'?alchemyRecipes().find(r=>r.id===pack.recipe):pack}
  function eligible(item,source){return item.uses>0&&(source==='kit'?!!fieldKitRecipes().find(r=>r.id===item.recipe)?.protection:source==='alchemy'?!!alchemyRecipes().find(r=>r.id===item.recipe)?.bonus:!!item.ration||/rations|draught/i.test(item.name||''))}

@@ -5,7 +5,7 @@
  const recipes=[
   {id:'field',name:'Field Draught',lab:1,skill:0,gold:0,ingredients:{Peacebloom:2},uses:3,bonus:1},
   {id:'mending',name:'Mending Potion',lab:1,skill:1,gold:0,ingredients:{Peacebloom:4,'Fresh Fish':2},uses:1,heal:1,tier:1},
-  {id:'tonic',name:'Expedition Tonic',lab:2,skill:3,gold:0,ingredients:{Kingsblood:3,'Flawless Gem':1},uses:1,bonus:2},
+  {id:'tonic',name:'Expedition Tonic',lab:2,skill:3,gold:0,ingredients:{Kingsblood:3,'Flawless Gem':1},uses:3,bonus:2},
   {id:'restorative',name:'Restorative Potion',lab:3,skill:5,gold:0,ingredients:{Kingsblood:8,'Silverfin':3,'Dungeon Salvage':2},uses:1,heal:2,tier:2},
   {id:'panacea',name:'Panacea',lab:4,skill:7,gold:0,ingredients:{Kingsblood:15,'Arcane Crystal':3,'Rare Raid Relic':2,'Deepwater Fish':4},uses:1,heal:2,tier:3},
   ...abilityKeys.map(stat=>({id:'ascension-'+stat,name:'Ascension Elixir · '+abilityNames[stat],lab:5,skill:10,hall:7,gold:0,ingredients:{...endgame},uses:1,stat}))
@@ -39,7 +39,7 @@
   for(const [key,n] of Object.entries(q.ingredients))game.materials[key]-=n;
   const count=used()+(r.stat?5:1);game.alchemyBatches[lab().uid]={day:game.day,count};
   game.alchemySequence=(Number(game.alchemySequence)||0)+1;
-  game.alchemyPotions.push({id:'alchemy-'+game.alchemySequence,recipe:r.id,uses:r.uses});
+  game.alchemyPotions.push({id:'alchemy-'+game.alchemySequence,recipe:r.id,uses:r.uses,supplyBatchVersion:2});
   practiceStaff('alchemyLab');addLog('Potion brewed',`${r.name}: ${effect(r)} Cost: ${q.gold} gp; ${Object.entries(q.ingredients).map(([k,n])=>n+' '+k).join(', ')}.`);render();save();return true;
  };
  // The old recipe now follows the same lab, staffing, skill and daily checks.

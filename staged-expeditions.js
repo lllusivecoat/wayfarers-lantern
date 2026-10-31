@@ -28,7 +28,7 @@
  if(game.pendingReports.length>before){const r=game.pendingReports.at(-1);r.bossName=run.encounters[i].name;r.stagePlan=run;r.stageIndex=i;r.stageCount=run.count;r.stageCleared=cleared(r);r.durMs=share(run.duration,i,run.count);
  if(!cleared(r)){r.payout=0;r.memberCut=0;r.memberAwards=[];r.rep=0;r.lootDrops=[];r.growthAwards=[];r.resourceQty=0}
  r.summary=`Stage ${i+1}/${run.count} — ${run.encounters[i].name}: ${r.outcome}. ${cleared(r)?r.summary:'Stage not cleared; no stage rewards. The next attempt restarts at stage 1.'}`;
- r.extendedSummary=(r.extendedSummary||'')+` Stage ${i+1}/${run.count}: ${cleared(r)?'cleared; its rewards are retained.':'not cleared; no rewards for this stage, and the run ends. Restart from stage 1 on the next attempt.'}`;
+ r.extendedSummary=(r.extendedSummary||'')+` Stage ${i+1}/${run.count}: ${cleared(r)?'cleared; its rewards are retained.':(r.outcome==='Partial Success'?'not cleared; no stage rewards. Partial completion uses the daily entry; restart from stage 1 next game day.':'not cleared; no stage rewards. Restart from stage 1 on the next attempt.')}`;
 
  return true}return result;
  }
@@ -37,8 +37,8 @@
  const run={id:'world-run-'+game.stageRunSequence,quest:structuredClone(q),partyIds:[...ids],storyBonus,storySummary,count:n,encounters:encounters(q),duration:Math.max(n,Math.round(v9QuestMs(q)))};
  return enqueue(run,0,Date.now()+share(run.duration,0,n));
  };
- function syncClears(){game.worldClearDays=game.worldClearDays||{};for(const r of game.todayReports||[]){if(!r.runComplete||!r.stagePlan)continue;const key=r.stagePlan.quest.templateKey;const day=r.worldClearedDay??game.day;r.worldClearedDay=day;game.worldClearDays[key]=Math.max(game.worldClearDays[key]??-1,day)}for(const [key,day] of Object.entries(game.worldClearDays))if(day===game.day)game.questDone[key]=true;}
- queueQuestReport=function(q){syncClears();if(!q.stageRun&&game.worldClearDays[q.templateKey]===game.day){alert('This world event has already been cleared today. Failed runs may be retried; successful clears reset next game day.');return false}return startRun.apply(this,arguments)};
+ function syncClears(){game.worldClearDays=game.worldClearDays||{};for(const r of game.todayReports||[]){if(!r.stagePlan||!(r.runComplete||r.dailyCompletion||r.outcome==='Partial Success'))continue;const key=r.stagePlan.quest.templateKey;const day=r.worldClearedDay??r.returnedDay??game.day;r.worldClearedDay=day;game.worldClearDays[key]=Math.max(game.worldClearDays[key]??-1,day)}for(const [key,day] of Object.entries(game.worldClearDays))if(day===game.day)game.questDone[key]=true;}
+ queueQuestReport=function(q){syncClears();if(!q.stageRun&&game.worldClearDays[q.templateKey]===game.day){alert('This world event has already used its daily completion today. Failed runs may be retried; success and partial completion reset next game day.');return false}return startRun.apply(this,arguments)};
  const quests=renderQuests;renderQuests=function(){syncClears();return quests.apply(this,arguments)};
  const apply=applyPendingReports;
  applyPendingReports=function(){const combined=[];let loops=0;
@@ -49,15 +49,15 @@
  if(canContinue){for(const state of snapshots.get(run.id)||[]){const h=purse(state.id);if(h&&!h.dead){Object.assign(h,state);h.ready=false}}
  enqueue(run,r.stageIndex+1,Number(r.dueAt)+share(run.duration,r.stageIndex+1,run.count));r.runContinues=true;
  r.summary+=' Party continues to the next stage.';
- }else{r.runComplete=cleared(r)&&r.stageIndex===run.count-1;r.summary+=r.runComplete?' Expedition fully cleared.':' Expedition ended; the next attempt begins at stage 1.';
- if(r.runComplete){r.worldClearedDay=game.day;game.worldClearDays=game.worldClearDays||{};game.worldClearDays[run.quest.templateKey]=game.day;game.questDone[run.quest.templateKey]=true}else if(game.worldClearDays?.[run.quest.templateKey]!==game.day)delete game.questDone[run.quest.templateKey];
+ }else{r.runComplete=cleared(r)&&r.stageIndex===run.count-1;r.dailyCompletion=r.runComplete||r.outcome==='Partial Success';r.summary+=r.runComplete?' Expedition fully cleared.':r.dailyCompletion?' Partial completion uses today’s world-event entry; return next game day.':' Expedition failed; another attempt may begin at stage 1.';
+ if(r.dailyCompletion){r.worldClearedDay=game.day;game.worldClearDays=game.worldClearDays||{};game.worldClearDays[run.quest.templateKey]=game.day;game.questDone[run.quest.templateKey]=true}else if(game.worldClearDays?.[run.quest.templateKey]!==game.day)delete game.questDone[run.quest.templateKey];
  }
  }
  if(!done.length)break;
  }while(++loops<5&&game.pendingReports.some(r=>r.stagePlan&&r.dueAt<=Date.now()));
  game.todayReports=combined;return combined;
  };
- const table=questLootTable;questLootTable=function(q){const rows=table(q),n=count(q);if(n>1)rows.unshift(['Daily limit','One successful full clear per event per game day. Failed or partial runs can be retried from stage 1 the same day.']);if(n>1){rows.unshift(['Stages',`${n} sequential stages sharing the existing total duration. Organizing fee once; rewards paid per cleared stage. Partial/failure ends the run; next attempt starts at stage 1.`]);rows.push(['Stage rewards','XP, payable gold and common reward budgets +15%, divided across stages. Rare loot and exclusive materials require the final clear. Supplies cover the full run.']);}return rows};
- const details=renderQuestDetails;renderQuestDetails=function(){const result=details.apply(this,arguments),q=questById(chosenQuest);if(count(q)>1){const p=document.createElement('p');p.className='notice';p.textContent=`${count(q)} stages · Each stage takes about ${v9DurLabel(q)} ÷ ${count(q)}. Clear every stage in order. Failure or partial success ends the run; earned stage rewards stay yours. Rare rewards require the final stage.`;document.getElementById('quest-detail-content').prepend(p)}return result};
+ const table=questLootTable;questLootTable=function(q){const rows=table(q),n=count(q);if(n>1)rows.unshift(['Daily limit','One completion per event per game day. Success or partial success uses the daily entry. Only outright failures can be retried the same day.']);if(n>1){rows.unshift(['Stages',`${n} sequential stages sharing the existing total duration. Organizing fee once; rewards paid per cleared stage. Partial/failure ends the run. A partial result uses the daily entry; only failure allows a same-day restart at stage 1.`]);rows.push(['Stage rewards','XP, payable gold and common reward budgets +15%, divided across stages. Rare loot and exclusive materials require the final clear. Supplies cover the full run.']);}return rows};
+ const details=renderQuestDetails;renderQuestDetails=function(){const result=details.apply(this,arguments),q=questById(chosenQuest);if(count(q)>1){const p=document.createElement('p');p.className='notice';p.textContent=`${count(q)} stages · Each stage takes about ${v9DurLabel(q)} ÷ ${count(q)}. Clear every stage in order. Failure or partial success ends the run; earned stage rewards stay yours. Partial success uses the daily completion; only failures allow same-day retries. Rare rewards require a successful final stage.`;document.getElementById('quest-detail-content').prepend(p)}return result};
  render();
 })();

@@ -20,6 +20,12 @@ try:
  const h=game.player;h.ready=true;h.wound=null;h.equipment={};h.gear=null;h.utilitySupplies={};h.preparedBonus=0;h.preparedSupplyBonuses={ration:0,potion:0,legacy:0};const food=game.consumables[0];equipUtilitySupply(h.id,'utility1','supply:food:'+food.id);check(h.utilitySupplies.utility1.uses===3,'load full ration');consumeExpeditionSupplies([h]);check(h.utilitySupplies.utility1.uses===2,'consume exactly one');equipSlot(h.id,'utility1','');check(game.consumables.find(i=>i.id===food.id).uses===2,'return real remaining uses');
  game.consumables.push({id:'legacy-single',name:'Trail Rations',ration:true,uses:1});game.alchemyPotions.push({id:'legacy-tonic',recipe:'tonic',uses:1},{id:'partial-field',recipe:'field',uses:1});game.fieldKits.push({id:'partial-kit',recipe:'trail',uses:1});delete game.supplyBatchVersion;save();check(game.consumables.find(i=>i.id==='legacy-single').uses===3,'legacy ration converted');check(game.alchemyPotions.find(i=>i.id==='legacy-tonic').uses===3,'legacy tonic converted');check(game.alchemyPotions.find(i=>i.id==='partial-field').uses===1&&game.fieldKits[0].uses===1,'existing three-use batch leftovers preserved');check(game.consumables.find(i=>i.id===food.id).uses===2,'new partial ration not refilled');save();check(game.consumables.find(i=>i.id==='legacy-single').uses===3,'conversion once');renderWarehouse();check(document.getElementById('warehouse-consumables').textContent.includes('3 uses left'),'actual label');Math.random=random;save();
  }''')
+  assert page.locator('#craft-success-modal').evaluate("e=>e.classList.contains('open')")
+  message=page.locator('#craft-success-items').inner_text()
+  assert '2 × Trail Rations' in message and 'Expedition' in message,message
+  page.locator('#craft-success-modal button').click()
+  page.evaluate("cookRations('missing-kitchen','trail',1)")
+  assert not page.locator('#craft-success-modal').evaluate("e=>e.classList.contains('open')")
   page.reload(wait_until='networkidle')
   assert page.evaluate("game.consumables.find(i=>i.id==='legacy-single').uses")==3
   assert page.evaluate("game.alchemyPotions.find(i=>i.id==='partial-field').uses")==1

@@ -12,7 +12,7 @@
  const isVault=/Deepdelve Vault/.test(r.title||'')||r.stagePlan?.quest?.locationId==='deepdelve-vault';
  if(isVault){for(let i=0;i<oldRooms.length;i++)root.textContent=root.textContent.split(oldRooms[i]).join(vaultBosses[i]);const title=document.getElementById('report-detail-title');for(let i=0;i<oldRooms.length;i++)title.textContent=title.textContent.split(oldRooms[i]).join(vaultBosses[i])}
  // Split report components before adding emphasis; saved report text stays unchanged.
- const labels=/(Level progress earned:|Advancement earned:|Member gold earned:|Supplies used:|Perk effects:|Traits, bonds & wounds:|Discovery:|Bonus find secured:|Crafting materials secured:|Outcome:|The guild receives|The guild earns|Roles:|Guild-funded expedition:)/g;
+ const labels=/(Level progress earned:|Advancement earned:|Member gold earned:|Supplies used:|Perk effects:|Traits, bonds & wounds:|Discovery:|Bonus find secured:|Crafting materials secured:|Recovered |Outcome:|The guild receives|The guild earns|Roles:|Guild-funded expedition:)/g;
  const paragraphs=root.textContent.replace(labels,'\n$1').split(/\n+/).map(t=>t.trim()).filter(Boolean);
  root.replaceChildren(...paragraphs.map(text=>{const p=document.createElement('p');p.textContent=text;return p}));
  const names=bosses(r);if(names.length){const section=document.createElement('section');section.className='report-fight';const heading=document.createElement('h3');heading.textContent='Boss encounter';section.append(heading);
@@ -40,7 +40,7 @@
   let title='Expedition summary',cls='';
   if(/^(Level progress|Advancement)/.test(text)){title='Hero XP';cls='report-xp'}
   else if(/^Member gold/.test(text)){title='Member gold';cls='report-member-gold'}
-  else if(/^(Bonus find|Crafting materials)/.test(text)){title='Loot gained';cls='report-loot'}
+  else if(/^(Bonus find|Crafting materials|Recovered )/.test(text)){title='Loot gained';cls='report-loot'}
   else if(/^Discovery:/.test(text)){title='Discoveries';cls='report-discovery'}
   else if(/^Traits, bonds/.test(text)){title='Traits, bonds & wounds';cls='report-traits'}
   else if(/^Supplies used:/.test(text))title='Supplies used';

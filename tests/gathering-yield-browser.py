@@ -26,13 +26,32 @@ with sync_playwright() as p:
       for(const key of abilityKeys)game.player.abilities[key]=100;
       const helper=structuredClone(game.player);helper.id='gather-helper';helper.name='Gather Helper';game.heroes.push(helper);
       const q=gatheringQuest('Skinning');game.selected=['player',helper.id];
-      check(questLootTable(q)[0][1].includes('+25%'),'preview explains member bonus');
+      check(questLootTable(q).some(row=>row[1].includes('+25%')),'preview explains member bonus');
       const random=Math.random;Math.random=()=>.99;
       queueQuestReport(q,game.selected,0,'Gathering yield check');Math.random=random;
       const r=game.pendingReports.at(-1);
       check(r.resourceQty===v9ResQty(q,r.outcome,2),'actual report uses dispatched party size');
       check(r.lootDrops.some(d=>d.foodDrop),'food follows gathering yield');
-      window.yieldSnapshot=JSON.stringify(r);save();
+      check(r.extendedSummary.includes(`Recovered ${r.resourceQty} ${r.resource}.`),'report matches sealed reward');
+      // Force each outcome for a six-hero D-rank mission and verify the actual return.
+      game.pendingReports=[];game.questDone={};
+      const ids=['player',helper.id];while(ids.length<6){const h=structuredClone(helper);h.id='yield-'+ids.length;h.name=h.id;game.heroes.push(h);ids.push(h.id)}
+      const tierFn=perkTier,gatherFn=resolveGatheringChecks;
+      for(const tier of [0,1,2,3]){
+       game.pendingReports=[];ids.forEach(id=>{purse(id).ready=true;purse(id).dead=false});
+       const mission={...gatheringQuest('Mining'),rank:2,resourceQtyBase:6};
+       perkTier=()=>tier;
+       const checks=ids.map(id=>({id,name:purse(id).name,roll:15,modifier:3,total:18,success:true}));
+       resolveGatheringChecks=()=>({checks,tier,phases:[]});
+       queueQuestReport(mission,ids,0,'Six-hero reward fixture');
+       const report=game.pendingReports.at(-1),expected=[0,9,18,27][tier];
+       check(report.resourceQty===expected,'D rank six-hero outcome yield '+tier);
+       if(expected)check(report.extendedSummary.includes(`Recovered ${expected} Copper Ore.`),'reported six-hero yield '+tier);
+       const before=game.materials['Copper Ore']||0;report.dueAt=Date.now()-1;applyPendingReports();
+       check((game.materials['Copper Ore']||0)-before===expected,'warehouse receives sealed reward '+tier);
+      }
+      perkTier=tierFn;resolveGatheringChecks=gatherFn;
+      game.pendingReports=[r];window.yieldSnapshot=JSON.stringify(r);save();
     }""")
     snapshot=page.evaluate('yieldSnapshot')
     page.reload(wait_until='networkidle');page.wait_for_function("typeof WL_TRADE==='object'")
@@ -47,7 +66,7 @@ with sync_playwright() as p:
       game.questDone[q.templateKey]=true;game.selected=[];showView('permanent-quests');
     }""")
     page.locator("#gather-quest-list button[onclick*=\"gather-mining\"]").tap()
-    page.locator('#quest-detail-content .quest-member-list label').tap()
+    page.locator('#quest-detail-content .quest-member-list label').first.tap()
     assert page.locator('#quest-dispatch-btn').is_enabled()
     page.locator('#quest-dispatch-btn').tap()
     assert page.evaluate("game.pendingReports.at(-1).partyIds.includes('gather-helper')")

@@ -1,7 +1,7 @@
 /* Daily supply recipes, quest provisioning, roster sorting and compact repairs. */
 (() => {
  const esc=tbwEsc;
- calculatePartyCompensation=function(q,party,payout){if(!payout||q.persistent||q.kind==='Gathering'||!party.length)return {total:0,awards:[]};const rate=q.kind==='Contract'?contractRateForQuest(q):isLargePartyDungeonOrRaid(q)?.42/party.length:0;const awards=party.map(h=>({id:h.id,amount:Math.ceil(payout*rate)}));let remaining=payout;for(const a of awards){a.amount=Math.min(remaining,a.amount);remaining-=a.amount}return {total:payout-remaining,awards}};
+ calculatePartyCompensation=function(q,party,payout){if(!payout||q.persistent||q.kind==='Gathering'||!party.length)return {total:0,awards:[]};const rate=q.kind==='Contract'?contractRateForQuest(q):isLargePartyDungeonOrRaid(q)?.42/party.length:0;const awards=party.map(h=>({id:h.id,amount:Math.ceil(payout*rate)}));let remaining=payout;for(const a of awards){a.amount=Math.min(remaining,a.amount);remaining-=a.amount}return {total:payout-remaining,awards,unroundedAwards:party.map(h=>({id:h.id,amount:payout*rate}))}};
  function boost(q){if(q&&!q.goldRewardVersion){q.reward=Math.ceil((Number(q.reward)||0)*1.2);q.goldRewardVersion=1}return q}
  const listQuests=qlist;qlist=function(){return listQuests.apply(this,arguments).map(boost)};
  const queue=queueQuestReport;queueQuestReport=function(q,...args){return queue.call(this,boost(q),...args)};

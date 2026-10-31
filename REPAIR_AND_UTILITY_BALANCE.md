@@ -4,16 +4,16 @@ Full-condition repair budgets before Armory and hero discounts:
 
 | Tier | Armor/cape/rings or both hands | One hand |
 | --- | --- | --- |
-| Basic | 10 gp | 5 gp |
-| Sturdy | 16 gp | 8 gp |
-| Fine | 24 gp | 12 gp |
-| Superior | 32 gp | 16 gp |
-| Masterwork | 48 gp | 24 gp |
-| Relic | 64 gp | 32 gp |
-| Legendary | 80 gp | 40 gp |
-| Heritage | 100 gp | 50 gp |
+| Basic | 20 gp | 10 gp |
+| Sturdy | 32 gp | 16 gp |
+| Fine | 48 gp | 24 gp |
+| Superior | 64 gp | 32 gp |
+| Masterwork | 96 gp | 48 gp |
+| Relic | 128 gp | 64 gp |
+| Legendary | 160 gp | 80 gp |
+| Heritage | 200 gp | 100 gp |
 
-Repairs scale with the fraction of durability missing, with a minimum charge for damaged equipment. Armory and existing hero perks reduce the charge. Two-handed repairs use two rounded hand units, preserving parity with two equivalent one-handed repairs. Fully repaired items cost zero. Gathering tools retain their previous repair calculation and durability behavior. The existing repair quote and actual payment share the same function, so displayed fees agree with charges.
+Repairs scale with the fraction of durability missing, with a minimum charge for damaged equipment. The final discounted, rounded quote is doubled, preserving exact 2× prices at partial-damage boundaries too. Armory and existing hero perks reduce the charge. Two-handed repairs use two rounded hand units, preserving parity with two equivalent one-handed repairs. Fully repaired items cost zero. Every repair charge is doubled from the prior schedule, including gathering tools. Tool durability behavior is unchanged. The existing repair quote and actual payment share the same function, so displayed fees agree with charges.
 
 Ration, readiness potion and field-kit utility slots now reserve up to three actual uses from stock. Each expedition spends one use from the strongest useful item in each category; remaining charges stay equipped. Bonuses remain one ration plus one potion, at most +4 readiness, and one kit's protection. A multi-stage expedition still consumes only once at its start. Charges do not stack into stronger effects.
 

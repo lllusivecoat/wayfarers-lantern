@@ -21,7 +21,7 @@ try:
  const credits=JSON.stringify(game.gearMaterialCredits);game.materials['Copper Ore']=0;const count=game.gear.length;craftGear('sword-0');check(game.gear.length===count&&JSON.stringify(game.gearMaterialCredits)===credits,'failed craft keeps credit');
  const one=renderGearCatalog().find(r=>r.id==='sword-7');for(let i=0;i<20;i++){const q=gearMaterialQuote(one);check(q.materials['Heritage Ore']===1,'one-unit rare ingredient never free');game.gearMaterialCredits=q.credits}
  // Enhancements share the same ledger, and failed enhancement quotes do not commit.
- const item={id:'credit-enh',kind:'Weapon',family:'sword',tier:0,madeByPlayer:true,bonus:1,durability:25,maxDurability:25,enhancement:0,enhancementVersion:2};game.gear.push(item);
+ const item={id:'credit-enh',owner:game.player.id,kind:'Weapon',family:'sword',tier:0,madeByPlayer:true,bonus:1,durability:25,maxDurability:25,enhancement:0,enhancementVersion:2};game.gear.push(item);
  const beforeFail=JSON.stringify(game.gearMaterialCredits);check(!enhanceGear(item.id)&&JSON.stringify(game.gearMaterialCredits)===beforeFail,'failed enhancement keeps credit');
  game.materials['Copper Ore']=100;const q=gearEnhancementQuote(item.id),stock=game.materials['Copper Ore'];check(enhanceGear(item.id),'enhancement succeeds');check(stock-game.materials['Copper Ore']===q.materials['Copper Ore']&&JSON.stringify(game.gearMaterialCredits)===JSON.stringify(q.credits),'enhancement commits quoted credit');
  save();window.expectedCredits=JSON.stringify(game.gearMaterialCredits);window.expectedNext=gearCraftInfo('sword-0').requirements['Copper Ore'];

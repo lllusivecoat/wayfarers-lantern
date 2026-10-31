@@ -10,7 +10,7 @@ Workshop levels unlock four material-paid effect stages:
 | 4 | 3 | Add a different second effect at a low percentage |
 | 5 | 4 | Strengthen the second effect |
 
-Enhancements do not add flat stats, durability, or repair an item. New crafted gear starts at stage 0 regardless of Workshop level. Tier, quality and set membership remain unchanged. Costs process the crafting ingredients once per hand unit and target stage (1/2/3/4), applying current smith discounts and saved fractional material credit. The preview shows the exact cost. No gold fee. Owned gear cannot be enhanced while its hero is away. A staffed operational Workshop and the recipe's smith skill requirement are necessary.
+Enhancements do not add flat stats, durability, or repair an item. New crafted gear starts at stage 0 regardless of Workshop level. Tier, quality and set membership remain unchanged. Costs process the crafting ingredients once per hand unit and target stage (1/2/3/4), applying current smith discounts and saved fractional material credit. The preview shows the exact cost. The owning hero also pays a tier/stage-based gold fee to the guild; see ECONOMY_REVISION.md. Storage gear must have a hero owner before enhancing. Owned gear cannot be enhanced while its hero is away. A staffed operational Workshop and the recipe's smith skill requirement are necessary.
 
 An existing crafted item retains its stored flat stats, durability and damage. Historical Workshop bonuses are retained as legacy stats and credited effect stages, once only. The Workshop does not automatically improve owned gear when upgraded.
 

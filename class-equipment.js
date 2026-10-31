@@ -33,6 +33,11 @@
   if(group==='offhand'){const p=WL_SPEC_WEAPONS.forHero(h);return !!p&&(p.offhand==='shield'?f==='shield':p.offhand==='focus'?['focus','holdable'].includes(f):p.offhand==='tome'?['tome','holdable'].includes(f):false)}
   return true;
  };
+ window.gearSuitability=function(item){const category=item.category||gearGroup(item),g={...item,kind:category},groups=new Map();if(!['armor','offhand'].includes(category))return null;
+  for(const p of WL_SPEC_WEAPONS.all)if(canHeroEquip({className:p.className,spec:p.spec},g)){if(!groups.has(p.className))groups.set(p.className,[]);groups.get(p.className).push(p.spec)}
+  const recommended=[],other=[];for(const [className,specs] of groups){const label=category==='offhand'?`${className} (${specs.join(', ')})`:className;if(category==='armor'&&rules[className][0]!==armor.indexOf(family(g)))other.push(label);else recommended.push(label)}
+  return {recommended,other};
+ };
  window.canHeroEquipInSlot=function(h,g,slot){
   if(!canHeroEquip(h,g))return false;
   const def=equipmentSlotDefs.find(s=>s.key===slot);if(!def)return false;

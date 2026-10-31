@@ -4,18 +4,18 @@ Contract member rates are now 8% each at F–A, 10% each at S/SS, and 12% each a
 
 Enhancements consume guild materials and transfer a service fee from the owning hero's personal purse into the guild treasury. Unowned warehouse items must first be bought/equipped by a hero. Previously purchased stored gear can be enhanced using its retained heroOwner. Away or dead owners cannot enhance items. The quote displays exact gold, materials, current effects and next effects. Insufficient materials or personal gold fail without deducting resources or consuming fractional material credits.
 
-| Tier | Stage-1 fee per hand unit or armor/ring/cape |
-| --- | --- |
-| Basic | 2 gp |
-| Sturdy | 4 gp |
-| Fine | 6 gp |
-| Superior | 10 gp |
-| Masterwork | 15 gp |
-| Relic | 20 gp |
-| Legendary | 30 gp |
-| Heritage | 40 gp |
+| Tier | Upgrade 1 | Upgrade 2 | Upgrade 3 | Upgrade 4 |
+| --- | --- | --- | --- | --- |
+| Basic | 20 gp | 50 gp | 80 gp | 110 gp |
+| Sturdy | 50 gp | 80 gp | 110 gp | 140 gp |
+| Fine | 80 gp | 110 gp | 140 gp | 170 gp |
+| Superior | 110 gp | 140 gp | 170 gp | 200 gp |
+| Masterwork | 140 gp | 170 gp | 200 gp | 230 gp |
+| Relic | 170 gp | 200 gp | 230 gp | 260 gp |
+| Legendary | 200 gp | 230 gp | 260 gp | 290 gp |
+| Heritage | 230 gp | 260 gp | 290 gp | 320 gp |
 
-Multiply by target enhancement stage 1–4. Two-handed weapons cost two hand units, matching two one-handed items. Example: a Basic one-handed sword costs 2/4/6/8 gp at stages 1–4; a Heritage two-handed weapon costs 80/160/240/320 gp. Paid enhancements do not retroactively charge existing stages, reroll stats or increase export/buyback value.
+These fees apply per hand unit, or per armor/ring/cape item. Formula: 20 + 30 × tier index + 30 × (target stage − 1). Two-handed weapons pay twice, matching two one-handed pieces. Paid enhancements do not retroactively charge existing stages, reroll stats or increase export/buyback value.
 
 All repair charges are exactly twice the previous result after Armory/perk discounts and rounding. Full-repair caps before discounts: Basic 20, Sturdy 32, Fine 48, Superior 64, Masterwork 96, Relic 128, Legendary 160, Heritage 200 gp for non-hand gear or a two-handed weapon; one-handed/offhand items use half. Gathering-tool repair fees are doubled too. Repairs remain a personal-gold expense; only enhancement fees are newly transferred to the guild.
 

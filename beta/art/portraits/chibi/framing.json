@@ -1,653 +1,703 @@
 {
   "1": {
     "centre": [
-      69.5,
-      66.0
+      64,
+      64
     ],
-    "radius": 60.5,
-    "confidence": 0.926,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      -4.701,
-      -1.709,
-      1.094
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "2": {
     "centre": [
-      67.0,
-      66.0
+      64,
+      64
     ],
-    "radius": 60.0,
-    "confidence": 1.0,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      -2.586,
-      -1.724,
-      1.1034
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "3": {
     "centre": [
-      63.0,
-      66.0
+      64,
+      64
     ],
-    "radius": 60.0,
-    "confidence": 1.0,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      0.862,
-      -1.724,
-      1.1034
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "4": {
     "centre": [
-      60.0,
-      66.0
+      64,
+      64
     ],
-    "radius": 60.0,
-    "confidence": 0.983,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      3.448,
-      -1.724,
-      1.1034
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "5": {
     "centre": [
-      56.5,
-      65.5
+      64,
+      64
     ],
-    "radius": 60.5,
-    "confidence": 0.981,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      6.41,
-      -1.282,
-      1.094
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "6": {
     "centre": [
-      69.5,
-      60.0
+      64,
+      64
     ],
-    "radius": 60.5,
-    "confidence": 0.89,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      -4.701,
-      3.419,
-      1.094
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "7": {
     "centre": [
-      67.0,
-      60.0
+      64,
+      64
     ],
-    "radius": 60.0,
-    "confidence": 0.994,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      -2.586,
-      3.448,
-      1.1034
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "8": {
     "centre": [
-      63.0,
-      60.0
+      64,
+      64
     ],
-    "radius": 60.0,
-    "confidence": 1.0,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      0.862,
-      3.448,
-      1.1034
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "9": {
     "centre": [
-      59.0,
-      60.0
+      64,
+      64
     ],
-    "radius": 60.0,
-    "confidence": 0.902,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      4.31,
-      3.448,
-      1.1034
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "10": {
     "centre": [
-      56.5,
-      60.0
+      64,
+      64
     ],
-    "radius": 60.5,
-    "confidence": 0.957,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      6.41,
-      3.419,
-      1.094
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "11": {
     "centre": [
-      69.5,
-      53.5
+      64,
+      64
     ],
-    "radius": 61.0,
-    "confidence": 0.858,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      -4.661,
-      8.898,
-      1.0847
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "12": {
     "centre": [
-      66.5,
-      53.5
+      64,
+      64
     ],
-    "radius": 60.0,
-    "confidence": 0.994,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      -2.155,
-      9.052,
-      1.1034
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "13": {
     "centre": [
-      62.0,
-      53.5
+      64,
+      64
     ],
-    "radius": 60.0,
-    "confidence": 0.994,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      1.724,
-      9.052,
-      1.1034
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "14": {
     "centre": [
-      59.0,
-      53.0
+      64,
+      64
     ],
-    "radius": 60.5,
-    "confidence": 0.986,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      4.274,
-      9.402,
-      1.094
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "15": {
     "centre": [
-      56.5,
-      53.0
+      64,
+      64
     ],
-    "radius": 60.5,
-    "confidence": 0.97,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      6.41,
-      9.402,
-      1.094
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "16": {
     "centre": [
-      69.5,
-      47.5
+      64,
+      64
     ],
-    "radius": 61.5,
-    "confidence": 0.967,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      -4.622,
-      13.866,
-      1.0756
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "17": {
     "centre": [
-      66.5,
-      46.5
+      64,
+      64
     ],
-    "radius": 61.0,
-    "confidence": 1.0,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      -2.119,
-      14.831,
-      1.0847
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "18": {
     "centre": [
-      62.0,
-      47.0
+      64,
+      64
     ],
-    "radius": 60.0,
-    "confidence": 1.0,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      1.724,
-      14.655,
-      1.1034
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "19": {
     "centre": [
-      58.5,
-      46.5
+      64,
+      64
     ],
-    "radius": 61.0,
-    "confidence": 1.0,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      4.661,
-      14.831,
-      1.0847
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "20": {
     "centre": [
-      56.0,
-      46.5
+      64,
+      64
     ],
-    "radius": 61.0,
-    "confidence": 1.0,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      6.78,
-      14.831,
-      1.0847
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "21": {
     "centre": [
-      68.0,
-      64.5
+      64,
+      64
     ],
-    "radius": 61.0,
-    "confidence": 0.844,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      -3.39,
-      -0.424,
-      1.0847
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "22": {
     "centre": [
-      66.5,
-      64.0
+      64,
+      64
     ],
-    "radius": 60.5,
-    "confidence": 0.939,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      -2.137,
-      0.0,
-      1.094
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "23": {
     "centre": [
-      63.0,
-      64.0
+      64,
+      64
     ],
-    "radius": 60.0,
-    "confidence": 1.0,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      0.862,
-      0.0,
-      1.1034
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "24": {
     "centre": [
-      60.5,
-      64.0
+      64,
+      64
     ],
-    "radius": 60.5,
-    "confidence": 0.989,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      2.991,
-      0.0,
-      1.094
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "25": {
     "centre": [
-      58.5,
-      64.0
+      64,
+      64
     ],
-    "radius": 61.0,
-    "confidence": 0.861,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      4.661,
-      0.0,
-      1.0847
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "26": {
     "centre": [
-      68.0,
-      60.5
+      64,
+      64
     ],
-    "radius": 61.0,
-    "confidence": 0.82,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      -3.39,
-      2.966,
-      1.0847
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "27": {
     "centre": [
-      66.0,
-      60.5
+      64,
+      64
     ],
-    "radius": 60.5,
-    "confidence": 0.944,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      -1.709,
-      2.991,
-      1.094
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "28": {
     "centre": [
-      63.5,
-      61.0
+      64,
+      64
     ],
-    "radius": 60.5,
-    "confidence": 0.894,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      0.427,
-      2.564,
-      1.094
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "29": {
     "centre": [
-      60.5,
-      61.0
+      64,
+      64
     ],
-    "radius": 60.5,
-    "confidence": 0.961,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      2.991,
-      2.564,
-      1.094
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "30": {
     "centre": [
-      58.0,
-      60.5
+      64,
+      64
     ],
-    "radius": 61.0,
-    "confidence": 0.871,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      5.085,
-      2.966,
-      1.0847
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "31": {
     "centre": [
-      67.0,
-      56.5
+      64,
+      64
     ],
-    "radius": 61.0,
-    "confidence": 0.717,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      -2.542,
-      6.356,
-      1.0847
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "32": {
     "centre": [
-      65.5,
-      57.0
+      64,
+      64
     ],
-    "radius": 60.5,
-    "confidence": 0.851,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      -1.282,
-      5.983,
-      1.094
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "33": {
     "centre": [
-      63.0,
-      57.0
+      64,
+      64
     ],
-    "radius": 60.5,
-    "confidence": 0.863,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      0.855,
-      5.983,
-      1.094
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "34": {
     "centre": [
-      60.5,
-      56.5
+      64,
+      64
     ],
-    "radius": 60.0,
-    "confidence": 0.851,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      3.017,
-      6.466,
-      1.1034
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "35": {
     "centre": [
-      58.5,
-      56.5
+      64,
+      64
     ],
-    "radius": 61.0,
-    "confidence": 0.826,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      4.661,
-      6.356,
-      1.0847
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "36": {
     "centre": [
-      65.5,
-      51.0
+      64,
+      64
     ],
-    "radius": 62.0,
-    "confidence": 0.993,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      -1.25,
-      10.833,
-      1.0667
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "37": {
     "centre": [
-      65.0,
-      51.0
+      64,
+      64
     ],
-    "radius": 61.0,
-    "confidence": 0.993,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      -0.847,
-      11.017,
-      1.0847
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "38": {
     "centre": [
-      62.5,
-      51.5
+      64,
+      64
     ],
-    "radius": 61.5,
-    "confidence": 0.98,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      1.261,
-      10.504,
-      1.0756
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "39": {
     "centre": [
-      60.0,
-      51.0
+      64,
+      64
     ],
-    "radius": 61.0,
-    "confidence": 0.993,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      3.39,
-      11.017,
-      1.0847
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "40": {
     "centre": [
-      58.5,
-      51.0
+      64,
+      64
     ],
-    "radius": 62.0,
-    "confidence": 1.0,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      4.583,
-      10.833,
-      1.0667
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "41": {
     "centre": [
-      71.0,
-      62.5
+      64,
+      64
     ],
-    "radius": 61.0,
-    "confidence": 0.771,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      -5.932,
-      1.271,
-      1.0847
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "42": {
     "centre": [
-      69.0,
-      62.5
+      64,
+      64
     ],
-    "radius": 60.5,
-    "confidence": 0.909,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      -4.274,
-      1.282,
-      1.094
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "43": {
     "centre": [
-      63.5,
-      62.5
+      64,
+      64
     ],
-    "radius": 59.5,
-    "confidence": 0.911,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      0.435,
-      1.304,
-      1.113
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "44": {
     "centre": [
-      58.0,
-      63.0
+      64,
+      64
     ],
-    "radius": 60.0,
-    "confidence": 1.0,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      5.172,
-      0.862,
-      1.1034
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "45": {
     "centre": [
-      55.0,
-      63.0
+      64,
+      64
     ],
-    "radius": 61.0,
-    "confidence": 0.832,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      7.627,
-      0.847,
-      1.0847
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "46": {
     "centre": [
-      69.0,
-      56.5
+      64,
+      64
     ],
-    "radius": 62.0,
-    "confidence": 0.819,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      -4.167,
-      6.25,
-      1.0667
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "47": {
     "centre": [
-      68.0,
-      57.0
+      64,
+      64
     ],
-    "radius": 60.5,
-    "confidence": 0.953,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      -3.419,
-      5.983,
-      1.094
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "48": {
     "centre": [
-      63.0,
-      57.0
+      64,
+      64
     ],
-    "radius": 60.0,
-    "confidence": 0.969,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      0.862,
-      6.034,
-      1.1034
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "49": {
     "centre": [
-      59.0,
-      57.0
+      64,
+      64
     ],
-    "radius": 60.5,
-    "confidence": 0.973,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      4.274,
-      5.983,
-      1.094
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "50": {
     "centre": [
-      56.0,
-      57.0
+      64,
+      64
     ],
-    "radius": 61.0,
-    "confidence": 0.942,
+    "radius": 64,
+    "confidence": 1,
     "css": [
-      6.78,
-      5.932,
-      1.0847
-    ]
+      0,
+      0,
+      1
+    ],
+    "normalized": true
   },
   "51": {
     "centre": [

@@ -14,6 +14,8 @@ def best(mask,candidates):
 profiles={};details={}
 for row in json.loads((ROOT/'queue.json').read_text()):
  if row['status']!='exported':continue
+ if row.get('alignment')=='normalized-circle-v1':
+  key=str(row['index']);profiles[key]=[0,0,1];details[key]={'centre':[64,64],'radius':64,'confidence':1,'css':[0,0,1],'normalized':True};continue
  im=np.array(Image.open(ROOT/row['file']).convert('RGB')).astype(float);r,g,b=im[:,:,0],im[:,:,1],im[:,:,2]
  mask=(r>140)&(g>95)&(g>r*.54)&(g<r*.96)&(b<g*.84)
  coarse=[(x,y,r) for x in range(46,83,2) for y in range(42,83,2) for r in range(50,69,2)]

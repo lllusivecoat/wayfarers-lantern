@@ -5,8 +5,18 @@
     "gender": "male",
     "index": 1,
     "batch": "batch-001",
-    "file": "batch-001/portraits/001-human-death-knight-male.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/001-human-death-knight-male.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/001-human-death-knight-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        69.5,
+        66.0
+      ],
+      "radius": 60.5
+    },
+    "bytes": 10150
   },
   {
     "race": "Human",
@@ -14,8 +24,18 @@
     "gender": "female",
     "index": 2,
     "batch": "batch-001",
-    "file": "batch-001/portraits/002-human-death-knight-female.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/002-human-death-knight-female.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/002-human-death-knight-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        67.0,
+        66.0
+      ],
+      "radius": 60.0
+    },
+    "bytes": 10312
   },
   {
     "race": "Human",
@@ -23,8 +43,18 @@
     "gender": "male",
     "index": 3,
     "batch": "batch-001",
-    "file": "batch-001/portraits/003-human-hunter-male.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/003-human-hunter-male.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/003-human-hunter-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        63.0,
+        66.0
+      ],
+      "radius": 60.0
+    },
+    "bytes": 10092
   },
   {
     "race": "Human",
@@ -32,8 +62,18 @@
     "gender": "female",
     "index": 4,
     "batch": "batch-001",
-    "file": "batch-001/portraits/004-human-hunter-female.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/004-human-hunter-female.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/004-human-hunter-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        60.0,
+        66.0
+      ],
+      "radius": 60.0
+    },
+    "bytes": 9756
   },
   {
     "race": "Human",
@@ -41,8 +81,18 @@
     "gender": "male",
     "index": 5,
     "batch": "batch-001",
-    "file": "batch-001/portraits/005-human-mage-male.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/005-human-mage-male.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/005-human-mage-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        56.5,
+        65.5
+      ],
+      "radius": 60.5
+    },
+    "bytes": 10044
   },
   {
     "race": "Human",
@@ -50,8 +100,18 @@
     "gender": "female",
     "index": 6,
     "batch": "batch-001",
-    "file": "batch-001/portraits/006-human-mage-female.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/006-human-mage-female.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/006-human-mage-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        69.5,
+        60.0
+      ],
+      "radius": 60.5
+    },
+    "bytes": 10320
   },
   {
     "race": "Human",
@@ -59,8 +119,18 @@
     "gender": "male",
     "index": 7,
     "batch": "batch-001",
-    "file": "batch-001/portraits/007-human-monk-male.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/007-human-monk-male.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/007-human-monk-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        67.0,
+        60.0
+      ],
+      "radius": 60.0
+    },
+    "bytes": 9792
   },
   {
     "race": "Human",
@@ -68,8 +138,18 @@
     "gender": "female",
     "index": 8,
     "batch": "batch-001",
-    "file": "batch-001/portraits/008-human-monk-female.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/008-human-monk-female.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/008-human-monk-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        63.0,
+        60.0
+      ],
+      "radius": 60.0
+    },
+    "bytes": 9830
   },
   {
     "race": "Human",
@@ -77,8 +157,18 @@
     "gender": "male",
     "index": 9,
     "batch": "batch-001",
-    "file": "batch-001/portraits/009-human-paladin-male.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/009-human-paladin-male.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/009-human-paladin-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        59.0,
+        60.0
+      ],
+      "radius": 60.0
+    },
+    "bytes": 10182
   },
   {
     "race": "Human",
@@ -86,8 +176,18 @@
     "gender": "female",
     "index": 10,
     "batch": "batch-001",
-    "file": "batch-001/portraits/010-human-paladin-female.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/010-human-paladin-female.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/010-human-paladin-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        56.5,
+        60.0
+      ],
+      "radius": 60.5
+    },
+    "bytes": 10228
   },
   {
     "race": "Human",
@@ -95,8 +195,18 @@
     "gender": "male",
     "index": 11,
     "batch": "batch-001",
-    "file": "batch-001/portraits/011-human-priest-male.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/011-human-priest-male.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/011-human-priest-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        69.5,
+        53.5
+      ],
+      "radius": 61.0
+    },
+    "bytes": 9672
   },
   {
     "race": "Human",
@@ -104,8 +214,18 @@
     "gender": "female",
     "index": 12,
     "batch": "batch-001",
-    "file": "batch-001/portraits/012-human-priest-female.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/012-human-priest-female.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/012-human-priest-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        66.5,
+        53.5
+      ],
+      "radius": 60.0
+    },
+    "bytes": 10132
   },
   {
     "race": "Human",
@@ -113,8 +233,18 @@
     "gender": "male",
     "index": 13,
     "batch": "batch-001",
-    "file": "batch-001/portraits/013-human-rogue-male.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/013-human-rogue-male.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/013-human-rogue-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        62.0,
+        53.5
+      ],
+      "radius": 60.0
+    },
+    "bytes": 8990
   },
   {
     "race": "Human",
@@ -122,8 +252,18 @@
     "gender": "female",
     "index": 14,
     "batch": "batch-001",
-    "file": "batch-001/portraits/014-human-rogue-female.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/014-human-rogue-female.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/014-human-rogue-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        59.0,
+        53.0
+      ],
+      "radius": 60.5
+    },
+    "bytes": 9448
   },
   {
     "race": "Human",
@@ -131,8 +271,18 @@
     "gender": "male",
     "index": 15,
     "batch": "batch-001",
-    "file": "batch-001/portraits/015-human-warlock-male.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/015-human-warlock-male.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/015-human-warlock-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        56.5,
+        53.0
+      ],
+      "radius": 60.5
+    },
+    "bytes": 9636
   },
   {
     "race": "Human",
@@ -140,8 +290,18 @@
     "gender": "female",
     "index": 16,
     "batch": "batch-001",
-    "file": "batch-001/portraits/016-human-warlock-female.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/016-human-warlock-female.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/016-human-warlock-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        69.5,
+        47.5
+      ],
+      "radius": 61.5
+    },
+    "bytes": 9486
   },
   {
     "race": "Human",
@@ -149,8 +309,18 @@
     "gender": "male",
     "index": 17,
     "batch": "batch-001",
-    "file": "batch-001/portraits/017-human-warrior-male.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/017-human-warrior-male.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/017-human-warrior-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        66.5,
+        46.5
+      ],
+      "radius": 61.0
+    },
+    "bytes": 9654
   },
   {
     "race": "Human",
@@ -158,8 +328,18 @@
     "gender": "female",
     "index": 18,
     "batch": "batch-001",
-    "file": "batch-001/portraits/018-human-warrior-female.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/018-human-warrior-female.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/018-human-warrior-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        62.0,
+        47.0
+      ],
+      "radius": 60.0
+    },
+    "bytes": 9540
   },
   {
     "race": "Dwarf",
@@ -167,8 +347,18 @@
     "gender": "male",
     "index": 19,
     "batch": "batch-001",
-    "file": "batch-001/portraits/019-dwarf-death-knight-male.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/019-dwarf-death-knight-male.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/019-dwarf-death-knight-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        58.5,
+        46.5
+      ],
+      "radius": 61.0
+    },
+    "bytes": 9880
   },
   {
     "race": "Dwarf",
@@ -176,8 +366,18 @@
     "gender": "female",
     "index": 20,
     "batch": "batch-001",
-    "file": "batch-001/portraits/020-dwarf-death-knight-female.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/020-dwarf-death-knight-female.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/020-dwarf-death-knight-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        56.0,
+        46.5
+      ],
+      "radius": 61.0
+    },
+    "bytes": 9794
   },
   {
     "race": "Dwarf",
@@ -185,8 +385,18 @@
     "gender": "male",
     "index": 21,
     "batch": "batch-001",
-    "file": "batch-001/portraits/021-dwarf-hunter-male.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/021-dwarf-hunter-male.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/021-dwarf-hunter-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        68.0,
+        64.5
+      ],
+      "radius": 61.0
+    },
+    "bytes": 9724
   },
   {
     "race": "Dwarf",
@@ -194,8 +404,18 @@
     "gender": "female",
     "index": 22,
     "batch": "batch-001",
-    "file": "batch-001/portraits/022-dwarf-hunter-female.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/022-dwarf-hunter-female.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/022-dwarf-hunter-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        66.5,
+        64.0
+      ],
+      "radius": 60.5
+    },
+    "bytes": 10146
   },
   {
     "race": "Dwarf",
@@ -203,8 +423,18 @@
     "gender": "male",
     "index": 23,
     "batch": "batch-001",
-    "file": "batch-001/portraits/023-dwarf-mage-male.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/023-dwarf-mage-male.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/023-dwarf-mage-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        63.0,
+        64.0
+      ],
+      "radius": 60.0
+    },
+    "bytes": 10276
   },
   {
     "race": "Dwarf",
@@ -212,8 +442,18 @@
     "gender": "female",
     "index": 24,
     "batch": "batch-001",
-    "file": "batch-001/portraits/024-dwarf-mage-female.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/024-dwarf-mage-female.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/024-dwarf-mage-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        60.5,
+        64.0
+      ],
+      "radius": 60.5
+    },
+    "bytes": 10372
   },
   {
     "race": "Dwarf",
@@ -221,8 +461,18 @@
     "gender": "male",
     "index": 25,
     "batch": "batch-001",
-    "file": "batch-001/portraits/025-dwarf-monk-male.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/025-dwarf-monk-male.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/025-dwarf-monk-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        58.5,
+        64.0
+      ],
+      "radius": 61.0
+    },
+    "bytes": 9132
   },
   {
     "race": "Dwarf",
@@ -230,8 +480,18 @@
     "gender": "female",
     "index": 26,
     "batch": "batch-001",
-    "file": "batch-001/portraits/026-dwarf-monk-female.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/026-dwarf-monk-female.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/026-dwarf-monk-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        68.0,
+        60.5
+      ],
+      "radius": 61.0
+    },
+    "bytes": 9876
   },
   {
     "race": "Dwarf",
@@ -239,8 +499,18 @@
     "gender": "male",
     "index": 27,
     "batch": "batch-001",
-    "file": "batch-001/portraits/027-dwarf-paladin-male.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/027-dwarf-paladin-male.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/027-dwarf-paladin-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        66.0,
+        60.5
+      ],
+      "radius": 60.5
+    },
+    "bytes": 10022
   },
   {
     "race": "Dwarf",
@@ -248,8 +518,18 @@
     "gender": "female",
     "index": 28,
     "batch": "batch-001",
-    "file": "batch-001/portraits/028-dwarf-paladin-female.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/028-dwarf-paladin-female.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/028-dwarf-paladin-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        63.5,
+        61.0
+      ],
+      "radius": 60.5
+    },
+    "bytes": 10326
   },
   {
     "race": "Dwarf",
@@ -257,8 +537,18 @@
     "gender": "male",
     "index": 29,
     "batch": "batch-001",
-    "file": "batch-001/portraits/029-dwarf-priest-male.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/029-dwarf-priest-male.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/029-dwarf-priest-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        60.5,
+        61.0
+      ],
+      "radius": 60.5
+    },
+    "bytes": 10414
   },
   {
     "race": "Dwarf",
@@ -266,8 +556,18 @@
     "gender": "female",
     "index": 30,
     "batch": "batch-001",
-    "file": "batch-001/portraits/030-dwarf-priest-female.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/030-dwarf-priest-female.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/030-dwarf-priest-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        58.0,
+        60.5
+      ],
+      "radius": 61.0
+    },
+    "bytes": 10460
   },
   {
     "race": "Dwarf",
@@ -275,8 +575,18 @@
     "gender": "male",
     "index": 31,
     "batch": "batch-001",
-    "file": "batch-001/portraits/031-dwarf-rogue-male.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/031-dwarf-rogue-male.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/031-dwarf-rogue-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        67.0,
+        56.5
+      ],
+      "radius": 61.0
+    },
+    "bytes": 9560
   },
   {
     "race": "Dwarf",
@@ -284,8 +594,18 @@
     "gender": "female",
     "index": 32,
     "batch": "batch-001",
-    "file": "batch-001/portraits/032-dwarf-rogue-female.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/032-dwarf-rogue-female.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/032-dwarf-rogue-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        65.5,
+        57.0
+      ],
+      "radius": 60.5
+    },
+    "bytes": 9424
   },
   {
     "race": "Dwarf",
@@ -293,8 +613,18 @@
     "gender": "male",
     "index": 33,
     "batch": "batch-001",
-    "file": "batch-001/portraits/033-dwarf-shaman-male.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/033-dwarf-shaman-male.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/033-dwarf-shaman-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        63.0,
+        57.0
+      ],
+      "radius": 60.5
+    },
+    "bytes": 10320
   },
   {
     "race": "Dwarf",
@@ -302,8 +632,18 @@
     "gender": "female",
     "index": 34,
     "batch": "batch-001",
-    "file": "batch-001/portraits/034-dwarf-shaman-female.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/034-dwarf-shaman-female.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/034-dwarf-shaman-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        60.5,
+        56.5
+      ],
+      "radius": 60.0
+    },
+    "bytes": 10736
   },
   {
     "race": "Dwarf",
@@ -311,8 +651,18 @@
     "gender": "male",
     "index": 35,
     "batch": "batch-001",
-    "file": "batch-001/portraits/035-dwarf-warlock-male.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/035-dwarf-warlock-male.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/035-dwarf-warlock-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        58.5,
+        56.5
+      ],
+      "radius": 61.0
+    },
+    "bytes": 9990
   },
   {
     "race": "Dwarf",
@@ -320,8 +670,18 @@
     "gender": "female",
     "index": 36,
     "batch": "batch-001",
-    "file": "batch-001/portraits/036-dwarf-warlock-female.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/036-dwarf-warlock-female.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/036-dwarf-warlock-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        65.5,
+        51.0
+      ],
+      "radius": 62.0
+    },
+    "bytes": 9886
   },
   {
     "race": "Dwarf",
@@ -329,8 +689,18 @@
     "gender": "male",
     "index": 37,
     "batch": "batch-001",
-    "file": "batch-001/portraits/037-dwarf-warrior-male.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/037-dwarf-warrior-male.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/037-dwarf-warrior-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        65.0,
+        51.0
+      ],
+      "radius": 61.0
+    },
+    "bytes": 9576
   },
   {
     "race": "Dwarf",
@@ -338,8 +708,18 @@
     "gender": "female",
     "index": 38,
     "batch": "batch-001",
-    "file": "batch-001/portraits/038-dwarf-warrior-female.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/038-dwarf-warrior-female.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/038-dwarf-warrior-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        62.5,
+        51.5
+      ],
+      "radius": 61.5
+    },
+    "bytes": 9816
   },
   {
     "race": "Night Elf",
@@ -347,8 +727,18 @@
     "gender": "male",
     "index": 39,
     "batch": "batch-001",
-    "file": "batch-001/portraits/039-night-elf-death-knight-male.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/039-night-elf-death-knight-male.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/039-night-elf-death-knight-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        60.0,
+        51.0
+      ],
+      "radius": 61.0
+    },
+    "bytes": 9988
   },
   {
     "race": "Night Elf",
@@ -356,8 +746,18 @@
     "gender": "female",
     "index": 40,
     "batch": "batch-001",
-    "file": "batch-001/portraits/040-night-elf-death-knight-female.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/040-night-elf-death-knight-female.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/040-night-elf-death-knight-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        58.5,
+        51.0
+      ],
+      "radius": 62.0
+    },
+    "bytes": 9748
   },
   {
     "race": "Night Elf",
@@ -365,8 +765,18 @@
     "gender": "male",
     "index": 41,
     "batch": "batch-001",
-    "file": "batch-001/portraits/041-night-elf-demon-hunter-male.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/041-night-elf-demon-hunter-male.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/041-night-elf-demon-hunter-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        71.0,
+        62.5
+      ],
+      "radius": 61.0
+    },
+    "bytes": 9936
   },
   {
     "race": "Night Elf",
@@ -374,8 +784,18 @@
     "gender": "female",
     "index": 42,
     "batch": "batch-001",
-    "file": "batch-001/portraits/042-night-elf-demon-hunter-female.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/042-night-elf-demon-hunter-female.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/042-night-elf-demon-hunter-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        69.0,
+        62.5
+      ],
+      "radius": 60.5
+    },
+    "bytes": 9890
   },
   {
     "race": "Night Elf",
@@ -383,8 +803,18 @@
     "gender": "male",
     "index": 43,
     "batch": "batch-001",
-    "file": "batch-001/portraits/043-night-elf-druid-male.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/043-night-elf-druid-male.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/043-night-elf-druid-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        63.5,
+        62.5
+      ],
+      "radius": 59.5
+    },
+    "bytes": 10162
   },
   {
     "race": "Night Elf",
@@ -392,8 +822,18 @@
     "gender": "female",
     "index": 44,
     "batch": "batch-001",
-    "file": "batch-001/portraits/044-night-elf-druid-female.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/044-night-elf-druid-female.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/044-night-elf-druid-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        58.0,
+        63.0
+      ],
+      "radius": 60.0
+    },
+    "bytes": 10260
   },
   {
     "race": "Night Elf",
@@ -401,8 +841,18 @@
     "gender": "male",
     "index": 45,
     "batch": "batch-001",
-    "file": "batch-001/portraits/045-night-elf-hunter-male.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/045-night-elf-hunter-male.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/045-night-elf-hunter-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        55.0,
+        63.0
+      ],
+      "radius": 61.0
+    },
+    "bytes": 9666
   },
   {
     "race": "Night Elf",
@@ -410,8 +860,18 @@
     "gender": "female",
     "index": 46,
     "batch": "batch-001",
-    "file": "batch-001/portraits/046-night-elf-hunter-female.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/046-night-elf-hunter-female.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/046-night-elf-hunter-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        69.0,
+        56.5
+      ],
+      "radius": 62.0
+    },
+    "bytes": 10018
   },
   {
     "race": "Night Elf",
@@ -419,8 +879,18 @@
     "gender": "male",
     "index": 47,
     "batch": "batch-001",
-    "file": "batch-001/portraits/047-night-elf-mage-male.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/047-night-elf-mage-male.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/047-night-elf-mage-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        68.0,
+        57.0
+      ],
+      "radius": 60.5
+    },
+    "bytes": 10144
   },
   {
     "race": "Night Elf",
@@ -428,8 +898,18 @@
     "gender": "female",
     "index": 48,
     "batch": "batch-001",
-    "file": "batch-001/portraits/048-night-elf-mage-female.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/048-night-elf-mage-female.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/048-night-elf-mage-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        63.0,
+        57.0
+      ],
+      "radius": 60.0
+    },
+    "bytes": 9934
   },
   {
     "race": "Night Elf",
@@ -437,8 +917,18 @@
     "gender": "male",
     "index": 49,
     "batch": "batch-001",
-    "file": "batch-001/portraits/049-night-elf-monk-male.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/049-night-elf-monk-male.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/049-night-elf-monk-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        59.0,
+        57.0
+      ],
+      "radius": 60.5
+    },
+    "bytes": 9692
   },
   {
     "race": "Night Elf",
@@ -446,8 +936,18 @@
     "gender": "female",
     "index": 50,
     "batch": "batch-001",
-    "file": "batch-001/portraits/050-night-elf-monk-female.webp",
-    "status": "exported"
+    "file": "aligned-001-050/portraits/050-night-elf-monk-female.webp",
+    "status": "exported",
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-001/portraits/050-night-elf-monk-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        56.0,
+        57.0
+      ],
+      "radius": 61.0
+    },
+    "bytes": 9648
   },
   {
     "race": "Night Elf",

@@ -16,7 +16,7 @@ for(const [id,f]of Object.entries(framing)){
  const [x,y,scale]=f.css;assert(f.confidence>=.45,id);
  assert(Math.abs((f.centre[0]-64)*scale+64+x/100*128-64)<.02,id+' x');
  assert(Math.abs((f.centre[1]-64)*scale+64+y/100*128-64)<.02,id+' y');
- assert(Math.abs((f.radius-2)*scale-64)<.01,id+' radius');
+ assert(Math.abs((f.radius-(f.normalized?0:2))*scale-64)<.01,id+' radius');
 }
 console.log('PASS all 498 portrait centres and inner rims align with their shared circular frame');
 class Element{

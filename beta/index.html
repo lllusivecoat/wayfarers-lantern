@@ -525,7 +525,6 @@ a{color:var(--acc)}
  nav.tabs .nav-caret{display:none}
  .beta-hint{position:fixed;right:0;bottom:0;width:30px;height:62px;z-index:151;pointer-events:none;background:linear-gradient(90deg,transparent,var(--panel) 70%);color:var(--acc);display:flex;align-items:center;justify-content:flex-end;padding-right:5px;font-size:16px;padding-bottom:env(safe-area-inset-bottom)}
  .beta-hint.gone{display:none}
- nav.tabs .dropdown-menu{position:fixed!important;bottom:72px!important;top:auto!important;left:12px!important;right:auto!important}
  .stats .stat{flex:0 0 33.333%;border-left:0!important;border-top:1px solid var(--line)!important;padding:9px 10px!important}
  .stats .stat.beta-r1{border-top:0!important}
  .stat strong{font-size:18px!important}
@@ -546,6 +545,135 @@ a{color:var(--acc)}
 @media(max-width:600px){.view .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}}
 .trade-cargo-quantity{font-size:13px!important}
 .v9-rrow{background:var(--panel)!important;border-color:var(--line)!important;color:var(--text)!important}.v9-rpic{background:var(--bg)!important;border-color:var(--acc)!important;color:var(--acc)!important}.v9-chip{border-color:var(--line)!important;color:var(--muted)!important}.v9-chip.active{background:var(--panel2)!important;border-color:var(--acc)!important;color:var(--acc)!important}
+
+/* ===== BETA UX layer CSS ===== */
+.beta-tog{display:none}
+.beta-bbar,.beta-sheet,.beta-sheet-bd{display:none}
+.beta-subtabs{display:none}
+.beta-htabs{display:none}
+.beta-ledger-more{display:none}
+.beta-short{display:none}
+.beta-fhide{display:none!important}
+.beta-qfilter,.beta-pfilter{display:none}
+.beta-search{display:none}
+/* desktop + all: dropdown items comfortable and anchored under their tab */
+.dropdown-item{min-height:44px;display:flex!important;align-items:center}
+.dropdown-menu{min-width:220px}
+/* picker cards: whole card is the tap target (it is the checkbox's <label>) */
+label.pick.v9pick{cursor:pointer;border-radius:10px;transition:border-color .15s}
+label.pick.v9pick.beta-picked,label.pick.v9pick:has(input:checked){border-color:var(--acc)!important;box-shadow:inset 3px 0 0 var(--acc)!important}
+#quest-detail-modal .modalactions{position:sticky;bottom:0;background:var(--panel);padding:10px 0 calc(10px + env(safe-area-inset-bottom));margin-top:10px;border-top:1px solid var(--line);z-index:3}
+/* tablet: 44px tap targets */
+@media(min-width:601px) and (max-width:1024px){
+ .btn,button.tab,.dropdown-item,summary,.v9-chip,select,input[type=number],.beta-subtabs button,.beta-pfilter button,.m-collapse-toggle,.v9-info{min-height:44px}
+ .v9-rrow{min-height:48px}label.pick.v9pick{min-height:52px}
+ .view .pill{white-space:normal;max-width:100%;overflow-wrap:anywhere}
+}
+@media(max-width:1024px){
+ .beta-subtabs{display:flex;gap:6px;margin:0 0 14px;overflow-x:auto;scrollbar-width:none}
+ .beta-subtabs button{flex:1 0 auto;min-height:44px;padding:0 14px;border-radius:22px;border:1px solid var(--line);background:transparent;color:var(--muted);font:600 15px var(--fb);white-space:nowrap}
+ .beta-subtabs button.on{border-color:var(--acc);color:var(--acc);background:var(--panel2)}
+ .beta-qfilter{display:flex;gap:8px;margin:0 0 12px}.beta-qfilter select{flex:1;min-height:44px;border-radius:10px;padding:0 10px}
+ .beta-pfilter{display:flex;gap:6px;margin:8px 0;flex-wrap:wrap}
+ .beta-pfilter button{min-height:40px;padding:0 14px;border-radius:20px;border:1px solid var(--line);background:transparent;color:var(--muted);font:600 14px var(--fb)}
+ .beta-pfilter button.on{border-color:var(--acc);color:var(--acc)}
+ .beta-search{display:block;width:100%;min-height:44px;margin:8px 0;padding:0 12px;border-radius:10px;border:1px solid var(--line)}
+}
+@media(max-width:600px){
+ /* 11: five-tab bottom bar; original scrolling bar hidden (its buttons still drive navigation) */
+ nav.tabs{display:none!important}.beta-hint{display:none!important}
+ .beta-bbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:160;background:var(--panel);border-top:1px solid var(--line);padding:2px 4px calc(2px + env(safe-area-inset-bottom))}
+ .beta-bbar button{flex:1;min-height:56px;background:none;border:0;color:var(--muted);font:600 13px var(--fb);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border-radius:10px}
+ .beta-bbar button i{font-style:normal;font-size:20px;line-height:1}
+ .beta-bbar button.on{color:var(--acc);background:var(--panel2)}
+ /* 1: sheets */
+ .beta-sheet-bd{display:block;position:fixed;inset:0;background:#0008;z-index:170}
+ .beta-sheet{display:block;position:fixed;left:0;right:0;bottom:0;z-index:171;background:var(--panel2);border-radius:16px 16px 0 0;padding:8px 12px calc(16px + env(safe-area-inset-bottom));box-shadow:0 -10px 30px #0007;transform:translateY(100%);transition:transform .18s ease-out}
+ .beta-sheet.up{transform:none}
+ @media (prefers-reduced-motion:reduce){.beta-sheet{transition:none}}
+ .beta-sheet-grip{width:40px;height:4px;border-radius:2px;background:var(--line);margin:4px auto 8px}
+ .beta-sheet-title{font:700 14px var(--fh);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:4px 8px 8px}
+ .beta-sheet-item{display:flex;align-items:center;gap:14px;width:100%;min-height:58px;padding:0 14px;margin:4px 0;border-radius:12px;border:1px solid var(--line);background:var(--panel);color:var(--text);font:600 18px var(--fb);text-align:left}
+ .beta-sheet-item i{font-style:normal;font-size:22px;width:28px;text-align:center}
+ .beta-sheet-item span{flex:1}.beta-sheet-item b{color:var(--muted);font-weight:400}
+ .beta-sheet-item.on{border-color:var(--acc);color:var(--acc)}.beta-sheet-item.on b{color:var(--acc)}
+ /* generic tucks */
+ .beta-tog{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;margin:6px 0;border-radius:22px;border:1px solid var(--line);background:transparent;color:var(--acc);font:600 15px var(--fb)}
+ .beta-tucked{display:none!important}
+ summary{min-height:44px;display:flex;align-items:center;gap:6px}
+ .v9-info{min-width:40px;min-height:40px}
+ /* 10: ledger one line, tap for all */
+ .stats{cursor:pointer}
+ .stats:not(.beta-full) .stat:not(:nth-child(1)):not(:nth-child(3)){display:none!important}
+ .stats:not(.beta-full) .stat{flex:1 1 0!important;border-top:0!important;padding:8px 12px!important}
+ .stats:not(.beta-full) .stat:nth-child(3){border-left:1px solid var(--line)!important}
+ .stats:not(.beta-full) .stat small,.stats:not(.beta-full) .progress{display:none}
+ .beta-ledger-more{display:flex;align-items:center;justify-content:center;position:absolute;right:4px;top:50%;transform:translateY(-50%);width:40px;height:40px;border:0;background:none;color:var(--muted);font-size:16px}
+ .stats.beta-full .beta-ledger-more{top:18px}
+ .beta-long{display:none}.beta-short{display:inline}
+ /* 4: hall order + compact building rows */
+ #hall.active{display:flex;flex-direction:column}#hall>.heading{order:-3}#hall>.beta-first-grid{order:-2;margin:0 0 13px!important}
+ #hall .beta-first-grid{display:flex!important;flex-direction:column-reverse;gap:13px}
+ .beta-taprow{cursor:pointer}
+ .beta-taprow:not(.beta-open)>p,.beta-taprow:not(.beta-open)>.v9-trainee-list{display:none}
+ .beta-taprow>div>strong::after{content:' ▸';color:var(--muted);font-weight:400}.beta-taprow.beta-open>div>strong::after{content:' ▾'}
+ /* 7: buildings – locked group last */
+ #building-options{display:flex;flex-direction:column}#building-options>.beta-locked{order:3;opacity:.75}#building-options>.beta-locked-tog{order:2;align-self:flex-start}
+ /* 8 + 9: shorter quest cards (full text is in the details popup) */
+ #quest-list .quest>p,#permanent-contract-list .quest>p,#gather-quest-list .quest>p{display:none}
+ #quest-list .quest .questfoot .small.muted,#gather-quest-list .quest .questfoot .small.muted{display:none}
+ /* 2: trading compact cargo rows with steppers */
+ .trade-cargo-row{display:flex!important;align-items:center;gap:8px;padding:6px 0!important;min-height:52px;border-bottom:1px solid var(--line)}
+ .trade-cargo-row>label:first-child{flex:1;display:flex;align-items:center;gap:10px;min-height:44px;cursor:pointer}
+ .trade-cargo-row>label:first-child input{width:22px;height:22px;flex:0 0 auto}
+ .trade-cargo-row small{display:block}
+ .trade-cargo-quantity{display:flex!important;align-items:center;gap:4px;font-size:0!important}
+ .trade-cargo-quantity input{width:52px!important;min-height:40px;text-align:center;font-size:15px!important}
+ .beta-step{width:40px;height:40px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--text);font:600 18px var(--fn)}
+ #inbound-market>h3{cursor:pointer;min-height:44px;display:flex;align-items:center}
+ #inbound-market>h3::after{content:'▾';margin-left:auto;color:var(--muted);font-size:16px}
+ #inbound-market.beta-shut>h3::after{content:'▸'}
+ #inbound-market.beta-shut>:not(h3){display:none!important}
+ /* 3: picker */
+ label.pick.v9pick{min-height:52px;padding:8px 10px!important}
+ #quest-detail-modal .modalbox{padding-bottom:0}
+ /* 6: dossier tabs */
+ .beta-htabs{display:flex;gap:6px;position:sticky;top:0;z-index:4;background:var(--panel);padding:6px 0 8px;margin-bottom:6px}
+ .beta-htabs button{flex:1;min-height:44px;border-radius:22px;border:1px solid var(--line);background:transparent;color:var(--muted);font:600 15px var(--fb)}
+ .beta-htabs button.on{border-color:var(--acc);color:var(--acc);background:var(--panel2)}
+ .hero-stats-layout[data-bht] .hero-stats-left,.hero-stats-layout[data-bht] .hero-stats-right{display:block}
+ .hero-stats-layout[data-bht="stats"] [data-bt]:not([data-bt="stats"]),.hero-stats-layout[data-bht="traits"] [data-bt]:not([data-bt="traits"]),.hero-stats-layout[data-bht="gear"] [data-bt]:not([data-bt="gear"]){display:none!important}
+ .hero-stats-layout[data-bht="gear"] .hero-stats-left{display:none!important}
+ .hero-stats-layout[data-bht="stats"] .hero-stats-right,.hero-stats-layout[data-bht="traits"] .hero-stats-right{display:none!important}
+ .hero-stats-layout[data-bht] .hero-stats-left{display:block!important}
+ .hero-stats-layout[data-bht="gear"] .hero-stats-left{display:none!important}
+ /* 13: chronicle two-line entries, tap for all */
+ #log-list .logitem p{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+ #log-list .logitem.beta-open p{display:block;-webkit-line-clamp:unset}
+ #log-list .logitem.beta-more:not(.beta-open)::after{content:'more ▸';display:block;color:var(--acc);font:600 13px var(--fb);margin-top:2px}
+ /* 14: roster filters stay reachable */
+ .v9-rfilters{position:sticky;top:0;z-index:6;background:var(--bg);padding:6px 0}
+ .shell{padding-bottom:84px!important}
+}
+@media(max-width:600px){
+ summary{flex-wrap:wrap}
+ #staff .staff-member>summary{flex-direction:column;align-items:flex-start;justify-content:center;gap:0;padding:8px 0}
+ #staff summary,#warehouse summary,#crafting summary,#trading summary{min-height:44px!important}
+ .beta-taprow:not(.beta-open)>p,.beta-taprow:not(.beta-open)>.applicant-story{display:none}
+ .beta-recent .logitem:nth-child(n+3){display:none}
+ .beta-subtabs button{flex:1 1 0;min-width:0;white-space:normal;line-height:1.15;padding:4px 8px;font-size:14px}
+}
+@media(min-width:601px) and (max-width:1024px){
+ .btn,button.btn,label.btn,.view summary,.v9-chip,.dropdown-item,.m-collapse-toggle{min-height:44px!important}
+ .trait-chip,.pill[role=button]{min-height:44px!important;display:inline-flex!important;align-items:center}
+ .trade-cargo-row>label:first-child{min-height:44px;display:flex;align-items:center;gap:10px}
+ .trade-cargo-row input[type=checkbox],label.pick input[type=checkbox]{width:22px;height:22px}
+}
+.beta-step{display:none}
+@media(max-width:1024px){.beta-step{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--text);font:600 18px var(--fn)}}
+@media(max-width:600px){#staff-roster{gap:6px!important}#staff .staff-member{padding:4px 12px!important;margin:0!important}}
+@media(min-width:601px) and (max-width:1024px){#inbound-market>h3{min-height:44px}}
+html body :is(#trade-party,#quest-detail-modal,#quest-list,#outbound-cargo,#inbound-cargo,#trading,#quests,#hall,#staff,#buildings) .beta-fhide,html body :is(#trading,#quests,#hall,#staff,#buildings,#crafting,#permanent-quests,#quest-detail-modal) .beta-tucked{display:none!important}
 
 </style>
 </head>
@@ -2143,6 +2271,117 @@ function guardNote(){const n=window.__betaSaveBlocked;if(!n||$('.beta-guard'))re
 let q=false;function tick(){q=false;try{guardNote();ledger();storyLog();why();primary()}catch(e){console.warn('beta',e&&e.stack||e)}}
 function sched(){if(!q){q=true;requestAnimationFrame(tick)}}
 function init(){buildMenu();tabIcons();watchNum('gold',' gp');watchNum('reputation',' rep');tick();new MutationObserver(sched).observe(document.querySelector('.shell')||document.body,{childList:true,subtree:true,characterData:true,attributes:true,attributeFilter:['disabled','class']})}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+
+/* ===== BETA UX layer (audit fixes 1-14). Presentation only: every action calls the game's own buttons/inputs. ===== */
+(function(){
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const PHONE=()=>innerWidth<=600,TAB=()=>innerWidth<=1024;
+const G=()=>{try{return game}catch(e){return null}};
+const ST={};const once=new Set();
+const setText=(el,t)=>{if(el.textContent!==t)el.textContent=t};
+const cls=(el,c,on)=>{if(el.classList.contains(c)!==!!on)el.classList.toggle(c,!!on)};
+/* generic "details behind a tap" toggle; only active on phones (CSS hides the button and ignores .beta-tucked above 600px) */
+function tuck(els,key,label,open=false){els=els.filter(Boolean);if(!els.length)return;const first=els[0];let b=first.previousElementSibling;
+ if(!(b&&b.classList.contains('beta-tog')&&b.dataset.k===key)){b=document.createElement('button');b.type='button';b.className='beta-tog';b.dataset.k=key;b.addEventListener('click',e=>{e.stopPropagation();ST[key]=!(ST[key]??open);run()});first.before(b)}
+ const isOpen=ST[key]??open;els.forEach(e=>cls(e,'beta-tucked',!isOpen));setText(b,(isOpen?'▾ ':'ⓘ ')+label);if(b.getAttribute('aria-expanded')!==String(isOpen))b.setAttribute('aria-expanded',String(isOpen))}
+/* row that reveals its detail paragraphs when its title is tapped */
+function tapRows(rows,key){rows.forEach((r,i)=>{if(!r.dataset.btap){r.dataset.btap=1;r.addEventListener('click',e=>{if(!PHONE()||e.target.closest('button,select,input,a,label,details'))return;const k=key+':'+(r.querySelector('strong')?.textContent||i);ST[k]=!ST[k];run()})}
+  const k=key+':'+(r.querySelector('strong')?.textContent||i);cls(r,'beta-open',!!ST[k]);cls(r,'beta-taprow',true)})}
+
+/* ---------- 1 + 11: bottom bar + sheets ---------- */
+const VICON={hall:'🏛',roster:'⚔',staff:'🗝',buildings:'🏠',warehouse:'🎒',crafting:'⚒',trading:'🐪',quests:'📜','permanent-quests':'♾',world:'🗺',chronicle:'📖',music:'🎵'};
+const activeView=()=>$('.view.active')?.id;
+function goView(v){const t=$(`nav.tabs .tab[data-view="${v}"]`)||$(`nav.tabs .dropdown-item[data-view="${v}"]`);if(t)t.click();else if(typeof showView==='function')showView(v);closeSheet();scrollTo(0,0)}
+function sheetItems(group){if(group==='more'){const L=['staff','buildings','world','chronicle','music'].map(v=>({v,label:($(`nav.tabs .tab[data-view="${v}"]`)?.textContent||v).replace(/^[^A-Za-z]+/,'').trim()}));L.push({rest:true,label:($('#rest-nav-button')?.textContent||'Rest until tomorrow').replace(/^🌙\s*/,'').trim()});return L}
+ const dd=$(`nav.tabs .nav-dropdown[data-views~="${group}"]`);return dd?$$('.dropdown-item',dd).map(i=>({v:i.dataset.view,label:i.textContent.trim()})):[]}
+function openSheet(group,title){closeSheet();const items=sheetItems(group),cur=activeView();const bd=document.createElement('div');bd.className='beta-sheet-bd';bd.onclick=closeSheet;
+ const sh=document.createElement('div');sh.className='beta-sheet';sh.setAttribute('role','dialog');sh.setAttribute('aria-label',title);sh.dataset.group=group;
+ sh.innerHTML='<div class="beta-sheet-grip" aria-hidden="true"></div><div class="beta-sheet-title"></div>';sh.querySelector('.beta-sheet-title').textContent=title;
+ items.forEach(it=>{const b=document.createElement('button');b.type='button';b.className='beta-sheet-item'+(it.v===cur?' on':'');b.innerHTML='<i aria-hidden="true"></i><span></span><b aria-hidden="true"></b>';b.querySelector('i').textContent=it.rest?'🌙':VICON[it.v]||'•';b.querySelector('span').textContent=it.label;b.querySelector('b').textContent=it.v===cur?'✓':'›';if(it.v)b.dataset.view=it.v;
+  b.onclick=()=>{if(it.rest){closeSheet();$('#rest-nav-button')?.click()}else goView(it.v)};sh.appendChild(b)});
+ document.body.append(bd,sh);requestAnimationFrame(()=>sh.classList.add('up'))}
+function closeSheet(){$$('.beta-sheet,.beta-sheet-bd').forEach(e=>e.remove())}
+window.betaOpenSheet=openSheet;
+const BB=[{k:'hall',label:'Hall',icon:'🏛'},{k:'roster',label:'Heroes',icon:'⚔'},{k:'quests',g:'quests',label:'Quests',icon:'📜'},{k:'warehouse',g:'warehouse',label:'Inventory',icon:'🎒'},{k:'more',g:'more',label:'More',icon:'☰'}];
+const GROUP_OF={quests:'quests','permanent-quests':'quests',warehouse:'warehouse',crafting:'warehouse',trading:'warehouse',staff:'more',buildings:'more',world:'more',chronicle:'more',music:'more'};
+function bottomBar(){let bar=$('.beta-bbar');if(!bar){bar=document.createElement('nav');bar.className='beta-bbar';bar.setAttribute('aria-label','Game screens');
+  BB.forEach(t=>{const b=document.createElement('button');b.type='button';b.dataset.k=t.k;b.innerHTML='<i aria-hidden="true"></i><span></span>';b.querySelector('i').textContent=t.icon;b.querySelector('span').textContent=t.label;
+   b.onclick=()=>{if(t.g){const title=t.g==='more'?'More':(document.querySelector(`nav.tabs .nav-dropdown[data-views~="${t.g}"] .dropdown-trigger`)?.textContent.replace(/[▾]/g,'').replace(/^\S+\s/,'').trim()||t.label);if($('.beta-sheet')?.dataset.group===t.g)closeSheet();else openSheet(t.g,title)}else goView(t.k)};bar.appendChild(b)});document.body.appendChild(bar)}
+ const v=activeView(),g=GROUP_OF[v]||v;$$('button',bar).forEach(b=>cls(b,'on',b.dataset.k===g||(b.dataset.k==='quests'&&g==='quests')||(b.dataset.k==='warehouse'&&g==='warehouse')||(b.dataset.k==='more'&&g==='more')))}
+/* phones: Inventory/Quests dropdown triggers open the sheet instead of the small floating menu */
+document.addEventListener('click',e=>{const t=e.target.closest('nav.tabs .dropdown-trigger');if(!t||!PHONE())return;e.preventDefault();e.stopImmediatePropagation();const g=t.closest('.nav-dropdown').dataset.views.split(' ')[0];openSheet(g,t.textContent.replace(/[▾]/g,'').replace(/^\S+\s/,'').trim())},true);
+/* segmented sub-tabs at the top of grouped pages (phone + tablet) */
+function subTabs(){['warehouse','quests'].forEach(g=>{const dd=$(`nav.tabs .nav-dropdown[data-views~="${g}"]`);if(!dd)return;$$('.dropdown-item',dd).forEach(it=>{const sec=document.getElementById(it.dataset.view);if(!sec)return;let bar=sec.querySelector(':scope > .beta-subtabs');
+  if(!bar){bar=document.createElement('div');bar.className='beta-subtabs';bar.setAttribute('role','tablist');$$('.dropdown-item',dd).forEach(x=>{const b=document.createElement('button');b.type='button';b.setAttribute('role','tab');b.dataset.view=x.dataset.view;b.textContent=(VICON[x.dataset.view]||'')+' '+x.textContent.trim();b.onclick=()=>goView(x.dataset.view);bar.appendChild(b)});sec.prepend(bar)}
+  $$('button',bar).forEach(b=>{cls(b,'on',b.dataset.view===sec.id);b.setAttribute('aria-selected',String(b.dataset.view===sec.id))})})})}
+
+/* ---------- 10: ledger ---------- */
+const SHORT={'Member slots':'Members','Building plots':'Plots'};
+function ledger(){const st=$('.stats');if(!st)return;$$('.stat label',st).forEach(l=>{if(l.dataset.bshort)return;const t=l.textContent;for(const [a,b] of Object.entries(SHORT))if(t.includes(a)){l.dataset.bshort=1;const ic=t.replace(a,'').trim();l.innerHTML='';const L=document.createElement('span');L.className='beta-long';L.textContent=t;const S=document.createElement('span');S.className='beta-short';S.textContent=(ic?ic+' ':'')+b;l.append(L,S)}});
+ if(!st.dataset.btap){st.dataset.btap=1;st.addEventListener('click',e=>{if(!PHONE()||e.target.closest('button,a'))return;ST.ledger=!ST.ledger;run()});const m=document.createElement('button');m.type='button';m.className='beta-ledger-more';m.setAttribute('aria-label','Show full guild ledger');st.appendChild(m)}
+ cls(st,'beta-full',!!ST.ledger);setText($('.beta-ledger-more',st),ST.ledger?'▴':'▾')}
+
+/* ---------- per-page ---------- */
+function hall(){const h=$('#hall');if(!h)return;const rec=$('#applicant-list')?.closest('.grid');if(rec)cls(rec,'beta-first-grid',true);
+ const gm=$('#player-name-label')?.closest('article');if(gm&&PHONE()&&!once.has('gm')){once.add('gm');const t=$(':scope > .m-collapse-toggle',gm);if(t&&!gm.classList.contains('m-collapsed'))t.click()}
+ tapRows($$('#building-list > .building'),'hb');tapRows($$('#applicant-list > .applicant-card, #applicant-list > .building'),'ap')}
+function buildings(){const o=$('#building-options');if(!o)return;tapRows($$(':scope > .building',o),'bo');
+ const rows=$$(':scope > .building',o),locked=rows.filter(r=>{const b=r.querySelector('.v9-actions .btn');return b&&b.disabled});rows.forEach(r=>cls(r,'beta-locked',locked.includes(r)));
+ let t=$(':scope > .beta-locked-tog',o);if(locked.length){if(!t){t=document.createElement('button');t.type='button';t.className='beta-tog beta-locked-tog';t.onclick=()=>{ST.locked=!ST.locked;run()};o.appendChild(t)}setText(t,(ST.locked?'▾ ':'▸ ')+'Locked · '+locked.length);rows.forEach(r=>cls(r,'beta-tucked',locked.includes(r)&&!ST.locked))}else if(t)t.remove();
+ const intro=$('#buildings .card > p');tuck([intro],'b-intro','How buildings work')}
+function quests(){const tr=$('#report-count')?.closest('article');if(tr&&PHONE()&&!once.has('tr')){once.add('tr');const t=$(':scope > .m-collapse-toggle',tr);if(t&&!tr.classList.contains('m-collapsed'))t.click()}
+ const list=$('#quest-list');if(!list)return;const cards=$$(':scope > .quest',list);let f=$('#quests > .beta-qfilter');
+ const typeOf=c=>(c.querySelector('.eyebrow')?.textContent||'').split('·')[0].trim(),rankOf=c=>(c.querySelector('.cardhead .pill')?.textContent||'').trim();
+ if(!f){f=document.createElement('div');f.className='beta-qfilter';f.innerHTML='<select aria-label="Filter by type"></select><select aria-label="Filter by rank"></select>';list.before(f);$$('select',f).forEach((s,i)=>s.onchange=()=>{ST[i?'qrank':'qtype']=s.value;run()})}
+ const [ts,rs]=$$('select',f);const opts=(s,vals,all)=>{const want=[all,...vals].join('|');if(s.dataset.v!==want){s.dataset.v=want;s.innerHTML='';[all,...vals].forEach((v,i)=>{const o=document.createElement('option');o.value=i?v:'';o.textContent=v;s.appendChild(o)})}};
+ opts(ts,[...new Set(cards.map(typeOf).filter(Boolean))].sort(),'All types');opts(rs,[...new Set(cards.map(rankOf).filter(Boolean))],'All ranks');ts.value=ST.qtype||'';rs.value=ST.qrank||'';
+ cards.forEach(c=>cls(c,'beta-fhide',(ST.qtype&&typeOf(c)!==ST.qtype)||(ST.qrank&&rankOf(c)!==ST.qrank)))}
+function permanent(){const n=$$('#permanent-quests > .notice:not(#exploration-office-notice)');tuck(n,'pq-notes','How expeditions work')}
+function trading(){tuck([$('#trading > .notice')],'tr-notice','How convoys work');const om=$('#outbound-cargo > p');const hint=$('#trading #trade-route-title')?.closest('article')?.querySelector(':scope > p.small.muted');tuck([hint,om].filter(Boolean),'tr-cargo','Cargo rules');
+ $$('.trade-cargo-quantity input[type=number], .trade-cargo-quantity input').forEach(inp=>{if(inp.dataset.bstep)return;inp.dataset.bstep=1;const mk=(d,t)=>{const b=document.createElement('button');b.type='button';b.className='beta-step';b.textContent=t;b.setAttribute('aria-label',d>0?'Increase quantity':'Decrease quantity');b.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();const min=inp.min!==''?+inp.min:0,max=inp.max!==''?+inp.max:Infinity;const v=Math.max(min,Math.min(max,(+inp.value||0)+d));if(+inp.value!==v){inp.value=v;inp.dispatchEvent(new Event('input',{bubbles:true}));inp.dispatchEvent(new Event('change',{bubbles:true}))}});return b};inp.before(mk(-1,'−'));inp.after(mk(1,'+'))});
+ ['outbound-cargo','inbound-cargo'].forEach(id=>{const box=document.getElementById(id);if(!box)return;const rows=$$('.trade-cargo-row',box);let s=box.previousElementSibling&&box.previousElementSibling.classList.contains('beta-search')?box.previousElementSibling:null;
+  if(rows.length<6){if(s)s.remove();return}if(!s){s=document.createElement('input');s.type='search';s.className='beta-search';s.placeholder='Filter goods…';s.setAttribute('aria-label','Filter goods');s.oninput=()=>{ST['s-'+id]=s.value;run()};box.before(s)}
+  const q=(ST['s-'+id]||'').toLowerCase(),LIM=PHONE()&&!q&&!ST['all-'+id]?6:1e9;let n=0;rows.forEach(r=>{const chk=r.querySelector('input[type=checkbox]:checked');let hide=!!q&&!r.textContent.toLowerCase().includes(q)&&!chk;if(!hide&&!chk){n++;if(n>LIM)hide=true}cls(r,'beta-fhide',hide)});
+  let more=box.nextElementSibling&&box.nextElementSibling.classList.contains('beta-showall')?box.nextElementSibling:null;if(PHONE()&&!q){if(!more){more=document.createElement('button');more.type='button';more.className='beta-tog beta-showall';more.onclick=()=>{ST['all-'+id]=!ST['all-'+id];run()};box.after(more)}setText(more,ST['all-'+id]?'▴ Show fewer':'▾ Show all goods · '+rows.length)}else if(more)more.remove()});
+ partyFilter($('#trade-party'),'trole');
+ const inb=$('#inbound-market');if(inb){const h=$(':scope > h3',inb);if(h&&!h.dataset.btap){h.dataset.btap=1;h.setAttribute('role','button');h.tabIndex=0;h.addEventListener('click',()=>{ST.inb=!(ST.inb??true);run()})}cls(inb,'beta-shut',!(ST.inb??true))}}
+function staff(){$$('#staff article.card').forEach((card,i)=>{if(card.closest('.staff-member'))return;const ps=$$(':scope > p',card).filter(p=>p.textContent.length>100);tuck(ps,'st-rules'+i,'How staff work')});const groups=new Map();$$('#staff p').forEach(p=>{if(p.closest('.staff-member,.staff-candidate,details')||p.textContent.length<100)return;const k=p.parentElement;if(!groups.has(k))groups.set(k,[]);groups.get(k).push(p)});[...groups.values()].forEach((ps,i)=>tuck(ps,'st-g'+i,'How staff work'));
+ $$('#staff .staff-candidate').forEach((c,i)=>{const kids=[...c.children].filter((e,j)=>!/^H[1-6]$/.test(e.tagName)&&!e.classList.contains('beta-tog')&&!e.querySelector('button.btn')&&!e.matches('button,.btn')&&j>1);tuck(kids,'cand-'+(c.querySelector('h4')?.textContent||i),'Details')})
+ }
+function warehouse(){if(PHONE()&&!once.has('exp')){const d=$('details.gather-expertise-collapse[open]');if(d){once.add('exp');d.open=false}}}
+function crafting(){const help=$('details.gear-crafting-help');if(help&&PHONE()&&help.open&&!once.has('craft')){once.add('craft');help.open=false}
+ const bench=$('#crafting details.craft-collapse');if(bench&&!once.has('bench')){once.add('bench');bench.open=true}
+ const intro=$('#crafting .card > p');tuck([intro],'cr-intro','How crafting works');$$('#crafting .card .card > p, #crafting details > p').filter(p=>p.textContent.length>160).forEach((p,i)=>tuck([p],'cr-p'+i,'More'))}
+function chronicle(){$$('#log-list .logitem').forEach((it,i)=>{const p=$('p',it);if(!p)return;if(!it.dataset.btap){it.dataset.btap=1;it.addEventListener('click',()=>{if(!PHONE())return;it.classList.toggle('beta-open')})}
+ if(PHONE()&&!it.classList.contains('beta-open'))cls(it,'beta-more',p.scrollHeight>p.clientHeight+2)})}
+/* ---------- 3: quest picker ---------- */
+function partyFilter(list,key){if(!list)return;let f=list.previousElementSibling&&list.previousElementSibling.classList.contains('beta-pfilter')?list.previousElementSibling:null;
+ if(!f){f=document.createElement('div');f.className='beta-pfilter';['All','Tank','Healer','Damage'].forEach(r=>{const b=document.createElement('button');b.type='button';b.textContent=r;b.dataset.r=r;b.onclick=()=>{ST[key]=r==='All'?'':r;run()};f.appendChild(b)});list.before(f)}
+ $$('button',f).forEach(b=>cls(b,'on',(ST[key]||'')===(b.dataset.r==='All'?'':b.dataset.r)));
+ const g=G();$$('label.pick',list).forEach(l=>{const inp=$('input[type=checkbox]',l);cls(l,'beta-picked',inp&&inp.checked);let role='';try{const id=(inp?.getAttribute('onchange')||'').match(/toggle[A-Za-z]*\('([^']+)'/)?.[1];const h=id==='player'?g.player:g.heroes.find(x=>x.id===id);role=h&&typeof v9Role==='function'?v9Role(h):''}catch(e){}
+  const want=ST[key];l.dataset.bf=(!!want&&!(inp&&inp.checked)&&!new RegExp(want==='Damage'?'dps|damage':want,'i').test(role||''))?'1':''});
+ /* phones: first 8 shown, the rest behind "Show all" (checked heroes always stay visible) */
+ const labels=$$('label.pick',list);let shown=0;const LIM=PHONE()&&!ST[key+'all']?8:1e9;labels.forEach(l=>{const chk=l.querySelector('input:checked');let hide=l.dataset.bf==='1';if(!hide&&!chk){shown++;if(shown>LIM)hide=true}cls(l,'beta-fhide',hide);const d=l.nextElementSibling;if(d&&d.classList.contains('v9-drawer'))cls(d,'beta-fhide',hide)});
+ const total=labels.filter(l=>l.dataset.bf!=='1').length;let more=list.nextElementSibling&&list.nextElementSibling.classList.contains('beta-showall')?list.nextElementSibling:null;
+ if(PHONE()&&total>8){if(!more){more=document.createElement('button');more.type='button';more.className='beta-tog beta-showall';more.onclick=()=>{ST[key+'all']=!ST[key+'all'];run()};list.after(more)}setText(more,ST[key+'all']?'▴ Show fewer':'▾ Show all · '+total)}else if(more)more.remove()}
+
+function picker(){const m=$('#quest-detail-modal');if(!m||!m.classList.contains('open'))return;const c=$('#quest-detail-content',m);if(!c)return;
+ const parts=[$(':scope > .notice',c),...$$(':scope > h3',c).filter(h=>/loot|reward/i.test(h.textContent)),$(':scope > .loot-table',c),$(':scope > .v9-picker-help',c)].filter(Boolean);tuck(parts,'qp-rules','Rewards & rules');
+ partyFilter($('.quest-member-list',c),'prole')}
+document.addEventListener('change',e=>{if(e.target.closest&&e.target.closest('label.pick'))requestAnimationFrame(run)},true);
+/* ---------- 6: hero dossier tabs ---------- */
+const HT=[['stats','Stats'],['traits','Traits'],['gear','Gear']];
+function dossier(){const m=$('#hero-stats-modal');if(!m||!m.classList.contains('open'))return;const lay=$('.hero-stats-layout',m);if(!lay)return;if(!$('.equipment-slot-grid',lay)||$('.memorial-epitaph,#memorial-epitaph',m)){delete lay.dataset.bht;return}const left=$('.hero-stats-left',lay),right=$('.hero-stats-right',lay);
+ $$(':scope > *',left||lay).forEach(e=>{if(!e.dataset.bt)e.dataset.bt=e.classList.contains('hero-detail-block')?'traits':'stats'});if(right&&!right.dataset.bt)right.dataset.bt='gear';$$(':scope > *',lay).forEach(e=>{if(e!==left&&e!==right&&!e.dataset.bt&&!e.classList.contains('beta-htabs'))e.dataset.bt='traits'});
+ let bar=$(':scope > .beta-htabs',lay);if(!bar){bar=document.createElement('div');bar.className='beta-htabs';bar.setAttribute('role','tablist');HT.forEach(([k,l])=>{const b=document.createElement('button');b.type='button';b.setAttribute('role','tab');b.dataset.t=k;b.textContent=l;b.onclick=()=>{ST.ht=k;run();m.querySelector('.modalbox')?.scrollTo(0,0)};bar.appendChild(b)});lay.prepend(bar)}
+ const cur=ST.ht||'stats';if(lay.dataset.bht!==cur)lay.dataset.bht=cur;$$('button',bar).forEach(b=>{cls(b,'on',b.dataset.t===cur);b.setAttribute('aria-selected',String(b.dataset.t===cur))})}
+
+let q=false;function run(){q=false;try{bottomBar();subTabs();ledger();hall();buildings();quests();permanent();trading();staff();warehouse();crafting();chronicle();picker();dossier();document.documentElement.classList.toggle('beta-phone',PHONE())}catch(e){console.warn('beta-ux',e&&e.stack||e)}}
+function sched(){if(!q){q=true;requestAnimationFrame(run)}}
+window.betaUxRun=run;
+function init(){run();new MutationObserver(sched).observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['class','open']});addEventListener('resize',sched)}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
 

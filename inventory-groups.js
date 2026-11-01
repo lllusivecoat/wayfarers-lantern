@@ -1,0 +1,17 @@
+/* Group inventory presentation without merging saved item identities or uses. */
+(() => {
+ const expanded=new Set();let recyclingOpen=false;
+ function groups(){
+  const root=document.getElementById('gear-recycling');if(root){const rows=[...root.querySelectorAll('.building')];const sections=new Map();for(const row of rows){const id=row.querySelector('[data-id]')?.dataset.id,g=game.gear.find(g=>g.id===id),owner=g?.heroOwner||g?.owner||'storage';if(!sections.has(owner))sections.set(owner,[]);sections.get(owner).push(row)}
+   const intro=root.querySelector('p')?.cloneNode(true);root.replaceChildren();const summary=document.createElement('summary');summary.textContent='Sell gear back to guild & dismantle';root.append(summary);if(intro)root.append(intro);
+   for(const [id,rows] of [...sections].sort(([a],[b])=>(purse(a)?.name||'Guild storage').localeCompare(purse(b)?.name||'Guild storage'))){const d=document.createElement('details'),s=document.createElement('summary');d.open=expanded.has(id);s.textContent=`${purse(id)?.name||'Guild storage'} · ${rows.length} items`;d.append(s,...rows);d.ontoggle=()=>d.open?expanded.add(id):expanded.delete(id);root.append(d)}root.open=recyclingOpen;root.ontoggle=()=>recyclingOpen=root.open;
+  }
+  const stock=document.getElementById('warehouse-consumables');if(!stock)return;const batches=new Map();
+  function add(name,category,uses,description){if(uses<=0)return;const key=JSON.stringify([name,category,description]);if(!batches.has(key))batches.set(key,{name,category,uses:0,count:0,description});const b=batches.get(key);b.uses+=uses;b.count++}
+  for(const item of game.consumables||[])add(item.name,item.ration||/rations/i.test(item.name)?'Rations':'Provisions',Number(item.uses)||0,item.ration||/rations/i.test(item.name)?`+${item.bonus||1} to expedition checks.${item.heal?" Light wound recovery −"+item.heal+" day.":""}${item.repair?" Restore up to "+item.repair+" durability.":""} One ration combines with one potion; only one of each category is used per expedition.`:`+${item.bonus||1} to expedition checks.`);
+  for(const item of game.alchemyPotions||[]){const r=alchemyRecipes().find(r=>r.id===item.recipe);if(r)add(r.name,'Potions',Number(item.uses)||0,r.bonus?`+${r.bonus} to expedition checks. Equip in a utility slot; combines with one ration.`:r.stat?'Permanent stat elixir. Use from the Alchemy Lab; one permanent elixir per hero.':'Wound remedy. Use from the Alchemy Lab on a returned, injured hero.')}
+  for(const item of game.fieldKits||[]){const r=fieldKitRecipes().find(r=>r.id===item.recipe);if(r)add(r.name,'Field kits',Number(item.uses)||0,`${Math.round(r.protection*100)}% less ordinary wound chance. Equip in a utility slot; only the strongest kit is used per expedition.`)}
+  stock.replaceChildren();for(const b of [...batches.values()].sort((a,b)=>a.category.localeCompare(b.category)||a.name.localeCompare(b.name))){const section=document.createElement('section');section.className='building';const title=document.createElement('strong');title.textContent=b.name;const count=document.createElement('p');count.textContent=`${b.category} · ${b.uses} ${b.uses===1?'use':'uses'} left · ${b.count} stored ${b.count===1?'batch':'batches'}`;const p=document.createElement('p');p.textContent=b.description;section.append(title,count,p);stock.append(section)}if(!batches.size)stock.textContent='No consumables stored.';
+ }
+ const warehouse=renderWarehouse;renderWarehouse=function(){const out=warehouse.apply(this,arguments);groups();return out};renderWarehouse();
+})();

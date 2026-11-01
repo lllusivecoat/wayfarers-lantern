@@ -2104,7 +2104,7 @@ let installEvt=null;addEventListener('beforeinstallprompt',e=>{e.preventDefault(
 function buildMenu(){const meta=$('.topmeta');if(!meta||$('.beta-gear'))return;
  const g=document.createElement('button');g.className='beta-gear';g.type='button';g.title='Settings';g.setAttribute('aria-label','Settings');g.setAttribute('aria-expanded','false');g.textContent='⚙';
  const m=document.createElement('div');m.className='beta-menu';m.hidden=true;m.id='beta-menu';
- m.innerHTML='<button type="button" data-a="export">⬇ Export save</button><button type="button" data-a="import">⬆ Import</button><button type="button" data-a="update">⟳ Check for updates</button><button type="button" data-a="install">📲 Install game</button><div class="small muted beta-install-note" hidden style="padding:2px 10px 6px">Use your browser menu → “Add to Home Screen”.</div><hr><div class="lab">Theme</div><div class="beta-theme"><button type="button" data-t="dark">Lantern &amp; Ink</button><button type="button" data-t="light">Guild Ledger</button></div><hr><button type="button" class="d" data-a="new">✚ New guild</button>';
+ m.innerHTML='<button type="button" data-a="export">⬇ Export save</button><button type="button" data-a="import">⬆ Import</button><button type="button" data-a="update">⟳ Check for updates</button><button type="button" data-a="install">📲 Install game</button><button type="button" data-a="live">↩ Switch to live game</button><div class="small muted beta-install-note" hidden style="padding:2px 10px 6px">Use your browser menu → “Add to Home Screen”.</div><hr><div class="lab">Theme</div><div class="beta-theme"><button type="button" data-t="dark">Lantern &amp; Ink</button><button type="button" data-t="light">Guild Ledger</button></div><hr><button type="button" class="d" data-a="new">✚ New guild</button>';
  meta.appendChild(g);meta.appendChild(m);
  const close=()=>{m.hidden=true;g.setAttribute('aria-expanded','false')};
  g.onclick=e=>{e.stopPropagation();m.hidden=!m.hidden;g.setAttribute('aria-expanded',String(!m.hidden))};
@@ -2114,7 +2114,7 @@ function buildMenu(){const meta=$('.topmeta');if(!meta||$('.beta-gear'))return;
   const a=b.dataset.a;if(a==='export'){close();exportSave()}else if(a==='import'){close();document.getElementById('import-file').click()}
   else if(a==='update'){location.replace(location.pathname+'?v='+Date.now()+location.hash)}
   else if(a==='install'){if(installEvt){installEvt.prompt();installEvt=null;close()}else m.querySelector('.beta-install-note').hidden=false}
-  else if(a==='new'){close();resetGame()}});
+  else if(a==='live'){location.href='../'}else if(a==='new'){close();resetGame()}});
  setTheme(document.documentElement.classList.contains('beta-light')?'light':'dark')}
 const ICONS={hall:'🏛',roster:'⚔',staff:'🗝',buildings:'🏠',warehouse:'🎒',quests:'📜',world:'🗺',chronicle:'📖',music:'🎵'};
 function tabIcons(){$$('nav.tabs > .tab[data-view], nav.tabs .dropdown-trigger').forEach(t=>{if(t.querySelector('.beta-ic'))return;const v=t.dataset.view||t.closest('.nav-dropdown')?.dataset.views.split(' ')[0];const i=ICONS[v];if(!i)return;const s=document.createElement('i');s.className='beta-ic';s.setAttribute('aria-hidden','true');s.textContent=i;t.prepend(s)});

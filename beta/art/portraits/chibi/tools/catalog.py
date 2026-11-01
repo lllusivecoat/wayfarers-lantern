@@ -1,0 +1,22 @@
+"""Rebuild beta catalogue and review pages from exported queue entries only."""
+import json,re,html
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1]; BETA=ROOT.parents[2]
+queue=json.loads((ROOT/'queue.json').read_text()); done=[r for r in queue if r['status']=='exported']
+p=BETA/'hero-portraits.js'; source=p.read_text()
+entries=[[r['race'],r['className'],r['gender'],r['file']] for r in done]
+source=re.sub(r' const entries=\[.*?\];', ' const entries='+json.dumps(entries,separators=(',',':'))+';',source,count=1)
+source=source.replace("const base='art/portraits/chibi/batch-001/portraits/';","const base='art/portraits/chibi/';")
+source=source.replace('/* Beta-only first 100 chibi portraits.', '/* Beta-only chibi portraits.')
+source=source.replace("link.href='art/portraits/chibi/batch-001/preview.html'", "link.href='art/portraits/chibi/preview.html'")
+source=re.sub(r"link.textContent='View (?:first 100|[0-9]+) portraits'",f"link.textContent='View {len(done)} portraits'",source)
+p.write_text(source)
+def preview(rows,prefix,title):
+ cards=''.join('<figure><img loading="lazy" width="128" height="128" src="'+html.escape(prefix+r['file'])+'" alt="'+html.escape(r['race']+' '+r['className']+' '+r['gender'])+'"><figcaption>'+str(r['index'])+' · '+html.escape(r['race']+' '+r['className']+' '+r['gender'])+'</figcaption></figure>' for r in rows)
+ return '<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+title+'</title><style>body{margin:24px;background:#201b13;color:#f4ead6;font:16px/1.5 system-ui}h1{font-size:24px}main{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px}figure{margin:0;padding:12px;text-align:center;background:#30271b;border-radius:10px}img{width:var(--size,128px);height:var(--size,128px);object-fit:cover;border-radius:50%}figcaption{font-size:12px;margin-top:8px}button{padding:12px 18px;margin:0 8px 20px 0;cursor:pointer;min-height:44px}</style><h1>'+title+'</h1><p>Review at game sizes. Original custom uploads take priority.</p><nav aria-label="Portrait size"><button data-size="32">32 px</button><button data-size="58">58 px</button><button data-size="128">128 px</button></nav><main>'+cards+'</main><script>document.querySelectorAll("[data-size]").forEach(b=>b.onclick=()=>document.documentElement.style.setProperty("--size",b.dataset.size+"px"))</script></html>\n'
+(ROOT/'preview.html').write_text(preview(done,'',f'Beta portrait gallery · {len(done)} portraits'))
+for batch in dict.fromkeys(r['batch'] for r in done if r['index']>100):
+ rows=[r for r in done if r['batch']==batch];directory=ROOT/batch
+ (directory/'preview.html').write_text(preview(rows,'../',batch+' · '+str(len(rows))+' portraits'))
+ (directory/'README.md').write_text(f'# {batch} — portraits {rows[0]["index"]}–{rows[-1]["index"]}\n\n{len(rows)} exported 128×128 WebP portraits. Five columns × four rows per retained source atlas. See manifest.json for row-major identities and preview.html to review at 32, 58 and 128 pixels.\n')
+print(f'Catalogue and galleries: {len(done)} portraits')

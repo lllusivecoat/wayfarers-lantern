@@ -1,0 +1,3 @@
+# Original generated PNGs remain in the workspace; compact source WebPs are committed.
+batch-*/sheet-*.png
+.upload-state.json

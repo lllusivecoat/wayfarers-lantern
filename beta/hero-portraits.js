@@ -10,7 +10,7 @@
  globalThis.WL_BETA_PORTRAITS=Object.freeze({lookup,genderFor,count:entries.length});
  if(typeof document==='undefined')return;
  const custom=imageSrc;imageSrc=function(h){if(globalThis.WL_BETA_BOOT?.holding)return custom(h);return custom(h)||lookup(h)};
- function fitPortraits(){document.querySelectorAll('img.portrait,img.v9-rpic,.beta-hero-bubble img').forEach(img=>{
+ function fitPortraits(){if(globalThis.WL_BETA_BOOT?.holding)return;document.querySelectorAll('img.portrait,img.v9-rpic,.beta-hero-bubble img').forEach(img=>{
   let frame=img.closest('.beta-portrait-frame,.pv-photo-frame');
   if(frame&&frame.hidden!==img.hidden)frame.hidden=img.hidden;
   if(img.hidden)return;

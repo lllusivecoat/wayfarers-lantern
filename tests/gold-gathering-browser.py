@@ -18,12 +18,12 @@ try:
  resolveGatheringChecks=(q,party)=>({tier:outcome,checks:party.map(m=>({id:m.id,name:m.name,roll:18,modifier:20,total:38,success:true})),phases:[]});
  for(let rank=0;rank<10;rank++)for(outcome=0;outcome<4;outcome++){
   game.goldGatheringDays={};game.pendingReports=[];h.ready=helper.ready=true;h.dead=helper.dead=false;h.gold=helper.gold=0;game.permRanks['gather-salvage-gold']=rank;
-  const q=questById('gather-salvage-gold');check(v9QuestMins(q)===45,'fixed timing');const treasury=game.gold;
+  const q=questById('gather-salvage-gold');check(v9QuestMins(q)===45,'fixed timing');check(q.dc===gatheringQuest('Skinning').dc+(2*q.rank-2*gatheringQuest('Skinning').rank)+1,'DC one above same-rank gathering');check(q.gatherAbilities.length===6,'all six stats');const treasury=game.gold;
   queueQuestReport(q,[h.id,helper.id],0,'gold test');const r=game.pendingReports.at(-1),expected=Math.floor([40,60,80,100,125,150,175,200,225,250][rank]*1.25*[0,.5,1,1.5][outcome]);
   check(r.memberCut===expected&&r.memberAwards.reduce((n,a)=>n+a.amount,0)===expected,'100 percent hero distribution rank '+rank+' qrank '+q.rank+' outcome '+outcome+' got '+r.memberCut+' expected '+expected);check(!r.payout&&!r.rep&&!r.resourceQty&&!r.lootDrops.length&&!r.growthAwards.length,'no other rewards');check(!heroEligible(h,q),'daily eligibility');const n=game.pendingReports.length;queueQuestReport(q,[h.id],0,'duplicate');check(game.pendingReports.length===n,'backend repeat blocked');
   const cost=r.organizingCost;r.dueAt=Date.now()-1;applyPendingReports();check(h.gold+helper.gold===expected,'actual purse payments');check(game.gold===treasury-cost,'guild only pays organising cost');
  }
- resolveGatheringChecks=resolve;renderQuests();check(document.getElementById('gather-quest-list').textContent.includes('Salvage for Coin'),'gathering card');save();
+ resolveGatheringChecks=resolve;for(const k of abilityKeys)h.abilities[k]=10;h.abilities.cha=100;check(perkStatFor(h,questById('gather-salvage-gold'))==='cha','strongest stat includes CHA');renderQuests();check(document.querySelector('#gather-quest-list article:last-child .questfacts .v9-stat').textContent==='Any stat check','matching facts/badges layout');check(document.getElementById('gather-quest-list').textContent.includes('Salvage for Coin'),'gathering card');save();
  }''')
   page.reload(wait_until='networkidle');page.wait_for_function("document.readyState==='complete'")
   assert page.evaluate("!heroEligible(game.player,questById('gather-salvage-gold'))")

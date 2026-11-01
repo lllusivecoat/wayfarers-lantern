@@ -16,3 +16,18 @@ body{font-variant-numeric:tabular-nums}.pv-top{display:flex;flex-wrap:wrap;gap:8
 @media(max-width:600px){.pv-contract .pv-contract-meta{font-size:11px}.pv-top .pv-rep label{font-size:10px}.pv-top>span{padding:6px 10px}.beta-guild-heading{min-height:230px!important}.pv-ticker{font-size:11px}}
 .pv-map .pv-pin{pointer-events:bounding-box}
 .pv-photo-frame{display:inline-block;position:relative;flex:0 0 auto;border-radius:50%;line-height:0}.pv-photo-frame img{display:block;border:0!important;box-shadow:none;margin:0!important}.pv-map .pv-pin circle{r:7px}.pv-map .pv-pin{outline:none}.pv-map .pv-pin:focus{filter:drop-shadow(0 0 4px #f9e3b4)}
+.pv-ledger-toggle{border-radius:9px;min-height:34px;padding:6px 12px;font:12px/1.4 var(--fn);white-space:nowrap}
+.trait-chip{font-size:13px!important;min-height:44px!important;padding:8px 12px!important;display:inline-flex!important;align-items:center;line-height:1.4!important}
+.trait-chip.blue{color:#8ab9e3!important;border-color:#8ab9e388!important;background:#8ab9e312!important}
+html.beta-light .trait-chip.blue{color:#326693!important;border-color:#32669388!important;background:#32669310!important}
+#trait-popup .trait-pop-type.blue{color:#8ab9e3!important}
+#staff .staff-candidate.beta-cand1{display:grid!important;grid-template-columns:minmax(0,1fr);gap:14px!important;padding:18px!important;min-width:0!important}
+#staff .beta-cand1>h4{order:0;margin:0!important;line-height:1.5}
+#staff .beta-cand1>.beta-cline{display:none!important}
+#staff .beta-cand1>p{order:1;margin:0!important;line-height:1.8;font-size:13px}
+#staff .beta-cand1>.staff-candidate-actions{order:2;gap:12px!important;flex-wrap:wrap}
+#staff .beta-candidate-details{order:3;min-width:0;border-top:1px solid var(--line);padding-top:12px}
+#staff .beta-candidate-details>summary{min-height:44px;padding:10px 0;text-align:left;cursor:pointer;color:var(--acc);border:0;border-radius:0;font:13px/1.5 var(--fn)}
+#staff .beta-candidate-details>.beta-tog{display:none!important}
+
+html.beta-light #trait-popup .trait-pop-type.blue{color:#326693!important}

@@ -1,5 +1,6 @@
 /* Group inventory presentation without merging saved item identities or uses. */
 (() => {
+ const style=document.createElement('style');style.textContent='#gear-recycling>p{margin:20px 0 28px;line-height:1.8}#gear-recycling>details{border-top:1px solid var(--line);margin-top:18px;padding-top:18px}#gear-recycling>details>summary{padding:12px 0;min-height:44px;cursor:pointer}';document.head.append(style);
  const expanded=new Set();let recyclingOpen=false;
  function groups(){
   const root=document.getElementById('gear-recycling');if(root){const rows=[...root.querySelectorAll('.building')];const sections=new Map();for(const row of rows){const id=row.querySelector('[data-id]')?.dataset.id,g=game.gear.find(g=>g.id===id),owner=g?.heroOwner||g?.owner||'storage';if(!sections.has(owner))sections.set(owner,[]);sections.get(owner).push(row)}

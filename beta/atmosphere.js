@@ -4,9 +4,8 @@
  const pref=(key,fallback=false)=>{try{const value=localStorage.getItem('wayfarers-lantern-beta-'+key);return value===null?fallback:value==='1'}catch(e){return fallback}};
  const savePref=(key,value)=>{try{localStorage.setItem('wayfarers-lantern-beta-'+key,value?'1':'0')}catch(e){}};
  const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
- const debug=new URLSearchParams(location.search).get('debug')==='1'||pref('debug');
- for(const id of ['test-complete-quests','test-quest-status']){const el=document.getElementById(id);if(el)el.hidden=!debug}
- const complete=window.testCompleteAllQuests;if(complete)window.testCompleteAllQuests=function(){return debug?complete.apply(this,arguments):[]};
+ // Beta keeps its manual quest-completion control available without a debug flag.
+ for(const id of ['test-complete-quests','test-quest-status']){const el=document.getElementById(id);if(el)el.hidden=false}
  const letters={'Warrior':'W','Paladin':'P','Hunter':'H','Rogue':'R','Priest':'Pr','Death Knight':'DK','Shaman':'S','Mage':'M','Warlock':'Wl','Monk':'Mk','Druid':'D','Demon Hunter':'DH','Evoker':'E'};
  const colors={'Warrior':'#c79c6e','Paladin':'#f58cba','Hunter':'#abd473','Rogue':'#fff569','Priest':'#f5eee4','Death Knight':'#eb6574','Shaman':'#6ca9e8','Mage':'#69ccf0','Warlock':'#b59bea','Monk':'#4fcba9','Druid':'#ffad69','Demon Hunter':'#c990e3','Evoker':'#72c5aa'};
  function condition(h){return h.dead?'Fallen':h.wound?(WOUND_TIERS[h.wound.tier]?.name||'Wounded')+' wound':'Healthy'}

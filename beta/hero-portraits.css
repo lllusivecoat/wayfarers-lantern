@@ -6,3 +6,12 @@
 #hero-list .pv-photo-frame{width:36px;height:36px;border-radius:50%;flex:0 0 36px}#hero-list .pv-photo-frame img{width:100%;height:100%;object-fit:cover;border-radius:50%}
 .applicant-name .beta-hero-bubble{width:38px;height:38px;margin-right:10px}.applicant-name{line-height:1.5}#modal-name .beta-hero-bubble{width:48px;height:48px;margin-right:12px}
 .beta-portrait-gallery{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;min-height:44px;white-space:normal;text-align:center}
+/* One centred frame; clip the artwork separately so wound indicators stay visible. */
+.beta-portrait-frame{position:relative!important;display:inline-block!important;vertical-align:middle;flex:0 0 var(--beta-portrait-size,48px)!important;width:var(--beta-portrait-size,48px)!important;height:var(--beta-portrait-size,48px)!important;box-sizing:border-box!important;padding:0!important;border:2px solid var(--pv-level,var(--acc))!important;border-radius:50%!important;background:var(--bg)!important;line-height:0;overflow:visible!important}
+.beta-portrait-frame[hidden]{display:none!important}
+.beta-portrait-clip{position:absolute;inset:0;display:block;overflow:hidden;border-radius:50%;isolation:isolate}
+.beta-portrait-frame .beta-portrait-clip>img{position:absolute!important;inset:0!important;display:block!important;width:100%!important;height:100%!important;min-width:0!important;max-width:none!important;max-height:none!important;margin:0!important;padding:0!important;border:0!important;border-radius:0!important;box-shadow:none!important;object-fit:cover;transform:translate(var(--beta-portrait-x,0%),var(--beta-portrait-y,0%)) scale(var(--beta-portrait-scale,1));transform-origin:center}
+.beta-hero-bubble.beta-portrait-frame{--beta-portrait-size:34px}
+.applicant-name .beta-hero-bubble.beta-portrait-frame{--beta-portrait-size:38px}
+#modal-name .beta-hero-bubble.beta-portrait-frame{--beta-portrait-size:48px}
+.beta-portrait-frame>.beta-wound-pip,.beta-portrait-frame>.pv-wound-icon,.beta-portrait-frame.pv-avatar::after{z-index:2}

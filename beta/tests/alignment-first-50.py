@@ -4,6 +4,7 @@ from pathlib import Path
 from PIL import Image
 root=Path(__file__).resolve().parents[1]/'art/portraits/chibi'
 queue=json.loads((root/'queue.json').read_text());frames=json.loads((root/'framing.json').read_text())
+assert len(queue)==498 and all(r.get('alignment')=='normalized-circle-v1' for r in queue)
 selected=[r for r in queue[:50] if r.get('alignment')=='normalized-circle-v1']
 assert [r['index'] for r in selected]==list(range(1,51))
 for row in selected:
@@ -14,5 +15,5 @@ for row in selected:
   assert all(alpha.getpixel(p)==0 for p in [(0,0),(127,0),(0,127),(127,127)])
   assert alpha.getpixel((64,64))==255
  assert frames[str(row['index'])]['css']==[0,0,1]
-for row in queue[400:]:assert row['file'].startswith(row['batch']+'/portraits/') and not row.get('alignment')
-print('PASS exactly 50 normalized 128x128 circular icons, preserved originals, identity frame transforms, remaining 98 paths unchanged')
+for row in (r for r in queue if not r.get('alignment')):assert row['file'].startswith(row['batch']+'/portraits/') and not row.get('alignment')
+print('PASS exactly 50 normalized 128x128 circular icons, preserved originals, identity frame transforms, all 498 entries aligned')

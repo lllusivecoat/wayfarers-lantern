@@ -11905,14 +11905,31 @@
     "gender": "male",
     "index": 401,
     "batch": "batch-005",
-    "file": "batch-005/portraits/401-highmountain-tauren-priest-male.webp",
+    "file": "aligned-401-498/portraits/401-highmountain-tauren-priest-male.webp",
     "status": "exported",
     "sheet": "sheet-01.webp",
     "row": 1,
     "column": 1,
     "width": 128,
     "height": 128,
-    "bytes": 8468
+    "bytes": 11312,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/401-highmountain-tauren-priest-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        68.0,
+        60.5
+      ],
+      "radius": 63.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        68.0,
+        60.5
+      ],
+      "radius": 60.5,
+      "atlas": "batch-005/sheet-01.webp"
+    }
   },
   {
     "race": "Highmountain Tauren",
@@ -11920,14 +11937,31 @@
     "gender": "female",
     "index": 402,
     "batch": "batch-005",
-    "file": "batch-005/portraits/402-highmountain-tauren-priest-female.webp",
+    "file": "aligned-401-498/portraits/402-highmountain-tauren-priest-female.webp",
     "status": "exported",
     "sheet": "sheet-01.webp",
     "row": 1,
     "column": 2,
     "width": 128,
     "height": 128,
-    "bytes": 8440
+    "bytes": 11242,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/402-highmountain-tauren-priest-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        68.0,
+        61.0
+      ],
+      "radius": 62.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        68.0,
+        61.0
+      ],
+      "radius": 60.0,
+      "atlas": "batch-005/sheet-01.webp"
+    }
   },
   {
     "race": "Highmountain Tauren",
@@ -11935,14 +11969,31 @@
     "gender": "male",
     "index": 403,
     "batch": "batch-005",
-    "file": "batch-005/portraits/403-highmountain-tauren-rogue-male.webp",
+    "file": "aligned-401-498/portraits/403-highmountain-tauren-rogue-male.webp",
     "status": "exported",
     "sheet": "sheet-01.webp",
     "row": 1,
     "column": 3,
     "width": 128,
     "height": 128,
-    "bytes": 7924
+    "bytes": 10534,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/403-highmountain-tauren-rogue-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        65.5,
+        61.0
+      ],
+      "radius": 62.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        65.5,
+        61.0
+      ],
+      "radius": 60.0,
+      "atlas": "batch-005/sheet-01.webp"
+    }
   },
   {
     "race": "Highmountain Tauren",
@@ -11950,14 +12001,31 @@
     "gender": "female",
     "index": 404,
     "batch": "batch-005",
-    "file": "batch-005/portraits/404-highmountain-tauren-rogue-female.webp",
+    "file": "aligned-401-498/portraits/404-highmountain-tauren-rogue-female.webp",
     "status": "exported",
     "sheet": "sheet-01.webp",
     "row": 1,
     "column": 4,
     "width": 128,
     "height": 128,
-    "bytes": 7570
+    "bytes": 10212,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/404-highmountain-tauren-rogue-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        61.0,
+        61.0
+      ],
+      "radius": 61.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        61.0,
+        61.0
+      ],
+      "radius": 59.0,
+      "atlas": "batch-005/sheet-01.webp"
+    }
   },
   {
     "race": "Highmountain Tauren",
@@ -11965,14 +12033,31 @@
     "gender": "male",
     "index": 405,
     "batch": "batch-005",
-    "file": "batch-005/portraits/405-highmountain-tauren-shaman-male.webp",
+    "file": "aligned-401-498/portraits/405-highmountain-tauren-shaman-male.webp",
     "status": "exported",
     "sheet": "sheet-01.webp",
     "row": 1,
     "column": 5,
     "width": 128,
     "height": 128,
-    "bytes": 8324
+    "bytes": 11310,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/405-highmountain-tauren-shaman-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        57.5,
+        60.5
+      ],
+      "radius": 62.5
+    },
+    "alignmentCrop": {
+      "centre": [
+        57.5,
+        60.5
+      ],
+      "radius": 60.5,
+      "atlas": "batch-005/sheet-01.webp"
+    }
   },
   {
     "race": "Highmountain Tauren",
@@ -11980,14 +12065,31 @@
     "gender": "female",
     "index": 406,
     "batch": "batch-005",
-    "file": "batch-005/portraits/406-highmountain-tauren-shaman-female.webp",
+    "file": "aligned-401-498/portraits/406-highmountain-tauren-shaman-female.webp",
     "status": "exported",
     "sheet": "sheet-01.webp",
     "row": 2,
     "column": 1,
     "width": 128,
     "height": 128,
-    "bytes": 8412
+    "bytes": 11166,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/406-highmountain-tauren-shaman-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        65.5,
+        56.5
+      ],
+      "radius": 62.5
+    },
+    "alignmentCrop": {
+      "centre": [
+        65.5,
+        56.5
+      ],
+      "radius": 60.5,
+      "atlas": "batch-005/sheet-01.webp"
+    }
   },
   {
     "race": "Highmountain Tauren",
@@ -11995,14 +12097,31 @@
     "gender": "male",
     "index": 407,
     "batch": "batch-005",
-    "file": "batch-005/portraits/407-highmountain-tauren-warlock-male.webp",
+    "file": "aligned-401-498/portraits/407-highmountain-tauren-warlock-male.webp",
     "status": "exported",
     "sheet": "sheet-01.webp",
     "row": 2,
     "column": 2,
     "width": 128,
     "height": 128,
-    "bytes": 8112
+    "bytes": 10696,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/407-highmountain-tauren-warlock-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        65.5,
+        57.0
+      ],
+      "radius": 63.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        65.5,
+        57.0
+      ],
+      "radius": 61.0,
+      "atlas": "batch-005/sheet-01.webp"
+    }
   },
   {
     "race": "Highmountain Tauren",
@@ -12010,14 +12129,31 @@
     "gender": "female",
     "index": 408,
     "batch": "batch-005",
-    "file": "batch-005/portraits/408-highmountain-tauren-warlock-female.webp",
+    "file": "aligned-401-498/portraits/408-highmountain-tauren-warlock-female.webp",
     "status": "exported",
     "sheet": "sheet-01.webp",
     "row": 2,
     "column": 3,
     "width": 128,
     "height": 128,
-    "bytes": 7754
+    "bytes": 10580,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/408-highmountain-tauren-warlock-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        63.5,
+        57.0
+      ],
+      "radius": 62.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        63.5,
+        57.0
+      ],
+      "radius": 60.0,
+      "atlas": "batch-005/sheet-01.webp"
+    }
   },
   {
     "race": "Highmountain Tauren",
@@ -12025,14 +12161,31 @@
     "gender": "male",
     "index": 409,
     "batch": "batch-005",
-    "file": "batch-005/portraits/409-highmountain-tauren-warrior-male.webp",
+    "file": "aligned-401-498/portraits/409-highmountain-tauren-warrior-male.webp",
     "status": "exported",
     "sheet": "sheet-01.webp",
     "row": 2,
     "column": 4,
     "width": 128,
     "height": 128,
-    "bytes": 8110
+    "bytes": 10890,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/409-highmountain-tauren-warrior-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        60.5,
+        57.5
+      ],
+      "radius": 62.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        60.5,
+        57.5
+      ],
+      "radius": 60.0,
+      "atlas": "batch-005/sheet-01.webp"
+    }
   },
   {
     "race": "Highmountain Tauren",
@@ -12040,14 +12193,31 @@
     "gender": "female",
     "index": 410,
     "batch": "batch-005",
-    "file": "batch-005/portraits/410-highmountain-tauren-warrior-female.webp",
+    "file": "aligned-401-498/portraits/410-highmountain-tauren-warrior-female.webp",
     "status": "exported",
     "sheet": "sheet-01.webp",
     "row": 2,
     "column": 5,
     "width": 128,
     "height": 128,
-    "bytes": 8158
+    "bytes": 10996,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/410-highmountain-tauren-warrior-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        58.5,
+        56.5
+      ],
+      "radius": 63.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        58.5,
+        56.5
+      ],
+      "radius": 61.0,
+      "atlas": "batch-005/sheet-01.webp"
+    }
   },
   {
     "race": "Mag\u2019har Orc",
@@ -12055,14 +12225,31 @@
     "gender": "male",
     "index": 411,
     "batch": "batch-005",
-    "file": "batch-005/portraits/411-maghar-orc-death-knight-male.webp",
+    "file": "aligned-401-498/portraits/411-maghar-orc-death-knight-male.webp",
     "status": "exported",
     "sheet": "sheet-01.webp",
     "row": 3,
     "column": 1,
     "width": 128,
     "height": 128,
-    "bytes": 7794
+    "bytes": 10400,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/411-maghar-orc-death-knight-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        64.5,
+        52.5
+      ],
+      "radius": 61.5
+    },
+    "alignmentCrop": {
+      "centre": [
+        64.5,
+        52.5
+      ],
+      "radius": 59.5,
+      "atlas": "batch-005/sheet-01.webp"
+    }
   },
   {
     "race": "Mag\u2019har Orc",
@@ -12070,14 +12257,31 @@
     "gender": "female",
     "index": 412,
     "batch": "batch-005",
-    "file": "batch-005/portraits/412-maghar-orc-death-knight-female.webp",
+    "file": "aligned-401-498/portraits/412-maghar-orc-death-knight-female.webp",
     "status": "exported",
     "sheet": "sheet-01.webp",
     "row": 3,
     "column": 2,
     "width": 128,
     "height": 128,
-    "bytes": 7284
+    "bytes": 10010,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/412-maghar-orc-death-knight-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        63.0,
+        53.0
+      ],
+      "radius": 61.5
+    },
+    "alignmentCrop": {
+      "centre": [
+        63.0,
+        53.0
+      ],
+      "radius": 59.5,
+      "atlas": "batch-005/sheet-01.webp"
+    }
   },
   {
     "race": "Mag\u2019har Orc",
@@ -12085,14 +12289,31 @@
     "gender": "male",
     "index": 413,
     "batch": "batch-005",
-    "file": "batch-005/portraits/413-maghar-orc-hunter-male.webp",
+    "file": "aligned-401-498/portraits/413-maghar-orc-hunter-male.webp",
     "status": "exported",
     "sheet": "sheet-01.webp",
     "row": 3,
     "column": 3,
     "width": 128,
     "height": 128,
-    "bytes": 7638
+    "bytes": 10226,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/413-maghar-orc-hunter-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        61.0,
+        52.0
+      ],
+      "radius": 62.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        61.0,
+        52.0
+      ],
+      "radius": 60.0,
+      "atlas": "batch-005/sheet-01.webp"
+    }
   },
   {
     "race": "Mag\u2019har Orc",
@@ -12100,14 +12321,31 @@
     "gender": "female",
     "index": 414,
     "batch": "batch-005",
-    "file": "batch-005/portraits/414-maghar-orc-hunter-female.webp",
+    "file": "aligned-401-498/portraits/414-maghar-orc-hunter-female.webp",
     "status": "exported",
     "sheet": "sheet-01.webp",
     "row": 3,
     "column": 4,
     "width": 128,
     "height": 128,
-    "bytes": 7816
+    "bytes": 10452,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/414-maghar-orc-hunter-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        60.0,
+        52.0
+      ],
+      "radius": 62.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        60.0,
+        52.0
+      ],
+      "radius": 60.0,
+      "atlas": "batch-005/sheet-01.webp"
+    }
   },
   {
     "race": "Mag\u2019har Orc",
@@ -12115,14 +12353,31 @@
     "gender": "male",
     "index": 415,
     "batch": "batch-005",
-    "file": "batch-005/portraits/415-maghar-orc-mage-male.webp",
+    "file": "aligned-401-498/portraits/415-maghar-orc-mage-male.webp",
     "status": "exported",
     "sheet": "sheet-01.webp",
     "row": 3,
     "column": 5,
     "width": 128,
     "height": 128,
-    "bytes": 8104
+    "bytes": 10714,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/415-maghar-orc-mage-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        58.5,
+        52.5
+      ],
+      "radius": 61.5
+    },
+    "alignmentCrop": {
+      "centre": [
+        58.5,
+        52.5
+      ],
+      "radius": 59.5,
+      "atlas": "batch-005/sheet-01.webp"
+    }
   },
   {
     "race": "Mag\u2019har Orc",
@@ -12130,14 +12385,31 @@
     "gender": "female",
     "index": 416,
     "batch": "batch-005",
-    "file": "batch-005/portraits/416-maghar-orc-mage-female.webp",
+    "file": "aligned-401-498/portraits/416-maghar-orc-mage-female.webp",
     "status": "exported",
     "sheet": "sheet-01.webp",
     "row": 4,
     "column": 1,
     "width": 128,
     "height": 128,
-    "bytes": 7270
+    "bytes": 10726,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/416-maghar-orc-mage-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        64.5,
+        48.0
+      ],
+      "radius": 62.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        64.5,
+        48.0
+      ],
+      "radius": 60.0,
+      "atlas": "batch-005/sheet-01.webp"
+    }
   },
   {
     "race": "Mag\u2019har Orc",
@@ -12145,14 +12417,31 @@
     "gender": "male",
     "index": 417,
     "batch": "batch-005",
-    "file": "batch-005/portraits/417-maghar-orc-monk-male.webp",
+    "file": "aligned-401-498/portraits/417-maghar-orc-monk-male.webp",
     "status": "exported",
     "sheet": "sheet-01.webp",
     "row": 4,
     "column": 2,
     "width": 128,
     "height": 128,
-    "bytes": 7084
+    "bytes": 10522,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/417-maghar-orc-monk-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        63.5,
+        47.5
+      ],
+      "radius": 62.5
+    },
+    "alignmentCrop": {
+      "centre": [
+        63.5,
+        47.5
+      ],
+      "radius": 60.5,
+      "atlas": "batch-005/sheet-01.webp"
+    }
   },
   {
     "race": "Mag\u2019har Orc",
@@ -12160,14 +12449,31 @@
     "gender": "female",
     "index": 418,
     "batch": "batch-005",
-    "file": "batch-005/portraits/418-maghar-orc-monk-female.webp",
+    "file": "aligned-401-498/portraits/418-maghar-orc-monk-female.webp",
     "status": "exported",
     "sheet": "sheet-01.webp",
     "row": 4,
     "column": 3,
     "width": 128,
     "height": 128,
-    "bytes": 6824
+    "bytes": 9924,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/418-maghar-orc-monk-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        62.5,
+        48.5
+      ],
+      "radius": 62.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        62.5,
+        48.5
+      ],
+      "radius": 60.0,
+      "atlas": "batch-005/sheet-01.webp"
+    }
   },
   {
     "race": "Mag\u2019har Orc",
@@ -12175,14 +12481,31 @@
     "gender": "male",
     "index": 419,
     "batch": "batch-005",
-    "file": "batch-005/portraits/419-maghar-orc-priest-male.webp",
+    "file": "aligned-401-498/portraits/419-maghar-orc-priest-male.webp",
     "status": "exported",
     "sheet": "sheet-01.webp",
     "row": 4,
     "column": 4,
     "width": 128,
     "height": 128,
-    "bytes": 7196
+    "bytes": 10618,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/419-maghar-orc-priest-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        58.5,
+        48.0
+      ],
+      "radius": 61.5
+    },
+    "alignmentCrop": {
+      "centre": [
+        58.5,
+        48.0
+      ],
+      "radius": 59.5,
+      "atlas": "batch-005/sheet-01.webp"
+    }
   },
   {
     "race": "Mag\u2019har Orc",
@@ -12190,14 +12513,31 @@
     "gender": "female",
     "index": 420,
     "batch": "batch-005",
-    "file": "batch-005/portraits/420-maghar-orc-priest-female.webp",
+    "file": "aligned-401-498/portraits/420-maghar-orc-priest-female.webp",
     "status": "exported",
     "sheet": "sheet-01.webp",
     "row": 4,
     "column": 5,
     "width": 128,
     "height": 128,
-    "bytes": 7098
+    "bytes": 10728,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/420-maghar-orc-priest-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        58.0,
+        47.5
+      ],
+      "radius": 63.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        58.0,
+        47.5
+      ],
+      "radius": 61.0,
+      "atlas": "batch-005/sheet-01.webp"
+    }
   },
   {
     "race": "Mag\u2019har Orc",
@@ -12205,14 +12545,31 @@
     "gender": "male",
     "index": 421,
     "batch": "batch-005",
-    "file": "batch-005/portraits/421-maghar-orc-rogue-male.webp",
+    "file": "aligned-401-498/portraits/421-maghar-orc-rogue-male.webp",
     "status": "exported",
     "sheet": "sheet-02.webp",
     "row": 1,
     "column": 1,
     "width": 128,
     "height": 128,
-    "bytes": 6574
+    "bytes": 9634,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/421-maghar-orc-rogue-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        65.5,
+        62.5
+      ],
+      "radius": 61.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        65.5,
+        62.5
+      ],
+      "radius": 59.0,
+      "atlas": "batch-005/sheet-02.webp"
+    }
   },
   {
     "race": "Mag\u2019har Orc",
@@ -12220,14 +12577,31 @@
     "gender": "female",
     "index": 422,
     "batch": "batch-005",
-    "file": "batch-005/portraits/422-maghar-orc-rogue-female.webp",
+    "file": "aligned-401-498/portraits/422-maghar-orc-rogue-female.webp",
     "status": "exported",
     "sheet": "sheet-02.webp",
     "row": 1,
     "column": 2,
     "width": 128,
     "height": 128,
-    "bytes": 6814
+    "bytes": 9616,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/422-maghar-orc-rogue-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        64.5,
+        63.0
+      ],
+      "radius": 60.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        64.5,
+        63.0
+      ],
+      "radius": 58.0,
+      "atlas": "batch-005/sheet-02.webp"
+    }
   },
   {
     "race": "Mag\u2019har Orc",
@@ -12235,14 +12609,31 @@
     "gender": "male",
     "index": 423,
     "batch": "batch-005",
-    "file": "batch-005/portraits/423-maghar-orc-shaman-male.webp",
+    "file": "aligned-401-498/portraits/423-maghar-orc-shaman-male.webp",
     "status": "exported",
     "sheet": "sheet-02.webp",
     "row": 1,
     "column": 3,
     "width": 128,
     "height": 128,
-    "bytes": 7776
+    "bytes": 10720,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/423-maghar-orc-shaman-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        63.5,
+        63.0
+      ],
+      "radius": 61.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        63.5,
+        63.0
+      ],
+      "radius": 59.0,
+      "atlas": "batch-005/sheet-02.webp"
+    }
   },
   {
     "race": "Mag\u2019har Orc",
@@ -12250,14 +12641,31 @@
     "gender": "female",
     "index": 424,
     "batch": "batch-005",
-    "file": "batch-005/portraits/424-maghar-orc-shaman-female.webp",
+    "file": "aligned-401-498/portraits/424-maghar-orc-shaman-female.webp",
     "status": "exported",
     "sheet": "sheet-02.webp",
     "row": 1,
     "column": 4,
     "width": 128,
     "height": 128,
-    "bytes": 8016
+    "bytes": 11040,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/424-maghar-orc-shaman-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        61.0,
+        63.0
+      ],
+      "radius": 60.5
+    },
+    "alignmentCrop": {
+      "centre": [
+        61.0,
+        63.0
+      ],
+      "radius": 58.5,
+      "atlas": "batch-005/sheet-02.webp"
+    }
   },
   {
     "race": "Mag\u2019har Orc",
@@ -12265,14 +12673,31 @@
     "gender": "male",
     "index": 425,
     "batch": "batch-005",
-    "file": "batch-005/portraits/425-maghar-orc-warlock-male.webp",
+    "file": "aligned-401-498/portraits/425-maghar-orc-warlock-male.webp",
     "status": "exported",
     "sheet": "sheet-02.webp",
     "row": 1,
     "column": 5,
     "width": 128,
     "height": 128,
-    "bytes": 7836
+    "bytes": 10814,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/425-maghar-orc-warlock-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        60.5,
+        63.0
+      ],
+      "radius": 61.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        60.5,
+        63.0
+      ],
+      "radius": 59.0,
+      "atlas": "batch-005/sheet-02.webp"
+    }
   },
   {
     "race": "Mag\u2019har Orc",
@@ -12280,14 +12705,31 @@
     "gender": "female",
     "index": 426,
     "batch": "batch-005",
-    "file": "batch-005/portraits/426-maghar-orc-warlock-female.webp",
+    "file": "aligned-401-498/portraits/426-maghar-orc-warlock-female.webp",
     "status": "exported",
     "sheet": "sheet-02.webp",
     "row": 2,
     "column": 1,
     "width": 128,
     "height": 128,
-    "bytes": 7380
+    "bytes": 10190,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/426-maghar-orc-warlock-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        63.5,
+        60.0
+      ],
+      "radius": 60.5
+    },
+    "alignmentCrop": {
+      "centre": [
+        63.5,
+        60.0
+      ],
+      "radius": 58.5,
+      "atlas": "batch-005/sheet-02.webp"
+    }
   },
   {
     "race": "Mag\u2019har Orc",
@@ -12295,14 +12737,31 @@
     "gender": "male",
     "index": 427,
     "batch": "batch-005",
-    "file": "batch-005/portraits/427-maghar-orc-warrior-male.webp",
+    "file": "aligned-401-498/portraits/427-maghar-orc-warrior-male.webp",
     "status": "exported",
     "sheet": "sheet-02.webp",
     "row": 2,
     "column": 2,
     "width": 128,
     "height": 128,
-    "bytes": 7336
+    "bytes": 10270,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/427-maghar-orc-warrior-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        63.0,
+        60.5
+      ],
+      "radius": 60.5
+    },
+    "alignmentCrop": {
+      "centre": [
+        63.0,
+        60.5
+      ],
+      "radius": 58.5,
+      "atlas": "batch-005/sheet-02.webp"
+    }
   },
   {
     "race": "Mag\u2019har Orc",
@@ -12310,14 +12769,31 @@
     "gender": "female",
     "index": 428,
     "batch": "batch-005",
-    "file": "batch-005/portraits/428-maghar-orc-warrior-female.webp",
+    "file": "aligned-401-498/portraits/428-maghar-orc-warrior-female.webp",
     "status": "exported",
     "sheet": "sheet-02.webp",
     "row": 2,
     "column": 3,
     "width": 128,
     "height": 128,
-    "bytes": 7368
+    "bytes": 10264,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/428-maghar-orc-warrior-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        62.0,
+        60.5
+      ],
+      "radius": 60.5
+    },
+    "alignmentCrop": {
+      "centre": [
+        62.0,
+        60.5
+      ],
+      "radius": 58.5,
+      "atlas": "batch-005/sheet-02.webp"
+    }
   },
   {
     "race": "Zandalari Troll",
@@ -12325,14 +12801,31 @@
     "gender": "male",
     "index": 429,
     "batch": "batch-005",
-    "file": "batch-005/portraits/429-zandalari-troll-death-knight-male.webp",
+    "file": "aligned-401-498/portraits/429-zandalari-troll-death-knight-male.webp",
     "status": "exported",
     "sheet": "sheet-02.webp",
     "row": 2,
     "column": 4,
     "width": 128,
     "height": 128,
-    "bytes": 7582
+    "bytes": 10584,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/429-zandalari-troll-death-knight-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        61.0,
+        60.0
+      ],
+      "radius": 60.5
+    },
+    "alignmentCrop": {
+      "centre": [
+        61.0,
+        60.0
+      ],
+      "radius": 58.5,
+      "atlas": "batch-005/sheet-02.webp"
+    }
   },
   {
     "race": "Zandalari Troll",
@@ -12340,14 +12833,31 @@
     "gender": "female",
     "index": 430,
     "batch": "batch-005",
-    "file": "batch-005/portraits/430-zandalari-troll-death-knight-female.webp",
+    "file": "aligned-401-498/portraits/430-zandalari-troll-death-knight-female.webp",
     "status": "exported",
     "sheet": "sheet-02.webp",
     "row": 2,
     "column": 5,
     "width": 128,
     "height": 128,
-    "bytes": 7908
+    "bytes": 11066,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/430-zandalari-troll-death-knight-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        60.5,
+        60.0
+      ],
+      "radius": 60.5
+    },
+    "alignmentCrop": {
+      "centre": [
+        60.5,
+        60.0
+      ],
+      "radius": 58.5,
+      "atlas": "batch-005/sheet-02.webp"
+    }
   },
   {
     "race": "Zandalari Troll",
@@ -12355,14 +12865,31 @@
     "gender": "male",
     "index": 431,
     "batch": "batch-005",
-    "file": "batch-005/portraits/431-zandalari-troll-druid-male.webp",
+    "file": "aligned-401-498/portraits/431-zandalari-troll-druid-male.webp",
     "status": "exported",
     "sheet": "sheet-02.webp",
     "row": 3,
     "column": 1,
     "width": 128,
     "height": 128,
-    "bytes": 8194
+    "bytes": 10964,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/431-zandalari-troll-druid-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        64.0,
+        54.5
+      ],
+      "radius": 61.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        64.0,
+        54.5
+      ],
+      "radius": 59.0,
+      "atlas": "batch-005/sheet-02.webp"
+    }
   },
   {
     "race": "Zandalari Troll",
@@ -12370,14 +12897,31 @@
     "gender": "female",
     "index": 432,
     "batch": "batch-005",
-    "file": "batch-005/portraits/432-zandalari-troll-druid-female.webp",
+    "file": "aligned-401-498/portraits/432-zandalari-troll-druid-female.webp",
     "status": "exported",
     "sheet": "sheet-02.webp",
     "row": 3,
     "column": 2,
     "width": 128,
     "height": 128,
-    "bytes": 8266
+    "bytes": 11244,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/432-zandalari-troll-druid-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        62.5,
+        55.0
+      ],
+      "radius": 60.5
+    },
+    "alignmentCrop": {
+      "centre": [
+        62.5,
+        55.0
+      ],
+      "radius": 58.5,
+      "atlas": "batch-005/sheet-02.webp"
+    }
   },
   {
     "race": "Zandalari Troll",
@@ -12385,14 +12929,31 @@
     "gender": "male",
     "index": 433,
     "batch": "batch-005",
-    "file": "batch-005/portraits/433-zandalari-troll-hunter-male.webp",
+    "file": "aligned-401-498/portraits/433-zandalari-troll-hunter-male.webp",
     "status": "exported",
     "sheet": "sheet-02.webp",
     "row": 3,
     "column": 3,
     "width": 128,
     "height": 128,
-    "bytes": 7508
+    "bytes": 10432,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/433-zandalari-troll-hunter-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        61.5,
+        54.5
+      ],
+      "radius": 61.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        61.5,
+        54.5
+      ],
+      "radius": 59.0,
+      "atlas": "batch-005/sheet-02.webp"
+    }
   },
   {
     "race": "Zandalari Troll",
@@ -12400,14 +12961,31 @@
     "gender": "female",
     "index": 434,
     "batch": "batch-005",
-    "file": "batch-005/portraits/434-zandalari-troll-hunter-female.webp",
+    "file": "aligned-401-498/portraits/434-zandalari-troll-hunter-female.webp",
     "status": "exported",
     "sheet": "sheet-02.webp",
     "row": 3,
     "column": 4,
     "width": 128,
     "height": 128,
-    "bytes": 7874
+    "bytes": 10740,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/434-zandalari-troll-hunter-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        60.5,
+        55.0
+      ],
+      "radius": 60.5
+    },
+    "alignmentCrop": {
+      "centre": [
+        60.5,
+        55.0
+      ],
+      "radius": 58.5,
+      "atlas": "batch-005/sheet-02.webp"
+    }
   },
   {
     "race": "Zandalari Troll",
@@ -12415,14 +12993,31 @@
     "gender": "male",
     "index": 435,
     "batch": "batch-005",
-    "file": "batch-005/portraits/435-zandalari-troll-mage-male.webp",
+    "file": "aligned-401-498/portraits/435-zandalari-troll-mage-male.webp",
     "status": "exported",
     "sheet": "sheet-02.webp",
     "row": 3,
     "column": 5,
     "width": 128,
     "height": 128,
-    "bytes": 8126
+    "bytes": 11024,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/435-zandalari-troll-mage-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        60.0,
+        55.5
+      ],
+      "radius": 61.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        60.0,
+        55.5
+      ],
+      "radius": 59.0,
+      "atlas": "batch-005/sheet-02.webp"
+    }
   },
   {
     "race": "Zandalari Troll",
@@ -12430,14 +13025,31 @@
     "gender": "female",
     "index": 436,
     "batch": "batch-005",
-    "file": "batch-005/portraits/436-zandalari-troll-mage-female.webp",
+    "file": "aligned-401-498/portraits/436-zandalari-troll-mage-female.webp",
     "status": "exported",
     "sheet": "sheet-02.webp",
     "row": 4,
     "column": 1,
     "width": 128,
     "height": 128,
-    "bytes": 7720
+    "bytes": 11292,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/436-zandalari-troll-mage-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        62.5,
+        50.5
+      ],
+      "radius": 60.5
+    },
+    "alignmentCrop": {
+      "centre": [
+        62.5,
+        50.5
+      ],
+      "radius": 58.5,
+      "atlas": "batch-005/sheet-02.webp"
+    }
   },
   {
     "race": "Zandalari Troll",
@@ -12445,14 +13057,31 @@
     "gender": "male",
     "index": 437,
     "batch": "batch-005",
-    "file": "batch-005/portraits/437-zandalari-troll-monk-male.webp",
+    "file": "aligned-401-498/portraits/437-zandalari-troll-monk-male.webp",
     "status": "exported",
     "sheet": "sheet-02.webp",
     "row": 4,
     "column": 2,
     "width": 128,
     "height": 128,
-    "bytes": 6960
+    "bytes": 10188,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/437-zandalari-troll-monk-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        61.5,
+        50.5
+      ],
+      "radius": 60.5
+    },
+    "alignmentCrop": {
+      "centre": [
+        61.5,
+        50.5
+      ],
+      "radius": 58.5,
+      "atlas": "batch-005/sheet-02.webp"
+    }
   },
   {
     "race": "Zandalari Troll",
@@ -12460,14 +13089,31 @@
     "gender": "female",
     "index": 438,
     "batch": "batch-005",
-    "file": "batch-005/portraits/438-zandalari-troll-monk-female.webp",
+    "file": "aligned-401-498/portraits/438-zandalari-troll-monk-female.webp",
     "status": "exported",
     "sheet": "sheet-02.webp",
     "row": 4,
     "column": 3,
     "width": 128,
     "height": 128,
-    "bytes": 7214
+    "bytes": 10702,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/438-zandalari-troll-monk-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        60.0,
+        50.0
+      ],
+      "radius": 61.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        60.0,
+        50.0
+      ],
+      "radius": 59.0,
+      "atlas": "batch-005/sheet-02.webp"
+    }
   },
   {
     "race": "Zandalari Troll",
@@ -12475,14 +13121,31 @@
     "gender": "male",
     "index": 439,
     "batch": "batch-005",
-    "file": "batch-005/portraits/439-zandalari-troll-paladin-male.webp",
+    "file": "aligned-401-498/portraits/439-zandalari-troll-paladin-male.webp",
     "status": "exported",
     "sheet": "sheet-02.webp",
     "row": 4,
     "column": 4,
     "width": 128,
     "height": 128,
-    "bytes": 7538
+    "bytes": 11292,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/439-zandalari-troll-paladin-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        60.0,
+        49.5
+      ],
+      "radius": 61.5
+    },
+    "alignmentCrop": {
+      "centre": [
+        60.0,
+        49.5
+      ],
+      "radius": 59.5,
+      "atlas": "batch-005/sheet-02.webp"
+    }
   },
   {
     "race": "Zandalari Troll",
@@ -12490,14 +13153,31 @@
     "gender": "female",
     "index": 440,
     "batch": "batch-005",
-    "file": "batch-005/portraits/440-zandalari-troll-paladin-female.webp",
+    "file": "aligned-401-498/portraits/440-zandalari-troll-paladin-female.webp",
     "status": "exported",
     "sheet": "sheet-02.webp",
     "row": 4,
     "column": 5,
     "width": 128,
     "height": 128,
-    "bytes": 7776
+    "bytes": 11566,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/440-zandalari-troll-paladin-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        59.0,
+        50.0
+      ],
+      "radius": 61.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        59.0,
+        50.0
+      ],
+      "radius": 59.0,
+      "atlas": "batch-005/sheet-02.webp"
+    }
   },
   {
     "race": "Zandalari Troll",
@@ -12505,14 +13185,31 @@
     "gender": "male",
     "index": 441,
     "batch": "batch-005",
-    "file": "batch-005/portraits/441-zandalari-troll-priest-male.webp",
+    "file": "aligned-401-498/portraits/441-zandalari-troll-priest-male.webp",
     "status": "exported",
     "sheet": "sheet-03.webp",
     "row": 1,
     "column": 1,
     "width": 128,
     "height": 128,
-    "bytes": 8286
+    "bytes": 11246,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/441-zandalari-troll-priest-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        65.5,
+        61.5
+      ],
+      "radius": 61.5
+    },
+    "alignmentCrop": {
+      "centre": [
+        65.5,
+        61.5
+      ],
+      "radius": 59.5,
+      "atlas": "batch-005/sheet-03.webp"
+    }
   },
   {
     "race": "Zandalari Troll",
@@ -12520,14 +13217,31 @@
     "gender": "female",
     "index": 442,
     "batch": "batch-005",
-    "file": "batch-005/portraits/442-zandalari-troll-priest-female.webp",
+    "file": "aligned-401-498/portraits/442-zandalari-troll-priest-female.webp",
     "status": "exported",
     "sheet": "sheet-03.webp",
     "row": 1,
     "column": 2,
     "width": 128,
     "height": 128,
-    "bytes": 8298
+    "bytes": 11198,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/442-zandalari-troll-priest-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        65.0,
+        61.0
+      ],
+      "radius": 61.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        65.0,
+        61.0
+      ],
+      "radius": 59.0,
+      "atlas": "batch-005/sheet-03.webp"
+    }
   },
   {
     "race": "Zandalari Troll",
@@ -12535,14 +13249,31 @@
     "gender": "male",
     "index": 443,
     "batch": "batch-005",
-    "file": "batch-005/portraits/443-zandalari-troll-rogue-male.webp",
+    "file": "aligned-401-498/portraits/443-zandalari-troll-rogue-male.webp",
     "status": "exported",
     "sheet": "sheet-03.webp",
     "row": 1,
     "column": 3,
     "width": 128,
     "height": 128,
-    "bytes": 7464
+    "bytes": 10170,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/443-zandalari-troll-rogue-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        63.5,
+        62.0
+      ],
+      "radius": 61.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        63.5,
+        62.0
+      ],
+      "radius": 59.0,
+      "atlas": "batch-005/sheet-03.webp"
+    }
   },
   {
     "race": "Zandalari Troll",
@@ -12550,14 +13281,31 @@
     "gender": "female",
     "index": 444,
     "batch": "batch-005",
-    "file": "batch-005/portraits/444-zandalari-troll-rogue-female.webp",
+    "file": "aligned-401-498/portraits/444-zandalari-troll-rogue-female.webp",
     "status": "exported",
     "sheet": "sheet-03.webp",
     "row": 1,
     "column": 4,
     "width": 128,
     "height": 128,
-    "bytes": 7464
+    "bytes": 10208,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/444-zandalari-troll-rogue-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        62.0,
+        62.0
+      ],
+      "radius": 61.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        62.0,
+        62.0
+      ],
+      "radius": 59.0,
+      "atlas": "batch-005/sheet-03.webp"
+    }
   },
   {
     "race": "Zandalari Troll",
@@ -12565,14 +13313,31 @@
     "gender": "male",
     "index": 445,
     "batch": "batch-005",
-    "file": "batch-005/portraits/445-zandalari-troll-shaman-male.webp",
+    "file": "aligned-401-498/portraits/445-zandalari-troll-shaman-male.webp",
     "status": "exported",
     "sheet": "sheet-03.webp",
     "row": 1,
     "column": 5,
     "width": 128,
     "height": 128,
-    "bytes": 8498
+    "bytes": 11350,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/445-zandalari-troll-shaman-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        61.0,
+        61.5
+      ],
+      "radius": 61.5
+    },
+    "alignmentCrop": {
+      "centre": [
+        61.0,
+        61.5
+      ],
+      "radius": 59.5,
+      "atlas": "batch-005/sheet-03.webp"
+    }
   },
   {
     "race": "Zandalari Troll",
@@ -12580,14 +13345,31 @@
     "gender": "female",
     "index": 446,
     "batch": "batch-005",
-    "file": "batch-005/portraits/446-zandalari-troll-shaman-female.webp",
+    "file": "aligned-401-498/portraits/446-zandalari-troll-shaman-female.webp",
     "status": "exported",
     "sheet": "sheet-03.webp",
     "row": 2,
     "column": 1,
     "width": 128,
     "height": 128,
-    "bytes": 8652
+    "bytes": 11504,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/446-zandalari-troll-shaman-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        64.0,
+        60.0
+      ],
+      "radius": 61.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        64.0,
+        60.0
+      ],
+      "radius": 59.0,
+      "atlas": "batch-005/sheet-03.webp"
+    }
   },
   {
     "race": "Zandalari Troll",
@@ -12595,14 +13377,31 @@
     "gender": "male",
     "index": 447,
     "batch": "batch-005",
-    "file": "batch-005/portraits/447-zandalari-troll-warlock-male.webp",
+    "file": "aligned-401-498/portraits/447-zandalari-troll-warlock-male.webp",
     "status": "exported",
     "sheet": "sheet-03.webp",
     "row": 2,
     "column": 2,
     "width": 128,
     "height": 128,
-    "bytes": 8206
+    "bytes": 11030,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/447-zandalari-troll-warlock-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        64.0,
+        60.0
+      ],
+      "radius": 61.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        64.0,
+        60.0
+      ],
+      "radius": 59.0,
+      "atlas": "batch-005/sheet-03.webp"
+    }
   },
   {
     "race": "Zandalari Troll",
@@ -12610,14 +13409,31 @@
     "gender": "female",
     "index": 448,
     "batch": "batch-005",
-    "file": "batch-005/portraits/448-zandalari-troll-warlock-female.webp",
+    "file": "aligned-401-498/portraits/448-zandalari-troll-warlock-female.webp",
     "status": "exported",
     "sheet": "sheet-03.webp",
     "row": 2,
     "column": 3,
     "width": 128,
     "height": 128,
-    "bytes": 7738
+    "bytes": 10544,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/448-zandalari-troll-warlock-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        62.5,
+        60.0
+      ],
+      "radius": 60.5
+    },
+    "alignmentCrop": {
+      "centre": [
+        62.5,
+        60.0
+      ],
+      "radius": 58.5,
+      "atlas": "batch-005/sheet-03.webp"
+    }
   },
   {
     "race": "Zandalari Troll",
@@ -12625,14 +13441,31 @@
     "gender": "male",
     "index": 449,
     "batch": "batch-005",
-    "file": "batch-005/portraits/449-zandalari-troll-warrior-male.webp",
+    "file": "aligned-401-498/portraits/449-zandalari-troll-warrior-male.webp",
     "status": "exported",
     "sheet": "sheet-03.webp",
     "row": 2,
     "column": 4,
     "width": 128,
     "height": 128,
-    "bytes": 8098
+    "bytes": 10838,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/449-zandalari-troll-warrior-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        61.0,
+        60.5
+      ],
+      "radius": 61.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        61.0,
+        60.5
+      ],
+      "radius": 59.0,
+      "atlas": "batch-005/sheet-03.webp"
+    }
   },
   {
     "race": "Zandalari Troll",
@@ -12640,14 +13473,31 @@
     "gender": "female",
     "index": 450,
     "batch": "batch-005",
-    "file": "batch-005/portraits/450-zandalari-troll-warrior-female.webp",
+    "file": "aligned-401-498/portraits/450-zandalari-troll-warrior-female.webp",
     "status": "exported",
     "sheet": "sheet-03.webp",
     "row": 2,
     "column": 5,
     "width": 128,
     "height": 128,
-    "bytes": 7842
+    "bytes": 10876,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/450-zandalari-troll-warrior-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        60.0,
+        60.0
+      ],
+      "radius": 61.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        60.0,
+        60.0
+      ],
+      "radius": 59.0,
+      "atlas": "batch-005/sheet-03.webp"
+    }
   },
   {
     "race": "Vulpera",
@@ -12655,14 +13505,31 @@
     "gender": "male",
     "index": 451,
     "batch": "batch-005",
-    "file": "batch-005/portraits/451-vulpera-death-knight-male.webp",
+    "file": "aligned-401-498/portraits/451-vulpera-death-knight-male.webp",
     "status": "exported",
     "sheet": "sheet-03.webp",
     "row": 3,
     "column": 1,
     "width": 128,
     "height": 128,
-    "bytes": 7804
+    "bytes": 10618,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/451-vulpera-death-knight-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        63.5,
+        55.5
+      ],
+      "radius": 61.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        63.5,
+        55.5
+      ],
+      "radius": 59.0,
+      "atlas": "batch-005/sheet-03.webp"
+    }
   },
   {
     "race": "Vulpera",
@@ -12670,14 +13537,31 @@
     "gender": "female",
     "index": 452,
     "batch": "batch-005",
-    "file": "batch-005/portraits/452-vulpera-death-knight-female.webp",
+    "file": "aligned-401-498/portraits/452-vulpera-death-knight-female.webp",
     "status": "exported",
     "sheet": "sheet-03.webp",
     "row": 3,
     "column": 2,
     "width": 128,
     "height": 128,
-    "bytes": 7672
+    "bytes": 10568,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/452-vulpera-death-knight-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        62.5,
+        56.0
+      ],
+      "radius": 60.5
+    },
+    "alignmentCrop": {
+      "centre": [
+        62.5,
+        56.0
+      ],
+      "radius": 58.5,
+      "atlas": "batch-005/sheet-03.webp"
+    }
   },
   {
     "race": "Vulpera",
@@ -12685,14 +13569,31 @@
     "gender": "male",
     "index": 453,
     "batch": "batch-005",
-    "file": "batch-005/portraits/453-vulpera-hunter-male.webp",
+    "file": "aligned-401-498/portraits/453-vulpera-hunter-male.webp",
     "status": "exported",
     "sheet": "sheet-03.webp",
     "row": 3,
     "column": 3,
     "width": 128,
     "height": 128,
-    "bytes": 7546
+    "bytes": 10326,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/453-vulpera-hunter-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        60.5,
+        55.0
+      ],
+      "radius": 61.5
+    },
+    "alignmentCrop": {
+      "centre": [
+        60.5,
+        55.0
+      ],
+      "radius": 59.5,
+      "atlas": "batch-005/sheet-03.webp"
+    }
   },
   {
     "race": "Vulpera",
@@ -12700,14 +13601,31 @@
     "gender": "female",
     "index": 454,
     "batch": "batch-005",
-    "file": "batch-005/portraits/454-vulpera-hunter-female.webp",
+    "file": "aligned-401-498/portraits/454-vulpera-hunter-female.webp",
     "status": "exported",
     "sheet": "sheet-03.webp",
     "row": 3,
     "column": 4,
     "width": 128,
     "height": 128,
-    "bytes": 7840
+    "bytes": 10692,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/454-vulpera-hunter-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        60.5,
+        55.0
+      ],
+      "radius": 61.5
+    },
+    "alignmentCrop": {
+      "centre": [
+        60.5,
+        55.0
+      ],
+      "radius": 59.5,
+      "atlas": "batch-005/sheet-03.webp"
+    }
   },
   {
     "race": "Vulpera",
@@ -12715,14 +13633,31 @@
     "gender": "male",
     "index": 455,
     "batch": "batch-005",
-    "file": "batch-005/portraits/455-vulpera-mage-male.webp",
+    "file": "aligned-401-498/portraits/455-vulpera-mage-male.webp",
     "status": "exported",
     "sheet": "sheet-03.webp",
     "row": 3,
     "column": 5,
     "width": 128,
     "height": 128,
-    "bytes": 8164
+    "bytes": 11010,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/455-vulpera-mage-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        60.5,
+        55.5
+      ],
+      "radius": 61.5
+    },
+    "alignmentCrop": {
+      "centre": [
+        60.5,
+        55.5
+      ],
+      "radius": 59.5,
+      "atlas": "batch-005/sheet-03.webp"
+    }
   },
   {
     "race": "Vulpera",
@@ -12730,14 +13665,31 @@
     "gender": "female",
     "index": 456,
     "batch": "batch-005",
-    "file": "batch-005/portraits/456-vulpera-mage-female.webp",
+    "file": "aligned-401-498/portraits/456-vulpera-mage-female.webp",
     "status": "exported",
     "sheet": "sheet-03.webp",
     "row": 4,
     "column": 1,
     "width": 128,
     "height": 128,
-    "bytes": 7686
+    "bytes": 11224,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/456-vulpera-mage-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        64.0,
+        50.0
+      ],
+      "radius": 61.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        64.0,
+        50.0
+      ],
+      "radius": 59.0,
+      "atlas": "batch-005/sheet-03.webp"
+    }
   },
   {
     "race": "Vulpera",
@@ -12745,14 +13697,31 @@
     "gender": "male",
     "index": 457,
     "batch": "batch-005",
-    "file": "batch-005/portraits/457-vulpera-monk-male.webp",
+    "file": "aligned-401-498/portraits/457-vulpera-monk-male.webp",
     "status": "exported",
     "sheet": "sheet-03.webp",
     "row": 4,
     "column": 2,
     "width": 128,
     "height": 128,
-    "bytes": 7000
+    "bytes": 10446,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/457-vulpera-monk-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        62.0,
+        50.0
+      ],
+      "radius": 61.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        62.0,
+        50.0
+      ],
+      "radius": 59.0,
+      "atlas": "batch-005/sheet-03.webp"
+    }
   },
   {
     "race": "Vulpera",
@@ -12760,14 +13729,31 @@
     "gender": "female",
     "index": 458,
     "batch": "batch-005",
-    "file": "batch-005/portraits/458-vulpera-monk-female.webp",
+    "file": "aligned-401-498/portraits/458-vulpera-monk-female.webp",
     "status": "exported",
     "sheet": "sheet-03.webp",
     "row": 4,
     "column": 3,
     "width": 128,
     "height": 128,
-    "bytes": 7172
+    "bytes": 10638,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/458-vulpera-monk-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        61.0,
+        50.0
+      ],
+      "radius": 61.5
+    },
+    "alignmentCrop": {
+      "centre": [
+        61.0,
+        50.0
+      ],
+      "radius": 59.5,
+      "atlas": "batch-005/sheet-03.webp"
+    }
   },
   {
     "race": "Vulpera",
@@ -12775,14 +13761,31 @@
     "gender": "male",
     "index": 459,
     "batch": "batch-005",
-    "file": "batch-005/portraits/459-vulpera-priest-male.webp",
+    "file": "aligned-401-498/portraits/459-vulpera-priest-male.webp",
     "status": "exported",
     "sheet": "sheet-03.webp",
     "row": 4,
     "column": 4,
     "width": 128,
     "height": 128,
-    "bytes": 7564
+    "bytes": 11036,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/459-vulpera-priest-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        61.0,
+        51.0
+      ],
+      "radius": 61.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        61.0,
+        51.0
+      ],
+      "radius": 59.0,
+      "atlas": "batch-005/sheet-03.webp"
+    }
   },
   {
     "race": "Vulpera",
@@ -12790,14 +13793,31 @@
     "gender": "female",
     "index": 460,
     "batch": "batch-005",
-    "file": "batch-005/portraits/460-vulpera-priest-female.webp",
+    "file": "aligned-401-498/portraits/460-vulpera-priest-female.webp",
     "status": "exported",
     "sheet": "sheet-03.webp",
     "row": 4,
     "column": 5,
     "width": 128,
     "height": 128,
-    "bytes": 7492
+    "bytes": 11304,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/460-vulpera-priest-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        60.5,
+        50.5
+      ],
+      "radius": 61.5
+    },
+    "alignmentCrop": {
+      "centre": [
+        60.5,
+        50.5
+      ],
+      "radius": 59.5,
+      "atlas": "batch-005/sheet-03.webp"
+    }
   },
   {
     "race": "Vulpera",
@@ -12805,14 +13825,31 @@
     "gender": "male",
     "index": 461,
     "batch": "batch-005",
-    "file": "batch-005/portraits/461-vulpera-rogue-male.webp",
+    "file": "aligned-401-498/portraits/461-vulpera-rogue-male.webp",
     "status": "exported",
     "sheet": "sheet-04.webp",
     "row": 1,
     "column": 1,
     "width": 128,
     "height": 128,
-    "bytes": 7502
+    "bytes": 9962,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/461-vulpera-rogue-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        65.0,
+        60.0
+      ],
+      "radius": 62.5
+    },
+    "alignmentCrop": {
+      "centre": [
+        65.0,
+        60.0
+      ],
+      "radius": 60.0,
+      "atlas": "batch-005/sheet-04.webp"
+    }
   },
   {
     "race": "Vulpera",
@@ -12820,14 +13857,31 @@
     "gender": "female",
     "index": 462,
     "batch": "batch-005",
-    "file": "batch-005/portraits/462-vulpera-rogue-female.webp",
+    "file": "aligned-401-498/portraits/462-vulpera-rogue-female.webp",
     "status": "exported",
     "sheet": "sheet-04.webp",
     "row": 1,
     "column": 2,
     "width": 128,
     "height": 128,
-    "bytes": 7692
+    "bytes": 10440,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/462-vulpera-rogue-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        64.0,
+        60.0
+      ],
+      "radius": 62.5
+    },
+    "alignmentCrop": {
+      "centre": [
+        64.0,
+        60.0
+      ],
+      "radius": 60.0,
+      "atlas": "batch-005/sheet-04.webp"
+    }
   },
   {
     "race": "Vulpera",
@@ -12835,14 +13889,31 @@
     "gender": "male",
     "index": 463,
     "batch": "batch-005",
-    "file": "batch-005/portraits/463-vulpera-shaman-male.webp",
+    "file": "aligned-401-498/portraits/463-vulpera-shaman-male.webp",
     "status": "exported",
     "sheet": "sheet-04.webp",
     "row": 1,
     "column": 3,
     "width": 128,
     "height": 128,
-    "bytes": 8260
+    "bytes": 10918,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/463-vulpera-shaman-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        63.5,
+        60.0
+      ],
+      "radius": 62.5
+    },
+    "alignmentCrop": {
+      "centre": [
+        63.5,
+        60.0
+      ],
+      "radius": 60.0,
+      "atlas": "batch-005/sheet-04.webp"
+    }
   },
   {
     "race": "Vulpera",
@@ -12850,14 +13921,31 @@
     "gender": "female",
     "index": 464,
     "batch": "batch-005",
-    "file": "batch-005/portraits/464-vulpera-shaman-female.webp",
+    "file": "aligned-401-498/portraits/464-vulpera-shaman-female.webp",
     "status": "exported",
     "sheet": "sheet-04.webp",
     "row": 1,
     "column": 4,
     "width": 128,
     "height": 128,
-    "bytes": 8732
+    "bytes": 11342,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/464-vulpera-shaman-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        63.5,
+        59.5
+      ],
+      "radius": 63.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        63.5,
+        59.5
+      ],
+      "radius": 59.5,
+      "atlas": "batch-005/sheet-04.webp"
+    }
   },
   {
     "race": "Vulpera",
@@ -12865,14 +13953,31 @@
     "gender": "male",
     "index": 465,
     "batch": "batch-005",
-    "file": "batch-005/portraits/465-vulpera-warlock-male.webp",
+    "file": "aligned-401-498/portraits/465-vulpera-warlock-male.webp",
     "status": "exported",
     "sheet": "sheet-04.webp",
     "row": 1,
     "column": 5,
     "width": 128,
     "height": 128,
-    "bytes": 8102
+    "bytes": 10548,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/465-vulpera-warlock-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        62.5,
+        60.0
+      ],
+      "radius": 62.5
+    },
+    "alignmentCrop": {
+      "centre": [
+        62.5,
+        60.0
+      ],
+      "radius": 60.0,
+      "atlas": "batch-005/sheet-04.webp"
+    }
   },
   {
     "race": "Vulpera",
@@ -12880,14 +13985,31 @@
     "gender": "female",
     "index": 466,
     "batch": "batch-005",
-    "file": "batch-005/portraits/466-vulpera-warlock-female.webp",
+    "file": "aligned-401-498/portraits/466-vulpera-warlock-female.webp",
     "status": "exported",
     "sheet": "sheet-04.webp",
     "row": 2,
     "column": 1,
     "width": 128,
     "height": 128,
-    "bytes": 8166
+    "bytes": 10706,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/466-vulpera-warlock-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        63.0,
+        59.0
+      ],
+      "radius": 62.5
+    },
+    "alignmentCrop": {
+      "centre": [
+        63.0,
+        59.0
+      ],
+      "radius": 60.5,
+      "atlas": "batch-005/sheet-04.webp"
+    }
   },
   {
     "race": "Vulpera",
@@ -12895,14 +14017,31 @@
     "gender": "male",
     "index": 467,
     "batch": "batch-005",
-    "file": "batch-005/portraits/467-vulpera-warrior-male.webp",
+    "file": "aligned-401-498/portraits/467-vulpera-warrior-male.webp",
     "status": "exported",
     "sheet": "sheet-04.webp",
     "row": 2,
     "column": 2,
     "width": 128,
     "height": 128,
-    "bytes": 7816
+    "bytes": 10296,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/467-vulpera-warrior-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        62.5,
+        59.0
+      ],
+      "radius": 62.5
+    },
+    "alignmentCrop": {
+      "centre": [
+        62.5,
+        59.0
+      ],
+      "radius": 60.5,
+      "atlas": "batch-005/sheet-04.webp"
+    }
   },
   {
     "race": "Vulpera",
@@ -12910,14 +14049,31 @@
     "gender": "female",
     "index": 468,
     "batch": "batch-005",
-    "file": "batch-005/portraits/468-vulpera-warrior-female.webp",
+    "file": "aligned-401-498/portraits/468-vulpera-warrior-female.webp",
     "status": "exported",
     "sheet": "sheet-04.webp",
     "row": 2,
     "column": 3,
     "width": 128,
     "height": 128,
-    "bytes": 8154
+    "bytes": 10838,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/468-vulpera-warrior-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        62.5,
+        59.0
+      ],
+      "radius": 63.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        62.5,
+        59.0
+      ],
+      "radius": 61.0,
+      "atlas": "batch-005/sheet-04.webp"
+    }
   },
   {
     "race": "Haranir",
@@ -12925,14 +14081,31 @@
     "gender": "male",
     "index": 469,
     "batch": "batch-005",
-    "file": "batch-005/portraits/469-haranir-druid-male.webp",
+    "file": "aligned-401-498/portraits/469-haranir-druid-male.webp",
     "status": "exported",
     "sheet": "sheet-04.webp",
     "row": 2,
     "column": 4,
     "width": 128,
     "height": 128,
-    "bytes": 8096
+    "bytes": 10862,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/469-haranir-druid-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        63.0,
+        58.5
+      ],
+      "radius": 63.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        63.0,
+        58.5
+      ],
+      "radius": 61.0,
+      "atlas": "batch-005/sheet-04.webp"
+    }
   },
   {
     "race": "Haranir",
@@ -12940,14 +14113,31 @@
     "gender": "female",
     "index": 470,
     "batch": "batch-005",
-    "file": "batch-005/portraits/470-haranir-druid-female.webp",
+    "file": "aligned-401-498/portraits/470-haranir-druid-female.webp",
     "status": "exported",
     "sheet": "sheet-04.webp",
     "row": 2,
     "column": 5,
     "width": 128,
     "height": 128,
-    "bytes": 7876
+    "bytes": 10662,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/470-haranir-druid-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        62.5,
+        59.0
+      ],
+      "radius": 63.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        62.5,
+        59.0
+      ],
+      "radius": 61.0,
+      "atlas": "batch-005/sheet-04.webp"
+    }
   },
   {
     "race": "Haranir",
@@ -12955,14 +14145,31 @@
     "gender": "male",
     "index": 471,
     "batch": "batch-005",
-    "file": "batch-005/portraits/471-haranir-hunter-male.webp",
+    "file": "aligned-401-498/portraits/471-haranir-hunter-male.webp",
     "status": "exported",
     "sheet": "sheet-04.webp",
     "row": 3,
     "column": 1,
     "width": 128,
     "height": 128,
-    "bytes": 7610
+    "bytes": 10274,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/471-haranir-hunter-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        63.0,
+        57.0
+      ],
+      "radius": 62.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        63.0,
+        57.0
+      ],
+      "radius": 60.0,
+      "atlas": "batch-005/sheet-04.webp"
+    }
   },
   {
     "race": "Haranir",
@@ -12970,14 +14177,31 @@
     "gender": "female",
     "index": 472,
     "batch": "batch-005",
-    "file": "batch-005/portraits/472-haranir-hunter-female.webp",
+    "file": "aligned-401-498/portraits/472-haranir-hunter-female.webp",
     "status": "exported",
     "sheet": "sheet-04.webp",
     "row": 3,
     "column": 2,
     "width": 128,
     "height": 128,
-    "bytes": 7928
+    "bytes": 10414,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/472-haranir-hunter-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        62.5,
+        57.0
+      ],
+      "radius": 62.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        62.5,
+        57.0
+      ],
+      "radius": 60.0,
+      "atlas": "batch-005/sheet-04.webp"
+    }
   },
   {
     "race": "Haranir",
@@ -12985,14 +14209,31 @@
     "gender": "male",
     "index": 473,
     "batch": "batch-005",
-    "file": "batch-005/portraits/473-haranir-mage-male.webp",
+    "file": "aligned-401-498/portraits/473-haranir-mage-male.webp",
     "status": "exported",
     "sheet": "sheet-04.webp",
     "row": 3,
     "column": 3,
     "width": 128,
     "height": 128,
-    "bytes": 8398
+    "bytes": 11046,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/473-haranir-mage-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        62.0,
+        56.5
+      ],
+      "radius": 63.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        62.0,
+        56.5
+      ],
+      "radius": 61.0,
+      "atlas": "batch-005/sheet-04.webp"
+    }
   },
   {
     "race": "Haranir",
@@ -13000,14 +14241,31 @@
     "gender": "female",
     "index": 474,
     "batch": "batch-005",
-    "file": "batch-005/portraits/474-haranir-mage-female.webp",
+    "file": "aligned-401-498/portraits/474-haranir-mage-female.webp",
     "status": "exported",
     "sheet": "sheet-04.webp",
     "row": 3,
     "column": 4,
     "width": 128,
     "height": 128,
-    "bytes": 8364
+    "bytes": 11008,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/474-haranir-mage-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        62.0,
+        57.0
+      ],
+      "radius": 62.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        62.0,
+        57.0
+      ],
+      "radius": 60.0,
+      "atlas": "batch-005/sheet-04.webp"
+    }
   },
   {
     "race": "Haranir",
@@ -13015,14 +14273,31 @@
     "gender": "male",
     "index": 475,
     "batch": "batch-005",
-    "file": "batch-005/portraits/475-haranir-monk-male.webp",
+    "file": "aligned-401-498/portraits/475-haranir-monk-male.webp",
     "status": "exported",
     "sheet": "sheet-04.webp",
     "row": 3,
     "column": 5,
     "width": 128,
     "height": 128,
-    "bytes": 8004
+    "bytes": 10784,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/475-haranir-monk-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        62.0,
+        56.5
+      ],
+      "radius": 63.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        62.0,
+        56.5
+      ],
+      "radius": 61.0,
+      "atlas": "batch-005/sheet-04.webp"
+    }
   },
   {
     "race": "Haranir",
@@ -13030,14 +14305,31 @@
     "gender": "female",
     "index": 476,
     "batch": "batch-005",
-    "file": "batch-005/portraits/476-haranir-monk-female.webp",
+    "file": "aligned-401-498/portraits/476-haranir-monk-female.webp",
     "status": "exported",
     "sheet": "sheet-04.webp",
     "row": 4,
     "column": 1,
     "width": 128,
     "height": 128,
-    "bytes": 7466
+    "bytes": 10378,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/476-haranir-monk-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        63.0,
+        55.5
+      ],
+      "radius": 63.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        63.0,
+        55.5
+      ],
+      "radius": 61.0,
+      "atlas": "batch-005/sheet-04.webp"
+    }
   },
   {
     "race": "Haranir",
@@ -13045,14 +14337,31 @@
     "gender": "male",
     "index": 477,
     "batch": "batch-005",
-    "file": "batch-005/portraits/477-haranir-priest-male.webp",
+    "file": "aligned-401-498/portraits/477-haranir-priest-male.webp",
     "status": "exported",
     "sheet": "sheet-04.webp",
     "row": 4,
     "column": 2,
     "width": 128,
     "height": 128,
-    "bytes": 8054
+    "bytes": 11002,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/477-haranir-priest-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        62.0,
+        55.0
+      ],
+      "radius": 63.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        62.0,
+        55.0
+      ],
+      "radius": 61.0,
+      "atlas": "batch-005/sheet-04.webp"
+    }
   },
   {
     "race": "Haranir",
@@ -13060,14 +14369,31 @@
     "gender": "female",
     "index": 478,
     "batch": "batch-005",
-    "file": "batch-005/portraits/478-haranir-priest-female.webp",
+    "file": "aligned-401-498/portraits/478-haranir-priest-female.webp",
     "status": "exported",
     "sheet": "sheet-04.webp",
     "row": 4,
     "column": 3,
     "width": 128,
     "height": 128,
-    "bytes": 7908
+    "bytes": 10682,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/478-haranir-priest-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        62.0,
+        55.5
+      ],
+      "radius": 63.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        62.0,
+        55.5
+      ],
+      "radius": 61.0,
+      "atlas": "batch-005/sheet-04.webp"
+    }
   },
   {
     "race": "Haranir",
@@ -13075,14 +14401,31 @@
     "gender": "male",
     "index": 479,
     "batch": "batch-005",
-    "file": "batch-005/portraits/479-haranir-rogue-male.webp",
+    "file": "aligned-401-498/portraits/479-haranir-rogue-male.webp",
     "status": "exported",
     "sheet": "sheet-04.webp",
     "row": 4,
     "column": 4,
     "width": 128,
     "height": 128,
-    "bytes": 7348
+    "bytes": 10146,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/479-haranir-rogue-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        62.5,
+        55.0
+      ],
+      "radius": 63.5
+    },
+    "alignmentCrop": {
+      "centre": [
+        62.5,
+        55.0
+      ],
+      "radius": 61.5,
+      "atlas": "batch-005/sheet-04.webp"
+    }
   },
   {
     "race": "Haranir",
@@ -13090,14 +14433,31 @@
     "gender": "female",
     "index": 480,
     "batch": "batch-005",
-    "file": "batch-005/portraits/480-haranir-rogue-female.webp",
+    "file": "aligned-401-498/portraits/480-haranir-rogue-female.webp",
     "status": "exported",
     "sheet": "sheet-04.webp",
     "row": 4,
     "column": 5,
     "width": 128,
     "height": 128,
-    "bytes": 7376
+    "bytes": 10432,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/480-haranir-rogue-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        62.0,
+        55.5
+      ],
+      "radius": 63.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        62.0,
+        55.5
+      ],
+      "radius": 61.0,
+      "atlas": "batch-005/sheet-04.webp"
+    }
   },
   {
     "race": "Haranir",
@@ -13105,14 +14465,31 @@
     "gender": "male",
     "index": 481,
     "batch": "batch-005",
-    "file": "batch-005/portraits/481-haranir-shaman-male.webp",
+    "file": "aligned-401-498/portraits/481-haranir-shaman-male.webp",
     "status": "exported",
     "sheet": "sheet-05.webp",
     "row": 1,
     "column": 1,
     "width": 128,
     "height": 128,
-    "bytes": 8438
+    "bytes": 11212,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/481-haranir-shaman-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        68.0,
+        61.0
+      ],
+      "radius": 62.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        68.0,
+        61.0
+      ],
+      "radius": 60.0,
+      "atlas": "batch-005/sheet-05.webp"
+    }
   },
   {
     "race": "Haranir",
@@ -13120,14 +14497,31 @@
     "gender": "female",
     "index": 482,
     "batch": "batch-005",
-    "file": "batch-005/portraits/482-haranir-shaman-female.webp",
+    "file": "aligned-401-498/portraits/482-haranir-shaman-female.webp",
     "status": "exported",
     "sheet": "sheet-05.webp",
     "row": 1,
     "column": 2,
     "width": 128,
     "height": 128,
-    "bytes": 8204
+    "bytes": 11082,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/482-haranir-shaman-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        66.0,
+        61.0
+      ],
+      "radius": 61.5
+    },
+    "alignmentCrop": {
+      "centre": [
+        66.0,
+        61.0
+      ],
+      "radius": 59.5,
+      "atlas": "batch-005/sheet-05.webp"
+    }
   },
   {
     "race": "Haranir",
@@ -13135,14 +14529,31 @@
     "gender": "male",
     "index": 483,
     "batch": "batch-005",
-    "file": "batch-005/portraits/483-haranir-warlock-male.webp",
+    "file": "aligned-401-498/portraits/483-haranir-warlock-male.webp",
     "status": "exported",
     "sheet": "sheet-05.webp",
     "row": 1,
     "column": 3,
     "width": 128,
     "height": 128,
-    "bytes": 8116
+    "bytes": 10658,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/483-haranir-warlock-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        64.5,
+        61.5
+      ],
+      "radius": 62.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        64.5,
+        61.5
+      ],
+      "radius": 60.0,
+      "atlas": "batch-005/sheet-05.webp"
+    }
   },
   {
     "race": "Haranir",
@@ -13150,14 +14561,31 @@
     "gender": "female",
     "index": 484,
     "batch": "batch-005",
-    "file": "batch-005/portraits/484-haranir-warlock-female.webp",
+    "file": "aligned-401-498/portraits/484-haranir-warlock-female.webp",
     "status": "exported",
     "sheet": "sheet-05.webp",
     "row": 1,
     "column": 4,
     "width": 128,
     "height": 128,
-    "bytes": 7712
+    "bytes": 10218,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/484-haranir-warlock-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        62.5,
+        61.5
+      ],
+      "radius": 61.5
+    },
+    "alignmentCrop": {
+      "centre": [
+        62.5,
+        61.5
+      ],
+      "radius": 59.5,
+      "atlas": "batch-005/sheet-05.webp"
+    }
   },
   {
     "race": "Haranir",
@@ -13165,14 +14593,31 @@
     "gender": "male",
     "index": 485,
     "batch": "batch-005",
-    "file": "batch-005/portraits/485-haranir-warrior-male.webp",
+    "file": "aligned-401-498/portraits/485-haranir-warrior-male.webp",
     "status": "exported",
     "sheet": "sheet-05.webp",
     "row": 1,
     "column": 5,
     "width": 128,
     "height": 128,
-    "bytes": 7792
+    "bytes": 10558,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/485-haranir-warrior-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        60.5,
+        61.5
+      ],
+      "radius": 61.5
+    },
+    "alignmentCrop": {
+      "centre": [
+        60.5,
+        61.5
+      ],
+      "radius": 59.5,
+      "atlas": "batch-005/sheet-05.webp"
+    }
   },
   {
     "race": "Haranir",
@@ -13180,14 +14625,31 @@
     "gender": "female",
     "index": 486,
     "batch": "batch-005",
-    "file": "batch-005/portraits/486-haranir-warrior-female.webp",
+    "file": "aligned-401-498/portraits/486-haranir-warrior-female.webp",
     "status": "exported",
     "sheet": "sheet-05.webp",
     "row": 2,
     "column": 1,
     "width": 128,
     "height": 128,
-    "bytes": 7962
+    "bytes": 10738,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/486-haranir-warrior-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        66.0,
+        57.0
+      ],
+      "radius": 61.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        66.0,
+        57.0
+      ],
+      "radius": 59.0,
+      "atlas": "batch-005/sheet-05.webp"
+    }
   },
   {
     "race": "Skyborne",
@@ -13195,14 +14657,31 @@
     "gender": "male",
     "index": 487,
     "batch": "batch-005",
-    "file": "batch-005/portraits/487-skyborne-druid-male.webp",
+    "file": "aligned-401-498/portraits/487-skyborne-druid-male.webp",
     "status": "exported",
     "sheet": "sheet-05.webp",
     "row": 2,
     "column": 2,
     "width": 128,
     "height": 128,
-    "bytes": 7900
+    "bytes": 10680,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/487-skyborne-druid-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        64.5,
+        56.5
+      ],
+      "radius": 61.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        64.5,
+        56.5
+      ],
+      "radius": 59.0,
+      "atlas": "batch-005/sheet-05.webp"
+    }
   },
   {
     "race": "Skyborne",
@@ -13210,14 +14689,31 @@
     "gender": "female",
     "index": 488,
     "batch": "batch-005",
-    "file": "batch-005/portraits/488-skyborne-druid-female.webp",
+    "file": "aligned-401-498/portraits/488-skyborne-druid-female.webp",
     "status": "exported",
     "sheet": "sheet-05.webp",
     "row": 2,
     "column": 3,
     "width": 128,
     "height": 128,
-    "bytes": 8540
+    "bytes": 11368,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/488-skyborne-druid-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        62.5,
+        56.5
+      ],
+      "radius": 61.5
+    },
+    "alignmentCrop": {
+      "centre": [
+        62.5,
+        56.5
+      ],
+      "radius": 59.5,
+      "atlas": "batch-005/sheet-05.webp"
+    }
   },
   {
     "race": "Skyborne",
@@ -13225,14 +14721,31 @@
     "gender": "male",
     "index": 489,
     "batch": "batch-005",
-    "file": "batch-005/portraits/489-skyborne-hunter-male.webp",
+    "file": "aligned-401-498/portraits/489-skyborne-hunter-male.webp",
     "status": "exported",
     "sheet": "sheet-05.webp",
     "row": 2,
     "column": 4,
     "width": 128,
     "height": 128,
-    "bytes": 7782
+    "bytes": 10548,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/489-skyborne-hunter-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        62.0,
+        56.0
+      ],
+      "radius": 61.5
+    },
+    "alignmentCrop": {
+      "centre": [
+        62.0,
+        56.0
+      ],
+      "radius": 59.5,
+      "atlas": "batch-005/sheet-05.webp"
+    }
   },
   {
     "race": "Skyborne",
@@ -13240,14 +14753,31 @@
     "gender": "female",
     "index": 490,
     "batch": "batch-005",
-    "file": "batch-005/portraits/490-skyborne-hunter-female.webp",
+    "file": "aligned-401-498/portraits/490-skyborne-hunter-female.webp",
     "status": "exported",
     "sheet": "sheet-05.webp",
     "row": 2,
     "column": 5,
     "width": 128,
     "height": 128,
-    "bytes": 8008
+    "bytes": 10968,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/490-skyborne-hunter-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        59.5,
+        56.5
+      ],
+      "radius": 61.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        59.5,
+        56.5
+      ],
+      "radius": 59.0,
+      "atlas": "batch-005/sheet-05.webp"
+    }
   },
   {
     "race": "Skyborne",
@@ -13255,14 +14785,31 @@
     "gender": "male",
     "index": 491,
     "batch": "batch-005",
-    "file": "batch-005/portraits/491-skyborne-mage-male.webp",
+    "file": "aligned-401-498/portraits/491-skyborne-mage-male.webp",
     "status": "exported",
     "sheet": "sheet-05.webp",
     "row": 3,
     "column": 1,
     "width": 128,
     "height": 128,
-    "bytes": 8528
+    "bytes": 11230,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/491-skyborne-mage-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        64.5,
+        50.5
+      ],
+      "radius": 61.5
+    },
+    "alignmentCrop": {
+      "centre": [
+        64.5,
+        50.5
+      ],
+      "radius": 59.5,
+      "atlas": "batch-005/sheet-05.webp"
+    }
   },
   {
     "race": "Skyborne",
@@ -13270,14 +14817,31 @@
     "gender": "female",
     "index": 492,
     "batch": "batch-005",
-    "file": "batch-005/portraits/492-skyborne-mage-female.webp",
+    "file": "aligned-401-498/portraits/492-skyborne-mage-female.webp",
     "status": "exported",
     "sheet": "sheet-05.webp",
     "row": 3,
     "column": 2,
     "width": 128,
     "height": 128,
-    "bytes": 8664
+    "bytes": 11500,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/492-skyborne-mage-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        63.5,
+        50.5
+      ],
+      "radius": 61.5
+    },
+    "alignmentCrop": {
+      "centre": [
+        63.5,
+        50.5
+      ],
+      "radius": 59.5,
+      "atlas": "batch-005/sheet-05.webp"
+    }
   },
   {
     "race": "Skyborne",
@@ -13285,14 +14849,31 @@
     "gender": "male",
     "index": 493,
     "batch": "batch-005",
-    "file": "batch-005/portraits/493-skyborne-rogue-male.webp",
+    "file": "aligned-401-498/portraits/493-skyborne-rogue-male.webp",
     "status": "exported",
     "sheet": "sheet-05.webp",
     "row": 3,
     "column": 3,
     "width": 128,
     "height": 128,
-    "bytes": 7692
+    "bytes": 10574,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/493-skyborne-rogue-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        62.5,
+        51.0
+      ],
+      "radius": 62.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        62.5,
+        51.0
+      ],
+      "radius": 60.0,
+      "atlas": "batch-005/sheet-05.webp"
+    }
   },
   {
     "race": "Skyborne",
@@ -13300,14 +14881,31 @@
     "gender": "female",
     "index": 494,
     "batch": "batch-005",
-    "file": "batch-005/portraits/494-skyborne-rogue-female.webp",
+    "file": "aligned-401-498/portraits/494-skyborne-rogue-female.webp",
     "status": "exported",
     "sheet": "sheet-05.webp",
     "row": 3,
     "column": 4,
     "width": 128,
     "height": 128,
-    "bytes": 7566
+    "bytes": 10838,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/494-skyborne-rogue-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        61.5,
+        51.5
+      ],
+      "radius": 62.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        61.5,
+        51.5
+      ],
+      "radius": 60.0,
+      "atlas": "batch-005/sheet-05.webp"
+    }
   },
   {
     "race": "Skyborne",
@@ -13315,14 +14913,31 @@
     "gender": "male",
     "index": 495,
     "batch": "batch-005",
-    "file": "batch-005/portraits/495-skyborne-shaman-male.webp",
+    "file": "aligned-401-498/portraits/495-skyborne-shaman-male.webp",
     "status": "exported",
     "sheet": "sheet-05.webp",
     "row": 3,
     "column": 5,
     "width": 128,
     "height": 128,
-    "bytes": 8308
+    "bytes": 11412,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/495-skyborne-shaman-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        61.5,
+        51.5
+      ],
+      "radius": 61.5
+    },
+    "alignmentCrop": {
+      "centre": [
+        61.5,
+        51.5
+      ],
+      "radius": 59.5,
+      "atlas": "batch-005/sheet-05.webp"
+    }
   },
   {
     "race": "Skyborne",
@@ -13330,14 +14945,31 @@
     "gender": "female",
     "index": 496,
     "batch": "batch-005",
-    "file": "batch-005/portraits/496-skyborne-shaman-female.webp",
+    "file": "aligned-401-498/portraits/496-skyborne-shaman-female.webp",
     "status": "exported",
     "sheet": "sheet-05.webp",
     "row": 4,
     "column": 1,
     "width": 128,
     "height": 128,
-    "bytes": 7988
+    "bytes": 11506,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/496-skyborne-shaman-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        63.5,
+        47.5
+      ],
+      "radius": 62.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        63.5,
+        47.5
+      ],
+      "radius": 60.0,
+      "atlas": "batch-005/sheet-05.webp"
+    }
   },
   {
     "race": "Skyborne",
@@ -13345,14 +14977,31 @@
     "gender": "male",
     "index": 497,
     "batch": "batch-005",
-    "file": "batch-005/portraits/497-skyborne-warrior-male.webp",
+    "file": "aligned-401-498/portraits/497-skyborne-warrior-male.webp",
     "status": "exported",
     "sheet": "sheet-05.webp",
     "row": 4,
     "column": 2,
     "width": 128,
     "height": 128,
-    "bytes": 7378
+    "bytes": 11036,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/497-skyborne-warrior-male.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        62.5,
+        46.5
+      ],
+      "radius": 62.0
+    },
+    "alignmentCrop": {
+      "centre": [
+        62.5,
+        46.5
+      ],
+      "radius": 60.0,
+      "atlas": "batch-005/sheet-05.webp"
+    }
   },
   {
     "race": "Skyborne",
@@ -13360,13 +15009,30 @@
     "gender": "female",
     "index": 498,
     "batch": "batch-005",
-    "file": "batch-005/portraits/498-skyborne-warrior-female.webp",
+    "file": "aligned-401-498/portraits/498-skyborne-warrior-female.webp",
     "status": "exported",
     "sheet": "sheet-05.webp",
     "row": 4,
     "column": 3,
     "width": 128,
     "height": 128,
-    "bytes": 7508
+    "bytes": 10964,
+    "alignment": "normalized-circle-v1",
+    "alignmentOriginal": "batch-005/portraits/498-skyborne-warrior-female.webp",
+    "alignmentSourceGeometry": {
+      "centre": [
+        62.5,
+        47.5
+      ],
+      "radius": 62.5
+    },
+    "alignmentCrop": {
+      "centre": [
+        62.5,
+        47.5
+      ],
+      "radius": 60.5,
+      "atlas": "batch-005/sheet-05.webp"
+    }
   }
 ]

@@ -40,28 +40,35 @@ Use the exact row-major identities from queue.json. Keep original generated PNGs
 in the workspace and publish the compact full-resolution source WebPs in each batch directory. Review each atlas before export. Batch 005's
 last atlas has 18 portraits and two unused cells.
 
-## Alignment progress (separate from artwork completion)
+## Alignment complete
 
-Portraits 001–400 are aligned; the final alignment batch is 401–498 (98 portraits).
-One 128×128 WebP per portrait, preserved originals, no new artwork generation.
+All 498 portraits (001–498) are aligned and integrated in beta. No pending
+alignment batches remain. Keep completed work and original batch artwork intact.
+One 128×128 WebP per portrait; no new artwork generation was needed.
 The main and batch galleries show the 128 px files without 32/58 px switches.
 Reviewed source-rim corrections are recorded in `alignment-overrides.json`.
 
-To continue in a new chat, paste:
+If continuing in a new chat, paste:
 
-> Continue beta-only portrait alignment in lllusivecoat/wayfarers-lantern.
-> Read beta/AGENTS.md and beta/art/portraits/chibi/CONTINUE.md, check current
-> main and queue.json, and align the remaining 98 unaligned portraits (expected
-> 401–498). Use the existing deterministic align.py pipeline, preserve
-> originals and completed work, review the crops, then validate and deploy
-> beta only. Do not regenerate artwork or touch live.
+> Inspect the Wayfarer's Lantern beta portraits in lllusivecoat/wayfarers-lantern.
+> Read beta/AGENTS.md and beta/art/portraits/chibi/CONTINUE.md and check current
+> main and queue.json first. All 498 portraits have been aligned; do not start
+> another batch or regenerate completed artwork. Preserve originals, custom
+> uploads and save data. Any further changes must remain beta-only.
 
-Next batch commands (review source geometry and output before deployment):
+Validation commands:
 
 ```sh
-python3 beta/art/portraits/chibi/tools/align.py 401 498
-python3 beta/art/portraits/chibi/tools/catalog.py
 python3 beta/art/portraits/chibi/tools/validate.py
+python3 beta/tests/alignment-first-50.py
+python3 beta/tests/alignment-next-100.py
+python3 beta/tests/alignment-next-150.py
+python3 beta/tests/alignment-batch.py 301 400
 python3 beta/tests/alignment-batch.py 401 498
 node beta/tests/portrait-catalog.cjs
 ```
+
+To reproduce a reviewed batch, use `tools/align.py START END` with its original
+range, then `tools/catalog.py`. Completed ranges are 001–050 (original trial),
+051–150, 151–300, 301–400 and 401–498. The original trial has its own retained
+`tools/align-first-50.py`; do not recrop it with a different pipeline.

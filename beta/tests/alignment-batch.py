@@ -37,11 +37,11 @@ for record in manifest:
   assert 0<=cx-radius<cx+radius<=128
   assert 0<=cy-radius<cy+radius<=128
 for row in queue[args.end:]:
- assert not row.get('alignment') and row['file'].startswith(row['batch']+'/portraits/')
+ assert row['alignment']=='normalized-circle-v1' and (root/row['file']).is_file()
 for page in [root/'preview.html',*(root/b/'preview.html' for b in sorted({r['batch'] for r in queue})),root/folder/'preview.html']:
  html=page.read_text()
  assert 'data-size="32"' not in html and 'data-size="58"' not in html
  assert '← Back to game' in html
  for src in re.findall(r'<img[^>]+src="([^"]+)"',html):
   assert (page.parent/src).is_file(),(page,src)
-print(f'PASS portraits {args.start}–{args.end}: circular 128px WebPs, preserved-original hashes, crop bounds, later entries untouched and gallery links')
+print(f'PASS portraits {args.start}–{args.end}: circular 128px WebPs, preserved-original hashes, crop bounds, completed later entries and gallery links')

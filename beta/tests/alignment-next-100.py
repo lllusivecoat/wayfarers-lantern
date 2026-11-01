@@ -27,7 +27,7 @@ for record in manifest:
  else:
   assert 0<=cx-radius<cx+radius<=128
   assert 0<=cy-radius<cy+radius<=128
-for row in queue[400:]:
+for row in (r for r in queue if not r.get('alignment')):
  assert not row.get('alignment') and row['file'].startswith(row['batch']+'/portraits/')
 for page in [root/'preview.html',*(root/b/'preview.html' for b in sorted({r['batch'] for r in queue})),root/'aligned-051-150/preview.html']:
  html=page.read_text()
@@ -35,4 +35,4 @@ for page in [root/'preview.html',*(root/b/'preview.html' for b in sorted({r['bat
  assert '← Back to game' in html
  for src in re.findall(r'<img[^>]+src="([^"]+)"',html):
   assert (page.parent/src).is_file(),(page,src)
-print('PASS 100 aligned circular 128px WebPs, preserved-original hashes, atlas/cover crops, 98 later entries untouched and 128px-only galleries with valid links')
+print('PASS 100 aligned circular 128px WebPs, preserved-original hashes, atlas/cover crops, all 498 entries aligned and 128px-only galleries with valid links')

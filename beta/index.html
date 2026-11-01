@@ -1590,7 +1590,7 @@ calculatePartyCompensation=function(q,party,payout){const n=Math.max(1,party.len
 function v9THLevel(){return v9L('trainingHall')}
 function v9Slots(){return v9Inst('trainingHall').reduce((n,i)=>n+V9_TH.slots[v9Eff(i)],0)}
 function v9TrainerMul(){return WL_STAFF.service('trainingHall').trainerFactor}
-function v9TrainPrice(trait){const T=TRAITS[trait],L=v9THLevel();if(!T||!T.train||!L)return null;return Math.max(1,Math.round(T.train.gold*Math.max(.3,V9_TRAIN_CUT*V9_TH.pct[L]*v9TrainerMul())))}
+function v9TrainPrice(trait){const T=TRAITS[trait],L=v9THLevel();if(!T||!T.train||!L)return null;return Math.max(15,Math.min(25,Math.round(T.train.gold*.25*V9_TH.pct[L]*v9TrainerMul())))}
 function v9TrainDays(trait){const T=TRAITS[trait],L=v9THLevel();return T&&T.train?Math.max(1,T.train.days-(V9_TH.cut[L]||0)):0}
 function v9Trainees(){return [...game.heroes,game.player].filter(h=>h&&!h.dead&&h.training&&h.training.days>0).sort((a,b)=>(a.training.seq||0)-(b.training.seq||0))}
 function v9Holding(h){return v9Trainees().slice(0,v9Slots()).includes(h)}

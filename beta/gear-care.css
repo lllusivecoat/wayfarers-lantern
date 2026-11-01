@@ -1,0 +1,47 @@
+/* Gear care is beta-only. The core owns prices, personal purses and Armory effects. */
+#hero-stats-modal .beta-htabs{display:flex!important;gap:6px;position:sticky;top:0;z-index:5;background:var(--panel);padding:6px 0 10px;margin-bottom:12px}
+#hero-stats-modal .beta-htabs button{flex:1;min-height:48px;border:1px solid var(--line);border-radius:10px;background:transparent;color:var(--muted);font:600 15px/1.4 var(--fn)}
+#hero-stats-modal .beta-htabs button.on{background:var(--panel2);color:var(--acc);border-color:var(--acc)}
+#hero-stats-modal .hero-stats-layout[data-bht]{display:block!important}
+#hero-stats-modal .hero-stats-layout[data-bht="stats"] [data-bt]:not([data-bt="stats"]),#hero-stats-modal .hero-stats-layout[data-bht="traits"] [data-bt]:not([data-bt="traits"]),#hero-stats-modal .hero-stats-layout[data-bht="gear"] [data-bt]:not([data-bt="gear"]){display:none!important}
+#hero-stats-modal .hero-stats-layout[data-bht="gear"] .hero-stats-left{display:none!important}
+#hero-stats-modal .hero-stats-layout[data-bht="stats"] .hero-stats-right,#hero-stats-modal .hero-stats-layout[data-bht="traits"] .hero-stats-right{display:none!important}
+#hero-stats-modal .hero-stats-layout[data-bht="gear"] .hero-stats-right{display:block!important;width:100%;border-left:0;padding:0}
+.gearcare-hero{margin:0 0 22px}
+.gearcare-hero-block{padding:18px 0;border-bottom:1px solid var(--line)}
+.gearcare-hero-block:first-child{padding-top:0}
+.gearcare-hero-block.gearcare-complete{padding:8px 0;display:flex;align-items:center;flex-wrap:wrap;gap:8px 16px;border:0}
+.gearcare-complete>.gearcare-feedback:empty{display:none}
+.gearcare-complete>.gearcare-feedback{flex-basis:100%}
+.gearcare-section-head,.gearcare-group-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.gearcare-section-head h3,.gearcare-group-head h3{margin:0;font:500 18px/1.4 var(--fh,Georgia)}
+.gearcare-note{margin:6px 0!important;color:var(--muted);font:12px/1.6 var(--fn);overflow-wrap:anywhere}
+.gearcare-item{display:grid;grid-template-columns:minmax(0,1fr) minmax(170px,auto);gap:12px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line);min-width:0}
+.gearcare-item-copy{min-width:0;overflow-wrap:anywhere}
+.gearcare-item-copy>strong{display:block;font:600 14px/1.5 var(--fn);color:var(--text)}
+.gearcare-item-actions{display:grid;justify-items:stretch;gap:4px;max-width:260px}
+.gearcare-broken{display:inline-block;margin-top:5px;padding:3px 8px;border:1px solid var(--red);border-radius:6px;color:var(--red);font:600 11px/1.4 var(--fn)}
+.gearcare-durability{display:block;appearance:none;width:100%;max-width:260px;height:7px;margin:9px 0;border:0;border-radius:5px;background:var(--line);overflow:hidden}
+.gearcare-durability::-webkit-progress-bar{background:var(--line);border-radius:5px}
+.gearcare-durability::-webkit-progress-value{background:var(--acc);border-radius:5px}
+.gearcare-durability::-moz-progress-bar{background:var(--acc)}
+.gearcare-reason{margin:4px 0 0!important;color:var(--red);font:12px/1.6 var(--fn);overflow-wrap:anywhere}
+.gearcare-feedback{margin:10px 0 0!important;color:var(--text);font:13px/1.6 var(--fn)}
+.gearcare-feedback:empty{display:none}
+.gearcare-bulk{display:grid;justify-items:start;gap:5px;margin:14px 0 4px}
+.gearcare-bulk>.gearcare-note{max-width:600px}
+.gearcare-hero button,.gearcare-batch button{min-height:48px!important;white-space:normal!important;max-width:100%;padding:11px 14px!important;font:500 13px/1.4 var(--fn)!important}
+.gearcare-link{padding:9px 0!important;min-height:44px!important;text-align:left;text-decoration:underline;text-underline-offset:3px;border:0!important;background:transparent!important}
+.gearcare-chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 18px}
+.gearcare-chips button[aria-pressed="true"]{background:var(--panel2)!important;color:var(--acc)!important;border-color:var(--acc)!important}
+.gearcare-filter{display:flex!important;align-items:center;gap:10px;min-height:48px;margin:8px 0;font:14px/1.5 var(--fn)}
+.gearcare-filter input{appearance:auto!important;width:20px!important;height:20px!important;min-height:20px!important;accent-color:var(--acc);margin:0!important}
+.gearcare-group{padding:16px 0;border-top:1px solid var(--line);scroll-margin:90px}
+.gearcare-group>.gearcare-bulk{margin-top:8px}
+.gearcare-items>summary{min-height:44px;padding:12px 0;color:var(--acc);cursor:pointer;font:500 13px/1.5 var(--fn)}
+#warehouse-gear .gearcare-items{margin:8px 0}
+#hero-stats-modal .gearcare-utility-help,#hero-stats-modal .gearcare-equipment-help{margin-top:14px}
+#hero-stats-modal .gear-info-collapse>summary{min-height:44px;cursor:pointer;padding:12px 0;color:var(--acc)}
+html.beta-light .gearcare-reason,html.beta-light .gearcare-broken{color:#974936}
+@media(max-width:600px){.gearcare-item{grid-template-columns:minmax(0,1fr);gap:8px}.gearcare-item-actions{width:100%;max-width:none}.gearcare-bulk{justify-items:stretch}.gearcare-bulk>button{width:100%}.gearcare-section-head{align-items:flex-start}.gearcare-chips{gap:6px}.gearcare-chips button{flex:1 1 auto}}
+@media(prefers-reduced-motion:reduce){.gearcare-hero *,.gearcare-batch *{scroll-behavior:auto!important;transition:none!important}}

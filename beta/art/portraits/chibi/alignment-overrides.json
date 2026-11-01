@@ -28,5 +28,95 @@
       "radius": 63.5
     },
     "reason": "Visual review: top-clipped outer ring, confirmed against the dark exterior."
+  },
+  "155": {
+    "geometry": {
+      "centre": [
+        58.0,
+        51.0
+      ],
+      "radius": 65.0
+    },
+    "reason": "Visual review of portraits 151\u2013300: fit the outer gold rim against its dark exterior, excluding bright armour and effects."
+  },
+  "159": {
+    "geometry": {
+      "centre": [
+        59.0,
+        46.0
+      ],
+      "radius": 64.5
+    },
+    "reason": "Visual review of portraits 151\u2013300: fit the outer gold rim against its dark exterior, excluding bright armour and effects."
+  },
+  "160": {
+    "geometry": {
+      "centre": [
+        59.0,
+        45.0
+      ],
+      "radius": 66.5
+    },
+    "reason": "Visual review of portraits 151\u2013300: fit the outer gold rim against its dark exterior, excluding bright armour and effects."
+  },
+  "180": {
+    "geometry": {
+      "centre": [
+        55.0,
+        45.0
+      ],
+      "radius": 63.5
+    },
+    "reason": "Visual review of portraits 151\u2013300: fit the outer gold rim against its dark exterior, excluding bright armour and effects."
+  },
+  "239": {
+    "geometry": {
+      "centre": [
+        61.0,
+        46.0
+      ],
+      "radius": 63.0
+    },
+    "reason": "Visual review of portraits 151\u2013300: fit the outer gold rim against its dark exterior, excluding bright armour and effects."
+  },
+  "240": {
+    "geometry": {
+      "centre": [
+        61.0,
+        46.0
+      ],
+      "radius": 63.0
+    },
+    "reason": "Visual review of portraits 151\u2013300: fit the outer gold rim against its dark exterior, excluding bright armour and effects."
+  },
+  "256": {
+    "geometry": {
+      "centre": [
+        66.0,
+        39.0
+      ],
+      "radius": 61.5
+    },
+    "reason": "Visual review of portraits 151\u2013300: fit the outer gold rim against its dark exterior, excluding bright armour and effects."
+  },
+  "258": {
+    "geometry": {
+      "centre": [
+        62.0,
+        39.0
+      ],
+      "radius": 61.0
+    },
+    "reason": "Visual review of portraits 151\u2013300: fit the outer gold rim against its dark exterior, excluding bright armour and effects."
+  },
+  "260": {
+    "geometry": {
+      "centre": [
+        58.0,
+        39.0
+      ],
+      "radius": 61.0
+    },
+    "reason": "Visual review of portraits 151\u2013300: fit the outer gold rim against its dark exterior, excluding bright armour and effects."
   }
 }

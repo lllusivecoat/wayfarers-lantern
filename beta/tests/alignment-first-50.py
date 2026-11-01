@@ -14,5 +14,5 @@ for row in selected:
   assert all(alpha.getpixel(p)==0 for p in [(0,0),(127,0),(0,127),(127,127)])
   assert alpha.getpixel((64,64))==255
  assert frames[str(row['index'])]['css']==[0,0,1]
-for row in queue[150:]:assert row['file'].startswith(row['batch']+'/portraits/') and not row.get('alignment')
-print('PASS exactly 50 normalized 128x128 circular icons, preserved originals, identity frame transforms, remaining 348 paths unchanged')
+for row in queue[300:]:assert row['file'].startswith(row['batch']+'/portraits/') and not row.get('alignment')
+print('PASS exactly 50 normalized 128x128 circular icons, preserved originals, identity frame transforms, remaining 198 paths unchanged')

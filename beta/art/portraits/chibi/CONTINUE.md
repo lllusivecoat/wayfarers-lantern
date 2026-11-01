@@ -42,7 +42,7 @@ last atlas has 18 portraits and two unused cells.
 
 ## Alignment progress (separate from artwork completion)
 
-Portraits 001–150 are aligned; the next alignment batch is 151–250.
+Portraits 001–300 are aligned; the next 150-portrait alignment batch is 301–450.
 One 128×128 WebP per portrait, preserved originals, no new artwork generation.
 The main and batch galleries show the 128 px files without 32/58 px switches.
 Reviewed source-rim corrections are recorded in `alignment-overrides.json`.
@@ -51,15 +51,15 @@ To continue in a new chat, paste:
 
 > Continue beta-only portrait alignment in lllusivecoat/wayfarers-lantern.
 > Read beta/AGENTS.md and beta/art/portraits/chibi/CONTINUE.md, check current
-> main and queue.json, and align the next 100 unaligned portraits (expected
-> 151–250). Use the existing deterministic align.py pipeline, preserve
+> main and queue.json, and align the next 150 unaligned portraits (expected
+> 301–450). Use the existing deterministic align.py pipeline, preserve
 > originals and completed work, review the crops, then validate and deploy
 > beta only. Do not regenerate artwork or touch live.
 
 Next batch commands (review source geometry and output before deployment):
 
 ```sh
-python3 beta/art/portraits/chibi/tools/align.py 151 250
+python3 beta/art/portraits/chibi/tools/align.py 301 450
 python3 beta/art/portraits/chibi/tools/catalog.py
 python3 beta/art/portraits/chibi/tools/validate.py
 node beta/tests/portrait-catalog.cjs

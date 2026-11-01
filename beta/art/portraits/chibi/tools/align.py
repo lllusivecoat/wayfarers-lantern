@@ -22,6 +22,9 @@ for row in selected:
  if atlas:
   original=Image.open(atlas).convert('RGBA');sx=original.width/5/128;sy=original.height/4/128
   ox=(row['column']-1)*original.width/5;oy=(row['row']-1)*original.height/4
+  # A few source circles meet the outer atlas edge. Keep the cover crop
+  # inside available artwork rather than introducing a flat padding strip.
+  radius=min(radius,cx+ox/sx,cy+oy/sy,(original.width-ox)/sx-cx,(original.height-oy)/sy-cy)
  else:
   sx=sy=1;ox=oy=0
   # Where a legacy file already clipped the source circle, cover the frame

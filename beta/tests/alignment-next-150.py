@@ -7,7 +7,7 @@ root=Path(__file__).resolve().parents[1]/'art/portraits/chibi'
 queue=json.loads((root/'queue.json').read_text())
 frames=json.loads((root/'framing.json').read_text())
 manifest=json.loads((root/'aligned-151-300/manifest.json').read_text())
-assert [r['index'] for r in queue if r.get('alignment')]==list(range(1,301))
+assert [r['index'] for r in queue[:300] if r.get('alignment')]==list(range(1,301))
 assert [r['index'] for r in manifest]==list(range(151,301))
 for record in manifest:
  row=queue[record['index']-1]
@@ -33,7 +33,7 @@ for record in manifest:
  else:
   assert 0<=cx-radius<cx+radius<=128
   assert 0<=cy-radius<cy+radius<=128
-for row in queue[300:]:
+for row in queue[400:]:
  assert not row.get('alignment') and row['file'].startswith(row['batch']+'/portraits/')
 for page in [root/'preview.html',*(root/b/'preview.html' for b in sorted({r['batch'] for r in queue})),root/'aligned-151-300/preview.html']:
  html=page.read_text()
@@ -41,4 +41,4 @@ for page in [root/'preview.html',*(root/b/'preview.html' for b in sorted({r['bat
  assert '← Back to game' in html
  for src in re.findall(r'<img[^>]+src="([^"]+)"',html):
   assert (page.parent/src).is_file(),(page,src)
-print('PASS 150 aligned circular 128px WebPs, preserved-original hashes, atlas/cover crops, 198 later entries untouched and 128px-only galleries with valid links')
+print('PASS 150 aligned circular 128px WebPs, preserved-original hashes, atlas/cover crops, 98 later entries untouched and 128px-only galleries with valid links')

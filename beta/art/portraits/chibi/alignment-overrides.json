@@ -118,5 +118,15 @@
       "radius": 61.0
     },
     "reason": "Visual review of portraits 151\u2013300: fit the outer gold rim against its dark exterior, excluding bright armour and effects."
+  },
+  "331": {
+    "geometry": {
+      "centre": [
+        64.0,
+        56.0
+      ],
+      "radius": 61.0
+    },
+    "reason": "Visual review of portraits 301\u2013400: the outer gold rim is centred to the right of the bright armour arc."
   }
 }

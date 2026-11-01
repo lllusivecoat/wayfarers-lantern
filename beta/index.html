@@ -675,6 +675,123 @@ label.pick.v9pick.beta-picked,label.pick.v9pick:has(input:checked){border-color:
 @media(min-width:601px) and (max-width:1024px){#inbound-market>h3{min-height:44px}}
 html body :is(#trade-party,#quest-detail-modal,#quest-list,#outbound-cargo,#inbound-cargo,#trading,#quests,#hall,#staff,#buildings) .beta-fhide,html body :is(#trading,#quests,#hall,#staff,#buildings,#crafting,#permanent-quests,#quest-detail-modal) .beta-tucked{display:none!important}
 
+/* ===== BETA round 3: small-bug fixes + design ideas + location art. Presentation only. ===== */
+/* A1 crafting preview box: old navy -> theme panel */
+.gear-craft-preview{background:var(--panel2)!important;border-color:var(--line)!important;color:var(--text)!important}
+.gear-craft-preview h3,.gear-craft-preview h4{color:var(--text)!important}
+.gear-craft-preview p{color:var(--text)!important;font-size:13px!important}
+/* A2 visible keyboard focus */
+:focus-visible{outline:2px solid var(--acc)!important;outline-offset:2px!important;border-radius:6px}
+input:focus-visible,select:focus-visible,textarea:focus-visible{outline-offset:0!important}
+/* A3 light-theme contrast */
+html.beta-light .beta-subtabs button.on,html.beta-light .v9-chip.active{color:#6E4608!important;border-color:#6E4608!important}
+html.beta-light .pill.gold,html.beta-light #crafting .pill.gold{color:#6E4608!important;border-color:#B08A4E!important}
+html.beta-light .v9pc-race{color:var(--muted)!important}html.beta-light .v9pick-class{opacity:1!important}
+html.beta-light .music-mark{background:#E9DCC0!important;color:#6E4608!important}
+.music-mark{background:var(--panel2)!important;color:var(--acc)!important}
+/* A4 minimum 13px for chips and requirement lines */
+#warehouse .item,#warehouse .item *,#crafting span,#crafting b,#crafting p,#crafting li,.alchemy-ingredients p,.staff-aptitudes span{font-size:max(13px,1em)!important}
+#warehouse .item{font-size:13px!important}
+.v9-rrank{font-size:13px!important}
+/* report popup: collapsed sections need a visible disclosure marker (summary is flex, so the native triangle is gone) */
+details>summary{list-style:none;cursor:pointer}
+details>summary::-webkit-details-marker{display:none}
+details:not(.staff-member)>summary::before{content:'▸';color:var(--acc);font-size:.9em;flex:0 0 auto;margin-right:2px}
+details[open]:not(.staff-member)>summary::before{content:'▾'}
+.craft-collapse>summary::before,.beta-nomark>summary::before{content:none!important}
+/* B6 44px touch targets on any touch device up to 1366px */
+@media (pointer:coarse) and (max-width:1366px){.btn,button.btn,label.btn,button.tab,.dropdown-item,.view summary,.modal summary,.v9-chip,select,input[type=number],input[type=search],.beta-subtabs button,.beta-pfilter button,.m-collapse-toggle,.beta-tog,.beta-step{min-height:44px!important}}
+
+/* B2 Getting started */
+.beta-onb{order:-2;background:var(--panel)!important;border:1px solid color-mix(in srgb,var(--acc) 40%,transparent)!important;border-radius:12px;padding:14px 16px;margin:0 0 14px}
+.beta-onb-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.beta-onb-head h3{margin:0;font-size:17px}
+.beta-onb-x{background:none;border:0;color:var(--muted);font-size:20px;min-width:44px;min-height:44px;cursor:pointer}
+.beta-onb ol{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:6px}
+.beta-onb li{display:flex;align-items:center;gap:10px;min-height:44px;padding:4px 0;border-top:1px solid var(--line)}
+.beta-onb li:first-child{border-top:0}
+.beta-onb li i{font-style:normal;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;border:1.5px solid var(--line);color:var(--muted);font-family:var(--fn);font-size:13px;flex:0 0 26px}
+.beta-onb li.done i{background:var(--good);border-color:var(--good);color:var(--bg)}
+.beta-onb li span{flex:1;color:var(--text)}
+.beta-onb li.done span{color:var(--muted);text-decoration:line-through}
+.beta-onb li .btn{min-height:40px;padding:6px 12px}
+.beta-onb li.done .btn{display:none}
+.beta-onb-prog{font-family:var(--fn);font-size:13px;color:var(--muted)}
+/* B7 empty states */
+.beta-empty{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;padding:22px 14px!important}
+.beta-empty-ic{font-size:34px;line-height:1;opacity:.85}
+.beta-empty .btn{margin-top:4px}
+/* dedupe latest entry on Hall */
+.beta-dupe{display:none!important}
+
+/* B1 crafting compact recipe list */
+.beta-rlist{display:grid;gap:0;margin:8px 0}
+.beta-rrow{display:flex;align-items:center;gap:8px;min-height:48px;border-top:1px solid var(--line);padding:4px 0}
+.beta-rrow:first-child{border-top:0}
+.beta-rrow .beta-rname{flex:1;min-width:0;text-align:left;background:none;border:0;color:var(--text);font:inherit;font-size:15px;padding:6px 0;cursor:pointer;min-height:44px}
+.beta-rrow .beta-rname small{display:block;color:var(--muted);font-family:var(--fn);font-size:13px}
+.beta-rrow.sel .beta-rname{color:var(--acc)}
+.beta-rrow .beta-rinfo{min-width:44px;min-height:44px;border-radius:50%;background:transparent;border:1px solid var(--line);color:var(--muted);cursor:pointer}
+.beta-rrow .beta-rcraft{min-width:76px}
+#crafting .card.beta-rl-on>label:has(select),#crafting .card.beta-rl-on>h4,#crafting .card.beta-rl-on>p:not(.v9p),#crafting .card.beta-rl-on>.alchemy-ingredients,#crafting .card.beta-rl-on>div:not(.v9-split):not(.beta-rlist),#crafting .card.beta-rl-on>button.btn,#crafting .card.beta-rl-on .manual-cooking{display:none!important}
+#crafting .card.beta-rl-on>.beta-rlist{display:grid!important}
+.beta-rl-pop{position:fixed!important;left:0;right:0;bottom:0;top:auto;max-height:82vh;overflow:auto;z-index:1300;margin:0!important;border-radius:16px 16px 0 0!important;border:1px solid var(--line)!important;box-shadow:0 -10px 40px #0008!important;padding:16px 16px calc(16px + env(safe-area-inset-bottom))!important}
+#crafting .card.beta-rl-pop>.beta-rlist,#crafting .card.beta-rl-pop>.v9-split,#crafting .card.beta-rl-pop>details,#crafting .card.beta-rl-pop>.beta-tog{display:none!important}
+#crafting .card.beta-rl-pop>label:has(select),#crafting .card.beta-rl-pop>h4,#crafting .card.beta-rl-pop>p:not(.v9p),#crafting .card.beta-rl-pop>.alchemy-ingredients,#crafting .card.beta-rl-pop>div:not(.v9-split):not(.beta-rlist),#crafting .card.beta-rl-pop>button.btn,#crafting .card.beta-rl-pop .manual-cooking{display:revert!important}
+#crafting .card.beta-rl-pop>p.beta-tucked{display:none!important}
+.beta-rl-bd{position:fixed;inset:0;background:#0008;z-index:1290}
+.beta-rl-close{position:sticky;top:0;float:right;min-width:44px;min-height:44px;border-radius:50%;border:1px solid var(--line);background:var(--panel2);color:var(--text);font-size:18px;cursor:pointer;z-index:2}
+@media (min-width:700px){.beta-rl-pop{left:50%;right:auto;bottom:auto;top:50%;transform:translate(-50%,-50%);width:min(560px,92vw);border-radius:16px!important}}
+
+/* B3 trading two-step */
+.beta-tsteps{display:flex;gap:6px;margin:6px 0 10px}
+.beta-tsteps button{flex:1;min-height:44px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--muted);font-family:var(--fn);font-size:14px;cursor:pointer}
+.beta-tsteps button.on{border-color:var(--acc);color:var(--acc);background:var(--panel2)}
+html.beta-light .beta-tsteps button.on{color:#6E4608;border-color:#6E4608}
+.beta-tstep-hide{display:none!important}
+.beta-tbar{position:fixed!important;left:0;right:0;bottom:calc(64px + env(safe-area-inset-bottom));z-index:900;background:var(--panel)!important;border-top:1px solid var(--line);box-shadow:0 -6px 18px #0005;padding:8px 12px!important;margin:0!important;display:flex!important;flex-wrap:nowrap!important;align-items:center;gap:8px}
+.beta-tbar>#trade-party-note,.beta-tbar>#trade-dispatch-reason{order:0;flex:1 1 0!important;min-width:0;max-width:none!important;margin:0!important;padding:0!important;background:none!important;border:0!important;font-family:var(--fn);font-size:13px!important;color:var(--muted)!important;overflow:hidden;display:-webkit-box!important;-webkit-line-clamp:2;-webkit-box-orient:vertical;white-space:normal!important}
+.beta-tbar:has(#trade-dispatch:disabled)>#trade-party-note{display:none!important}
+.beta-tbar:not(:has(#trade-dispatch:disabled))>#trade-dispatch-reason{display:none!important}
+.beta-tbar>.btn{order:1;min-height:44px;white-space:nowrap;flex:0 0 auto!important;width:auto!important;max-width:none!important;min-width:0!important;padding:0 14px!important}
+html.beta-tbar-on #trading{padding-bottom:96px}
+@media (min-width:1025px){.beta-tbar{bottom:0;left:auto;right:24px;width:min(560px,60vw);border-radius:12px 12px 0 0;border:1px solid var(--line)}}
+
+/* B4 staff tabs + one-line candidates */
+.beta-stabs{margin-bottom:12px}
+.beta-shide{display:none!important}
+.beta-cand1{display:flex!important;flex-direction:row!important;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:10px 0!important;border-top:1px solid var(--line)}
+.beta-cand1>h4{margin:0!important;flex:1 1 auto;font-size:16px}
+.beta-cand1>.beta-cline{flex:1 1 calc(100% - 110px);min-width:0;font-family:var(--fn);font-size:13px;color:var(--muted);order:3}
+.beta-cand1>.beta-tog{order:4;margin:0!important}
+.beta-cand1>.staff-candidate-actions{order:2;display:flex;gap:6px;margin:0!important}
+.beta-cand1>h4{order:1}
+
+/* B5 permanent gathering rows */
+#gather-quest-list.beta-grows{display:block!important}
+#gather-quest-list.beta-grows>article.quest{display:flex!important;flex-direction:row!important;flex-wrap:wrap;align-items:center;gap:6px 10px;padding:10px 12px!important;margin:0 0 8px!important;min-height:0}
+.beta-grows>article.quest{min-height:0!important;height:auto!important}
+.beta-grows>article.quest>.cardhead{flex:1 1 100%;order:1;display:flex!important;align-items:center;gap:8px;margin:0!important;min-width:0}
+.beta-grows>article.quest>.cardhead .eyebrow{display:none}
+.beta-grows>article.quest>.cardhead h3{font-size:16px;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.beta-grows>article.quest>.cardhead select{margin-left:auto;min-height:44px;width:auto}
+.beta-grows>article.quest>.v9-split,.beta-grows>article.quest>.questfacts,.beta-grows>article.quest>details{display:none!important}
+.beta-grows>article.quest.beta-gopen>.v9-split,.beta-grows>article.quest.beta-gopen>.questfacts{display:block!important;flex-basis:100%}
+.beta-grows>article.quest.beta-gopen>.questfacts{display:flex!important;flex-wrap:wrap;gap:6px}
+.beta-gfoot{display:flex!important;order:5;flex:0 0 auto;margin:0!important;padding:0!important;border:0!important}
+.beta-gfoot>span{display:none!important}
+.beta-gfoot>.btn{min-height:44px}
+.beta-ginfo{order:4}
+.beta-gmeta{order:3;flex:1 1 0;min-width:0;font-family:var(--fn);font-size:13px;color:var(--muted);}
+.beta-ginfo{min-width:44px;min-height:44px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}
+
+/* C location art */
+.v9-loc.beta-hasart{padding-top:0!important;overflow:hidden}
+.beta-locart{margin:0 -16px 10px;height:132px;background-size:cover;background-position:center;position:relative}
+.beta-locart::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,var(--panel) 100%)}
+@media (min-width:700px){.beta-locart{height:150px}}
+.trade-destination.beta-tart{background-blend-mode:normal!important}
+
 </style>
 </head>
 <body>
@@ -2352,7 +2469,6 @@ function staff(){$$('#staff article.card').forEach((card,i)=>{if(card.closest('.
  }
 function warehouse(){if(PHONE()&&!once.has('exp')){const d=$('details.gather-expertise-collapse[open]');if(d){once.add('exp');d.open=false}}}
 function crafting(){const help=$('details.gear-crafting-help');if(help&&PHONE()&&help.open&&!once.has('craft')){once.add('craft');help.open=false}
- const bench=$('#crafting details.craft-collapse');if(bench&&!once.has('bench')){once.add('bench');bench.open=true}
  const intro=$('#crafting .card > p');tuck([intro],'cr-intro','How crafting works');$$('#crafting .card .card > p, #crafting details > p').filter(p=>p.textContent.length>160).forEach((p,i)=>tuck([p],'cr-p'+i,'More'))}
 function chronicle(){$$('#log-list .logitem').forEach((it,i)=>{const p=$('p',it);if(!p)return;if(!it.dataset.btap){it.dataset.btap=1;it.addEventListener('click',()=>{if(!PHONE())return;it.classList.toggle('beta-open')})}
  if(PHONE()&&!it.classList.contains('beta-open'))cls(it,'beta-more',p.scrollHeight>p.clientHeight+2)})}
@@ -2382,6 +2498,112 @@ let q=false;function run(){q=false;try{bottomBar();subTabs();ledger();hall();bui
 function sched(){if(!q){q=true;requestAnimationFrame(run)}}
 window.betaUxRun=run;
 function init(){run();new MutationObserver(sched).observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['class','open']});addEventListener('resize',sched)}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+
+/* ===== BETA round 3 layer. Presentation only: every control drives the game's own select/button/input. ===== */
+(function(){
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const PHONE=()=>innerWidth<=600,TAB=()=>innerWidth<=1024;const G=()=>{try{return game}catch(e){return null}};
+const ST={};const cls=(el,c,on)=>{if(el&&el.classList.contains(c)!==!!on)el.classList.toggle(c,!!on)};
+const setText=(el,t)=>{if(el&&el.textContent!==t)el.textContent=t};
+const mk=(tag,c,t)=>{const e=document.createElement(tag);if(c)e.className=c;if(t!=null)e.textContent=t;return e};
+const fire=el=>{el.dispatchEvent(new Event('input',{bubbles:true}));el.dispatchEvent(new Event('change',{bubbles:true}))};
+const goView=v=>{const t=$(`nav.tabs .tab[data-view="${v}"]`)||$(`nav.tabs .dropdown-item[data-view="${v}"]`);if(t)t.click();else if(typeof showView==='function')showView(v);scrollTo(0,0)};
+const light=()=>document.documentElement.classList.contains('beta-light');
+
+/* ---------- A5: Hall "Latest entry" shown twice on a new guild ---------- */
+function dedupeLatest(){const lt=$('#latest-text');if(!lt)return;const t=lt.textContent.trim();$$('.beta-recent .logitem').forEach(it=>cls(it,'beta-dupe',($('p',it)?.textContent.trim()||'')===t&&t!==''))}
+
+/* ---------- A3: inline class colours (WoW class palette) too pale on Guild Ledger ---------- */
+const lum=c=>{const m=c.match(/[\d.]+/g);if(!m)return 1;const [r,g,b]=m.slice(0,3).map(v=>{v/=255;return v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4)});return .2126*r+.7152*g+.0722*b};
+const ratio=(a,b)=>{const x=lum(a),y=lum(b);return (Math.max(x,y)+.05)/(Math.min(x,y)+.05)};
+function inkFix(){const L=light();$$('.view.active [style*="color"], .modal.open [style*="color"]').forEach(el=>{if(el.closest('.beta-locart,.trade-destination'))return;
+ if(!L){if(el.dataset.bcol!=null){el.style.color=el.dataset.bcol;delete el.dataset.bcol;delete el.dataset.bfix}return}
+ if(el.dataset.bfix)return;const cs=getComputedStyle(el).color;if(ratio(cs,'rgb(251,245,230)')>=4.5)return;
+ el.dataset.bcol=el.style.color;const m=cs.match(/[\d.]+/g).map(Number);let k=1,out=cs;for(let i=0;i<20&&ratio(out,'rgb(251,245,230)')<4.6;i++){k*=.88;out=`rgb(${m[0]*k|0},${m[1]*k|0},${m[2]*k|0})`}el.style.color=out;el.dataset.bfix=1})}
+new MutationObserver(()=>{$$('[data-bfix]').forEach(e=>{if(!light()){e.style.color=e.dataset.bcol;delete e.dataset.bcol;delete e.dataset.bfix}})}).observe(document.documentElement,{attributes:true,attributeFilter:['class']});
+
+/* ---------- B2: Getting started ---------- */
+const OKEY='wayfarers-lantern-beta-onboarding';
+function steps(){const g=G();if(!g)return null;const heroes=(g.heroes||[]).length>0;const sent=Object.keys(g.questDone||{}).length>0||(g.pendingReports||[]).length>0||(g.todayReports||[]).length>0||(g.heroes||[]).some(h=>h.ready===false&&!h.dead);const rested=(g.day||1)>1;
+ return [{k:'recruit',t:'Recruit a hero',done:heroes,b:'Applicants',go:()=>{goView('hall');const a=$('#applicant-list');if(a)setTimeout(()=>a.scrollIntoView({behavior:'smooth',block:'start'}),60)}},
+  {k:'send',t:'Send a contract',done:sent,b:'Contracts',go:()=>goView('quests')},
+  {k:'rest',t:'Rest to end the day',done:rested,b:'Rest',go:()=>$('#rest-nav-button')?.click()}]}
+function onboarding(){const hall=$('#hall');if(!hall)return;let c=$('#beta-onb');const S=steps();const dismissed=localStorage.getItem(OKEY)==='dismissed';
+ if(!S||dismissed){if(c)c.remove();return}
+ if(!c){c=mk('section','beta-onb');c.id='beta-onb';c.setAttribute('aria-label','Getting started');c.innerHTML='<div class="beta-onb-head"><h3>Getting started</h3><span class="beta-onb-prog"></span><button type="button" class="beta-onb-x" aria-label="Dismiss getting started">✕</button></div><ol></ol>';
+  $('.beta-onb-x',c).onclick=()=>{localStorage.setItem(OKEY,'dismissed');c.remove()};const ol=$('ol',c);S.forEach((s,i)=>{const li=mk('li');li.dataset.k=s.k;li.innerHTML='<i></i><span></span>';$('i',li).textContent=i+1;$('span',li).textContent=s.t;const b=mk('button','btn secondary',s.b);b.type='button';b.onclick=()=>steps().find(x=>x.k===s.k).go();li.appendChild(b);ol.appendChild(li)});
+  const head=$(':scope > .heading',hall);(head||hall.firstElementChild)?.after?.(c)||hall.prepend(c)}
+ let n=0;S.forEach((s,i)=>{const li=$(`li[data-k="${s.k}"]`,c);cls(li,'done',s.done);setText($('i',li),s.done?'✓':String(i+1));if(s.done)n++});setText($('.beta-onb-prog',c),n===3?'All done · tap ✕ to hide':n+' of 3')}
+
+/* ---------- B7: empty states with icon + action ---------- */
+const EMPTY={'hero-list':['⚔','Review applicants',()=>{goView('hall');setTimeout(()=>$('#applicant-list')?.scrollIntoView({block:'start'}),60)}],'staff-roster':['🗝','Hire staff',()=>{ST.stab='hire';run();$('#staff .staff-candidates')?.scrollIntoView({block:'start'})}]};
+function empties(){$$('.view .empty').forEach(e=>{if(e.querySelector('.beta-empty-ic'))return;const def=EMPTY[e.parentElement?.id]||['✧'];const txt=e.textContent;e.classList.add('beta-empty');e.textContent='';const ic=mk('span','beta-empty-ic',def[0]);ic.setAttribute('aria-hidden','true');e.append(ic,mk('span','',txt));if(def[1]){const b=mk('button','btn secondary',def[1]);b.type='button';b.onclick=def[2];e.appendChild(b)}})}
+
+/* ---------- B1: crafting compact recipe lists ---------- */
+function recipeLists(){const sec=$('#crafting');if(!sec)return;
+ const bench=$('#crafting details.craft-collapse');if(bench&&!bench.dataset.br3){bench.dataset.br3=1;if(PHONE())bench.open=false}
+ const scopes=[];['#gathering-tools','#alchemy-panel','#field-kits-panel'].forEach(id=>{const a=$(id);if(a){const s=$(':scope > label > select, :scope select',a);if(s)scopes.push({card:a,box:a,sel:s,btn:()=>$$('button.btn',a).find(b=>!b.closest('.beta-rlist')&&!b.classList.contains('beta-rcraft')&&(s.compareDocumentPosition(b)&Node.DOCUMENT_POSITION_FOLLOWING))})}});
+ $$('#kitchen-recipes .manual-cooking').forEach((mc,i)=>{const s=$('select[data-cook-recipe]',mc);if(s){const idx=s.dataset.cookRecipe;scopes.push({card:$('#kitchen-recipes'),box:mc,sel:s,kitchen:idx,btn:()=>$(`#kitchen-recipes [data-cook-now="${idx}"]`)})}});
+ scopes.forEach(sc=>{const {card,sel}=sc;const key=(card.id||'k')+(sc.kitchen!=null?'-'+sc.kitchen:'');card.classList.add('beta-rl-on');
+  let list=$(`:scope > .beta-rlist[data-k="${key}"]`,card);const sig=[...sel.options].map(o=>o.value+'='+o.text).join('|');
+  if(!list){list=mk('div','beta-rlist');list.dataset.k=key;const anchor=$(':scope > .v9-split',card)||$(':scope > h3',card);if(sc.kitchen!=null){const kl=$(':scope > .kitchen-list',card);(kl||card.lastElementChild).before(list)}else if(anchor)anchor.after(list);else card.prepend(list)}
+  if(list.dataset.sig!==sig){list.dataset.sig=sig;list.innerHTML='';[...sel.options].forEach(o=>{const row=mk('div','beta-rrow');row.dataset.v=o.value;const [nm,...rest]=o.text.split(' · ');
+    const n=mk('button','beta-rname');n.type='button';n.append(document.createTextNode(nm));if(rest.length)n.appendChild(mk('small','',rest.join(' · ')));n.onclick=()=>pick(sc,o.value,'info');
+    const i=mk('button','beta-rinfo','ⓘ');i.type='button';i.setAttribute('aria-label','Requirements for '+nm);i.onclick=()=>pick(sc,o.value,'info');
+    const c=mk('button','btn secondary beta-rcraft','Craft');c.type='button';c.setAttribute('aria-label','Craft '+nm);c.onclick=()=>pick(sc,o.value,'craft');row.append(n,i,c);list.appendChild(row)})}
+  const LIM=PHONE()&&!ST['rall-'+key]?8:1e9;$$('.beta-rrow',list).forEach((r,j)=>{cls(r,'sel',r.dataset.v===sel.value);cls(r,'beta-fhide',j>=LIM&&r.dataset.v!==sel.value)});
+  let more=list.nextElementSibling?.classList.contains('beta-rmore')?list.nextElementSibling:null;if(PHONE()&&sel.options.length>8){if(!more){more=mk('button','beta-tog beta-rmore');more.type='button';more.onclick=()=>{ST['rall-'+key]=!ST['rall-'+key];run()};list.after(more)}setText(more,ST['rall-'+key]?'▴ Show fewer':'▾ Show all recipes · '+sel.options.length)}else if(more)more.remove()});
+ popup()}
+function pick(sc,v,mode){const fresh=()=>sc.kitchen!=null?$(`#kitchen-recipes select[data-cook-recipe="${sc.kitchen}"]`):$(':scope select',sc.card);let s=fresh();if(s&&s.value!==v){s.value=v;fire(s)}
+ requestAnimationFrame(()=>requestAnimationFrame(()=>{if(mode==='craft'){const b=sc.btn();if(b&&!b.disabled){b.click();ST.pop=null;run();return}}ST.pop=sc.card.id;run()}))}
+function popup(){const id=ST.pop;$$('.beta-rl-pop').forEach(c=>{if(c.id!==id){c.classList.remove('beta-rl-pop');$(':scope > .beta-rl-close',c)?.remove()}});let bd=$('.beta-rl-bd');
+ if(!id){bd?.remove();return}const card=document.getElementById(id);if(!card||!$('#crafting.active,#crafting.view.active')&&!card.closest('.view.active')){ST.pop=null;bd?.remove();return}
+ let dd=card.closest('details');while(dd){if(!dd.open)dd.open=true;dd=dd.parentElement?.closest('details')}card.classList.add('beta-rl-pop');if(!$(':scope > .beta-rl-close',card)){const x=mk('button','beta-rl-close','✕');x.type='button';x.setAttribute('aria-label','Close');x.onclick=()=>{ST.pop=null;run()};card.prepend(x)}
+ if(!bd){bd=mk('div','beta-rl-bd');bd.onclick=()=>{ST.pop=null;run()};document.body.appendChild(bd)}}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&ST.pop){ST.pop=null;run()}});
+
+/* ---------- B3: trading Cargo -> Party with pinned Send bar ---------- */
+function tradeSteps(){const art=$('#trade-route-title')?.closest('article');const bar0=$('body > .beta-tbar');const on=!!art&&$('#trading')?.classList.contains('active');document.documentElement.classList.toggle('beta-tbar-on',on);
+ if(!on)return;
+ let tabs=$(':scope > .beta-tsteps',art);if(!tabs){tabs=mk('div','beta-tsteps');tabs.setAttribute('role','tablist');[['cargo','1 · Cargo'],['party','2 · Party']].forEach(([k,l])=>{const b=mk('button','',l);b.type='button';b.setAttribute('role','tab');b.dataset.s=k;b.onclick=()=>{ST.ts=k;run();art.scrollIntoView({block:'start'})};tabs.appendChild(b)});$(':scope > .cardhead',art).after(tabs)}
+ const step=ST.ts||'cargo';$$('button',tabs).forEach(b=>{cls(b,'on',b.dataset.s===step);b.setAttribute('aria-selected',String(b.dataset.s===step))});
+ const kids=[...art.children].filter(e=>e!==tabs&&!e.classList.contains('cardhead'));const h3s=kids.filter(e=>e.tagName==='H3');const partyH=h3s[1];
+ let inParty=false;kids.forEach(e=>{if(e===partyH)inParty=true;const disp=e.classList.contains('trade-dispatch-row');cls(e,'beta-tstep-hide',disp?false:(inParty?step!=='party':step!=='cargo'))});
+ const row=$('.trade-dispatch-row',art);if(bar0)bar0.remove();
+ if(row){row.classList.add('beta-tbar');cls(row,'beta-tstep-hide',false);let nx=$(':scope > .beta-tnext',row);if(!nx){nx=mk('button','btn secondary beta-tnext','Party ›');nx.type='button';nx.setAttribute('aria-label','Next: choose convoy members');nx.onclick=()=>{ST.ts='party';run();art.scrollIntoView({block:'start'})};$('#trade-dispatch',row)?.before(nx)}cls(nx,'beta-tstep-hide',step!=='cargo')}}
+
+/* ---------- B4: staff sub-tabs + one-line candidates ---------- */
+function staffTabs(){const sec=$('#staff');if(!sec)return;const grid=$(':scope > .grid.two',sec);if(!grid)return;const [cur,hire]=$$(':scope > article',grid);if(!cur||!hire)return;
+ let t=$(':scope > .beta-stabs',sec);if(!t){t=mk('div','beta-subtabs beta-stabs');t.setAttribute('role','tablist');[['staff','🗝 Staff'],['hire','✚ Hire']].forEach(([k,l])=>{const b=mk('button','',l);b.type='button';b.setAttribute('role','tab');b.dataset.s=k;b.onclick=()=>{ST.stab=k;run();scrollTo(0,0)};t.appendChild(b)});grid.before(t)}
+ const s=ST.stab||'staff';$$('button',t).forEach(b=>{cls(b,'on',b.dataset.s===s);b.setAttribute('aria-selected',String(b.dataset.s===s))});const nc=$$('.staff-candidate',sec).length;setText($('button[data-s=hire]',t),'✚ Hire'+(nc?' · '+nc:''));
+ cls(cur,'beta-shide',s!=='staff');cls(hire,'beta-shide',s!=='hire');
+ $$('.staff-candidate',sec).forEach(c=>{c.classList.add('beta-cand1');let line=$(':scope > .beta-cline',c);const p=$(':scope > p',c);const apt=$$('.staff-aptitudes span',c).map(x=>{const n=x.firstChild?.textContent||'';return n.slice(0,4)+' '+(x.querySelector('strong')?.textContent||'')}).join(' · ');
+  const txt=(p?p.textContent.split('·').slice(0,2).join('·').trim():'')+(apt?' · '+apt:'');if(!line){line=mk('div','beta-cline');$(':scope > h4',c)?.after(line)}setText(line,txt)})}
+
+/* ---------- B5: permanent gathering one row per profession ---------- */
+function gatherRows(){const gl=$('#gather-quest-list');if(!gl)return;gl.classList.add('beta-grows');
+ $$(':scope > article.quest',gl).forEach(a=>{const btn=$('.questfoot .btn',a);const head=$(':scope > .cardhead',a);if(!head)return;
+  const foot=$(':scope > .questfoot',a);if(foot)foot.classList.add('beta-gfoot');
+  let info=$(':scope > .beta-ginfo',a);if(!info){info=mk('button','beta-ginfo','ⓘ');info.type='button';info.addEventListener('click',e=>{e.stopPropagation();const k='g-'+($('h3',a)?.textContent||'');ST[k]=!ST[k];run()});head.after(info)}
+  const k='g-'+($('h3',a)?.textContent||'');info.setAttribute('aria-expanded',String(!!ST[k]));info.setAttribute('aria-label','Details for '+($('h3',a)?.textContent||''));cls(a,'beta-gopen',!!ST[k]);
+  let meta=$(':scope > .beta-gmeta',a);const pills=$$('.questfacts .pill',a).map(p=>p.textContent.trim());const want=[pills.find(x=>/^DC/.test(x)),pills.find(x=>/min|hr|h$/.test(x)),pills.find(x=>/^Party/.test(x)),pills.find(x=>/^Organise/.test(x))].filter(Boolean).join(' · ');
+  if(!meta){meta=mk('div','beta-gmeta');a.appendChild(meta)}setText(meta,want)})}
+
+/* ---------- C: location art (World cards + trade destination cards) ---------- */
+const ART=new Set(["ahnqiraj", "arcatraz", "argent-tournament", "astranaar", "azshara", "blackfathom-deeps", "blackrock-approach", "blackrock-depths", "booty-bay", "cenarion-hold", "crossroads", "darkshire", "deadmines", "deepdelve-vault", "dire-maul-east", "dire-maul-west", "end-time", "everlook", "feathermoon", "firelands-approach", "forge-of-souls", "gnomeregan", "goldshire", "gromgol", "gurubashi-arena", "halls-of-lightning", "halls-of-origination", "ironforge", "jaguero-isle", "kharanos", "lakeshire", "lights-hope", "lower-blackrock-spire", "maraudon", "marshals-stand", "molten-core", "naxxramas", "nesingwary", "nethergarde", "onyxias-lair", "orgrimmar", "pit-of-saron", "ragefire-chasm", "razorfen-downs", "razorfen-kraul", "rebel-camp", "scarlet-monastery", "scholomance", "sentinel-hill", "shadow-labyrinth", "shadowfang-keep", "shattered-halls", "stockade", "stonard", "stratholme", "stromgarde-keep", "sunken-temple", "tainted-scar", "thunder-bluff", "twilight-grove", "uldaman", "undercity", "upper-blackrock-spire", "wailing-caverns", "warsong-lumber-camp", "well-of-eternity", "wyrmrest-temple", "zulfarrak", "zulgurub"]);const LIVEART=['ratchet','gadgetzan','theramore','stormwind'];
+function artUrl(id){if(LIVEART.includes(id)){try{return tradeImages[id]}catch(e){return null}}return ART.has(id)?'img/locations/'+id+'.webp':null}
+const byName=()=>{const m={};try{V9_WORLD.locations.forEach(l=>m[l.name]=l.id)}catch(e){}return m};
+function locArt(){const names=byName();$$('#world-root article.v9-loc').forEach(a=>{const n=$('h3',a)?.textContent;const id=names[n];const u=id&&artUrl(id);if(!u)return;let d=$(':scope > .beta-locart',a);if(!d){d=mk('div','beta-locart');d.setAttribute('role','img');d.setAttribute('aria-label',n);a.prepend(d);a.classList.add('beta-hasart')}const want=`url("${u}")`;if(d.dataset.u!==id){d.dataset.u=id;d.style.backgroundImage=want}});
+ let dests=[];try{dests=typeof tradeDestinations==='function'?tradeDestinations():[]}catch(e){}
+ $$('#trade-destinations .trade-destination').forEach(c=>{const t=$('h3',c)?.textContent||'';const d=dests.find(x=>x.name===t)||null;const id=d?d.id:names[t]||names[t.replace(/ City$| Isle$/,'')];const u=id&&artUrl(id);if(!u)return;
+  const g=light()?'linear-gradient(90deg,rgba(251,245,230,.97) 0%,rgba(251,245,230,.92) 60%,rgba(251,245,230,.45) 100%)':'linear-gradient(90deg,rgba(20,17,13,.95) 0%,rgba(20,17,13,.80) 50%,rgba(20,17,13,.30) 100%)';const want=g+',url("'+u+'")';const key=id+(light()?'L':'D');
+  if(c.dataset.bart!==key){c.dataset.bart=key;c.style.setProperty('background-image',want,'important');c.style.setProperty('background-size','cover','important');c.style.setProperty('background-position','center right','important');c.classList.add('beta-tart')}})}
+
+let q=false;function run(){q=false;try{dedupeLatest();onboarding();empties();recipeLists();tradeSteps();staffTabs();gatherRows();locArt();inkFix()}catch(e){console.warn('beta-r3',e&&e.stack||e)}}
+function sched(){if(!q){q=true;requestAnimationFrame(run)}}window.betaR3Run=run;window.betaR3State=ST;
+function init(){run();new MutationObserver(sched).observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['class','open','disabled']});addEventListener('resize',sched)}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
 

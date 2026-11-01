@@ -15,3 +15,4 @@
 .applicant-name .beta-hero-bubble.beta-portrait-frame{--beta-portrait-size:38px}
 #modal-name .beta-hero-bubble.beta-portrait-frame{--beta-portrait-size:48px}
 .beta-portrait-frame>.beta-wound-pip,.beta-portrait-frame>.pv-wound-icon,.beta-portrait-frame.pv-avatar::after{z-index:2}
+.beta-portrait-gallery[hidden]{display:none!important}

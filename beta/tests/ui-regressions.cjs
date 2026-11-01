@@ -1,14 +1,6 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
-const beta=path.resolve(__dirname,'..'),noop=()=>{},elements=new Map();
-for(const id of ['test-complete-quests','test-quest-status','latest-title','latest-text'])elements.set(id,{hidden:true,disabled:false,textContent:''});
-const context={console,URL,URLSearchParams,localStorage:{getItem:()=>null,setItem:noop},document:{getElementById:id=>elements.get(id)||null,querySelector:()=>null,querySelectorAll:()=>[],createElement:()=>({className:'',setAttribute:noop}),head:{append:noop},body:{append:noop},addEventListener:noop},MutationObserver:class{observe(){}},addEventListener:noop,renderHeroes:noop,v9PickHead:noop,renderReports:noop,render:noop,save:()=>context.saves++,saves:0,addLog:noop,game:{gold:100,day:3,heroes:[],todayReports:[],pendingReports:[{kind:'operation',dueAt:Date.now()+60000,summary:'Returned safely'}]},location:{search:''}};
-context.window=context;context.applyPendingReports=()=>context.game.pendingReports.splice(0);vm.createContext(context);
-vm.runInContext(fs.readFileSync(path.join(beta,'../testing-controls.js'),'utf8'),context);
-const finish=context.testCompleteAllQuests;
-vm.runInContext(fs.readFileSync(path.join(beta,'atmosphere.js'),'utf8'),context);
-assert.equal(elements.get('test-complete-quests').hidden,false);assert.equal(elements.get('test-quest-status').hidden,false);assert.equal(context.testCompleteAllQuests,finish);
-assert.equal(context.testCompleteAllQuests().length,1);assert.equal(context.game.pendingReports.length,0);assert.equal(context.game.day,3);assert.equal(context.saves,1);assert.match(elements.get('test-quest-status').textContent,/1 reports returned/);assert.equal(elements.get('test-complete-quests').disabled,true);
-console.log('PASS quest completion visible and functional without debug, outcomes saved without advancing the day');
+const beta=path.resolve(__dirname,'..');
+require('./atmosphere.cjs');
 for(const relative of ['preview.html',...Array.from({length:5},(_,i)=>`batch-00${i+1}/preview.html`)]){
  const file=path.join(beta,'art/portraits/chibi',relative),html=fs.readFileSync(file,'utf8'),href=html.match(/class="gallery-back" href="([^"]+)"/)[1];
  assert.equal(path.resolve(path.dirname(file),href),path.join(beta,'index.html'));

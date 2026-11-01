@@ -4,8 +4,16 @@
  const pref=(key,fallback=false)=>{try{const value=localStorage.getItem('wayfarers-lantern-beta-'+key);return value===null?fallback:value==='1'}catch(e){return fallback}};
  const savePref=(key,value)=>{try{localStorage.setItem('wayfarers-lantern-beta-'+key,value?'1':'0')}catch(e){}};
  const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
- // Beta keeps its manual quest-completion control available without a debug flag.
- for(const id of ['test-complete-quests','test-quest-status']){const el=document.getElementById(id);if(el)el.hidden=false}
+ // Beta testing tools are opt-in and stored separately from the gameplay save.
+ let debug=pref('debug');
+ function applyDebugMode(){
+  for(const id of ['test-complete-quests','test-quest-status']){const el=document.getElementById(id);if(el)el.hidden=!debug}
+  document.querySelectorAll('.beta-portrait-gallery').forEach(el=>{el.hidden=!debug});
+  const button=document.getElementById('beta-debug-toggle');if(button){button.textContent='Debug mode · '+(debug?'On':'Off');button.setAttribute('aria-pressed',String(debug))}
+ }
+ window.betaDebugEnabled=()=>debug;window.betaApplyDebugMode=applyDebugMode;
+ const complete=window.testCompleteAllQuests;if(complete)window.testCompleteAllQuests=function(){return debug?complete.apply(this,arguments):[]};
+ applyDebugMode();
  const letters={'Warrior':'W','Paladin':'P','Hunter':'H','Rogue':'R','Priest':'Pr','Death Knight':'DK','Shaman':'S','Mage':'M','Warlock':'Wl','Monk':'Mk','Druid':'D','Demon Hunter':'DH','Evoker':'E'};
  const colors={'Warrior':'#c79c6e','Paladin':'#f58cba','Hunter':'#abd473','Rogue':'#fff569','Priest':'#f5eee4','Death Knight':'#eb6574','Shaman':'#6ca9e8','Mage':'#69ccf0','Warlock':'#b59bea','Monk':'#4fcba9','Druid':'#ffad69','Demon Hunter':'#c990e3','Evoker':'#72c5aa'};
  function condition(h){return h.dead?'Fallen':h.wound?(WOUND_TIERS[h.wound.tier]?.name||'Wounded')+' wound':'Healthy'}
@@ -21,10 +29,35 @@
  let variants=pref('dawn-variants',true),sounds=pref('harbour-sounds');
  const dawns=['The harbour wakes. Your story continues.','Salt on the breeze. Fresh work on the boards.','Lanterns fade as Booty Bay greets the sun.','Another tide. Another chance to make your name.'];
  window.betaDawnCopy=()=>variants?dawns[(Math.max(1,Number(game.day)||1)-1)%dawns.length]:dawns[0];
- let audio=null,sea=null,soundControl=null;
- function stopAudio(){const old=audio;audio=null;sea=null;if(old)old.close().catch(()=>{})}
- function startAudio(){if(!sounds||audio||document.hidden)return;try{const Context=window.AudioContext||window.webkitAudioContext;if(!Context)return;audio=new Context();const buffer=audio.createBuffer(1,audio.sampleRate*4,audio.sampleRate),data=buffer.getChannelData(0);for(let i=0;i<data.length;i++)data[i]=(Math.random()*2-1)*.3;sea=audio.createBufferSource();sea.buffer=buffer;sea.loop=true;const filter=audio.createBiquadFilter();filter.type='lowpass';filter.frequency.value=430;const gain=audio.createGain();gain.gain.value=.11;sea.connect(filter);filter.connect(gain);gain.connect(audio.destination);sea.start();audio.resume().catch(()=>{})}catch(e){stopAudio();sounds=false;savePref('harbour-sounds',false);if(soundControl)soundControl.checked=false}}
+ let audio=null,sea=null,soundControl=null,soundHint=null,soundIssue='';
+ function soundStatus(){if(!soundHint)return;const text=soundIssue||(!sounds?'Sound is off. Enable for quiet sea ambience and two soft bells when you rest.':audio?.state==='running'?'Playing quiet sea ambience. Two soft bells play when you rest.':'Tap anywhere to start or resume harbour sounds.');if(soundHint.textContent!==text)soundHint.textContent=text}
+ function stopAudio(){const old=audio;audio=null;sea=null;if(old)old.close().catch(()=>{});soundStatus()}
+ function resumeAudio(ctx){ctx.resume().then(()=>{if(audio===ctx){soundIssue='';soundStatus()}}).catch(()=>{if(audio===ctx){soundIssue='Tap anywhere to start or resume harbour sounds.';soundStatus()}})}
+ function startAudio(){
+  if(!sounds||document.hidden)return;
+  if(audio?.state==='closed'){audio=null;sea=null}
+  // Browsers may suspend playback after a tab switch; retry on the next tap.
+  if(audio){if(audio.state!=='running')resumeAudio(audio);return}
+  try{const Context=window.AudioContext||window.webkitAudioContext;if(!Context){soundIssue='This browser does not support harbour sounds.';soundStatus();return}
+   audio=new Context();const ctx=audio;ctx.onstatechange=()=>{if(audio===ctx){if(ctx.state==='running')soundIssue='';soundStatus()}};
+   const buffer=audio.createBuffer(1,audio.sampleRate*4,audio.sampleRate),data=buffer.getChannelData(0);for(let i=0;i<data.length;i++)data[i]=(Math.random()*2-1)*.3;
+   sea=audio.createBufferSource();sea.buffer=buffer;sea.loop=true;const filter=audio.createBiquadFilter();filter.type='lowpass';filter.frequency.value=430;const gain=audio.createGain();gain.gain.value=.11;sea.connect(filter);filter.connect(gain);gain.connect(audio.destination);sea.start();resumeAudio(ctx);soundStatus();
+  }catch(e){stopAudio();sounds=false;savePref('harbour-sounds',false);if(soundControl)soundControl.checked=false;soundIssue='Harbour sounds could not start in this browser.';soundStatus()}
+ }
  window.betaHarbourDawn=()=>{if(!sounds||!audio||document.hidden)return;const ctx=audio,t=ctx.currentTime;for(const [offset,freq] of [[0,660],[.32,880]]){const bell=ctx.createOscillator(),gain=ctx.createGain();bell.type='sine';bell.frequency.value=freq;gain.gain.setValueAtTime(0,t+offset);gain.gain.linearRampToValueAtTime(.035,t+offset+.025);gain.gain.exponentialRampToValueAtTime(.0001,t+offset+1.4);bell.connect(gain);gain.connect(ctx.destination);bell.start(t+offset);bell.stop(t+offset+1.5);bell.onended=()=>{bell.disconnect();gain.disconnect()}}};
- function settings(){const menu=document.querySelector('.beta-menu');if(!menu||menu.querySelector('.beta-atmosphere-settings'))return;const section=document.createElement('fieldset');section.className='beta-atmosphere-settings';const legend=document.createElement('legend');legend.textContent='Harbour atmosphere';section.append(legend);for(const [key,label,checked,change] of [['dawn-variants','Vary dawn messages',variants,value=>{variants=value}],['harbour-sounds','Harbour sounds (quiet sea & dawn bell)',sounds,value=>{sounds=value;if(value)startAudio();else stopAudio()}]]){const row=document.createElement('label'),input=document.createElement('input');input.type='checkbox';input.checked=checked;input.dataset.betaPref=key;input.onchange=()=>{savePref(key,input.checked);change(input.checked)};if(key==='harbour-sounds')soundControl=input;row.append(input,document.createTextNode(label));section.append(row)}menu.append(section)}
- settings();document.addEventListener('pointerdown',()=>{settings();startAudio()},{passive:true});document.addEventListener('keydown',()=>startAudio(),{passive:true});document.addEventListener('visibilitychange',()=>{if(document.hidden)stopAudio();else startAudio()});addEventListener('pagehide',stopAudio);
+ function settings(){
+  const menu=document.querySelector('.beta-menu');if(!menu)return;
+  if(!menu.querySelector('.beta-debug-settings')){
+   const section=document.createElement('fieldset');section.className='beta-debug-settings';const legend=document.createElement('legend');legend.textContent='Testing tools';
+   const button=document.createElement('button');button.type='button';button.className='btn secondary';button.id='beta-debug-toggle';button.onclick=()=>{debug=!debug;savePref('debug',debug);applyDebugMode()};
+   const note=document.createElement('p');note.className='small muted';note.textContent='Shows quest testing and the portrait gallery.';section.append(legend,button,note);menu.append(section);
+  }
+  applyDebugMode();if(menu.querySelector('.beta-atmosphere-settings'))return;
+  const section=document.createElement('fieldset');section.className='beta-atmosphere-settings';const legend=document.createElement('legend');legend.textContent='Harbour atmosphere';section.append(legend);
+  for(const [key,label,checked,change] of [['dawn-variants','Vary dawn messages',variants,value=>{variants=value}],['harbour-sounds','Harbour sounds (quiet sea & dawn bell)',sounds,value=>{sounds=value;soundIssue='';if(value)startAudio();else stopAudio();soundStatus()}]]){
+   const row=document.createElement('label'),input=document.createElement('input');input.type='checkbox';input.checked=checked;input.dataset.betaPref=key;input.onchange=()=>{savePref(key,input.checked);change(input.checked)};if(key==='harbour-sounds')soundControl=input;row.append(input,document.createTextNode(label));section.append(row);
+  }
+  soundHint=document.createElement('p');soundHint.className='small muted';soundHint.setAttribute('role','status');soundHint.setAttribute('aria-live','polite');section.append(soundHint);menu.append(section);soundStatus();
+ }
+ settings();if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',settings,{once:true});document.addEventListener('pointerdown',()=>{settings();startAudio()},{passive:true});document.addEventListener('keydown',()=>{settings();startAudio()},{passive:true});document.addEventListener('visibilitychange',()=>{if(document.hidden)stopAudio();else startAudio()});addEventListener('pagehide',stopAudio);
 })();

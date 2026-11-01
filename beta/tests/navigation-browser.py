@@ -1,0 +1,27 @@
+from pathlib import Path
+from functools import partial
+from http.server import ThreadingHTTPServer,SimpleHTTPRequestHandler
+from threading import Thread
+from playwright.sync_api import sync_playwright
+class Quiet(SimpleHTTPRequestHandler):
+ def log_message(self,*a):pass
+s=ThreadingHTTPServer(('127.0.0.1',0),partial(Quiet,directory=str(Path(__file__).resolve().parents[2])));Thread(target=s.serve_forever,daemon=True).start()
+try:
+ with sync_playwright() as p:
+  b=p.chromium.launch(executable_path='/usr/bin/chromium',args=['--no-sandbox']);page=b.new_page(viewport={'width':390,'height':844},is_mobile=True,has_touch=True);errors=[];page.on('pageerror',lambda e:errors.append(str(e)));page.goto(f'http://127.0.0.1:{s.server_port}/beta/',wait_until='networkidle');page.wait_for_function("document.readyState==='complete' && !!document.getElementById('beta-guild-rename')")
+  page.on('dialog',lambda d:d.accept())
+  page.evaluate('''() => {
+ const check=(x,m)=>{if(!x)throw Error(m)};
+ showView('quests');const tracker=document.getElementById('report-count').closest('article');check(tracker.parentElement.id==='quests','contracts tracker');
+ showView('permanent-quests');check(tracker.parentElement.id==='permanent-quests','permanent tracker');renderReports();showView('quests');check(tracker.parentElement.id==='quests'&&document.querySelectorAll('#report-count').length===1,'shared tracker without duplicate IDs');
+ showView('warehouse');const details=document.getElementById('beta-materials');check(details&&details.contains(document.getElementById('warehouse-materials'))&&!details.open,'materials collapsed');details.open=true;game.materials.Meat=7;renderWarehouse();check(details.open&&details.textContent.includes('Meat'),'material render preserves expansion');
+ const h=structuredClone(game.player);h.id='traits-beta';h.name='Trait Hero';h.traits=['Brave'];h.gold=200;h.ready=true;h.dead=false;h.training=null;game.heroes.push(h);viewingHeroId=h.id;renderHeroStats();let btn=document.querySelector('.beta-trait-action button');check(btn?.disabled,'requires Training Hall');
+ game.buildingList.push({uid:'beta-trainer',key:'trainingHall',level:1});game.staffMembers.push({id:'trainer-beta',name:'Trainer',wage:2,buildingUid:'beta-trainer',buildingKey:'trainingHall',professionXP:{Training:0}});staffMigrate(game);v9Sync();renderHeroStats();btn=document.querySelector('.beta-trait-action button');check(!btn.disabled,'staffed hall enables shortcut');btn.click();let panel=document.getElementById('trait-reroll-panel');check(panel.open&&panel.querySelector('[data-trait-hero]').value===h.id,'opens current hero service');check(!panel.closest('.m-collapsed'),'service visible');panel.querySelector('[data-trait-random]').click();check(h.gold===190&&h.traits[0]!=='Brave','existing 10gp confirmed service');
+ const pill=document.createElement('span');pill.className='pill';pill.textContent='Danger DC 10 · 10 min';pill.style.maxWidth='90px';document.body.append(pill);check(getComputedStyle(pill).borderRadius==='9px','consistent multiline badge radius');pill.remove();save();
+ }''')
+  for width in [320,768,1200]:
+   page.set_viewport_size({'width':width,'height':844})
+   page.evaluate("showView('permanent-quests')")
+   assert page.locator('#report-count').evaluate("e=>e.closest('section.view').id==='permanent-quests'")
+  assert not errors,errors;b.close();print('PASS shared tracker on both quest tabs, collapsible materials, gated current-hero trait shortcut and existing 10gp service, badge shape and responsive navigation')
+finally:s.shutdown()

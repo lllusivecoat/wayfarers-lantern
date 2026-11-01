@@ -19,6 +19,9 @@ try:
   for theme in ['dark','light']:
    page.evaluate("document.documentElement.classList.toggle('beta-light',"+str(theme=='light').lower()+")")
    assert page.evaluate("getComputedStyle(document.querySelector('.hero-ability')).backgroundColor===getComputedStyle(document.querySelector('.equipment-slot')).backgroundColor")
+  page.evaluate("openQuickEquip('player')")
+  assert page.evaluate("getComputedStyle(document.querySelector('#quick-equip-modal .equipment-slot')).backgroundColor===getComputedStyle(document.querySelector('#hero-stats-modal .equipment-slot')).backgroundColor")
+  page.evaluate("document.getElementById('quick-equip-modal').classList.remove('open')")
   page.evaluate('''() => {const key='wayfarers_lantern_offline_v1',before=localStorage.getItem(key);localStorage.setItem(key,JSON.stringify({...JSON.parse(before),heroes:[]}));if(localStorage.getItem(key)!==before||!window.__betaSaveBlocked)throw Error('empty-guild guard broken')}''')
   page.evaluate("document.getElementById('hero-stats-modal').classList.remove('open');showView('hall')")
   for width in [390,768,1200]:

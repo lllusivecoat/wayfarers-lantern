@@ -1,0 +1,8 @@
+/* Keep custom photos and automatic chibi portraits in the existing bubbles. */
+.beta-hero-bubble{position:relative;display:inline-block;vertical-align:middle;flex:0 0 34px;width:34px;height:34px;margin-right:9px;line-height:0;overflow:visible}
+.beta-hero-bubble img{display:block;width:100%;height:100%;object-fit:cover;border-radius:50%;border:0;background:var(--bg)}
+.v9pick-name>.beta-hero-bubble{margin-right:9px}.v9pick-name:has(>.beta-hero-bubble){overflow:visible!important;white-space:normal!important;line-height:1.5}
+#hero-list .v9-rrow:has(img.v9-rpic)>.beta-hero-crest{display:none!important}
+#hero-list .pv-photo-frame{width:36px;height:36px;border-radius:50%;flex:0 0 36px}#hero-list .pv-photo-frame img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.applicant-name .beta-hero-bubble{width:38px;height:38px;margin-right:10px}.applicant-name{line-height:1.5}#modal-name .beta-hero-bubble{width:48px;height:48px;margin-right:12px}
+.beta-portrait-gallery{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;min-height:44px;white-space:normal;text-align:center}

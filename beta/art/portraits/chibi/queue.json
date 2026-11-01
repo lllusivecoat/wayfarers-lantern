@@ -2406,7 +2406,13 @@
     "index": 201,
     "batch": "batch-003",
     "file": "batch-003/portraits/201-tauren-warlock-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-01.webp",
+    "row": 1,
+    "column": 1,
+    "width": 128,
+    "height": 128,
+    "bytes": 7820
   },
   {
     "race": "Tauren",
@@ -2415,7 +2421,13 @@
     "index": 202,
     "batch": "batch-003",
     "file": "batch-003/portraits/202-tauren-warlock-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-01.webp",
+    "row": 1,
+    "column": 2,
+    "width": 128,
+    "height": 128,
+    "bytes": 8398
   },
   {
     "race": "Tauren",
@@ -2424,7 +2436,13 @@
     "index": 203,
     "batch": "batch-003",
     "file": "batch-003/portraits/203-tauren-warrior-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-01.webp",
+    "row": 1,
+    "column": 3,
+    "width": 128,
+    "height": 128,
+    "bytes": 7898
   },
   {
     "race": "Tauren",
@@ -2433,7 +2451,13 @@
     "index": 204,
     "batch": "batch-003",
     "file": "batch-003/portraits/204-tauren-warrior-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-01.webp",
+    "row": 1,
+    "column": 4,
+    "width": 128,
+    "height": 128,
+    "bytes": 8068
   },
   {
     "race": "Troll",
@@ -2442,7 +2466,13 @@
     "index": 205,
     "batch": "batch-003",
     "file": "batch-003/portraits/205-troll-death-knight-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-01.webp",
+    "row": 1,
+    "column": 5,
+    "width": 128,
+    "height": 128,
+    "bytes": 7798
   },
   {
     "race": "Troll",
@@ -2451,7 +2481,13 @@
     "index": 206,
     "batch": "batch-003",
     "file": "batch-003/portraits/206-troll-death-knight-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-01.webp",
+    "row": 2,
+    "column": 1,
+    "width": 128,
+    "height": 128,
+    "bytes": 7658
   },
   {
     "race": "Troll",
@@ -2460,7 +2496,13 @@
     "index": 207,
     "batch": "batch-003",
     "file": "batch-003/portraits/207-troll-druid-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-01.webp",
+    "row": 2,
+    "column": 2,
+    "width": 128,
+    "height": 128,
+    "bytes": 7872
   },
   {
     "race": "Troll",
@@ -2469,7 +2511,13 @@
     "index": 208,
     "batch": "batch-003",
     "file": "batch-003/portraits/208-troll-druid-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-01.webp",
+    "row": 2,
+    "column": 3,
+    "width": 128,
+    "height": 128,
+    "bytes": 8174
   },
   {
     "race": "Troll",
@@ -2478,7 +2526,13 @@
     "index": 209,
     "batch": "batch-003",
     "file": "batch-003/portraits/209-troll-hunter-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-01.webp",
+    "row": 2,
+    "column": 4,
+    "width": 128,
+    "height": 128,
+    "bytes": 7742
   },
   {
     "race": "Troll",
@@ -2487,7 +2541,13 @@
     "index": 210,
     "batch": "batch-003",
     "file": "batch-003/portraits/210-troll-hunter-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-01.webp",
+    "row": 2,
+    "column": 5,
+    "width": 128,
+    "height": 128,
+    "bytes": 7750
   },
   {
     "race": "Troll",
@@ -2496,7 +2556,13 @@
     "index": 211,
     "batch": "batch-003",
     "file": "batch-003/portraits/211-troll-mage-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-01.webp",
+    "row": 3,
+    "column": 1,
+    "width": 128,
+    "height": 128,
+    "bytes": 8328
   },
   {
     "race": "Troll",
@@ -2505,7 +2571,13 @@
     "index": 212,
     "batch": "batch-003",
     "file": "batch-003/portraits/212-troll-mage-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-01.webp",
+    "row": 3,
+    "column": 2,
+    "width": 128,
+    "height": 128,
+    "bytes": 8654
   },
   {
     "race": "Troll",
@@ -2514,7 +2586,13 @@
     "index": 213,
     "batch": "batch-003",
     "file": "batch-003/portraits/213-troll-monk-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-01.webp",
+    "row": 3,
+    "column": 3,
+    "width": 128,
+    "height": 128,
+    "bytes": 7686
   },
   {
     "race": "Troll",
@@ -2523,7 +2601,13 @@
     "index": 214,
     "batch": "batch-003",
     "file": "batch-003/portraits/214-troll-monk-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-01.webp",
+    "row": 3,
+    "column": 4,
+    "width": 128,
+    "height": 128,
+    "bytes": 7712
   },
   {
     "race": "Troll",
@@ -2532,7 +2616,13 @@
     "index": 215,
     "batch": "batch-003",
     "file": "batch-003/portraits/215-troll-paladin-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-01.webp",
+    "row": 3,
+    "column": 5,
+    "width": 128,
+    "height": 128,
+    "bytes": 8284
   },
   {
     "race": "Troll",
@@ -2541,7 +2631,13 @@
     "index": 216,
     "batch": "batch-003",
     "file": "batch-003/portraits/216-troll-paladin-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-01.webp",
+    "row": 4,
+    "column": 1,
+    "width": 128,
+    "height": 128,
+    "bytes": 7722
   },
   {
     "race": "Troll",
@@ -2550,7 +2646,13 @@
     "index": 217,
     "batch": "batch-003",
     "file": "batch-003/portraits/217-troll-priest-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-01.webp",
+    "row": 4,
+    "column": 2,
+    "width": 128,
+    "height": 128,
+    "bytes": 7960
   },
   {
     "race": "Troll",
@@ -2559,7 +2661,13 @@
     "index": 218,
     "batch": "batch-003",
     "file": "batch-003/portraits/218-troll-priest-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-01.webp",
+    "row": 4,
+    "column": 3,
+    "width": 128,
+    "height": 128,
+    "bytes": 7634
   },
   {
     "race": "Troll",
@@ -2568,7 +2676,13 @@
     "index": 219,
     "batch": "batch-003",
     "file": "batch-003/portraits/219-troll-rogue-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-01.webp",
+    "row": 4,
+    "column": 4,
+    "width": 128,
+    "height": 128,
+    "bytes": 7106
   },
   {
     "race": "Troll",
@@ -2577,7 +2691,13 @@
     "index": 220,
     "batch": "batch-003",
     "file": "batch-003/portraits/220-troll-rogue-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-01.webp",
+    "row": 4,
+    "column": 5,
+    "width": 128,
+    "height": 128,
+    "bytes": 7042
   },
   {
     "race": "Troll",
@@ -2586,7 +2706,13 @@
     "index": 221,
     "batch": "batch-003",
     "file": "batch-003/portraits/221-troll-shaman-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-02.webp",
+    "row": 1,
+    "column": 1,
+    "width": 128,
+    "height": 128,
+    "bytes": 8530
   },
   {
     "race": "Troll",
@@ -2595,7 +2721,13 @@
     "index": 222,
     "batch": "batch-003",
     "file": "batch-003/portraits/222-troll-shaman-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-02.webp",
+    "row": 1,
+    "column": 2,
+    "width": 128,
+    "height": 128,
+    "bytes": 8708
   },
   {
     "race": "Troll",
@@ -2604,7 +2736,13 @@
     "index": 223,
     "batch": "batch-003",
     "file": "batch-003/portraits/223-troll-warlock-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-02.webp",
+    "row": 1,
+    "column": 3,
+    "width": 128,
+    "height": 128,
+    "bytes": 8044
   },
   {
     "race": "Troll",
@@ -2613,7 +2751,13 @@
     "index": 224,
     "batch": "batch-003",
     "file": "batch-003/portraits/224-troll-warlock-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-02.webp",
+    "row": 1,
+    "column": 4,
+    "width": 128,
+    "height": 128,
+    "bytes": 8034
   },
   {
     "race": "Troll",
@@ -2622,7 +2766,13 @@
     "index": 225,
     "batch": "batch-003",
     "file": "batch-003/portraits/225-troll-warrior-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-02.webp",
+    "row": 1,
+    "column": 5,
+    "width": 128,
+    "height": 128,
+    "bytes": 7996
   },
   {
     "race": "Troll",
@@ -2631,7 +2781,13 @@
     "index": 226,
     "batch": "batch-003",
     "file": "batch-003/portraits/226-troll-warrior-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-02.webp",
+    "row": 2,
+    "column": 1,
+    "width": 128,
+    "height": 128,
+    "bytes": 8008
   },
   {
     "race": "Blood Elf",
@@ -2640,7 +2796,13 @@
     "index": 227,
     "batch": "batch-003",
     "file": "batch-003/portraits/227-blood-elf-death-knight-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-02.webp",
+    "row": 2,
+    "column": 2,
+    "width": 128,
+    "height": 128,
+    "bytes": 7836
   },
   {
     "race": "Blood Elf",
@@ -2649,7 +2811,13 @@
     "index": 228,
     "batch": "batch-003",
     "file": "batch-003/portraits/228-blood-elf-death-knight-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-02.webp",
+    "row": 2,
+    "column": 3,
+    "width": 128,
+    "height": 128,
+    "bytes": 7508
   },
   {
     "race": "Blood Elf",
@@ -2658,7 +2826,13 @@
     "index": 229,
     "batch": "batch-003",
     "file": "batch-003/portraits/229-blood-elf-demon-hunter-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-02.webp",
+    "row": 2,
+    "column": 4,
+    "width": 128,
+    "height": 128,
+    "bytes": 7702
   },
   {
     "race": "Blood Elf",
@@ -2667,7 +2841,13 @@
     "index": 230,
     "batch": "batch-003",
     "file": "batch-003/portraits/230-blood-elf-demon-hunter-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-02.webp",
+    "row": 2,
+    "column": 5,
+    "width": 128,
+    "height": 128,
+    "bytes": 7832
   },
   {
     "race": "Blood Elf",
@@ -2676,7 +2856,13 @@
     "index": 231,
     "batch": "batch-003",
     "file": "batch-003/portraits/231-blood-elf-hunter-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-02.webp",
+    "row": 3,
+    "column": 1,
+    "width": 128,
+    "height": 128,
+    "bytes": 8174
   },
   {
     "race": "Blood Elf",
@@ -2685,7 +2871,13 @@
     "index": 232,
     "batch": "batch-003",
     "file": "batch-003/portraits/232-blood-elf-hunter-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-02.webp",
+    "row": 3,
+    "column": 2,
+    "width": 128,
+    "height": 128,
+    "bytes": 8084
   },
   {
     "race": "Blood Elf",
@@ -2694,7 +2886,13 @@
     "index": 233,
     "batch": "batch-003",
     "file": "batch-003/portraits/233-blood-elf-mage-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-02.webp",
+    "row": 3,
+    "column": 3,
+    "width": 128,
+    "height": 128,
+    "bytes": 8690
   },
   {
     "race": "Blood Elf",
@@ -2703,7 +2901,13 @@
     "index": 234,
     "batch": "batch-003",
     "file": "batch-003/portraits/234-blood-elf-mage-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-02.webp",
+    "row": 3,
+    "column": 4,
+    "width": 128,
+    "height": 128,
+    "bytes": 8532
   },
   {
     "race": "Blood Elf",
@@ -2712,7 +2916,13 @@
     "index": 235,
     "batch": "batch-003",
     "file": "batch-003/portraits/235-blood-elf-monk-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-02.webp",
+    "row": 3,
+    "column": 5,
+    "width": 128,
+    "height": 128,
+    "bytes": 7702
   },
   {
     "race": "Blood Elf",
@@ -2721,7 +2931,13 @@
     "index": 236,
     "batch": "batch-003",
     "file": "batch-003/portraits/236-blood-elf-monk-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-02.webp",
+    "row": 4,
+    "column": 1,
+    "width": 128,
+    "height": 128,
+    "bytes": 6866
   },
   {
     "race": "Blood Elf",
@@ -2730,7 +2946,13 @@
     "index": 237,
     "batch": "batch-003",
     "file": "batch-003/portraits/237-blood-elf-paladin-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-02.webp",
+    "row": 4,
+    "column": 2,
+    "width": 128,
+    "height": 128,
+    "bytes": 7206
   },
   {
     "race": "Blood Elf",
@@ -2739,7 +2961,13 @@
     "index": 238,
     "batch": "batch-003",
     "file": "batch-003/portraits/238-blood-elf-paladin-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-02.webp",
+    "row": 4,
+    "column": 3,
+    "width": 128,
+    "height": 128,
+    "bytes": 7352
   },
   {
     "race": "Blood Elf",
@@ -2748,7 +2976,13 @@
     "index": 239,
     "batch": "batch-003",
     "file": "batch-003/portraits/239-blood-elf-priest-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-02.webp",
+    "row": 4,
+    "column": 4,
+    "width": 128,
+    "height": 128,
+    "bytes": 7322
   },
   {
     "race": "Blood Elf",
@@ -2757,7 +2991,13 @@
     "index": 240,
     "batch": "batch-003",
     "file": "batch-003/portraits/240-blood-elf-priest-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-02.webp",
+    "row": 4,
+    "column": 5,
+    "width": 128,
+    "height": 128,
+    "bytes": 7184
   },
   {
     "race": "Blood Elf",
@@ -2766,7 +3006,13 @@
     "index": 241,
     "batch": "batch-003",
     "file": "batch-003/portraits/241-blood-elf-rogue-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-03.webp",
+    "row": 1,
+    "column": 1,
+    "width": 128,
+    "height": 128,
+    "bytes": 7166
   },
   {
     "race": "Blood Elf",
@@ -2775,7 +3021,13 @@
     "index": 242,
     "batch": "batch-003",
     "file": "batch-003/portraits/242-blood-elf-rogue-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-03.webp",
+    "row": 1,
+    "column": 2,
+    "width": 128,
+    "height": 128,
+    "bytes": 7330
   },
   {
     "race": "Blood Elf",
@@ -2784,7 +3036,13 @@
     "index": 243,
     "batch": "batch-003",
     "file": "batch-003/portraits/243-blood-elf-warlock-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-03.webp",
+    "row": 1,
+    "column": 3,
+    "width": 128,
+    "height": 128,
+    "bytes": 7578
   },
   {
     "race": "Blood Elf",
@@ -2793,7 +3051,13 @@
     "index": 244,
     "batch": "batch-003",
     "file": "batch-003/portraits/244-blood-elf-warlock-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-03.webp",
+    "row": 1,
+    "column": 4,
+    "width": 128,
+    "height": 128,
+    "bytes": 7934
   },
   {
     "race": "Blood Elf",
@@ -2802,7 +3066,13 @@
     "index": 245,
     "batch": "batch-003",
     "file": "batch-003/portraits/245-blood-elf-warrior-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-03.webp",
+    "row": 1,
+    "column": 5,
+    "width": 128,
+    "height": 128,
+    "bytes": 7478
   },
   {
     "race": "Blood Elf",
@@ -2811,7 +3081,13 @@
     "index": 246,
     "batch": "batch-003",
     "file": "batch-003/portraits/246-blood-elf-warrior-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-03.webp",
+    "row": 2,
+    "column": 1,
+    "width": 128,
+    "height": 128,
+    "bytes": 7760
   },
   {
     "race": "Goblin",
@@ -2820,7 +3096,13 @@
     "index": 247,
     "batch": "batch-003",
     "file": "batch-003/portraits/247-goblin-death-knight-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-03.webp",
+    "row": 2,
+    "column": 2,
+    "width": 128,
+    "height": 128,
+    "bytes": 7358
   },
   {
     "race": "Goblin",
@@ -2829,7 +3111,13 @@
     "index": 248,
     "batch": "batch-003",
     "file": "batch-003/portraits/248-goblin-death-knight-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-03.webp",
+    "row": 2,
+    "column": 3,
+    "width": 128,
+    "height": 128,
+    "bytes": 7738
   },
   {
     "race": "Goblin",
@@ -2838,7 +3126,13 @@
     "index": 249,
     "batch": "batch-003",
     "file": "batch-003/portraits/249-goblin-hunter-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-03.webp",
+    "row": 2,
+    "column": 4,
+    "width": 128,
+    "height": 128,
+    "bytes": 7596
   },
   {
     "race": "Goblin",
@@ -2847,7 +3141,13 @@
     "index": 250,
     "batch": "batch-003",
     "file": "batch-003/portraits/250-goblin-hunter-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-03.webp",
+    "row": 2,
+    "column": 5,
+    "width": 128,
+    "height": 128,
+    "bytes": 7444
   },
   {
     "race": "Goblin",
@@ -2856,7 +3156,13 @@
     "index": 251,
     "batch": "batch-003",
     "file": "batch-003/portraits/251-goblin-mage-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-03.webp",
+    "row": 3,
+    "column": 1,
+    "width": 128,
+    "height": 128,
+    "bytes": 8238
   },
   {
     "race": "Goblin",
@@ -2865,7 +3171,13 @@
     "index": 252,
     "batch": "batch-003",
     "file": "batch-003/portraits/252-goblin-mage-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-03.webp",
+    "row": 3,
+    "column": 2,
+    "width": 128,
+    "height": 128,
+    "bytes": 8190
   },
   {
     "race": "Goblin",
@@ -2874,7 +3186,13 @@
     "index": 253,
     "batch": "batch-003",
     "file": "batch-003/portraits/253-goblin-monk-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-03.webp",
+    "row": 3,
+    "column": 3,
+    "width": 128,
+    "height": 128,
+    "bytes": 7440
   },
   {
     "race": "Goblin",
@@ -2883,7 +3201,13 @@
     "index": 254,
     "batch": "batch-003",
     "file": "batch-003/portraits/254-goblin-monk-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-03.webp",
+    "row": 3,
+    "column": 4,
+    "width": 128,
+    "height": 128,
+    "bytes": 7746
   },
   {
     "race": "Goblin",
@@ -2892,7 +3216,13 @@
     "index": 255,
     "batch": "batch-003",
     "file": "batch-003/portraits/255-goblin-priest-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-03.webp",
+    "row": 3,
+    "column": 5,
+    "width": 128,
+    "height": 128,
+    "bytes": 7740
   },
   {
     "race": "Goblin",
@@ -2901,7 +3231,13 @@
     "index": 256,
     "batch": "batch-003",
     "file": "batch-003/portraits/256-goblin-priest-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-03.webp",
+    "row": 4,
+    "column": 1,
+    "width": 128,
+    "height": 128,
+    "bytes": 6632
   },
   {
     "race": "Goblin",
@@ -2910,7 +3246,13 @@
     "index": 257,
     "batch": "batch-003",
     "file": "batch-003/portraits/257-goblin-rogue-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-03.webp",
+    "row": 4,
+    "column": 2,
+    "width": 128,
+    "height": 128,
+    "bytes": 5962
   },
   {
     "race": "Goblin",
@@ -2919,7 +3261,13 @@
     "index": 258,
     "batch": "batch-003",
     "file": "batch-003/portraits/258-goblin-rogue-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-03.webp",
+    "row": 4,
+    "column": 3,
+    "width": 128,
+    "height": 128,
+    "bytes": 6158
   },
   {
     "race": "Goblin",
@@ -2928,7 +3276,13 @@
     "index": 259,
     "batch": "batch-003",
     "file": "batch-003/portraits/259-goblin-shaman-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-03.webp",
+    "row": 4,
+    "column": 4,
+    "width": 128,
+    "height": 128,
+    "bytes": 6986
   },
   {
     "race": "Goblin",
@@ -2937,7 +3291,13 @@
     "index": 260,
     "batch": "batch-003",
     "file": "batch-003/portraits/260-goblin-shaman-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-03.webp",
+    "row": 4,
+    "column": 5,
+    "width": 128,
+    "height": 128,
+    "bytes": 7068
   },
   {
     "race": "Goblin",
@@ -2946,7 +3306,13 @@
     "index": 261,
     "batch": "batch-003",
     "file": "batch-003/portraits/261-goblin-warlock-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-04.webp",
+    "row": 1,
+    "column": 1,
+    "width": 128,
+    "height": 128,
+    "bytes": 7314
   },
   {
     "race": "Goblin",
@@ -2955,7 +3321,13 @@
     "index": 262,
     "batch": "batch-003",
     "file": "batch-003/portraits/262-goblin-warlock-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-04.webp",
+    "row": 1,
+    "column": 2,
+    "width": 128,
+    "height": 128,
+    "bytes": 7292
   },
   {
     "race": "Goblin",
@@ -2964,7 +3336,13 @@
     "index": 263,
     "batch": "batch-003",
     "file": "batch-003/portraits/263-goblin-warrior-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-04.webp",
+    "row": 1,
+    "column": 3,
+    "width": 128,
+    "height": 128,
+    "bytes": 7126
   },
   {
     "race": "Goblin",
@@ -2973,7 +3351,13 @@
     "index": 264,
     "batch": "batch-003",
     "file": "batch-003/portraits/264-goblin-warrior-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-04.webp",
+    "row": 1,
+    "column": 4,
+    "width": 128,
+    "height": 128,
+    "bytes": 7538
   },
   {
     "race": "Void Elf",
@@ -2982,7 +3366,13 @@
     "index": 265,
     "batch": "batch-003",
     "file": "batch-003/portraits/265-void-elf-death-knight-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-04.webp",
+    "row": 1,
+    "column": 5,
+    "width": 128,
+    "height": 128,
+    "bytes": 7258
   },
   {
     "race": "Void Elf",
@@ -2991,7 +3381,13 @@
     "index": 266,
     "batch": "batch-003",
     "file": "batch-003/portraits/266-void-elf-death-knight-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-04.webp",
+    "row": 2,
+    "column": 1,
+    "width": 128,
+    "height": 128,
+    "bytes": 7428
   },
   {
     "race": "Void Elf",
@@ -3000,7 +3396,13 @@
     "index": 267,
     "batch": "batch-003",
     "file": "batch-003/portraits/267-void-elf-demon-hunter-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-04.webp",
+    "row": 2,
+    "column": 2,
+    "width": 128,
+    "height": 128,
+    "bytes": 6790
   },
   {
     "race": "Void Elf",
@@ -3009,7 +3411,13 @@
     "index": 268,
     "batch": "batch-003",
     "file": "batch-003/portraits/268-void-elf-demon-hunter-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-04.webp",
+    "row": 2,
+    "column": 3,
+    "width": 128,
+    "height": 128,
+    "bytes": 7014
   },
   {
     "race": "Void Elf",
@@ -3018,7 +3426,13 @@
     "index": 269,
     "batch": "batch-003",
     "file": "batch-003/portraits/269-void-elf-hunter-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-04.webp",
+    "row": 2,
+    "column": 4,
+    "width": 128,
+    "height": 128,
+    "bytes": 6818
   },
   {
     "race": "Void Elf",
@@ -3027,7 +3441,13 @@
     "index": 270,
     "batch": "batch-003",
     "file": "batch-003/portraits/270-void-elf-hunter-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-04.webp",
+    "row": 2,
+    "column": 5,
+    "width": 128,
+    "height": 128,
+    "bytes": 7098
   },
   {
     "race": "Void Elf",
@@ -3036,7 +3456,13 @@
     "index": 271,
     "batch": "batch-003",
     "file": "batch-003/portraits/271-void-elf-mage-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-04.webp",
+    "row": 3,
+    "column": 1,
+    "width": 128,
+    "height": 128,
+    "bytes": 7836
   },
   {
     "race": "Void Elf",
@@ -3045,7 +3471,13 @@
     "index": 272,
     "batch": "batch-003",
     "file": "batch-003/portraits/272-void-elf-mage-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-04.webp",
+    "row": 3,
+    "column": 2,
+    "width": 128,
+    "height": 128,
+    "bytes": 8084
   },
   {
     "race": "Void Elf",
@@ -3054,7 +3486,13 @@
     "index": 273,
     "batch": "batch-003",
     "file": "batch-003/portraits/273-void-elf-monk-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-04.webp",
+    "row": 3,
+    "column": 3,
+    "width": 128,
+    "height": 128,
+    "bytes": 6952
   },
   {
     "race": "Void Elf",
@@ -3063,7 +3501,13 @@
     "index": 274,
     "batch": "batch-003",
     "file": "batch-003/portraits/274-void-elf-monk-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-04.webp",
+    "row": 3,
+    "column": 4,
+    "width": 128,
+    "height": 128,
+    "bytes": 6932
   },
   {
     "race": "Void Elf",
@@ -3072,7 +3516,13 @@
     "index": 275,
     "batch": "batch-003",
     "file": "batch-003/portraits/275-void-elf-priest-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-04.webp",
+    "row": 3,
+    "column": 5,
+    "width": 128,
+    "height": 128,
+    "bytes": 7764
   },
   {
     "race": "Void Elf",
@@ -3081,7 +3531,13 @@
     "index": 276,
     "batch": "batch-003",
     "file": "batch-003/portraits/276-void-elf-priest-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-04.webp",
+    "row": 4,
+    "column": 1,
+    "width": 128,
+    "height": 128,
+    "bytes": 7046
   },
   {
     "race": "Void Elf",
@@ -3090,7 +3546,13 @@
     "index": 277,
     "batch": "batch-003",
     "file": "batch-003/portraits/277-void-elf-rogue-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-04.webp",
+    "row": 4,
+    "column": 2,
+    "width": 128,
+    "height": 128,
+    "bytes": 6276
   },
   {
     "race": "Void Elf",
@@ -3099,7 +3561,13 @@
     "index": 278,
     "batch": "batch-003",
     "file": "batch-003/portraits/278-void-elf-rogue-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-04.webp",
+    "row": 4,
+    "column": 3,
+    "width": 128,
+    "height": 128,
+    "bytes": 6508
   },
   {
     "race": "Void Elf",
@@ -3108,7 +3576,13 @@
     "index": 279,
     "batch": "batch-003",
     "file": "batch-003/portraits/279-void-elf-warlock-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-04.webp",
+    "row": 4,
+    "column": 4,
+    "width": 128,
+    "height": 128,
+    "bytes": 6820
   },
   {
     "race": "Void Elf",
@@ -3117,7 +3591,13 @@
     "index": 280,
     "batch": "batch-003",
     "file": "batch-003/portraits/280-void-elf-warlock-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-04.webp",
+    "row": 4,
+    "column": 5,
+    "width": 128,
+    "height": 128,
+    "bytes": 6646
   },
   {
     "race": "Void Elf",
@@ -3126,7 +3606,13 @@
     "index": 281,
     "batch": "batch-003",
     "file": "batch-003/portraits/281-void-elf-warrior-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-05.webp",
+    "row": 1,
+    "column": 1,
+    "width": 128,
+    "height": 128,
+    "bytes": 7336
   },
   {
     "race": "Void Elf",
@@ -3135,7 +3621,13 @@
     "index": 282,
     "batch": "batch-003",
     "file": "batch-003/portraits/282-void-elf-warrior-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-05.webp",
+    "row": 1,
+    "column": 2,
+    "width": 128,
+    "height": 128,
+    "bytes": 7794
   },
   {
     "race": "Lightforged Draenei",
@@ -3144,7 +3636,13 @@
     "index": 283,
     "batch": "batch-003",
     "file": "batch-003/portraits/283-lightforged-draenei-death-knight-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-05.webp",
+    "row": 1,
+    "column": 3,
+    "width": 128,
+    "height": 128,
+    "bytes": 7782
   },
   {
     "race": "Lightforged Draenei",
@@ -3153,7 +3651,13 @@
     "index": 284,
     "batch": "batch-003",
     "file": "batch-003/portraits/284-lightforged-draenei-death-knight-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-05.webp",
+    "row": 1,
+    "column": 4,
+    "width": 128,
+    "height": 128,
+    "bytes": 7710
   },
   {
     "race": "Lightforged Draenei",
@@ -3162,7 +3666,13 @@
     "index": 285,
     "batch": "batch-003",
     "file": "batch-003/portraits/285-lightforged-draenei-hunter-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-05.webp",
+    "row": 1,
+    "column": 5,
+    "width": 128,
+    "height": 128,
+    "bytes": 7342
   },
   {
     "race": "Lightforged Draenei",
@@ -3171,7 +3681,13 @@
     "index": 286,
     "batch": "batch-003",
     "file": "batch-003/portraits/286-lightforged-draenei-hunter-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-05.webp",
+    "row": 2,
+    "column": 1,
+    "width": 128,
+    "height": 128,
+    "bytes": 7690
   },
   {
     "race": "Lightforged Draenei",
@@ -3180,7 +3696,13 @@
     "index": 287,
     "batch": "batch-003",
     "file": "batch-003/portraits/287-lightforged-draenei-mage-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-05.webp",
+    "row": 2,
+    "column": 2,
+    "width": 128,
+    "height": 128,
+    "bytes": 8104
   },
   {
     "race": "Lightforged Draenei",
@@ -3189,7 +3711,13 @@
     "index": 288,
     "batch": "batch-003",
     "file": "batch-003/portraits/288-lightforged-draenei-mage-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-05.webp",
+    "row": 2,
+    "column": 3,
+    "width": 128,
+    "height": 128,
+    "bytes": 8356
   },
   {
     "race": "Lightforged Draenei",
@@ -3198,7 +3726,13 @@
     "index": 289,
     "batch": "batch-003",
     "file": "batch-003/portraits/289-lightforged-draenei-monk-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-05.webp",
+    "row": 2,
+    "column": 4,
+    "width": 128,
+    "height": 128,
+    "bytes": 7530
   },
   {
     "race": "Lightforged Draenei",
@@ -3207,7 +3741,13 @@
     "index": 290,
     "batch": "batch-003",
     "file": "batch-003/portraits/290-lightforged-draenei-monk-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-05.webp",
+    "row": 2,
+    "column": 5,
+    "width": 128,
+    "height": 128,
+    "bytes": 7572
   },
   {
     "race": "Lightforged Draenei",
@@ -3216,7 +3756,13 @@
     "index": 291,
     "batch": "batch-003",
     "file": "batch-003/portraits/291-lightforged-draenei-paladin-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-05.webp",
+    "row": 3,
+    "column": 1,
+    "width": 128,
+    "height": 128,
+    "bytes": 8288
   },
   {
     "race": "Lightforged Draenei",
@@ -3225,7 +3771,13 @@
     "index": 292,
     "batch": "batch-003",
     "file": "batch-003/portraits/292-lightforged-draenei-paladin-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-05.webp",
+    "row": 3,
+    "column": 2,
+    "width": 128,
+    "height": 128,
+    "bytes": 7840
   },
   {
     "race": "Lightforged Draenei",
@@ -3234,7 +3786,13 @@
     "index": 293,
     "batch": "batch-003",
     "file": "batch-003/portraits/293-lightforged-draenei-priest-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-05.webp",
+    "row": 3,
+    "column": 3,
+    "width": 128,
+    "height": 128,
+    "bytes": 8146
   },
   {
     "race": "Lightforged Draenei",
@@ -3243,7 +3801,13 @@
     "index": 294,
     "batch": "batch-003",
     "file": "batch-003/portraits/294-lightforged-draenei-priest-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-05.webp",
+    "row": 3,
+    "column": 4,
+    "width": 128,
+    "height": 128,
+    "bytes": 7886
   },
   {
     "race": "Lightforged Draenei",
@@ -3252,7 +3816,13 @@
     "index": 295,
     "batch": "batch-003",
     "file": "batch-003/portraits/295-lightforged-draenei-rogue-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-05.webp",
+    "row": 3,
+    "column": 5,
+    "width": 128,
+    "height": 128,
+    "bytes": 7112
   },
   {
     "race": "Lightforged Draenei",
@@ -3261,7 +3831,13 @@
     "index": 296,
     "batch": "batch-003",
     "file": "batch-003/portraits/296-lightforged-draenei-rogue-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-05.webp",
+    "row": 4,
+    "column": 1,
+    "width": 128,
+    "height": 128,
+    "bytes": 7248
   },
   {
     "race": "Lightforged Draenei",
@@ -3270,7 +3846,13 @@
     "index": 297,
     "batch": "batch-003",
     "file": "batch-003/portraits/297-lightforged-draenei-warlock-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-05.webp",
+    "row": 4,
+    "column": 2,
+    "width": 128,
+    "height": 128,
+    "bytes": 7864
   },
   {
     "race": "Lightforged Draenei",
@@ -3279,7 +3861,13 @@
     "index": 298,
     "batch": "batch-003",
     "file": "batch-003/portraits/298-lightforged-draenei-warlock-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-05.webp",
+    "row": 4,
+    "column": 3,
+    "width": 128,
+    "height": 128,
+    "bytes": 8064
   },
   {
     "race": "Lightforged Draenei",
@@ -3288,7 +3876,13 @@
     "index": 299,
     "batch": "batch-003",
     "file": "batch-003/portraits/299-lightforged-draenei-warrior-male.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-05.webp",
+    "row": 4,
+    "column": 4,
+    "width": 128,
+    "height": 128,
+    "bytes": 7380
   },
   {
     "race": "Lightforged Draenei",
@@ -3297,7 +3891,13 @@
     "index": 300,
     "batch": "batch-003",
     "file": "batch-003/portraits/300-lightforged-draenei-warrior-female.webp",
-    "status": "pending"
+    "status": "exported",
+    "sheet": "sheet-05.webp",
+    "row": 4,
+    "column": 5,
+    "width": 128,
+    "height": 128,
+    "bytes": 7692
   },
   {
     "race": "Dark Iron Dwarf",

@@ -4,6 +4,16 @@
  .pill{display:inline-flex!important;align-items:center;justify-content:center;max-width:100%;min-height:28px;padding:5px 10px!important;border-radius:9px!important;line-height:1.4!important;white-space:normal!important;overflow-wrap:anywhere;text-align:center;vertical-align:middle}
  .btn,.v9-chip,.trait-chip,.v9-rank-pick,.beta-htabs button,.beta-subtabs button{border-radius:10px!important;line-height:1.4!important}
  .btn,.v9-chip,button.trait-chip{min-height:44px!important}
+ #hero-stats-modal .v9-trait-panel{display:grid!important;gap:16px;width:100%}
+ #hero-stats-modal .v9-trait-item{display:grid!important;grid-template-columns:minmax(0,1fr) 142px;gap:8px;align-items:center;width:100%;min-width:0}
+ #hero-stats-modal .v9-trait-item .trait-chip{justify-self:start;white-space:nowrap!important;word-break:normal;overflow-wrap:normal}
+ #hero-stats-modal .beta-training-details{grid-column:1/-1;line-height:1.5}
+ #hero-stats-modal .v9-train,#hero-stats-modal .wound-badge .btn,#hero-stats-modal .beta-trait-action .btn,#hero-stats-modal .v9-respec{width:142px!important;max-width:100%;min-height:44px!important;padding:10px!important;box-sizing:border-box;font:600 12px/1.4 var(--fn);justify-self:end;margin:0}
+ #hero-stats-modal .wound-badge{display:grid;grid-template-columns:minmax(0,1fr) 142px;gap:10px;align-items:center}
+ #hero-stats-modal .beta-trait-action{display:grid;grid-template-columns:minmax(0,1fr) 142px;gap:12px}
+ #hero-stats-modal .beta-trait-action button{grid-column:2;grid-row:1}
+ #hero-stats-modal .beta-trait-action>span{grid-column:1/-1;grid-row:2}
+ #hero-stats-modal .v9-respec{display:block;margin-left:auto}
  #beta-materials{margin:20px 0;padding:16px 0;border-block:1px solid var(--line)}
  #beta-materials>summary{cursor:pointer;min-height:44px;color:var(--acc);font-weight:600}
  .beta-trait-action{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:20px}

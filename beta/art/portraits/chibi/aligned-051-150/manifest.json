@@ -1,0 +1,2702 @@
+[
+  {
+    "index": 51,
+    "race": "Night Elf",
+    "className": "Paladin",
+    "gender": "male",
+    "original": "batch-001/portraits/051-night-elf-paladin-male.webp",
+    "file": "aligned-051-150/portraits/051-night-elf-paladin-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        69.0,
+        52.0
+      ],
+      "radius": 62.0
+    },
+    "crop": {
+      "centre": [
+        69.0,
+        52.0
+      ],
+      "radius": 52.0,
+      "atlas": null
+    },
+    "bytes": 10098,
+    "originalSha256": "3ea9f867593062278e149ebce9cfeda530ea7009b9562752aafde6b3019fb1bc"
+  },
+  {
+    "index": 52,
+    "race": "Night Elf",
+    "className": "Paladin",
+    "gender": "female",
+    "original": "batch-001/portraits/052-night-elf-paladin-female.webp",
+    "file": "aligned-051-150/portraits/052-night-elf-paladin-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        68.0,
+        52.0
+      ],
+      "radius": 61.5
+    },
+    "crop": {
+      "centre": [
+        68.0,
+        52.0
+      ],
+      "radius": 52.0,
+      "atlas": null
+    },
+    "bytes": 10280,
+    "originalSha256": "3cedc4834acf4be6160249bacf887df14ab58a59e8460b8dd3cd029ca951f84d"
+  },
+  {
+    "index": 53,
+    "race": "Night Elf",
+    "className": "Priest",
+    "gender": "male",
+    "original": "batch-001/portraits/053-night-elf-priest-male.webp",
+    "file": "aligned-051-150/portraits/053-night-elf-priest-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        60.0,
+        58.0
+      ],
+      "radius": 56.0
+    },
+    "crop": {
+      "centre": [
+        60.0,
+        58.0
+      ],
+      "radius": 54.0,
+      "atlas": null
+    },
+    "bytes": 10180,
+    "originalSha256": "b0ce5ed2ffd3f74a82228bc80f770ff8501f8bb5b8233ce4d1d80bf07cdf44f7"
+  },
+  {
+    "index": 54,
+    "race": "Night Elf",
+    "className": "Priest",
+    "gender": "female",
+    "original": "batch-001/portraits/054-night-elf-priest-female.webp",
+    "file": "aligned-051-150/portraits/054-night-elf-priest-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        58.5,
+        52.5
+      ],
+      "radius": 61.5
+    },
+    "crop": {
+      "centre": [
+        58.5,
+        52.5
+      ],
+      "radius": 52.5,
+      "atlas": null
+    },
+    "bytes": 10270,
+    "originalSha256": "ab5bf81550ec0f87f6fb918c4ce98fb5ce1557ffe0548904effdea4ed6124a90"
+  },
+  {
+    "index": 55,
+    "race": "Night Elf",
+    "className": "Rogue",
+    "gender": "male",
+    "original": "batch-001/portraits/055-night-elf-rogue-male.webp",
+    "file": "aligned-051-150/portraits/055-night-elf-rogue-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        56.5,
+        52.0
+      ],
+      "radius": 62.0
+    },
+    "crop": {
+      "centre": [
+        56.5,
+        52.0
+      ],
+      "radius": 52.0,
+      "atlas": null
+    },
+    "bytes": 8638,
+    "originalSha256": "c3737db817ab9ee0e455ba53561158083a01a3b43cfc361e8fbeb17b53a480dc"
+  },
+  {
+    "index": 56,
+    "race": "Night Elf",
+    "className": "Rogue",
+    "gender": "female",
+    "original": "batch-001/portraits/056-night-elf-rogue-female.webp",
+    "file": "aligned-051-150/portraits/056-night-elf-rogue-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        67.5,
+        46.5
+      ],
+      "radius": 62.0
+    },
+    "crop": {
+      "centre": [
+        67.5,
+        46.5
+      ],
+      "radius": 46.5,
+      "atlas": null
+    },
+    "bytes": 8538,
+    "originalSha256": "4a6a5142a12a2930b8c746fe50cb669da862a0fb818717c60fb31b36fde13fc9"
+  },
+  {
+    "index": 57,
+    "race": "Night Elf",
+    "className": "Warlock",
+    "gender": "male",
+    "original": "batch-001/portraits/057-night-elf-warlock-male.webp",
+    "file": "aligned-051-150/portraits/057-night-elf-warlock-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        67.0,
+        47.0
+      ],
+      "radius": 61.5
+    },
+    "crop": {
+      "centre": [
+        67.0,
+        47.0
+      ],
+      "radius": 47.0,
+      "atlas": null
+    },
+    "bytes": 9056,
+    "originalSha256": "de2a30ddb79fd465475884bf840227c87a91a4c6f4fd7c14d7b9bbdbebb746a3"
+  },
+  {
+    "index": 58,
+    "race": "Night Elf",
+    "className": "Warlock",
+    "gender": "female",
+    "original": "batch-001/portraits/058-night-elf-warlock-female.webp",
+    "file": "aligned-051-150/portraits/058-night-elf-warlock-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        62.5,
+        47.5
+      ],
+      "radius": 60.5
+    },
+    "crop": {
+      "centre": [
+        62.5,
+        47.5
+      ],
+      "radius": 47.5,
+      "atlas": null
+    },
+    "bytes": 9274,
+    "originalSha256": "1f4c929a8addecbaafe483aa997b55337d72dac75e41cf1e1c9aad4f9dd858e2"
+  },
+  {
+    "index": 59,
+    "race": "Night Elf",
+    "className": "Warrior",
+    "gender": "male",
+    "original": "batch-001/portraits/059-night-elf-warrior-male.webp",
+    "file": "aligned-051-150/portraits/059-night-elf-warrior-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        58.0,
+        47.0
+      ],
+      "radius": 61.5
+    },
+    "crop": {
+      "centre": [
+        58.0,
+        47.0
+      ],
+      "radius": 47.0,
+      "atlas": null
+    },
+    "bytes": 9348,
+    "originalSha256": "8a11c257976022ddb395309c1f689afc18ec4ac0d7131fc2dac568d4d925d67e"
+  },
+  {
+    "index": 60,
+    "race": "Night Elf",
+    "className": "Warrior",
+    "gender": "female",
+    "original": "batch-001/portraits/060-night-elf-warrior-female.webp",
+    "file": "aligned-051-150/portraits/060-night-elf-warrior-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        57.0,
+        46.5
+      ],
+      "radius": 62.0
+    },
+    "crop": {
+      "centre": [
+        57.0,
+        46.5
+      ],
+      "radius": 46.5,
+      "atlas": null
+    },
+    "bytes": 9046,
+    "originalSha256": "e36682e5ae2e0da96e06e2a0dd99b2ab7c4cafafb471d76513f5e93cda1c8f78"
+  },
+  {
+    "index": 61,
+    "race": "Gnome",
+    "className": "Death Knight",
+    "gender": "male",
+    "original": "batch-001/portraits/061-gnome-death-knight-male.webp",
+    "file": "aligned-051-150/portraits/061-gnome-death-knight-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        68.0,
+        64.0
+      ],
+      "radius": 61.5
+    },
+    "crop": {
+      "centre": [
+        68.0,
+        64.0
+      ],
+      "radius": 59.5,
+      "atlas": null
+    },
+    "bytes": 10182,
+    "originalSha256": "4ce2140cfa808ec5ca50aff53233b07d8dfcf3fbc48e2fdfccadd2864394de4e"
+  },
+  {
+    "index": 62,
+    "race": "Gnome",
+    "className": "Death Knight",
+    "gender": "female",
+    "original": "batch-001/portraits/062-gnome-death-knight-female.webp",
+    "file": "aligned-051-150/portraits/062-gnome-death-knight-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        66.5,
+        63.5
+      ],
+      "radius": 61.0
+    },
+    "crop": {
+      "centre": [
+        66.5,
+        63.5
+      ],
+      "radius": 59.0,
+      "atlas": null
+    },
+    "bytes": 10482,
+    "originalSha256": "1a0a1dd6762b388e1104e51b057a978cca00f53b13367d659e3680c8cf42aab3"
+  },
+  {
+    "index": 63,
+    "race": "Gnome",
+    "className": "Hunter",
+    "gender": "male",
+    "original": "batch-001/portraits/063-gnome-hunter-male.webp",
+    "file": "aligned-051-150/portraits/063-gnome-hunter-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        63.0,
+        63.5
+      ],
+      "radius": 60.5
+    },
+    "crop": {
+      "centre": [
+        63.0,
+        63.5
+      ],
+      "radius": 58.5,
+      "atlas": null
+    },
+    "bytes": 9796,
+    "originalSha256": "377e3130cbc4fdcd745ed3d9391eb1e4847d5458d32c38a02fabf3eef44b7788"
+  },
+  {
+    "index": 64,
+    "race": "Gnome",
+    "className": "Hunter",
+    "gender": "female",
+    "original": "batch-001/portraits/064-gnome-hunter-female.webp",
+    "file": "aligned-051-150/portraits/064-gnome-hunter-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        59.5,
+        63.5
+      ],
+      "radius": 61.0
+    },
+    "crop": {
+      "centre": [
+        59.5,
+        63.5
+      ],
+      "radius": 59.0,
+      "atlas": null
+    },
+    "bytes": 9888,
+    "originalSha256": "e7e9cade7825a8f7fd6ccce9006ce477620b96d088320c7f30c352d703402093"
+  },
+  {
+    "index": 65,
+    "race": "Gnome",
+    "className": "Mage",
+    "gender": "male",
+    "original": "batch-001/portraits/065-gnome-mage-male.webp",
+    "file": "aligned-051-150/portraits/065-gnome-mage-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        58.5,
+        64.0
+      ],
+      "radius": 61.5
+    },
+    "crop": {
+      "centre": [
+        58.5,
+        64.0
+      ],
+      "radius": 58.5,
+      "atlas": null
+    },
+    "bytes": 9792,
+    "originalSha256": "0c6ba1dff77b3428a2d4cd607ec250fdcdcaa859563b37cb7aa7530ea68e3047"
+  },
+  {
+    "index": 66,
+    "race": "Gnome",
+    "className": "Mage",
+    "gender": "female",
+    "original": "batch-001/portraits/066-gnome-mage-female.webp",
+    "file": "aligned-051-150/portraits/066-gnome-mage-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        67.5,
+        59.0
+      ],
+      "radius": 61.5
+    },
+    "crop": {
+      "centre": [
+        67.5,
+        59.0
+      ],
+      "radius": 59.0,
+      "atlas": null
+    },
+    "bytes": 10438,
+    "originalSha256": "c2d5498e14f94a1196825c5ec74aa8e79cc05d4d98c89a65fe65d7778d567238"
+  },
+  {
+    "index": 67,
+    "race": "Gnome",
+    "className": "Monk",
+    "gender": "male",
+    "original": "batch-001/portraits/067-gnome-monk-male.webp",
+    "file": "aligned-051-150/portraits/067-gnome-monk-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        66.5,
+        59.5
+      ],
+      "radius": 60.5
+    },
+    "crop": {
+      "centre": [
+        66.5,
+        59.5
+      ],
+      "radius": 58.5,
+      "atlas": null
+    },
+    "bytes": 9380,
+    "originalSha256": "af3b8c8eb90d8d4be00192070ac16fe57b2f7491d453265cc9bfdab7bed73996"
+  },
+  {
+    "index": 68,
+    "race": "Gnome",
+    "className": "Monk",
+    "gender": "female",
+    "original": "batch-001/portraits/068-gnome-monk-female.webp",
+    "file": "aligned-051-150/portraits/068-gnome-monk-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        62.5,
+        59.0
+      ],
+      "radius": 60.5
+    },
+    "crop": {
+      "centre": [
+        62.5,
+        59.0
+      ],
+      "radius": 58.5,
+      "atlas": null
+    },
+    "bytes": 10114,
+    "originalSha256": "7213a1a2728c43eb5676742a12d0f7a621a07828f03e2a911a928fa071f799a9"
+  },
+  {
+    "index": 69,
+    "race": "Gnome",
+    "className": "Priest",
+    "gender": "male",
+    "original": "batch-001/portraits/069-gnome-priest-male.webp",
+    "file": "aligned-051-150/portraits/069-gnome-priest-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        60.0,
+        59.5
+      ],
+      "radius": 61.0
+    },
+    "crop": {
+      "centre": [
+        60.0,
+        59.5
+      ],
+      "radius": 59.0,
+      "atlas": null
+    },
+    "bytes": 10054,
+    "originalSha256": "775cf187d25aeb60b7c116111ae81f8a2d3b30174b14cfa8293a7a1724e4d52e"
+  },
+  {
+    "index": 70,
+    "race": "Gnome",
+    "className": "Priest",
+    "gender": "female",
+    "original": "batch-001/portraits/070-gnome-priest-female.webp",
+    "file": "aligned-051-150/portraits/070-gnome-priest-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        58,
+        59
+      ],
+      "radius": 61.5
+    },
+    "crop": {
+      "centre": [
+        58,
+        59
+      ],
+      "radius": 58,
+      "atlas": null
+    },
+    "bytes": 10178,
+    "originalSha256": "c60407d90eae01ad4030c6f0456709b31578bdbaa405a8c1e05797e1439d18f7"
+  },
+  {
+    "index": 71,
+    "race": "Gnome",
+    "className": "Rogue",
+    "gender": "male",
+    "original": "batch-001/portraits/071-gnome-rogue-male.webp",
+    "file": "aligned-051-150/portraits/071-gnome-rogue-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        67.5,
+        54.0
+      ],
+      "radius": 61.5
+    },
+    "crop": {
+      "centre": [
+        67.5,
+        54.0
+      ],
+      "radius": 54.0,
+      "atlas": null
+    },
+    "bytes": 9398,
+    "originalSha256": "8050472288375481577763bc7956d3f5e627ab6ac52cecb5dad75b8920133c27"
+  },
+  {
+    "index": 72,
+    "race": "Gnome",
+    "className": "Rogue",
+    "gender": "female",
+    "original": "batch-001/portraits/072-gnome-rogue-female.webp",
+    "file": "aligned-051-150/portraits/072-gnome-rogue-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        65.5,
+        54.5
+      ],
+      "radius": 61.0
+    },
+    "crop": {
+      "centre": [
+        65.5,
+        54.5
+      ],
+      "radius": 54.5,
+      "atlas": null
+    },
+    "bytes": 9430,
+    "originalSha256": "96287b9a81dbb44f9387bc5c8072e97a0e084cd9a6ed39b8ded57cc67046f63f"
+  },
+  {
+    "index": 73,
+    "race": "Gnome",
+    "className": "Warlock",
+    "gender": "male",
+    "original": "batch-001/portraits/073-gnome-warlock-male.webp",
+    "file": "aligned-051-150/portraits/073-gnome-warlock-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        62.5,
+        54.5
+      ],
+      "radius": 61.0
+    },
+    "crop": {
+      "centre": [
+        62.5,
+        54.5
+      ],
+      "radius": 54.5,
+      "atlas": null
+    },
+    "bytes": 9750,
+    "originalSha256": "0a73318e72907d6bd3a1ef4c141937ad8b735432ed9cc59dbea90ac08eb3ada4"
+  },
+  {
+    "index": 74,
+    "race": "Gnome",
+    "className": "Warlock",
+    "gender": "female",
+    "original": "batch-001/portraits/074-gnome-warlock-female.webp",
+    "file": "aligned-051-150/portraits/074-gnome-warlock-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        60.0,
+        53.0
+      ],
+      "radius": 61.0
+    },
+    "crop": {
+      "centre": [
+        60.0,
+        53.0
+      ],
+      "radius": 53.0,
+      "atlas": null
+    },
+    "bytes": 9210,
+    "originalSha256": "2e3fb479c181dae4134077627b1a3db818c9f78bcb61b8999cde78556755dc27"
+  },
+  {
+    "index": 75,
+    "race": "Gnome",
+    "className": "Warrior",
+    "gender": "male",
+    "original": "batch-001/portraits/075-gnome-warrior-male.webp",
+    "file": "aligned-051-150/portraits/075-gnome-warrior-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        58.0,
+        54.0
+      ],
+      "radius": 61.5
+    },
+    "crop": {
+      "centre": [
+        58.0,
+        54.0
+      ],
+      "radius": 54.0,
+      "atlas": null
+    },
+    "bytes": 9712,
+    "originalSha256": "cdd4d0aa68225a634e64fa2a9ae0610a57fb54f9e2cdd7b1b69f247d9f509c87"
+  },
+  {
+    "index": 76,
+    "race": "Gnome",
+    "className": "Warrior",
+    "gender": "female",
+    "original": "batch-001/portraits/076-gnome-warrior-female.webp",
+    "file": "aligned-051-150/portraits/076-gnome-warrior-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        66.5,
+        47.5
+      ],
+      "radius": 61.5
+    },
+    "crop": {
+      "centre": [
+        66.5,
+        47.5
+      ],
+      "radius": 47.5,
+      "atlas": null
+    },
+    "bytes": 9322,
+    "originalSha256": "5a38e53034fc12d7a084903216b43fcfd841c06b07ad9f9fd81a6b28dfb8372b"
+  },
+  {
+    "index": 77,
+    "race": "Draenei",
+    "className": "Death Knight",
+    "gender": "male",
+    "original": "batch-001/portraits/077-draenei-death-knight-male.webp",
+    "file": "aligned-051-150/portraits/077-draenei-death-knight-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        65.0,
+        47.0
+      ],
+      "radius": 62.0
+    },
+    "crop": {
+      "centre": [
+        65.0,
+        47.0
+      ],
+      "radius": 47.0,
+      "atlas": null
+    },
+    "bytes": 9656,
+    "originalSha256": "3f4d51676d1568845aa3a98aa0019b23426c94c7e6ea76986db6cb8bd1f1c5f2"
+  },
+  {
+    "index": 78,
+    "race": "Draenei",
+    "className": "Death Knight",
+    "gender": "female",
+    "original": "batch-001/portraits/078-draenei-death-knight-female.webp",
+    "file": "aligned-051-150/portraits/078-draenei-death-knight-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        63.0,
+        47.0
+      ],
+      "radius": 61.5
+    },
+    "crop": {
+      "centre": [
+        63.0,
+        47.0
+      ],
+      "radius": 47.0,
+      "atlas": null
+    },
+    "bytes": 9096,
+    "originalSha256": "77755eb8dd93ac3ff4340cac64e5aa780c40d9ffbf979b2fd27910e21e38c3a5"
+  },
+  {
+    "index": 79,
+    "race": "Draenei",
+    "className": "Hunter",
+    "gender": "male",
+    "original": "batch-001/portraits/079-draenei-hunter-male.webp",
+    "file": "aligned-051-150/portraits/079-draenei-hunter-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        60.5,
+        47.0
+      ],
+      "radius": 61.5
+    },
+    "crop": {
+      "centre": [
+        60.5,
+        47.0
+      ],
+      "radius": 47.0,
+      "atlas": null
+    },
+    "bytes": 8800,
+    "originalSha256": "6f65af5fadb761161363d0ca67d3b9e17316dcf008651bfcdd679eb85a37758c"
+  },
+  {
+    "index": 80,
+    "race": "Draenei",
+    "className": "Hunter",
+    "gender": "female",
+    "original": "batch-001/portraits/080-draenei-hunter-female.webp",
+    "file": "aligned-051-150/portraits/080-draenei-hunter-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        58.5,
+        47.5
+      ],
+      "radius": 62.0
+    },
+    "crop": {
+      "centre": [
+        58.5,
+        47.5
+      ],
+      "radius": 47.5,
+      "atlas": null
+    },
+    "bytes": 9350,
+    "originalSha256": "a96bdef2be26b189bd6c6260c51e73591478226fd1fd803097414c4763f957de"
+  },
+  {
+    "index": 81,
+    "race": "Draenei",
+    "className": "Mage",
+    "gender": "male",
+    "original": "batch-001/portraits/081-draenei-mage-male.webp",
+    "file": "aligned-051-150/portraits/081-draenei-mage-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        68.0,
+        66.0
+      ],
+      "radius": 60.0
+    },
+    "crop": {
+      "centre": [
+        68.0,
+        66.0
+      ],
+      "radius": 58.0,
+      "atlas": null
+    },
+    "bytes": 9798,
+    "originalSha256": "9f27fef9f760c855ef3b9f93c5707f5493fb194d0bca95aba97e8cc1c3167939"
+  },
+  {
+    "index": 82,
+    "race": "Draenei",
+    "className": "Mage",
+    "gender": "female",
+    "original": "batch-001/portraits/082-draenei-mage-female.webp",
+    "file": "aligned-051-150/portraits/082-draenei-mage-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        65.0,
+        66.0
+      ],
+      "radius": 60.0
+    },
+    "crop": {
+      "centre": [
+        65.0,
+        66.0
+      ],
+      "radius": 58.0,
+      "atlas": null
+    },
+    "bytes": 9850,
+    "originalSha256": "6afa70ccb4e678034cf63b5005aecd19c3d942ef5760f98669f700afe7364480"
+  },
+  {
+    "index": 83,
+    "race": "Draenei",
+    "className": "Monk",
+    "gender": "male",
+    "original": "batch-001/portraits/083-draenei-monk-male.webp",
+    "file": "aligned-051-150/portraits/083-draenei-monk-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        62.5,
+        66.0
+      ],
+      "radius": 60.0
+    },
+    "crop": {
+      "centre": [
+        62.5,
+        66.0
+      ],
+      "radius": 58.0,
+      "atlas": null
+    },
+    "bytes": 9438,
+    "originalSha256": "06ffdb9ddad9e2591597f78c5918b4515f9dcc4be7b00c8e94c80f9014e618dc"
+  },
+  {
+    "index": 84,
+    "race": "Draenei",
+    "className": "Monk",
+    "gender": "female",
+    "original": "batch-001/portraits/084-draenei-monk-female.webp",
+    "file": "aligned-051-150/portraits/084-draenei-monk-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        60.5,
+        66.0
+      ],
+      "radius": 60.0
+    },
+    "crop": {
+      "centre": [
+        60.5,
+        66.0
+      ],
+      "radius": 58.0,
+      "atlas": null
+    },
+    "bytes": 9348,
+    "originalSha256": "839ae8b230b48ec25f12ed6e2de29956e6916c6aac4ea20857f46839a365b634"
+  },
+  {
+    "index": 85,
+    "race": "Draenei",
+    "className": "Paladin",
+    "gender": "male",
+    "original": "batch-001/portraits/085-draenei-paladin-male.webp",
+    "file": "aligned-051-150/portraits/085-draenei-paladin-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        58.0,
+        66.0
+      ],
+      "radius": 60.0
+    },
+    "crop": {
+      "centre": [
+        58.0,
+        66.0
+      ],
+      "radius": 58.0,
+      "atlas": null
+    },
+    "bytes": 9988,
+    "originalSha256": "028c6d7d3bde4c4832b4701c66bb2c7bc67a9de3a79fc76d420939952714731b"
+  },
+  {
+    "index": 86,
+    "race": "Draenei",
+    "className": "Paladin",
+    "gender": "female",
+    "original": "batch-001/portraits/086-draenei-paladin-female.webp",
+    "file": "aligned-051-150/portraits/086-draenei-paladin-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        68.0,
+        61.5
+      ],
+      "radius": 60.0
+    },
+    "crop": {
+      "centre": [
+        68.0,
+        61.5
+      ],
+      "radius": 58.0,
+      "atlas": null
+    },
+    "bytes": 9738,
+    "originalSha256": "b4d5d2621862805085defc0792f25ab808e9651246fa2d2ac6cd9c581773771b"
+  },
+  {
+    "index": 87,
+    "race": "Draenei",
+    "className": "Priest",
+    "gender": "male",
+    "original": "batch-001/portraits/087-draenei-priest-male.webp",
+    "file": "aligned-051-150/portraits/087-draenei-priest-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        65.5,
+        61.5
+      ],
+      "radius": 59.5
+    },
+    "crop": {
+      "centre": [
+        65.5,
+        61.5
+      ],
+      "radius": 57.5,
+      "atlas": null
+    },
+    "bytes": 9532,
+    "originalSha256": "4c519645906a7963a2eeed42499be8d73af8276785ba06fd00c959f375fc9e04"
+  },
+  {
+    "index": 88,
+    "race": "Draenei",
+    "className": "Priest",
+    "gender": "female",
+    "original": "batch-001/portraits/088-draenei-priest-female.webp",
+    "file": "aligned-051-150/portraits/088-draenei-priest-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        62.5,
+        61.5
+      ],
+      "radius": 59.5
+    },
+    "crop": {
+      "centre": [
+        62.5,
+        61.5
+      ],
+      "radius": 57.5,
+      "atlas": null
+    },
+    "bytes": 9604,
+    "originalSha256": "9f4df5270cd5fd2cda6973ab228e4d017e0d721a0638e0166cf7d2e81742ed7e"
+  },
+  {
+    "index": 89,
+    "race": "Draenei",
+    "className": "Rogue",
+    "gender": "male",
+    "original": "batch-001/portraits/089-draenei-rogue-male.webp",
+    "file": "aligned-051-150/portraits/089-draenei-rogue-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        61.0,
+        61.5
+      ],
+      "radius": 60.0
+    },
+    "crop": {
+      "centre": [
+        61.0,
+        61.5
+      ],
+      "radius": 58.0,
+      "atlas": null
+    },
+    "bytes": 9284,
+    "originalSha256": "9ce0a7e8a14a4ea612bfb9bd6233d230ed57d264952aac7bdb9552e6c9119124"
+  },
+  {
+    "index": 90,
+    "race": "Draenei",
+    "className": "Rogue",
+    "gender": "female",
+    "original": "batch-001/portraits/090-draenei-rogue-female.webp",
+    "file": "aligned-051-150/portraits/090-draenei-rogue-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        58.5,
+        61.5
+      ],
+      "radius": 60.0
+    },
+    "crop": {
+      "centre": [
+        58.5,
+        61.5
+      ],
+      "radius": 58.0,
+      "atlas": null
+    },
+    "bytes": 9432,
+    "originalSha256": "b9a0bbd2b4c3f6818939cbac185185e15400026ade7b3fe560ae5c561528022e"
+  },
+  {
+    "index": 91,
+    "race": "Draenei",
+    "className": "Shaman",
+    "gender": "male",
+    "original": "batch-001/portraits/091-draenei-shaman-male.webp",
+    "file": "aligned-051-150/portraits/091-draenei-shaman-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        67.0,
+        54.5
+      ],
+      "radius": 60.0
+    },
+    "crop": {
+      "centre": [
+        67.0,
+        54.5
+      ],
+      "radius": 54.5,
+      "atlas": null
+    },
+    "bytes": 9688,
+    "originalSha256": "c8379bd8c3cac749608f359f07935b6cb95f150e3b84864399115b8e68e17903"
+  },
+  {
+    "index": 92,
+    "race": "Draenei",
+    "className": "Shaman",
+    "gender": "female",
+    "original": "batch-001/portraits/092-draenei-shaman-female.webp",
+    "file": "aligned-051-150/portraits/092-draenei-shaman-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        65.0,
+        54.5
+      ],
+      "radius": 60.0
+    },
+    "crop": {
+      "centre": [
+        65.0,
+        54.5
+      ],
+      "radius": 54.5,
+      "atlas": null
+    },
+    "bytes": 9708,
+    "originalSha256": "544474e44edb985dd32ddad51ca8c52f562f25d2b8458e4749ad7093b650b8d6"
+  },
+  {
+    "index": 93,
+    "race": "Draenei",
+    "className": "Warlock",
+    "gender": "male",
+    "original": "batch-001/portraits/093-draenei-warlock-male.webp",
+    "file": "aligned-051-150/portraits/093-draenei-warlock-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        62.5,
+        54.5
+      ],
+      "radius": 60.0
+    },
+    "crop": {
+      "centre": [
+        62.5,
+        54.5
+      ],
+      "radius": 54.5,
+      "atlas": null
+    },
+    "bytes": 9328,
+    "originalSha256": "d0fe79037ff89fe31b33addffd70ed50a5cd2d50bd61ec2399d69e029143c1fd"
+  },
+  {
+    "index": 94,
+    "race": "Draenei",
+    "className": "Warlock",
+    "gender": "female",
+    "original": "batch-001/portraits/094-draenei-warlock-female.webp",
+    "file": "aligned-051-150/portraits/094-draenei-warlock-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        61.0,
+        55.0
+      ],
+      "radius": 60.0
+    },
+    "crop": {
+      "centre": [
+        61.0,
+        55.0
+      ],
+      "radius": 55.0,
+      "atlas": null
+    },
+    "bytes": 9864,
+    "originalSha256": "4f21c78584e7a9de7e1ca694fd3b3328416cace47a6765b7ac945985fbd407fa"
+  },
+  {
+    "index": 95,
+    "race": "Draenei",
+    "className": "Warrior",
+    "gender": "male",
+    "original": "batch-001/portraits/095-draenei-warrior-male.webp",
+    "file": "aligned-051-150/portraits/095-draenei-warrior-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        58.5,
+        54.5
+      ],
+      "radius": 60.0
+    },
+    "crop": {
+      "centre": [
+        58.5,
+        54.5
+      ],
+      "radius": 54.5,
+      "atlas": null
+    },
+    "bytes": 9426,
+    "originalSha256": "862eacc06f253689a2b834dab8f309c2949a7c02d011fdc21265f51ab7f08930"
+  },
+  {
+    "index": 96,
+    "race": "Draenei",
+    "className": "Warrior",
+    "gender": "female",
+    "original": "batch-001/portraits/096-draenei-warrior-female.webp",
+    "file": "aligned-051-150/portraits/096-draenei-warrior-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        67.5,
+        47.5
+      ],
+      "radius": 61.0
+    },
+    "crop": {
+      "centre": [
+        67.5,
+        47.5
+      ],
+      "radius": 47.5,
+      "atlas": null
+    },
+    "bytes": 9114,
+    "originalSha256": "14d75a46c906cf4902995c4574be3789e351b1a4687d54dbbe7a536eb7e78e41"
+  },
+  {
+    "index": 97,
+    "race": "Worgen",
+    "className": "Death Knight",
+    "gender": "male",
+    "original": "batch-001/portraits/097-worgen-death-knight-male.webp",
+    "file": "aligned-051-150/portraits/097-worgen-death-knight-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        65.0,
+        48.0
+      ],
+      "radius": 60.0
+    },
+    "crop": {
+      "centre": [
+        65.0,
+        48.0
+      ],
+      "radius": 48.0,
+      "atlas": null
+    },
+    "bytes": 8492,
+    "originalSha256": "abd88070c048c78680d9c1e417158dfcfae46a8f0d7a936cd8386e876b426116"
+  },
+  {
+    "index": 98,
+    "race": "Worgen",
+    "className": "Death Knight",
+    "gender": "female",
+    "original": "batch-001/portraits/098-worgen-death-knight-female.webp",
+    "file": "aligned-051-150/portraits/098-worgen-death-knight-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        62.5,
+        48.5
+      ],
+      "radius": 60.0
+    },
+    "crop": {
+      "centre": [
+        62.5,
+        48.5
+      ],
+      "radius": 48.5,
+      "atlas": null
+    },
+    "bytes": 9182,
+    "originalSha256": "7175b8369405a56aae4cc402c284ff17b1cb1a28fcdade3e538bd0bc725f43c6"
+  },
+  {
+    "index": 99,
+    "race": "Worgen",
+    "className": "Druid",
+    "gender": "male",
+    "original": "batch-001/portraits/099-worgen-druid-male.webp",
+    "file": "aligned-051-150/portraits/099-worgen-druid-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        60.5,
+        47.5
+      ],
+      "radius": 60.5
+    },
+    "crop": {
+      "centre": [
+        60.5,
+        47.5
+      ],
+      "radius": 47.5,
+      "atlas": null
+    },
+    "bytes": 9098,
+    "originalSha256": "7c1e969de78cf6f853390f7302eeac2183dd8eb997c0a3fc32dd70fd8c670a6b"
+  },
+  {
+    "index": 100,
+    "race": "Worgen",
+    "className": "Druid",
+    "gender": "female",
+    "original": "batch-001/portraits/100-worgen-druid-female.webp",
+    "file": "aligned-051-150/portraits/100-worgen-druid-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        58.5,
+        47.5
+      ],
+      "radius": 60.5
+    },
+    "crop": {
+      "centre": [
+        58.5,
+        47.5
+      ],
+      "radius": 47.5,
+      "atlas": null
+    },
+    "bytes": 9344,
+    "originalSha256": "260b937c0ec3398fac7bd621b09aa3d567cd11e48addeac89ee7037bfc3e6ac6"
+  },
+  {
+    "index": 101,
+    "race": "Worgen",
+    "className": "Hunter",
+    "gender": "male",
+    "original": "batch-002/portraits/101-worgen-hunter-male.webp",
+    "file": "aligned-051-150/portraits/101-worgen-hunter-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        68.5,
+        61.5
+      ],
+      "radius": 61.0
+    },
+    "crop": {
+      "centre": [
+        68.5,
+        61.5
+      ],
+      "radius": 59.0,
+      "atlas": "batch-002/sheet-01.webp"
+    },
+    "bytes": 10756,
+    "originalSha256": "1a490c584c41b2661be9af6bea0216dc547ccab024f15a53dca5869ebeee1d58"
+  },
+  {
+    "index": 102,
+    "race": "Worgen",
+    "className": "Hunter",
+    "gender": "female",
+    "original": "batch-002/portraits/102-worgen-hunter-female.webp",
+    "file": "aligned-051-150/portraits/102-worgen-hunter-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        66.0,
+        62.0
+      ],
+      "radius": 61.0
+    },
+    "crop": {
+      "centre": [
+        66.0,
+        62.0
+      ],
+      "radius": 59.0,
+      "atlas": "batch-002/sheet-01.webp"
+    },
+    "bytes": 10910,
+    "originalSha256": "96fc9c897ee8181f72adeb4fee0dc8b1a48b9f8abe5a37e4922677fd489ae35a"
+  },
+  {
+    "index": 103,
+    "race": "Worgen",
+    "className": "Mage",
+    "gender": "male",
+    "original": "batch-002/portraits/103-worgen-mage-male.webp",
+    "file": "aligned-051-150/portraits/103-worgen-mage-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        63.5,
+        61.5
+      ],
+      "radius": 61.0
+    },
+    "crop": {
+      "centre": [
+        63.5,
+        61.5
+      ],
+      "radius": 59.0,
+      "atlas": "batch-002/sheet-01.webp"
+    },
+    "bytes": 10730,
+    "originalSha256": "fc0645b80ea1dda0b879c8a0f1f1dd68618034a0fdb17ce66ece4cb3d9ac84bd"
+  },
+  {
+    "index": 104,
+    "race": "Worgen",
+    "className": "Mage",
+    "gender": "female",
+    "original": "batch-002/portraits/104-worgen-mage-female.webp",
+    "file": "aligned-051-150/portraits/104-worgen-mage-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        61.0,
+        62.0
+      ],
+      "radius": 61.0
+    },
+    "crop": {
+      "centre": [
+        61.0,
+        62.0
+      ],
+      "radius": 59.0,
+      "atlas": "batch-002/sheet-01.webp"
+    },
+    "bytes": 11074,
+    "originalSha256": "6060879c20cdf19c89b44a0e5ff1d8978842ed2beb9e8535523bf58ed9f10d8e"
+  },
+  {
+    "index": 105,
+    "race": "Worgen",
+    "className": "Monk",
+    "gender": "male",
+    "original": "batch-002/portraits/105-worgen-monk-male.webp",
+    "file": "aligned-051-150/portraits/105-worgen-monk-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        58.5,
+        62.0
+      ],
+      "radius": 61.0
+    },
+    "crop": {
+      "centre": [
+        58.5,
+        62.0
+      ],
+      "radius": 59.0,
+      "atlas": "batch-002/sheet-01.webp"
+    },
+    "bytes": 10326,
+    "originalSha256": "d7f0ba64a156f5b5798a1d7ac508bb283389d5b7a52eb0f9047c5d6de259b0f5"
+  },
+  {
+    "index": 106,
+    "race": "Worgen",
+    "className": "Monk",
+    "gender": "female",
+    "original": "batch-002/portraits/106-worgen-monk-female.webp",
+    "file": "aligned-051-150/portraits/106-worgen-monk-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        68.0,
+        58.5
+      ],
+      "radius": 61.0
+    },
+    "crop": {
+      "centre": [
+        68.0,
+        58.5
+      ],
+      "radius": 59.0,
+      "atlas": "batch-002/sheet-01.webp"
+    },
+    "bytes": 10692,
+    "originalSha256": "ea1b1379f7e63c2e7990f1018f02cc79bb74d6de9fe6d3522197522f43b5f2ff"
+  },
+  {
+    "index": 107,
+    "race": "Worgen",
+    "className": "Priest",
+    "gender": "male",
+    "original": "batch-002/portraits/107-worgen-priest-male.webp",
+    "file": "aligned-051-150/portraits/107-worgen-priest-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        65.5,
+        58.5
+      ],
+      "radius": 60.5
+    },
+    "crop": {
+      "centre": [
+        65.5,
+        58.5
+      ],
+      "radius": 58.5,
+      "atlas": "batch-002/sheet-01.webp"
+    },
+    "bytes": 10938,
+    "originalSha256": "f3a4e613172c65708d9e61409e607cd3dff888868467034b3991cd16813a167a"
+  },
+  {
+    "index": 108,
+    "race": "Worgen",
+    "className": "Priest",
+    "gender": "female",
+    "original": "batch-002/portraits/108-worgen-priest-female.webp",
+    "file": "aligned-051-150/portraits/108-worgen-priest-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        62.5,
+        58.5
+      ],
+      "radius": 61.0
+    },
+    "crop": {
+      "centre": [
+        62.5,
+        58.5
+      ],
+      "radius": 59.0,
+      "atlas": "batch-002/sheet-01.webp"
+    },
+    "bytes": 11276,
+    "originalSha256": "36adbb49b1473bb136331e30e32d6d91ee14e62971cd133fc76ea829cbde104a"
+  },
+  {
+    "index": 109,
+    "race": "Worgen",
+    "className": "Rogue",
+    "gender": "male",
+    "original": "batch-002/portraits/109-worgen-rogue-male.webp",
+    "file": "aligned-051-150/portraits/109-worgen-rogue-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        60.5,
+        58.5
+      ],
+      "radius": 61.0
+    },
+    "crop": {
+      "centre": [
+        60.5,
+        58.5
+      ],
+      "radius": 59.0,
+      "atlas": "batch-002/sheet-01.webp"
+    },
+    "bytes": 10228,
+    "originalSha256": "1d353f5225d112ef09c65aeba527ac416926edc9571f27fee597ec2c4c18250f"
+  },
+  {
+    "index": 110,
+    "race": "Worgen",
+    "className": "Rogue",
+    "gender": "female",
+    "original": "batch-002/portraits/110-worgen-rogue-female.webp",
+    "file": "aligned-051-150/portraits/110-worgen-rogue-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        58.0,
+        58.0
+      ],
+      "radius": 61.5
+    },
+    "crop": {
+      "centre": [
+        58.0,
+        58.0
+      ],
+      "radius": 59.5,
+      "atlas": "batch-002/sheet-01.webp"
+    },
+    "bytes": 10460,
+    "originalSha256": "355a05c45c601fdecfd9d4899b1fb029aa9b16eb1d653313d4a23c8822999667"
+  },
+  {
+    "index": 111,
+    "race": "Worgen",
+    "className": "Warlock",
+    "gender": "male",
+    "original": "batch-002/portraits/111-worgen-warlock-male.webp",
+    "file": "aligned-051-150/portraits/111-worgen-warlock-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        66.5,
+        53.5
+      ],
+      "radius": 61.5
+    },
+    "crop": {
+      "centre": [
+        66.5,
+        53.5
+      ],
+      "radius": 59.5,
+      "atlas": "batch-002/sheet-01.webp"
+    },
+    "bytes": 10790,
+    "originalSha256": "a0be9d50eaf4ac1f370880ff6ada18bbd9ee1d497ae71eead8e2db2f471d1bb5"
+  },
+  {
+    "index": 112,
+    "race": "Worgen",
+    "className": "Warlock",
+    "gender": "female",
+    "original": "batch-002/portraits/112-worgen-warlock-female.webp",
+    "file": "aligned-051-150/portraits/112-worgen-warlock-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        64.5,
+        54.0
+      ],
+      "radius": 61.0
+    },
+    "crop": {
+      "centre": [
+        64.5,
+        54.0
+      ],
+      "radius": 59.0,
+      "atlas": "batch-002/sheet-01.webp"
+    },
+    "bytes": 10734,
+    "originalSha256": "80f5dc37b02e3617342250438f40008aeaa06fa74ec0794a81f97e8eeb58f522"
+  },
+  {
+    "index": 113,
+    "race": "Worgen",
+    "className": "Warrior",
+    "gender": "male",
+    "original": "batch-002/portraits/113-worgen-warrior-male.webp",
+    "file": "aligned-051-150/portraits/113-worgen-warrior-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        62.5,
+        53.5
+      ],
+      "radius": 61.5
+    },
+    "crop": {
+      "centre": [
+        62.5,
+        53.5
+      ],
+      "radius": 59.5,
+      "atlas": "batch-002/sheet-01.webp"
+    },
+    "bytes": 10876,
+    "originalSha256": "0d9360a2de1c5ce5d41b62683fb7ffbd9f32ddd93a39c1d014131e45972b789c"
+  },
+  {
+    "index": 114,
+    "race": "Worgen",
+    "className": "Warrior",
+    "gender": "female",
+    "original": "batch-002/portraits/114-worgen-warrior-female.webp",
+    "file": "aligned-051-150/portraits/114-worgen-warrior-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        60.0,
+        54.0
+      ],
+      "radius": 61.0
+    },
+    "crop": {
+      "centre": [
+        60.0,
+        54.0
+      ],
+      "radius": 59.0,
+      "atlas": "batch-002/sheet-01.webp"
+    },
+    "bytes": 10890,
+    "originalSha256": "93c30183a15977cea5d7cbeac158fe6346dfea48e00b4785e4629bdd406b5b73"
+  },
+  {
+    "index": 115,
+    "race": "Pandaren",
+    "className": "Death Knight",
+    "gender": "male",
+    "original": "batch-002/portraits/115-pandaren-death-knight-male.webp",
+    "file": "aligned-051-150/portraits/115-pandaren-death-knight-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        59.0,
+        54.0
+      ],
+      "radius": 61.0
+    },
+    "crop": {
+      "centre": [
+        59.0,
+        54.0
+      ],
+      "radius": 59.0,
+      "atlas": "batch-002/sheet-01.webp"
+    },
+    "bytes": 11030,
+    "originalSha256": "83546b6388d0ad726352a1af4d80a34821df984219e51ec46a29f7a0e4f79885"
+  },
+  {
+    "index": 116,
+    "race": "Pandaren",
+    "className": "Death Knight",
+    "gender": "female",
+    "original": "batch-002/portraits/116-pandaren-death-knight-female.webp",
+    "file": "aligned-051-150/portraits/116-pandaren-death-knight-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        65.0,
+        49.5
+      ],
+      "radius": 62.0
+    },
+    "crop": {
+      "centre": [
+        65.0,
+        49.5
+      ],
+      "radius": 60.0,
+      "atlas": "batch-002/sheet-01.webp"
+    },
+    "bytes": 11028,
+    "originalSha256": "31ba41ca85f9d81ce166615e25231466e681304a1d551654302d32bf50cf35b8"
+  },
+  {
+    "index": 117,
+    "race": "Pandaren",
+    "className": "Hunter",
+    "gender": "male",
+    "original": "batch-002/portraits/117-pandaren-hunter-male.webp",
+    "file": "aligned-051-150/portraits/117-pandaren-hunter-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        64.5,
+        50.5
+      ],
+      "radius": 61.5
+    },
+    "crop": {
+      "centre": [
+        64.5,
+        50.5
+      ],
+      "radius": 59.5,
+      "atlas": "batch-002/sheet-01.webp"
+    },
+    "bytes": 10736,
+    "originalSha256": "88eefa67b8d1398fe071770679b032d3750a38a16f378bae8d45969cb211c2af"
+  },
+  {
+    "index": 118,
+    "race": "Pandaren",
+    "className": "Hunter",
+    "gender": "female",
+    "original": "batch-002/portraits/118-pandaren-hunter-female.webp",
+    "file": "aligned-051-150/portraits/118-pandaren-hunter-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        61.5,
+        50.5
+      ],
+      "radius": 61.0
+    },
+    "crop": {
+      "centre": [
+        61.5,
+        50.5
+      ],
+      "radius": 59.0,
+      "atlas": "batch-002/sheet-01.webp"
+    },
+    "bytes": 10632,
+    "originalSha256": "59573929b5cbc8413dfbce80756aeaf769ad89e87bd6d808c57d0a68d633afc3"
+  },
+  {
+    "index": 119,
+    "race": "Pandaren",
+    "className": "Mage",
+    "gender": "male",
+    "original": "batch-002/portraits/119-pandaren-mage-male.webp",
+    "file": "aligned-051-150/portraits/119-pandaren-mage-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        59.5,
+        50.5
+      ],
+      "radius": 61.5
+    },
+    "crop": {
+      "centre": [
+        59.5,
+        50.5
+      ],
+      "radius": 59.5,
+      "atlas": "batch-002/sheet-01.webp"
+    },
+    "bytes": 11258,
+    "originalSha256": "d96f11be49c830ebef3dc0831601b22f091dc18c7b4b3b2122eb7278a0dc5d8d"
+  },
+  {
+    "index": 120,
+    "race": "Pandaren",
+    "className": "Mage",
+    "gender": "female",
+    "original": "batch-002/portraits/120-pandaren-mage-female.webp",
+    "file": "aligned-051-150/portraits/120-pandaren-mage-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        57.5,
+        50.5
+      ],
+      "radius": 61.0
+    },
+    "crop": {
+      "centre": [
+        57.5,
+        50.5
+      ],
+      "radius": 59.0,
+      "atlas": "batch-002/sheet-01.webp"
+    },
+    "bytes": 11372,
+    "originalSha256": "ced5a31837139c08d13b5eaa17cd41ad633383a42d8ecfeb3f8a09e7afedcef3"
+  },
+  {
+    "index": 121,
+    "race": "Pandaren",
+    "className": "Monk",
+    "gender": "male",
+    "original": "batch-002/portraits/121-pandaren-monk-male.webp",
+    "file": "aligned-051-150/portraits/121-pandaren-monk-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        70.5,
+        60.5
+      ],
+      "radius": 61.0
+    },
+    "crop": {
+      "centre": [
+        70.5,
+        60.5
+      ],
+      "radius": 59.0,
+      "atlas": "batch-002/sheet-02.webp"
+    },
+    "bytes": 10526,
+    "originalSha256": "56cd29a12120620619cfe3919b0ed98f36e79b541fbf6731e138d304c2aa3477"
+  },
+  {
+    "index": 122,
+    "race": "Pandaren",
+    "className": "Monk",
+    "gender": "female",
+    "original": "batch-002/portraits/122-pandaren-monk-female.webp",
+    "file": "aligned-051-150/portraits/122-pandaren-monk-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        68.5,
+        60.5
+      ],
+      "radius": 61.0
+    },
+    "crop": {
+      "centre": [
+        68.5,
+        60.5
+      ],
+      "radius": 59.0,
+      "atlas": "batch-002/sheet-02.webp"
+    },
+    "bytes": 10464,
+    "originalSha256": "919d8e331065189c58855f73666e3bdd2be30629e7612d035b008152274c4739"
+  },
+  {
+    "index": 123,
+    "race": "Pandaren",
+    "className": "Priest",
+    "gender": "male",
+    "original": "batch-002/portraits/123-pandaren-priest-male.webp",
+    "file": "aligned-051-150/portraits/123-pandaren-priest-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        65.5,
+        59.5
+      ],
+      "radius": 60.5
+    },
+    "crop": {
+      "centre": [
+        65.5,
+        59.5
+      ],
+      "radius": 58.5,
+      "atlas": "batch-002/sheet-02.webp"
+    },
+    "bytes": 10756,
+    "originalSha256": "a2f7adb9ece5ffa765997f6521e19c78e3de04bb1aca14b7596453ed019670dd"
+  },
+  {
+    "index": 124,
+    "race": "Pandaren",
+    "className": "Priest",
+    "gender": "female",
+    "original": "batch-002/portraits/124-pandaren-priest-female.webp",
+    "file": "aligned-051-150/portraits/124-pandaren-priest-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        62.0,
+        60.0
+      ],
+      "radius": 60.0
+    },
+    "crop": {
+      "centre": [
+        62.0,
+        60.0
+      ],
+      "radius": 58.0,
+      "atlas": "batch-002/sheet-02.webp"
+    },
+    "bytes": 10904,
+    "originalSha256": "81be21b0f907e4bdb201e2de8fc7b0161b076f73d78ea36a378444becc454f64"
+  },
+  {
+    "index": 125,
+    "race": "Pandaren",
+    "className": "Rogue",
+    "gender": "male",
+    "original": "batch-002/portraits/125-pandaren-rogue-male.webp",
+    "file": "aligned-051-150/portraits/125-pandaren-rogue-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        59.5,
+        60.5
+      ],
+      "radius": 61.0
+    },
+    "crop": {
+      "centre": [
+        59.5,
+        60.5
+      ],
+      "radius": 59.0,
+      "atlas": "batch-002/sheet-02.webp"
+    },
+    "bytes": 9854,
+    "originalSha256": "a320cb518d1765553ff7444698b9cbe199b0e24895c32e0fc06ff07b451c97dc"
+  },
+  {
+    "index": 126,
+    "race": "Pandaren",
+    "className": "Rogue",
+    "gender": "female",
+    "original": "batch-002/portraits/126-pandaren-rogue-female.webp",
+    "file": "aligned-051-150/portraits/126-pandaren-rogue-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        67.5,
+        51.5
+      ],
+      "radius": 62.0
+    },
+    "crop": {
+      "centre": [
+        67.5,
+        51.5
+      ],
+      "radius": 60.0,
+      "atlas": "batch-002/sheet-02.webp"
+    },
+    "bytes": 9898,
+    "originalSha256": "6ed1014492b3e375ab795c3e996077bed1ffb97a4d610f00716fe84036490bdc"
+  },
+  {
+    "index": 127,
+    "race": "Pandaren",
+    "className": "Shaman",
+    "gender": "male",
+    "original": "batch-002/portraits/127-pandaren-shaman-male.webp",
+    "file": "aligned-051-150/portraits/127-pandaren-shaman-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        67.5,
+        51.0
+      ],
+      "radius": 62.5
+    },
+    "crop": {
+      "centre": [
+        67.5,
+        51.0
+      ],
+      "radius": 60.5,
+      "atlas": "batch-002/sheet-02.webp"
+    },
+    "bytes": 11162,
+    "originalSha256": "29b8d0af600cdff06025c91e8d4b58ef59ac9b44b590bbf4498c1c8d84476c6b"
+  },
+  {
+    "index": 128,
+    "race": "Pandaren",
+    "className": "Shaman",
+    "gender": "female",
+    "original": "batch-002/portraits/128-pandaren-shaman-female.webp",
+    "file": "aligned-051-150/portraits/128-pandaren-shaman-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        64.5,
+        52.0
+      ],
+      "radius": 61.0
+    },
+    "crop": {
+      "centre": [
+        64.5,
+        52.0
+      ],
+      "radius": 59.0,
+      "atlas": "batch-002/sheet-02.webp"
+    },
+    "bytes": 11092,
+    "originalSha256": "15fab28334ae380ac7ba7d84caaf1b71a5bcf3b31d3b6581755942ce8804fa5c"
+  },
+  {
+    "index": 129,
+    "race": "Pandaren",
+    "className": "Warlock",
+    "gender": "male",
+    "original": "batch-002/portraits/129-pandaren-warlock-male.webp",
+    "file": "aligned-051-150/portraits/129-pandaren-warlock-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        61.0,
+        52.0
+      ],
+      "radius": 61.0
+    },
+    "crop": {
+      "centre": [
+        61.0,
+        52.0
+      ],
+      "radius": 59.0,
+      "atlas": "batch-002/sheet-02.webp"
+    },
+    "bytes": 10712,
+    "originalSha256": "4c307a9b540b5d246c979b07b27f70a205a2cc3b168d939680ecddf9000ea720"
+  },
+  {
+    "index": 130,
+    "race": "Pandaren",
+    "className": "Warlock",
+    "gender": "female",
+    "original": "batch-002/portraits/130-pandaren-warlock-female.webp",
+    "file": "aligned-051-150/portraits/130-pandaren-warlock-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        58.0,
+        53.0
+      ],
+      "radius": 61.5
+    },
+    "crop": {
+      "centre": [
+        58.0,
+        53.0
+      ],
+      "radius": 59.5,
+      "atlas": "batch-002/sheet-02.webp"
+    },
+    "bytes": 10622,
+    "originalSha256": "eee287ecc26342d97a0c37afa09f17e509cc0bd3115d27fd5e4e2a11f1ad5f4b"
+  },
+  {
+    "index": 131,
+    "race": "Pandaren",
+    "className": "Warrior",
+    "gender": "male",
+    "original": "batch-002/portraits/131-pandaren-warrior-male.webp",
+    "file": "aligned-051-150/portraits/131-pandaren-warrior-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        67.0,
+        45.0
+      ],
+      "radius": 62.5
+    },
+    "crop": {
+      "centre": [
+        67.0,
+        45.0
+      ],
+      "radius": 60.5,
+      "atlas": "batch-002/sheet-02.webp"
+    },
+    "bytes": 10504,
+    "originalSha256": "98604ad9db8e9b6ad4166b3b5fbafa3296b58e98d52a4b95ec9be32b0559ee15"
+  },
+  {
+    "index": 132,
+    "race": "Pandaren",
+    "className": "Warrior",
+    "gender": "female",
+    "original": "batch-002/portraits/132-pandaren-warrior-female.webp",
+    "file": "aligned-051-150/portraits/132-pandaren-warrior-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        65.5,
+        45.5
+      ],
+      "radius": 62.0
+    },
+    "crop": {
+      "centre": [
+        65.5,
+        45.5
+      ],
+      "radius": 60.0,
+      "atlas": "batch-002/sheet-02.webp"
+    },
+    "bytes": 10092,
+    "originalSha256": "eacde090b9b4056e1c73c61a79597a07f23889fdc3a497ee836cd450753eb752"
+  },
+  {
+    "index": 133,
+    "race": "Dracthyr",
+    "className": "Evoker",
+    "gender": "male",
+    "original": "batch-002/portraits/133-dracthyr-evoker-male.webp",
+    "file": "aligned-051-150/portraits/133-dracthyr-evoker-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        63.5,
+        45.5
+      ],
+      "radius": 62.0
+    },
+    "crop": {
+      "centre": [
+        63.5,
+        45.5
+      ],
+      "radius": 60.0,
+      "atlas": "batch-002/sheet-02.webp"
+    },
+    "bytes": 11068,
+    "originalSha256": "b617d70cdbbdfdb4855e10c1b72a72416bebde87dd0d855184219c59e5405e2c"
+  },
+  {
+    "index": 134,
+    "race": "Dracthyr",
+    "className": "Evoker",
+    "gender": "female",
+    "original": "batch-002/portraits/134-dracthyr-evoker-female.webp",
+    "file": "aligned-051-150/portraits/134-dracthyr-evoker-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        61.0,
+        45.5
+      ],
+      "radius": 62.0
+    },
+    "crop": {
+      "centre": [
+        61.0,
+        45.5
+      ],
+      "radius": 60.0,
+      "atlas": "batch-002/sheet-02.webp"
+    },
+    "bytes": 11172,
+    "originalSha256": "644eebc95443a7fe2e91a160bc3333d140055c5b739bfc0a9aef15d42b975af2"
+  },
+  {
+    "index": 135,
+    "race": "Dracthyr",
+    "className": "Hunter",
+    "gender": "male",
+    "original": "batch-002/portraits/135-dracthyr-hunter-male.webp",
+    "file": "aligned-051-150/portraits/135-dracthyr-hunter-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        59.5,
+        45.0
+      ],
+      "radius": 62.5
+    },
+    "crop": {
+      "centre": [
+        59.5,
+        45.0
+      ],
+      "radius": 60.5,
+      "atlas": "batch-002/sheet-02.webp"
+    },
+    "bytes": 10662,
+    "originalSha256": "3c4f976a03fa0ca4e6e7de79025184cd7ddc5b580f3e8300902afe1de6627e2d"
+  },
+  {
+    "index": 136,
+    "race": "Dracthyr",
+    "className": "Hunter",
+    "gender": "female",
+    "original": "batch-002/portraits/136-dracthyr-hunter-female.webp",
+    "file": "aligned-051-150/portraits/136-dracthyr-hunter-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        65.5,
+        40.0
+      ],
+      "radius": 63.0
+    },
+    "crop": {
+      "centre": [
+        65.5,
+        40.0
+      ],
+      "radius": 61.0,
+      "atlas": "batch-002/sheet-02.webp"
+    },
+    "bytes": 10646,
+    "originalSha256": "53f58e84406eb69401362d6b11743a576ee8c0a4fdcd9dfa5b08a57b58077479"
+  },
+  {
+    "index": 137,
+    "race": "Dracthyr",
+    "className": "Mage",
+    "gender": "male",
+    "original": "batch-002/portraits/137-dracthyr-mage-male.webp",
+    "file": "aligned-051-150/portraits/137-dracthyr-mage-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        65.5,
+        41.0
+      ],
+      "radius": 63.5
+    },
+    "crop": {
+      "centre": [
+        65.5,
+        41.0
+      ],
+      "radius": 61.5,
+      "atlas": "batch-002/sheet-02.webp"
+    },
+    "bytes": 11152,
+    "originalSha256": "f0a7257dcb411d78dfe10a1e1dde3c660d1295021e8c55d8c49ff4a235f92b04"
+  },
+  {
+    "index": 138,
+    "race": "Dracthyr",
+    "className": "Mage",
+    "gender": "female",
+    "original": "batch-002/portraits/138-dracthyr-mage-female.webp",
+    "file": "aligned-051-150/portraits/138-dracthyr-mage-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        63.5,
+        40.5
+      ],
+      "radius": 62.0
+    },
+    "crop": {
+      "centre": [
+        63.5,
+        40.5
+      ],
+      "radius": 60.0,
+      "atlas": "batch-002/sheet-02.webp"
+    },
+    "bytes": 11238,
+    "originalSha256": "b5877df03c858d24fff1dfae81640ab74641cbe3fa1478d37b5afccef9c7f728"
+  },
+  {
+    "index": 139,
+    "race": "Dracthyr",
+    "className": "Priest",
+    "gender": "male",
+    "original": "batch-002/portraits/139-dracthyr-priest-male.webp",
+    "file": "aligned-051-150/portraits/139-dracthyr-priest-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        60.5,
+        40.5
+      ],
+      "radius": 62.5
+    },
+    "crop": {
+      "centre": [
+        60.5,
+        40.5
+      ],
+      "radius": 60.5,
+      "atlas": "batch-002/sheet-02.webp"
+    },
+    "bytes": 11068,
+    "originalSha256": "514aa55aa4318e7e545844acb52786f142f7eba256727c082a53119e595e43d3"
+  },
+  {
+    "index": 140,
+    "race": "Dracthyr",
+    "className": "Priest",
+    "gender": "female",
+    "original": "batch-002/portraits/140-dracthyr-priest-female.webp",
+    "file": "aligned-051-150/portraits/140-dracthyr-priest-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        59.5,
+        39.5
+      ],
+      "radius": 63.5
+    },
+    "crop": {
+      "centre": [
+        59.5,
+        39.5
+      ],
+      "radius": 61.5,
+      "atlas": "batch-002/sheet-02.webp"
+    },
+    "bytes": 11258,
+    "originalSha256": "dc4704b08ecea41af0bb32f6317a98827ac4b649199eb463e0689fad7cfa0c19"
+  },
+  {
+    "index": 141,
+    "race": "Dracthyr",
+    "className": "Rogue",
+    "gender": "male",
+    "original": "batch-002/portraits/141-dracthyr-rogue-male.webp",
+    "file": "aligned-051-150/portraits/141-dracthyr-rogue-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        68.0,
+        59.0
+      ],
+      "radius": 66.5
+    },
+    "crop": {
+      "centre": [
+        68.0,
+        59.0
+      ],
+      "radius": 64.5,
+      "atlas": "batch-002/sheet-03.webp"
+    },
+    "bytes": 10114,
+    "originalSha256": "c5a183f96a9608cd2134c8dd83e603ff5e82a1745c8c4dccc18ebe1e7c717f97"
+  },
+  {
+    "index": 142,
+    "race": "Dracthyr",
+    "className": "Rogue",
+    "gender": "female",
+    "original": "batch-002/portraits/142-dracthyr-rogue-female.webp",
+    "file": "aligned-051-150/portraits/142-dracthyr-rogue-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        70.5,
+        60.0
+      ],
+      "radius": 64.5
+    },
+    "crop": {
+      "centre": [
+        70.5,
+        60.0
+      ],
+      "radius": 62.5,
+      "atlas": "batch-002/sheet-03.webp"
+    },
+    "bytes": 10500,
+    "originalSha256": "df201b36968864e4916915a7c2c5575fd9213e63b405c2232f2dd519164f5787"
+  },
+  {
+    "index": 143,
+    "race": "Dracthyr",
+    "className": "Warlock",
+    "gender": "male",
+    "original": "batch-002/portraits/143-dracthyr-warlock-male.webp",
+    "file": "aligned-051-150/portraits/143-dracthyr-warlock-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        64.0,
+        60.5
+      ],
+      "radius": 63.0
+    },
+    "crop": {
+      "centre": [
+        64.0,
+        60.5
+      ],
+      "radius": 61.0,
+      "atlas": "batch-002/sheet-03.webp"
+    },
+    "bytes": 11124,
+    "originalSha256": "2bd39f2f590657efa4dfd6303a982ad85c02643881aed2e6e86483bcd228dd4e"
+  },
+  {
+    "index": 144,
+    "race": "Dracthyr",
+    "className": "Warlock",
+    "gender": "female",
+    "original": "batch-002/portraits/144-dracthyr-warlock-female.webp",
+    "file": "aligned-051-150/portraits/144-dracthyr-warlock-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        57.5,
+        60.5
+      ],
+      "radius": 64.0
+    },
+    "crop": {
+      "centre": [
+        57.5,
+        60.5
+      ],
+      "radius": 62.0,
+      "atlas": "batch-002/sheet-03.webp"
+    },
+    "bytes": 10458,
+    "originalSha256": "37cac4f7ca07951ca379015a05f5a028f4b4aa0afaa4c0621bc67770691256be"
+  },
+  {
+    "index": 145,
+    "race": "Dracthyr",
+    "className": "Warrior",
+    "gender": "male",
+    "original": "batch-002/portraits/145-dracthyr-warrior-male.webp",
+    "file": "aligned-051-150/portraits/145-dracthyr-warrior-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        58.5,
+        60.5
+      ],
+      "radius": 65.0
+    },
+    "crop": {
+      "centre": [
+        58.5,
+        60.5
+      ],
+      "radius": 63.0,
+      "atlas": "batch-002/sheet-03.webp"
+    },
+    "bytes": 10934,
+    "originalSha256": "8fff315797a9f618b573715e1af4ee5b3e7c35bc20e74782e343be3e587fb8b4"
+  },
+  {
+    "index": 146,
+    "race": "Dracthyr",
+    "className": "Warrior",
+    "gender": "female",
+    "original": "batch-002/portraits/146-dracthyr-warrior-female.webp",
+    "file": "aligned-051-150/portraits/146-dracthyr-warrior-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        67.0,
+        56.0
+      ],
+      "radius": 65.0
+    },
+    "crop": {
+      "centre": [
+        67.0,
+        56.0
+      ],
+      "radius": 63.0,
+      "atlas": "batch-002/sheet-03.webp"
+    },
+    "bytes": 11156,
+    "originalSha256": "2cd79d4a1936b18fef89dc5b8c9f8513711d421c6064ad4f5be87097a93626ee"
+  },
+  {
+    "index": 147,
+    "race": "Orc",
+    "className": "Death Knight",
+    "gender": "male",
+    "original": "batch-002/portraits/147-orc-death-knight-male.webp",
+    "file": "aligned-051-150/portraits/147-orc-death-knight-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        67.5,
+        57.0
+      ],
+      "radius": 64.0
+    },
+    "crop": {
+      "centre": [
+        67.5,
+        57.0
+      ],
+      "radius": 62.0,
+      "atlas": "batch-002/sheet-03.webp"
+    },
+    "bytes": 10900,
+    "originalSha256": "c2af9c7466ec7f0cb250c38b9d5df074cab6b41adfa46d87853798a658ef4dff"
+  },
+  {
+    "index": 148,
+    "race": "Orc",
+    "className": "Death Knight",
+    "gender": "female",
+    "original": "batch-002/portraits/148-orc-death-knight-female.webp",
+    "file": "aligned-051-150/portraits/148-orc-death-knight-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        63.5,
+        56.5
+      ],
+      "radius": 61.5
+    },
+    "crop": {
+      "centre": [
+        63.5,
+        56.5
+      ],
+      "radius": 59.5,
+      "atlas": "batch-002/sheet-03.webp"
+    },
+    "bytes": 10250,
+    "originalSha256": "09734c7f3362648e43ea191f6f40c1d938f02aea71c38c7648ce5cec0d641bae"
+  },
+  {
+    "index": 149,
+    "race": "Orc",
+    "className": "Hunter",
+    "gender": "male",
+    "original": "batch-002/portraits/149-orc-hunter-male.webp",
+    "file": "aligned-051-150/portraits/149-orc-hunter-male.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        58.5,
+        56.0
+      ],
+      "radius": 63.0
+    },
+    "crop": {
+      "centre": [
+        58.5,
+        56.0
+      ],
+      "radius": 61.0,
+      "atlas": "batch-002/sheet-03.webp"
+    },
+    "bytes": 10672,
+    "originalSha256": "11056d4c73ac7c70d67c5e431ace04f9e5aaee450c86e456919956579178b1c4"
+  },
+  {
+    "index": 150,
+    "race": "Orc",
+    "className": "Hunter",
+    "gender": "female",
+    "original": "batch-002/portraits/150-orc-hunter-female.webp",
+    "file": "aligned-051-150/portraits/150-orc-hunter-female.webp",
+    "width": 128,
+    "height": 128,
+    "sourceGeometry": {
+      "centre": [
+        59.0,
+        56.5
+      ],
+      "radius": 64.5
+    },
+    "crop": {
+      "centre": [
+        59.0,
+        56.5
+      ],
+      "radius": 62.5,
+      "atlas": "batch-002/sheet-03.webp"
+    },
+    "bytes": 10338,
+    "originalSha256": "a7619854eb7abad8396ef2137f3c90e3269467854f49fa23329729631b4c4f1c"
+  }
+]

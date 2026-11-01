@@ -39,3 +39,28 @@ per 100-portrait batch. Use the original batch 001 artwork as the style referenc
 Use the exact row-major identities from queue.json. Keep original generated PNGs
 in the workspace and publish the compact full-resolution source WebPs in each batch directory. Review each atlas before export. Batch 005's
 last atlas has 18 portraits and two unused cells.
+
+## Alignment progress (separate from artwork completion)
+
+Portraits 001–150 are aligned; the next alignment batch is 151–250.
+One 128×128 WebP per portrait, preserved originals, no new artwork generation.
+The main and batch galleries show the 128 px files without 32/58 px switches.
+Reviewed source-rim corrections are recorded in `alignment-overrides.json`.
+
+To continue in a new chat, paste:
+
+> Continue beta-only portrait alignment in lllusivecoat/wayfarers-lantern.
+> Read beta/AGENTS.md and beta/art/portraits/chibi/CONTINUE.md, check current
+> main and queue.json, and align the next 100 unaligned portraits (expected
+> 151–250). Use the existing deterministic align.py pipeline, preserve
+> originals and completed work, review the crops, then validate and deploy
+> beta only. Do not regenerate artwork or touch live.
+
+Next batch commands (review source geometry and output before deployment):
+
+```sh
+python3 beta/art/portraits/chibi/tools/align.py 151 250
+python3 beta/art/portraits/chibi/tools/catalog.py
+python3 beta/art/portraits/chibi/tools/validate.py
+node beta/tests/portrait-catalog.cjs
+```

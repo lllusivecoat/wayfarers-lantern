@@ -1,0 +1,32 @@
+{
+  "70": {
+    "geometry": {
+      "centre": [
+        58,
+        59
+      ],
+      "radius": 61.5
+    },
+    "reason": "Visual review: interior gold armour confused the source rim detector."
+  },
+  "139": {
+    "geometry": {
+      "centre": [
+        60.5,
+        40.5
+      ],
+      "radius": 62.5
+    },
+    "reason": "Visual review: top-clipped outer ring; interior gold armour is not the rim."
+  },
+  "140": {
+    "geometry": {
+      "centre": [
+        59.5,
+        39.5
+      ],
+      "radius": 63.5
+    },
+    "reason": "Visual review: top-clipped outer ring, confirmed against the dark exterior."
+  }
+}

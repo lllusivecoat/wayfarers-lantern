@@ -58,6 +58,9 @@ function setup({seen=false,raw=null,slowArt=false,slowCSS=false,reduced=false}={
   const h=setup();h.advance(20000);assert(!h.nodes['launch-retry'].hidden);assert(h.nodes['beta-launch-cover']);assert(!h.ctx.WL_BETA_BOOT.failed);assert.match(h.nodes['launch-status'].textContent,/Still preparing/);
  }
  console.log('PASS corrupt saves never fall back or reset; missing scripts, rejected startup, save guard and incomplete render retain cover with Retry; stalled load offers Retry without a fake timer');
+ {const h=setup(),cover=h.nodes['beta-launch-cover'];delete h.nodes['beta-launch-cover'];h.emit('error',{target:{tagName:'SCRIPT'}});assert(h.nodes['launch-retry'].hidden);h.nodes['beta-launch-cover']=cover;h.ctx.WL_BETA_BOOT.paint();assert.equal(cover.dataset.state,'error');assert(!h.nodes['launch-retry'].hidden)}
+ console.log('PASS errors before body markup receive an immediate Retry when the static cover arrives, without waiting for DOMContentLoaded');
+
  assert(index.indexOf('<section id="beta-launch-cover"')<index.indexOf('<div class="shell">'));
  assert(index.indexOf('launch-critical-style:start')<index.indexOf('href="../offline.css"'));
  assert(index.indexOf('<section id="beta-launch-cover"')<index.indexOf('/* BETA save guard:'));

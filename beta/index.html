@@ -63,7 +63,7 @@ html.beta-booting body>:not(#beta-launch-cover):not(script):not(style):not(link)
   if(matchMedia('(prefers-reduced-motion: reduce)').matches)finish();else cleanupTimer=setTimeout(finish,300);
   return true;
  }
- window.WL_BETA_BOOT=Object.freeze({get active(){return phase!=='done'},get holding(){return holding},get phase(){return phase},get failed(){return !!problem},get minimumReady(){return minimum},fail,preflight,skip:reveal,reveal,allowSkip(){if(problem)return false;minimum=true;sync();return true}});
+ window.WL_BETA_BOOT=Object.freeze({get active(){return phase!=='done'},get holding(){return holding},get phase(){return phase},get failed(){return !!problem},get minimumReady(){return minimum},fail,preflight,paint:sync,skip:reveal,reveal,allowSkip(){if(problem)return false;minimum=true;sync();return true}});
  addEventListener('error',event=>{if(phase==='done')return;const target=event.target;if(target?.tagName==='SCRIPT'||target?.tagName==='LINK'&&target.rel==='stylesheet'&&!target.hasAttribute('data-boot-optional'))fail('A required game file could not load. Check your connection and Retry.');else if(event.message)fail('The hall could not finish opening. Retry reloads without resetting your guild.')},true);
  addEventListener('unhandledrejection',()=>fail('The hall could not finish opening. Retry reloads without resetting your guild.'));
  document.addEventListener('DOMContentLoaded',sync,{once:true});
@@ -88,6 +88,7 @@ html.beta-booting body>:not(#beta-launch-cover):not(script):not(style):not(link)
  <div class="launch-copy"><h1 id="launch-title">The Wayfarer’s Lantern</h1><p id="launch-line" class="launch-line">A guild rises in Booty Bay.</p><div class="launch-rule" aria-hidden="true"></div><p id="launch-status" class="launch-status" role="status" aria-live="polite">Preparing the hall…</p><button id="launch-retry" class="launch-retry" type="button" hidden onclick="location.reload()">Retry</button></div>
  <noscript><p>JavaScript is needed to open the hall. Enable it, then reload.</p></noscript>
 </section>
+<script>window.WL_BETA_BOOT.paint()</script>
 <script src="lazy-art.js?v=launch-1"></script>
 <script>(function(){try{if(localStorage.getItem('wayfarers-lantern-beta-theme')==='light')document.documentElement.classList.add('beta-light')}catch(e){}})();
 /* BETA save guard: beta must never save over the guild after an error, or with an emptied guild. */

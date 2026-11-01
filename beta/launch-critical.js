@@ -29,7 +29,7 @@
   if(matchMedia('(prefers-reduced-motion: reduce)').matches)finish();else cleanupTimer=setTimeout(finish,300);
   return true;
  }
- window.WL_BETA_BOOT=Object.freeze({get active(){return phase!=='done'},get holding(){return holding},get phase(){return phase},get failed(){return !!problem},get minimumReady(){return minimum},fail,preflight,skip:reveal,reveal,allowSkip(){if(problem)return false;minimum=true;sync();return true}});
+ window.WL_BETA_BOOT=Object.freeze({get active(){return phase!=='done'},get holding(){return holding},get phase(){return phase},get failed(){return !!problem},get minimumReady(){return minimum},fail,preflight,paint:sync,skip:reveal,reveal,allowSkip(){if(problem)return false;minimum=true;sync();return true}});
  addEventListener('error',event=>{if(phase==='done')return;const target=event.target;if(target?.tagName==='SCRIPT'||target?.tagName==='LINK'&&target.rel==='stylesheet'&&!target.hasAttribute('data-boot-optional'))fail('A required game file could not load. Check your connection and Retry.');else if(event.message)fail('The hall could not finish opening. Retry reloads without resetting your guild.')},true);
  addEventListener('unhandledrejection',()=>fail('The hall could not finish opening. Retry reloads without resetting your guild.'));
  document.addEventListener('DOMContentLoaded',sync,{once:true});

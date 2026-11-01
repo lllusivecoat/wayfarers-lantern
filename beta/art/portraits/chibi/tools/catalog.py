@@ -5,7 +5,7 @@ ROOT=Path(__file__).resolve().parents[1]; BETA=ROOT.parents[2]
 queue=json.loads((ROOT/'queue.json').read_text()); done=[r for r in queue if r['status']=='exported']
 p=BETA/'hero-portraits.js'; source=p.read_text()
 entries=[[r['race'],r['className'],r['gender'],r['file']] for r in done]
-source=re.sub(r' const entries=\[.*?\];', ' const entries='+json.dumps(entries,separators=(',',':'))+';',source,count=1)
+source=re.sub(r' const entries=\[.*?\];', lambda _: ' const entries='+json.dumps(entries,separators=(',',':'))+';',source,count=1)
 source=source.replace("const base='art/portraits/chibi/batch-001/portraits/';","const base='art/portraits/chibi/';")
 source=source.replace('/* Beta-only first 100 chibi portraits.', '/* Beta-only chibi portraits.')
 source=source.replace("link.href='art/portraits/chibi/batch-001/preview.html'", "link.href='art/portraits/chibi/preview.html'")

@@ -5,6 +5,10 @@ Approved format: hand-painted circular gold-rimmed chibi portraits, 128×128 Web
 Preserve custom-upload precedence, portraitGender, explicit gender, and stable ID fallback.
 
 The authoritative work list is `queue.json`. Original 001–100 must remain intact.
+
+Current completion: all 498 entries exported and integrated. Batches 002–004
+added 100 portraits each; batch 005 added the final 98. The resume prompt below
+checks the queue first and must never regenerate completed work.
 There are 498 supported male/female race/class entries in the current beta.
 Work in batches of 100; batch 005 has the final 98. Never fabricate exported status.
 

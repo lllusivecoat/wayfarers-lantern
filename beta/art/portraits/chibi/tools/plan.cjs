@@ -12,4 +12,4 @@ const queue=[...first.map(({race,className,gender})=>({race,className,gender})),
 const old=fs.existsSync(root+'/queue.json')?JSON.parse(fs.readFileSync(root+'/queue.json')):[];const previous=new Map(old.map(x=>[key(x),x]));
 for(let i=0;i<queue.length;i++){const prior=previous.get(key(queue[i]));if(prior){if(prior.index!==queue[i].index)throw Error('Queue ordering changed; migrate explicitly');queue[i]={...queue[i],...prior}}}
 fs.writeFileSync(root+'/queue.json',JSON.stringify(queue,null,2)+'\n');
-console.log(JSON.stringify({total:queue.length,batches:Math.ceil(queue.length/100),remaining:queue.length-100,next:queue[100]}));
+console.log(JSON.stringify({total:queue.length,batches:Math.ceil(queue.length/100),remaining:queue.filter(x=>x.status!=='exported').length,next:queue.find(x=>x.status!=='exported')||null}));

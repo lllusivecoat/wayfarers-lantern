@@ -16,6 +16,10 @@ try:
   page=browser.new_page(viewport={'width':390,'height':844},is_mobile=True,has_touch=True)
   errors=[];page.on('pageerror',lambda error:errors.append(str(error)))
   page.goto(f'http://127.0.0.1:{server.server_port}/beta/',wait_until='networkidle')
+  page.wait_for_function("window.WL_BETA_BOOT?.phase==='done'")
+  assert page.locator('#beta-cover').count()==0
+  assert page.locator('#beta-onb ol').is_visible()
+  page.locator('.beta-gear').click();page.locator('#harbour-replay-intro').click()
   assert page.locator('#beta-cover').is_visible()
   assert page.locator('#harbour-cover-title').inner_text()=='The Wayfarer’s Lantern'
   assert page.locator('.harbour-skip').is_visible()

@@ -9,7 +9,7 @@
  function lookup(h){return h?catalog.get(key(h.race||'Human',h.className||'Warrior',genderFor(h)))||'':''}
  globalThis.WL_BETA_PORTRAITS=Object.freeze({lookup,genderFor,count:entries.length});
  if(typeof document==='undefined')return;
- const custom=imageSrc;imageSrc=function(h){return custom(h)||lookup(h)};
+ const custom=imageSrc;imageSrc=function(h){if(globalThis.WL_BETA_BOOT?.holding)return custom(h);return custom(h)||lookup(h)};
  function fitPortraits(){document.querySelectorAll('img.portrait,img.v9-rpic,.beta-hero-bubble img').forEach(img=>{
   let frame=img.closest('.beta-portrait-frame,.pv-photo-frame');
   if(frame&&frame.hidden!==img.hidden)frame.hidden=img.hidden;
@@ -36,6 +36,7 @@
  const actions=document.querySelector('#roster>.heading .row')||document.querySelector('#roster>.heading');if(actions){const link=document.createElement('a');link.className='btn ghost beta-portrait-gallery';link.href='art/portraits/chibi/preview.html?v=aligned-001-498';link.textContent='View 498 portraits';link.hidden=!window.betaDebugEnabled?.();actions.append(link);window.betaApplyDebugMode?.()}
  const rendering=render;render=function(){const out=rendering.apply(this,arguments);fitPortraits();return out};
  let fitting=false;new MutationObserver(()=>{if(!fitting){fitting=true;requestAnimationFrame(()=>{fitting=false;fitPortraits()})}}).observe(document.body,{childList:true,subtree:true});
+ globalThis.addEventListener?.('beta:boot-portraits',()=>render(),{once:true});
  render();
 })();
 

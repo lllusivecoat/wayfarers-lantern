@@ -1,0 +1,67 @@
+/* Beta-only cover, onboarding and harbour presentation. */
+html[data-harbour-cover-pending] .shell{visibility:hidden}
+html.harbour-cover-open{overflow:hidden}
+.harbour-cover{position:fixed;inset:0;width:100%;max-width:none;height:100%;height:100dvh;max-height:none;margin:0;padding:0;border:0;background:#171912;color:#fff4db;overflow:auto;overscroll-behavior:contain}
+.harbour-cover::backdrop{background:#171912}
+.harbour-cover-art{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:57% center;filter:brightness(.82) saturate(.85)}
+.harbour-cover::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,#111410f5 0%,#111410b3 35%,#11141008 85%)}
+.harbour-cover-copy{position:relative;z-index:1;box-sizing:border-box;min-height:100%;max-width:820px;margin:auto;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;padding:clamp(24px,6vw,64px);padding-bottom:max(48px,env(safe-area-inset-bottom));text-shadow:0 2px 15px #0008}
+.harbour-cover h1{font:500 clamp(34px,8vw,64px)/1.15 var(--fh,Georgia,serif);color:#fff2cf;margin:0 0 14px;max-width:650px}
+.harbour-cover p{font:clamp(18px,4vw,24px)/1.6 var(--fb,Georgia,serif);color:#f5e3bc;margin:0 0 30px}
+.harbour-cover-actions{display:flex;flex-wrap:wrap;gap:14px;width:100%}
+.harbour-cover .btn{min-height:54px;min-width:130px;padding:16px 28px;font:600 17px/1.3 var(--fn,system-ui);border-radius:8px}
+.harbour-cover .harbour-begin{background:#e2c485;color:#241d12;border:1px solid #f1d79f}
+.harbour-cover .harbour-skip{background:#15191099;color:#fff0cf;border:1px solid #c3ab7a}
+.harbour-cover button:focus-visible{outline:3px solid #fff3d3;outline-offset:5px}
+.harbour-replay{min-height:48px}
+#beta-onb button{min-height:48px}
+.harbour-target{outline:3px solid var(--acc)!important;outline-offset:5px;animation:harbour-target 1s ease-in-out 3;scroll-margin:100px}
+@keyframes harbour-target{50%{outline-color:transparent;box-shadow:0 0 0 8px #d6b76d22}}
+.harbour-replaced-empty{display:none!important}
+.harbour-empty{box-sizing:border-box;display:grid;justify-items:center;gap:10px;text-align:center;padding:28px 20px;margin:16px 0;border:1px dashed var(--line);border-radius:14px;background:var(--panel);color:var(--text)}
+.harbour-empty h3{margin:0;font:500 19px/1.4 var(--fh,Georgia)}
+.harbour-empty p{max-width:420px;margin:0!important;color:var(--muted)!important;font:14px/1.7 var(--fb,Georgia)}
+.harbour-empty .btn{min-height:48px;margin-top:6px}
+.harbour-empty-art{width:104px;height:104px;color:var(--acc)}
+.harbour-empty-art svg{display:block;width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.harbour-empty-art svg>circle{fill:var(--panel2);stroke:var(--line);stroke-width:1}
+.quest.pv-contract{--harbour-paper:#34352f;--harbour-wash:#34352fcf;background:linear-gradient(100deg,var(--harbour-paper) 25%,var(--harbour-wash) 65%,#292d2980),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='paper'%3E%3CfeTurbulence baseFrequency='.6' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23ead6a0' opacity='.13' filter='url(%23paper)' d='M0 0h100v100H0z'/%3E%3C/svg%3E"),var(--pv-art) center right/cover!important;border:1px solid #ac98626b!important;border-left:3px solid #b9a36b!important;box-shadow:inset 0 1px #ffedc52b,inset 0 -1px #0004,0 5px 15px #0002!important}
+.harbour-contract-seal{display:inline-grid;place-items:center;vertical-align:middle;flex:0 0 25px;width:25px;height:25px;margin-right:8px;border:2px solid #bb8b68;border-radius:50%;background:radial-gradient(circle at 35% 30%,#955442,#562a27);box-shadow:0 2px 3px #0004,inset 0 0 0 2px #512826;color:#fff0c9;font:16px/1 Georgia;letter-spacing:0;text-transform:none}
+.harbour-away-badge{display:inline-flex;align-items:center;gap:6px;max-width:100%;white-space:normal!important;padding:6px 10px;border:1px solid #91b5bf80!important;border-radius:8px;background:#739da51a!important;color:#b7d6df!important;font:500 11px/1.5 var(--fn,system-ui)!important;overflow-wrap:anywhere}
+.harbour-away-badge::before{content:'↗';font-size:15px}
+#harbour-player-away{margin-top:8px}
+.harbour-return-chip{min-height:44px;display:inline-flex;align-items:center;justify-content:center;gap:8px;max-width:100%;padding:8px 12px;border:1px solid #91b5bf80;border-radius:10px;background:var(--panel);color:#b7d6df;font:500 12px/1.5 var(--fn,system-ui);cursor:pointer;text-align:left}
+.harbour-return-chip::before{content:'◷';font-size:18px}
+.harbour-away-badge[hidden],.harbour-return-chip[hidden],.harbour-discovery-thumb[hidden]{display:none!important}
+.harbour-extra-away{margin-left:auto}
+.harbour-discovery{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:24px;z-index:2600;display:grid;grid-template-columns:64px minmax(0,1fr) 36px;align-items:center;gap:12px;box-sizing:border-box;width:min(430px,calc(100vw - 32px));padding:14px;background:var(--panel2);color:var(--text);border:1px solid var(--acc);border-radius:14px;box-shadow:0 12px 40px #0005}
+.harbour-discovery-thumb{display:block;width:64px;height:64px;object-fit:cover;border-radius:9px;border:1px solid var(--line)}
+.harbour-discovery-copy p{margin:0 0 9px;font:500 14px/1.6 var(--fn,system-ui)}
+.harbour-discovery .btn{min-height:44px}
+.harbour-discovery-close{align-self:start;min-width:36px;min-height:44px;padding:0;border:0;border-radius:6px;background:transparent;color:var(--muted);font-size:25px}
+.harbour-discovery-close:focus-visible,.harbour-return-chip:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+.harbour-memorial .portrait,.harbour-memorial .v9-rpic,.harbour-memorial .beta-portrait-frame img{filter:grayscale(.7) saturate(.55)}
+#hero-list .v9-rrow.harbour-memorial{border-color:var(--line)!important;background:transparent!important}
+.harbour-memorial .v9-rrank,.harbour-memorial .v9card-status,.harbour-memorial .pill.gold{color:var(--muted)!important;border-color:var(--line)!important;background:transparent!important;box-shadow:none!important}
+.harbour-memorial .pv-avatar::after{background:var(--line)!important}
+html.beta-light .beta-guild-heading{background:linear-gradient(0deg,#2a2924e8,#24282133 88%),url('img/locations/booty-bay.webp') center 48%/cover!important;border-color:#9f8c62!important}
+html.beta-light .beta-guild-heading h2{color:#fff2d6!important;text-shadow:0 2px 10px #15170eee}
+html.beta-light .beta-guild-heading .eyebrow{color:#f4dcab!important}
+html.beta-light .quest.pv-contract{--harbour-paper:#f1ecdf;--harbour-wash:#f1ecdfde;background:linear-gradient(100deg,var(--harbour-paper) 25%,var(--harbour-wash) 65%,#e4ddc68a),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='paper'%3E%3CfeTurbulence baseFrequency='.6' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%237a6843' opacity='.08' filter='url(%23paper)' d='M0 0h100v100H0z'/%3E%3C/svg%3E"),var(--pv-art) center right/cover!important;border-color:#9d865c8c!important;box-shadow:inset 0 1px #fffdf8,0 4px 12px #5b4c2b12!important}
+html.beta-light .pv-contract h3{color:var(--text)!important}
+html.beta-light .pv-map{background:radial-gradient(ellipse,#c7b58326,transparent),#f5eedc;border-color:#b6a47d}
+html.beta-light .pv-map .pv-land{fill:#d8c9a5;stroke:#8a7145}
+html.beta-light .pv-map text{fill:#5b4a2a}
+html.beta-light .pv-map .pv-pin-label{stroke:#f7f0de}
+html.beta-light .pv-map .pv-pin circle{fill:#8d6930;stroke:#fff7e2}
+html.beta-light .pv-map .pv-pin:focus circle,html.beta-light .pv-map .pv-pin:hover circle{fill:#4c5c3b;stroke:#4c5c3b}
+html.beta-light .beta-portrait-frame{border-color:color-mix(in srgb,var(--pv-level,#a99168) 65%,#352514)!important;background:#eee4ce!important}
+html.beta-light .harbour-away-badge,html.beta-light .harbour-return-chip{color:#2f5966!important;border-color:#688b9580!important;background:#6d929c12!important}
+html.beta-light .harbour-discovery{box-shadow:0 10px 28px #624f2430}
+@media(max-width:600px){.harbour-cover-actions .btn{flex:1}.harbour-discovery{bottom:max(88px,calc(env(safe-area-inset-bottom) + 76px))}.harbour-away-badge{padding:5px 7px;font-size:10px!important}.harbour-return-chip{flex:1 1 auto}#hero-list .v9-rrow:has(.harbour-extra-away){flex-wrap:wrap}.harbour-extra-away{margin-left:46px}.harbour-empty{padding:22px 14px}}
+@media(prefers-reduced-motion:reduce){.harbour-target{animation:none!important;outline-color:var(--acc)!important}.harbour-cover *{animation:none!important;transition:none!important}}
+.harbour-discovery-media{position:relative;width:64px;height:64px;border-radius:9px;background:var(--panel);color:var(--acc);overflow:hidden}
+.harbour-discovery-media>svg{display:block;width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.5}
+.harbour-discovery-media>.harbour-discovery-thumb{position:absolute;inset:0}
+html .harbour-memorial .beta-portrait-frame{border-color:var(--line)!important;box-shadow:none!important}
+.harbour-memorial .beta-hero-crest{color:var(--muted)!important;border-color:var(--line)!important;background:transparent!important;text-shadow:none}

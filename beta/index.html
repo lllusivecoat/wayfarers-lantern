@@ -795,6 +795,10 @@ html.beta-tbar-on #trading{padding-bottom:96px}
 </style>
 <link rel="stylesheet" href="visual-preview.css">
 <script src="lazy-art.js"></script>
+<style>html[data-harbour-cover-pending] .shell{visibility:hidden}</style>
+<script>/* Beta cover loading guard; reads only, never changes the shared save. */
+(()=>{try{if(localStorage.getItem('wayfarers-lantern-beta-cover'))return;const g=JSON.parse(localStorage.getItem('wayfarers_lantern_offline_v1')||'null');if(!g||(!(g.heroes||[]).length&&Number(g.day||1)<=1)){document.documentElement.setAttribute('data-harbour-cover-pending','1');setTimeout(()=>document.documentElement.removeAttribute('data-harbour-cover-pending'),6000)}}catch(e){}})();
+</script>
 </head>
 <body>
 <div class="shell">
@@ -2621,5 +2625,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 <script src="atmosphere.js?v=beta-debug-mode-4"></script>
 <link rel="stylesheet" href="hero-portraits.css?v=beta-debug-mode-4">
 <script src="hero-portraits.js?v=aligned-001-050"></script>
+<link rel="stylesheet" href="harbour-polish.css?v=1">
+<script src="harbour-polish.js?v=1"></script>
 </body>
 </html>

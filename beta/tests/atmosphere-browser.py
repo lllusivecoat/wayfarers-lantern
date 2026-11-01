@@ -14,7 +14,7 @@ try:
   page=browser.new_page(viewport={'width':390,'height':844},is_mobile=True,has_touch=True)
   errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
   url=f'http://127.0.0.1:{s.server_port}/beta/'
-  page.goto(url,wait_until='networkidle');page.evaluate("showView('quests')")
+  page.add_init_script("localStorage.setItem('wayfarers-lantern-beta-cover','seen')");page.goto(url,wait_until='networkidle');page.evaluate("showView('quests')")
   assert not page.locator('#test-complete-quests').is_visible()
   assert page.evaluate('testCompleteAllQuests().length')==0
   page.evaluate('''() => {window.beforeGold=game.gold;game.gold+=25;render();}''')
@@ -24,12 +24,12 @@ try:
   page.wait_for_timeout(1800)
   assert page.locator('.beta-treasury-change').count()==0
   page.evaluate('''() => {const h=structuredClone(game.player);h.id='beta-crest-hero';h.name='Crest Test';h.className='Death Knight';h.wound={tier:2};h.dead=false;h.ready=true;game.heroes.push(h);render();showView('roster')}''')
-  crest=page.locator('.v9-rrow[data-id="beta-crest-hero"] .beta-hero-crest')
-  assert crest.inner_text()=='DK'
-  assert 'wound' in crest.get_attribute('aria-label')
-  assert crest.locator('.beta-wound-pip').get_attribute('data-tier')=='2'
+  crest=page.locator('.v9-rrow[data-id="beta-crest-hero"] .pv-photo-frame')
+  assert crest.locator('img').count()==1
+  assert 'wound' in crest.get_attribute('title')
+  assert crest.locator('.pv-wound-icon').count()==1
   page.evaluate("openQuestDetails('gather-mining')")
-  assert page.locator('#quest-detail-content .beta-hero-crest').count()>=2
+  assert page.locator('#quest-detail-content .beta-hero-bubble').count()>=2
   page.evaluate("closeQuestDetails();showView('hall')")
   page.locator('.beta-gear').click()
   sound=page.locator('[data-beta-pref="harbour-sounds"]')
@@ -39,8 +39,9 @@ try:
   page.reload(wait_until='networkidle')
   assert not page.locator('[data-beta-pref="dawn-variants"]').is_checked()
   assert not sound.is_checked()
-  page.goto(url+'?debug=1',wait_until='networkidle');page.evaluate("showView('quests')")
+  page.evaluate("showView('quests')");page.locator('.beta-gear').click();page.locator('#beta-debug-toggle').click();page.locator('.beta-gear').click()
   assert page.locator('#test-complete-quests').is_visible()
+  assert page.locator('.beta-portrait-gallery').evaluate('e=>!e.hidden')
   # Reduced motion retains static gold feedback and never flashes the treasury.
   page.emulate_media(reduced_motion='reduce')
   page.evaluate('game.gold+=25;render()');page.wait_for_timeout(100)

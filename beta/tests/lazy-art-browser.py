@@ -8,7 +8,7 @@ class Quiet(SimpleHTTPRequestHandler):
 s=ThreadingHTTPServer(('127.0.0.1',0),partial(Quiet,directory=str(Path(__file__).resolve().parents[2])));Thread(target=s.serve_forever,daemon=True).start()
 try:
  with sync_playwright() as p:
-  b=p.chromium.launch(executable_path='/usr/bin/chromium',args=['--no-sandbox']);page=b.new_page(viewport={'width':390,'height':844},is_mobile=True,has_touch=True);errors=[];page.on('pageerror',lambda e:errors.append(str(e)));requests=[];bad=[];page.on('request',lambda r:requests.append(r.url));page.on('response',lambda r:bad.append(r.url) if r.status>=400 and '127.0.0.1' in r.url else None);page.goto(f'http://127.0.0.1:{s.server_port}/beta/',wait_until='networkidle');page.wait_for_function("document.readyState==='complete' && !!document.getElementById('beta-guild-rename')")
+  b=p.chromium.launch(executable_path='/usr/bin/chromium',args=['--no-sandbox']);page=b.new_page(viewport={'width':390,'height':844},is_mobile=True,has_touch=True);errors=[];page.on('pageerror',lambda e:errors.append(str(e)));requests=[];bad=[];page.on('request',lambda r:requests.append(r.url));page.on('response',lambda r:bad.append(r.url) if r.status>=400 and '127.0.0.1' in r.url else None);page.add_init_script("localStorage.setItem('wayfarers-lantern-beta-cover','seen')");page.goto(f'http://127.0.0.1:{s.server_port}/beta/',wait_until='networkidle');page.wait_for_function("document.readyState==='complete' && !!document.getElementById('beta-guild-rename')")
   page.wait_for_timeout(250)
   assert not [u for u in requests if '/thumbnails/' in u],requests
   requests.clear();page.evaluate("showView('quests')");page.wait_for_timeout(500)
@@ -21,7 +21,7 @@ try:
   assert len(set(u for u in requests if '/thumbnails/' in u))>count
   page.evaluate("const h=structuredClone(game.player);h.id='backup-fixture';h.name='Backup Hero';game.heroes.push(h);save()")
   saved=page.evaluate("localStorage.getItem('wayfarers_lantern_offline_v1')")
-  page.goto(f'http://127.0.0.1:{s.server_port}/beta/backup/',wait_until='networkidle');page.wait_for_function("document.readyState==='complete' && !!window.__betaSaveGuard")
+  page.add_init_script("localStorage.setItem('wayfarers-lantern-beta-cover','seen')");page.goto(f'http://127.0.0.1:{s.server_port}/beta/backup/',wait_until='networkidle');page.wait_for_function("document.readyState==='complete' && !!window.__betaSaveGuard")
   assert page.locator('.pv-top').count()==0
   assert page.evaluate("window.__betaSaveGuard.original")>=1
   assert page.evaluate("localStorage.getItem('wayfarers_lantern_offline_v1__beta_backup')")==saved

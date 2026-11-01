@@ -2370,11 +2370,12 @@ function ledger(){const st=$$('.stats .stat');st.forEach((s,i)=>{const l=s.query
   const v=(s.querySelector('strong')?.textContent||'').trim();s.classList.toggle('beta-zero',i>1&&/^0(\s|$)/.test(v))});
  let n=0;st.forEach(s=>{if(s.classList.contains('beta-zero'))return;s.classList.toggle('beta-first',n===0);s.classList.toggle('beta-r1',n<3);n++})}
 function num(t){const m=String(t).replace(/,/g,'').match(/-?\d+/);return m?+m[0]:null}
-function watchNum(id,suffix){const el=document.getElementById(id);if(!el)return;let last=num(el.textContent),busy=false;
- new MutationObserver(()=>{if(busy)return;const txt=el.textContent,v=num(txt);if(v===null||last===null||v===last){last=v;return}const d=v-last,from=last;last=v;
-  if(ANIM){const box=el.closest('.stat'),f=document.createElement('span');f.className='beta-float'+(d<0?' neg':'');f.textContent=(d>0?'+':'−')+Math.abs(d).toLocaleString()+suffix;const strip=$('.stats');if(box&&strip&&!box.classList.contains('beta-zero')){f.style.left=Math.max(4,box.offsetLeft+10)+'px';f.style.top=(box.offsetTop-12)+'px';strip.appendChild(f);setTimeout(()=>f.remove(),1700)}
-   const t0=performance.now(),dur=600,tpl=txt;const step=t=>{const k=Math.min(1,(t-t0)/dur),cur=Math.round(from+d*k);busy=true;el.textContent=k<1?tpl.replace(/-?[\d,]+/,cur.toLocaleString()):tpl;busy=false;if(k<1&&num(el.textContent)!==null)requestAnimationFrame(step)};requestAnimationFrame(step)}
+function watchNum(id,suffix){const el=document.getElementById(id);if(!el)return;let last=num(el.textContent);
+ // Watch gameplay updates only. Never animate by rewriting an observed total.
+ new MutationObserver(()=>{const v=num(el.textContent);if(v===null||last===null||v===last){last=v;return}const d=v-last;last=v;
+  if(ANIM){const box=el.closest('.stat'),f=document.createElement('span');f.className='beta-float'+(d<0?' neg':'');f.textContent=(d>0?'+':'−')+Math.abs(d).toLocaleString()+suffix;const strip=$('.stats');if(box&&strip&&!box.classList.contains('beta-zero')){strip.querySelectorAll('.beta-float[data-counter="'+id+'"]').forEach(n=>n.remove());f.dataset.counter=id;f.style.left=Math.max(4,box.offsetLeft+10)+'px';f.style.top=(box.offsetTop-12)+'px';strip.appendChild(f);setTimeout(()=>f.remove(),1700)}}
  }).observe(el,{childList:true,characterData:true,subtree:true})}
+
 const esc=t=>String(t??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const tint=h=>h.replace(/(^|[\s(])(\+\s?\d[\d,]*\s?(?:gp|gold|rep(?:utation)?|XP|Growth)\b)/g,'$1<span class="beta-g">$2</span>').replace(/(^|[\s(])([−–-]\s?\d[\d,]*\s?(?:gp|gold|rep(?:utation)?)\b)/g,'$1<span class="beta-r">$2</span>');
 function storyLog(){const root=document.getElementById('log-list');if(root){root.querySelectorAll('.logitem').forEach((it,i)=>{it.classList.toggle('old',i>=3&&i<8);it.classList.toggle('older',i>=8);const p=it.querySelector('p');if(p&&!p.dataset.bt){p.dataset.bt=1;p.innerHTML=tint(p.innerHTML)}})}

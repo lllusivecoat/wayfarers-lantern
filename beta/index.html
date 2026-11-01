@@ -822,7 +822,7 @@ html.beta-tbar-on #trading{padding-bottom:96px}
   </div>
 
   <section class="view active" id="hall">
-    <div class="heading"><div><div class="eyebrow">A modest beginning</div><h2>Your guild has a roof and a name.</h2></div><span class="pill gold">Working title · Day <span id="day-short">1</span></span></div>
+    <div class="heading beta-guild-heading"><div><div class="eyebrow">Your guild</div><h2 id="beta-guild-name">The Wayfarer's Lantern</h2><form id="beta-guild-rename"><label for="beta-guild-name-input">Guild name</label><div class="row"><input id="beta-guild-name-input" name="guildName" maxlength="60" required autocomplete="organization"><button class="btn secondary" type="submit">Rename guild</button></div><p id="beta-guild-name-status" role="status" aria-live="polite"></p></form></div><span class="pill gold">Day <span id="day-short">1</span></span></div>
     <article class="card" style="margin-bottom:13px"><div class="cardhead"><div><div class="eyebrow">Guildmaster adventurer</div><h3 id="player-name-label">Kael Arden</h3></div><span class="pill gold" id="player-level-label">Level 3</span></div><div class="portrait-row"><img id="player-portrait" class="portrait" alt="Kael portrait" hidden><div id="player-portrait-placeholder" class="portrait-placeholder">♙</div><div class="portrait-tools"><label class="btn ghost upload-label">Add custom image<input type="file" accept="image/*" onchange="handleHeroImage('player',this)"></label><button class="btn ghost" id="player-clear-image" onclick="clearHeroImage('player')" hidden>Remove</button><button class="btn ghost" onclick="renameHero('player')">Rename</button><span class="small muted">Saved to this device and included in exported saves</span></div></div><p>Kael can join quests and gain levels from mission outcomes. He has no guild rank or promotion track.</p><div class="hero-actions"><button class="btn secondary" onclick="openPlayerRespec()">Change guildmaster build</button><button class="btn ghost" id="open-guildmaster-stats" type="button">View full stats</button><button class="btn ghost" id="player-use-draught" onclick="useDraught('player')">Equip provisions</button></div><div class="small muted" id="player-level-info"></div><div class="progress"><span id="player-progress" style="width:0%"></span></div></article>
     <div class="grid two">
       <article class="card"><div class="cardhead"><div><div class="eyebrow">Owned plots & buildings</div><h3>Lantern Hall · Tier <span id="hall-tier">1</span></h3></div><span class="pill" id="hall-cap-pill">7 member slots</span></div><p id="hall-desc"></p><div class="divider"></div><div id="building-list"></div></article>
@@ -2437,8 +2437,8 @@ function subTabs(){['warehouse','quests'].forEach(g=>{const dd=$(`nav.tabs .nav-
 /* ---------- 10: ledger ---------- */
 const SHORT={'Member slots':'Members','Building plots':'Plots'};
 function ledger(){const st=$('.stats');if(!st)return;$$('.stat label',st).forEach(l=>{if(l.dataset.bshort)return;const t=l.textContent;for(const [a,b] of Object.entries(SHORT))if(t.includes(a)){l.dataset.bshort=1;const ic=t.replace(a,'').trim();l.innerHTML='';const L=document.createElement('span');L.className='beta-long';L.textContent=t;const S=document.createElement('span');S.className='beta-short';S.textContent=(ic?ic+' ':'')+b;l.append(L,S)}});
- if(!st.dataset.btap){st.dataset.btap=1;st.addEventListener('click',e=>{if(!PHONE()||e.target.closest('button,a'))return;ST.ledger=!ST.ledger;run()});const m=document.createElement('button');m.type='button';m.className='beta-ledger-more';m.setAttribute('aria-label','Show full guild ledger');st.appendChild(m)}
- cls(st,'beta-full',!!ST.ledger);setText($('.beta-ledger-more',st),ST.ledger?'▴':'▾')}
+ if(!st.dataset.btap){st.dataset.btap=1;st.addEventListener('click',e=>{if(!PHONE()||e.target.closest('button,a'))return;ST.ledger=!ST.ledger;run()});const m=document.createElement('button');m.type='button';m.className='beta-ledger-more';m.setAttribute('aria-label','Show full guild ledger');m.onclick=e=>{e.stopPropagation();ST.ledger=!ST.ledger;run()};st.appendChild(m)}
+ cls(st,'beta-full',!!ST.ledger);setText($('.beta-ledger-more',st),ST.ledger?'▴':'▾');$('.beta-ledger-more',st).setAttribute('aria-expanded',String(!!ST.ledger))}
 
 /* ---------- per-page ---------- */
 function hall(){const h=$('#hall');if(!h)return;const rec=$('#applicant-list')?.closest('.grid');if(rec)cls(rec,'beta-first-grid',true);
@@ -2608,5 +2608,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 })();
 
 </script>
+<script src="hall-polish.js"></script>
 </body>
 </html>

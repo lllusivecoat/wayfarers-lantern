@@ -1,6 +1,6 @@
 /* Staff skills and market convoys. Extends the existing v9 building/report engine. */
 (function(){
-  const skills={alchemyLab:'Alchemy',cartographersOffice:'Cartography',waystation:'Pathfinding',warehouse:'Storekeeping',staffOffice:'Quartermastery',workshop:'Blacksmithing',kitchen:'Cooking',infirmary:'First Aid',armory:'Armoring',trainingHall:'Training',warRoom:'Tactics',huntersLodge:'Hunting',commandPost:'Command'};
+  const skills={supplyDepot:'Logistics',contractsOffice:'Negotiation',adventurersEndowment:'Stewardship',alchemyLab:'Alchemy',cartographersOffice:'Cartography',waystation:'Pathfinding',warehouse:'Storekeeping',staffOffice:'Quartermastery',workshop:'Blacksmithing',kitchen:'Cooking',infirmary:'First Aid',armory:'Armoring',trainingHall:'Training',warRoom:'Tactics',huntersLodge:'Hunting',commandPost:'Command'};
   const thresholds=[0,5,15,30,50,75,105,140,180,225,275];
   const esc=tbwEsc;
   const expandedStaff=new Set();

@@ -1700,7 +1700,7 @@ function storyLog(){const root=document.getElementById('log-list');if(root){root
  const lt=document.getElementById('latest-text');if(!lt)return;let r=document.querySelector('.beta-recent');if(!r){r=document.createElement('div');r.className='beta-recent';lt.after(r)}
  const L=[...((G()&&G().log)||[])].slice(-3).reverse();const html=L.map(e=>`<div class="logitem"><strong>Day ${e.day} · ${esc(e.title)}</strong><p>${tint(esc(e.text))}</p></div>`).join('');if(r.dataset.h!==html){r.dataset.h=html;r.innerHTML=html}}
 function why(){$$('.beta-why').forEach(w=>{const b=w.previousElementSibling;if(!b||!b.disabled)w.remove()});
- $$('button.btn:disabled').forEach(b=>{if(b.nextElementSibling&&b.nextElementSibling.classList.contains('beta-why'))return;if(b.offsetParent===null)return;if(/^Purse too low/i.test(b.title)||b.closest('#hero-stats-modal')&&/purse/i.test(b.textContent))return;let r='';const t=b.getAttribute('title');const m=b.textContent.replace(/,/g,'').match(/(\d+)\s*gp/);
+ $$('button.btn:disabled').forEach(b=>{if(b.nextElementSibling&&b.nextElementSibling.classList.contains('beta-why'))return;if(b.offsetParent===null||b.hasAttribute('aria-describedby'))return;if(/^Purse too low/i.test(b.title)||b.closest('#hero-stats-modal')&&/purse/i.test(b.textContent))return;let r='';const t=b.getAttribute('title');const m=b.textContent.replace(/,/g,'').match(/(\d+)\s*gp/);
   if(m&&G()&&G().gold<+m[1])r='Need '+(+m[1]).toLocaleString()+' gp';else if(t&&t.length<70&&!/wipe/i.test(t))r=t;if(!r)return;const s=document.createElement('span');s.className='beta-why';s.textContent=r;b.after(s)})}
 function primary(){$$('.beta-pri').forEach(b=>b.classList.remove('beta-pri'));if(G()&&G().heroes&&G().heroes.length===0){const b=$('#applicant-list button.btn:not(:disabled)');if(b)b.classList.add('beta-pri')}}
 function guardNote(){const n=window.__betaSaveBlocked;if(!n||$('.beta-guard'))return;const d=document.createElement('div');d.className='notice beta-guard';d.setAttribute('role','alert');d.textContent='Beta paused saving after an error, so your saved guild was not changed. Reload the page; progress since the error is not saved.';(document.querySelector('.stats')||document.body).before(d)}
@@ -1937,8 +1937,8 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 <script src="hero-portraits.js?v=launch-1"></script>
 <link rel="stylesheet" href="harbour-polish.css?v=1" media="print" onload="this.media='all'">
 <script src="harbour-polish.js?v=launch-1"></script>
-<link rel="stylesheet" href="gear-care.css?v=2" media="print" onload="this.media='all'">
-<script src="gear-care.js?v=2"></script>
+<link rel="stylesheet" href="gear-care.css?v=3" media="print" onload="this.media='all'">
+<script src="gear-care.js?v=3"></script>
 <script src="launch.js?v=2"></script>
 </body>
 </html>

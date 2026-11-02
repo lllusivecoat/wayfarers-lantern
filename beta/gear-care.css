@@ -47,4 +47,14 @@ html.beta-light .gearcare-reason,html.beta-light .gearcare-broken{color:#974936}
 @media(prefers-reduced-motion:reduce){.gearcare-hero *,.gearcare-batch *{scroll-behavior:auto!important;transition:none!important}}
 .gearcare-item-actions .btn.gearcare-primary{background:#e2c485!important;color:#241d12!important;border-color:#f1d79f!important}
 .gearcare-total{padding:12px 16px;border:1px solid var(--acc);border-radius:9px;color:var(--acc);font:600 15px/1.5 var(--fn,system-ui)}
-.gearcare-badge{flex-shrink:0!important}
+
+.gearcare-fold{margin:12px 0;border-top:1px solid var(--line);width:100%;min-width:0}
+.gearcare-fold>summary{min-height:48px;padding:12px 0;color:var(--acc);cursor:pointer;font:500 14px/1.5 var(--fn,system-ui)}
+.gearcare-effects h4{margin:14px 0 5px;color:var(--text);font:600 13px/1.5 var(--fn,system-ui)}
+.gearcare-material-list{margin:0 0 10px;font:13px/1.5 var(--fn,system-ui)}
+.gearcare-material-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;padding:10px 0;border-bottom:1px solid var(--line)}
+.gearcare-material-row dt{color:var(--text);overflow-wrap:anywhere}
+.gearcare-material-row dd{margin:0;color:var(--muted);text-align:right}
+.gearcare-material-short dd{color:var(--red)}
+.gearcare-bulk>.gearcare-materials{max-width:600px}
+@media(max-width:420px){.gearcare-material-row{grid-template-columns:minmax(0,1fr);gap:3px}.gearcare-material-row dd{text-align:left}}

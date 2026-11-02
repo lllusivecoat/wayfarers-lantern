@@ -1,6 +1,9 @@
 # Wayfarer's Lantern
 
-A single-file browser guild management game.
+A browser guild management game. The former beta interface is now the main game.
+
+The `/beta/` address redirects to the main page. Presentation files stay in `beta/` as a single shared asset bundle; the original main page and old UI backup have been retired.
+Browser saves use the same storage key and origin.
 
 Play: https://lllusivecoat.github.io/wayfarers-lantern/
 

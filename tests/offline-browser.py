@@ -35,7 +35,7 @@ with tempfile.TemporaryDirectory(prefix='lantern-offline-') as temporary:
             page.on('pageerror',lambda e:errors.append(str(e)))
             page.goto(url,wait_until='networkidle')
             page.wait_for_function("navigator.serviceWorker.controller && document.querySelector('#offline-status').textContent.startsWith('Offline ready')",timeout=30000)
-            manifest=page.evaluate("fetch('manifest.webmanifest').then(r=>r.json())")
+            manifest=page.evaluate("fetch(document.querySelector('link[rel=manifest]').href).then(r=>r.json())")
             assert manifest['start_url']=='./' and manifest['scope']=='./'
             assert len(manifest['icons'])==2
             page.evaluate("game.gold=6543;save();caches.open('unrelated-app-cache')")

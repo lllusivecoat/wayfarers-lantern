@@ -1,11 +1,8 @@
-# Beta scope and deployment
+# Shared production presentation assets
 
-Only change beta/ files unless the user explicitly authorizes root changes.
-Beta is served at /wayfarers-lantern/beta/ from this repository's main branch.
-Root JavaScript imported through ../ is shared with live; do not modify it.
-Preserve the inline beta save backup/error/empty-guild guard. Beta shares live's
-save key; test with browser fixtures rather than a user's real browser storage.
-Do not regenerate the root service worker for beta-only changes.
-
-Run python3 beta/tests/hall-browser.py for Hall controls, rename persistence,
-mobile ordering and ledger controls, themes, and shared-save guard checks.
+The former beta game is now the root index.html. beta/index.html redirects there.
+This folder contains production CSS, JavaScript and artwork; changes affect the main game.
+Preserve the root inline save backup/error/empty-guild guard and existing save keys.
+After runtime changes, run python3 beta/build-launch.py when critical assets change,
+then python3 scripts/build-offline.py and commit the generated root sw.js.
+Do not retain a second playable copy of the old main or beta game.

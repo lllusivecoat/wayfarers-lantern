@@ -1,5 +1,6 @@
 /* Offline installation and explicit, save-preserving updates. */
 (function(){
+  const appRoot=new URL('./',document.currentScript.src);
   if(!('serviceWorker' in navigator)||!window.isSecureContext)return;
   const panel=document.createElement('aside');panel.className='offline-tools';panel.setAttribute('aria-label','Offline play and updates');
   panel.innerHTML='<p id="offline-status" role="status">Preparing offline play…</p><button class="btn secondary" id="check-game-update">Check for updates</button><button class="btn secondary" id="install-game" hidden>Install game</button><button class="btn" id="apply-game-update" hidden>Restart to apply update</button><details id="install-help"><summary>Install and offline help</summary><p>In your browser menu choose Install app or Add to Home Screen, if available. Wait for “Offline ready” before disconnecting. Saves stay in this browser; export a backup before clearing browser data. The optional Spotify soundtrack needs internet.</p></details>';
@@ -53,7 +54,7 @@
   window.addEventListener('online',()=>{refresh();checkForUpdate()});
   window.addEventListener('offline',refresh);
   document.addEventListener('visibilitychange',()=>{if(!document.hidden)checkForUpdate()});
-  navigator.serviceWorker.register('./sw.js',{scope:'./',updateViaCache:'none'}).then(reg=>{
+  navigator.serviceWorker.register(new URL('sw.js',appRoot).href,{scope:appRoot.href,updateViaCache:'none'}).then(reg=>{
     registration=reg;refresh();
     function watch(worker){if(!worker)return;worker.addEventListener('statechange',()=>{
       if(worker.state==='installed')refresh();

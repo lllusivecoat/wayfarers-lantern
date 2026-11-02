@@ -41,7 +41,19 @@ self.addEventListener('fetch',event=>{
   if(url.origin!==SCOPE.origin)return;
   let key=url.href;
   if(event.request.mode==='navigate'&&(url.pathname===SCOPE.pathname||url.pathname===SCOPE.pathname+'index.html'))key=new URL('index.html',SCOPE).href;
-  if(!fileURLs.has(key))return;
+  if(!fileURLs.has(key)){
+    // Cache artwork as it is viewed without downloading the entire gallery up front.
+    const artRoot=new URL('beta/',SCOPE).pathname;
+    if(url.pathname.startsWith(artRoot+'img/')||url.pathname.startsWith(artRoot+'art/')){
+      if(!/\.(webp|png|jpg|jpeg|svg)$/.test(url.pathname))return;
+      event.respondWith((async()=>{
+        const cache=await caches.open(CACHE),cached=await cache.match(key);if(cached)return cached;
+        try{const response=await fetch(event.request);if(response.ok)await cache.put(key,response.clone());return response}
+        catch(error){return new Response('',{status:503})}
+      })());
+    }
+    return;
+  }
   // Never substitute a network file from another release into the cached app.
   event.respondWith(caches.open(CACHE).then(cache=>cache.match(key)).then(response=>response||new Response('Offline files are unavailable. Reconnect and reload to restore the game.',{status:503,headers:{'Content-Type':'text/plain'}})));
 });

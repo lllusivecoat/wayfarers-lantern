@@ -1,5 +1,5 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
-const root=path.resolve(__dirname,'../..'),source=fs.readFileSync(path.join(root,'beta/gear-care.js'),'utf8'),index=fs.readFileSync(path.join(root,'beta/index.html'),'utf8');
+const root=path.resolve(__dirname,'../..'),source=fs.readFileSync(path.join(root,'beta/gear-care.js'),'utf8'),index=fs.readFileSync(path.join(root,'index.html'),'utf8');
 function setup(){
  const recipes=[{id:'greatsword-0',category:'weapon',hands:2,requirements:{'Copper Ore':4,Leather:2}},{id:'sword-0',category:'weapon',hands:1,requirements:{'Copper Ore':4,Leather:2}}];
  const player={id:'player',name:'Kael',gold:10000,ready:true,perks:[],equipment:{weapon:'two',offhand:'two',armor:'armor',cape:'cape'}};

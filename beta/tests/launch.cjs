@@ -1,5 +1,5 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
-const root=path.resolve(__dirname,'..'),critical=fs.readFileSync(path.join(root,'launch-critical.js'),'utf8'),coordinator=fs.readFileSync(path.join(root,'launch.js'),'utf8'),index=fs.readFileSync(path.join(root,'index.html'),'utf8');
+const root=path.resolve(__dirname,'..'),critical=fs.readFileSync(path.join(root,'launch-critical.js'),'utf8'),coordinator=fs.readFileSync(path.join(root,'launch.js'),'utf8'),index=fs.readFileSync(path.join(root,'../index.html'),'utf8');
 class Target{
  constructor(){this.events={};this.attrs={};this.hidden=false;this.disabled=false;this.textContent='';this.classList={values:new Set(),add(...xs){xs.forEach(x=>this.values.add(x))},remove(...xs){xs.forEach(x=>this.values.delete(x))},contains(x){return this.values.has(x)}};this.dataset={}}
  addEventListener(k,fn,options){(this.events[k]??=[]).push({fn,once:options?.once})}

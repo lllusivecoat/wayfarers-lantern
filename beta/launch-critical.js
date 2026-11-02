@@ -1,7 +1,7 @@
 /* Inlined before any game files. This controller never writes browser storage. */
 (() => {
  'use strict';
- const root=document.documentElement;
+ const root=document.documentElement,started=Date.now();let minimumTimer;
  let phase='loading',minimum=false,holding=true,problem='',cleanupTimer;
  const byId=id=>document.getElementById(id);
  function sync(){
@@ -23,9 +23,10 @@
  }
  function reveal(){
   if(!minimum||problem||phase==='revealing'||phase==='done')return false;
+  if(Date.now()-started<600){clearTimeout(minimumTimer);minimumTimer=setTimeout(reveal,600-(Date.now()-started));return true}
   phase='revealing';
-  const cover=byId('beta-launch-cover');root.classList.remove('beta-booting');cover?.classList.add('launch-leaving');
-  const finish=()=>{if(problem||phase==='done')return;phase='hydrating';holding=false;window.dispatchEvent(new Event('beta:boot-portraits'));if(problem)return;phase='done';clearTimeout(watchdog);cover?.remove();window.dispatchEvent(new Event('beta:boot-ready'))};
+  const cover=byId('beta-launch-cover');cover?.classList.add('launch-leaving');
+  const finish=()=>{if(problem||phase==='done')return;phase='hydrating';holding=false;window.dispatchEvent(new Event('beta:boot-portraits'));if(problem)return;phase='done';clearTimeout(watchdog);cover?.remove();root.classList.remove('beta-booting');root.classList.add('beta-hall-ready');window.dispatchEvent(new Event('beta:boot-ready'))};
   if(matchMedia('(prefers-reduced-motion: reduce)').matches)finish();else cleanupTimer=setTimeout(finish,300);
   return true;
  }
@@ -35,3 +36,4 @@
  document.addEventListener('DOMContentLoaded',sync,{once:true});
  const watchdog=setTimeout(()=>{if(phase==='loading'&&!problem){const status=byId('launch-status');if(status)status.textContent='Still preparing the hall… You can Retry if the connection has stalled.';const retry=byId('launch-retry');if(retry)retry.hidden=false}},20000);
 })();
+

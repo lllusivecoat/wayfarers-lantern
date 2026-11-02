@@ -45,3 +45,6 @@
 html.beta-light .gearcare-reason,html.beta-light .gearcare-broken{color:#974936}
 @media(max-width:600px){.gearcare-item{grid-template-columns:minmax(0,1fr);gap:8px}.gearcare-item-actions{width:100%;max-width:none}.gearcare-bulk{justify-items:stretch}.gearcare-bulk>button{width:100%}.gearcare-section-head{align-items:flex-start}.gearcare-chips{gap:6px}.gearcare-chips button{flex:1 1 auto}}
 @media(prefers-reduced-motion:reduce){.gearcare-hero *,.gearcare-batch *{scroll-behavior:auto!important;transition:none!important}}
+.gearcare-item-actions .btn.gearcare-primary{background:#e2c485!important;color:#241d12!important;border-color:#f1d79f!important}
+.gearcare-total{padding:12px 16px;border:1px solid var(--acc);border-radius:9px;color:var(--acc);font:600 15px/1.5 var(--fn,system-ui)}
+.gearcare-badge{flex-shrink:0!important}

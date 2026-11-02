@@ -15,11 +15,14 @@
    // All parser scripts and their DOMContentLoaded initializers must finish first.
    await Promise.resolve();await Promise.all([...document.querySelectorAll('link[rel="stylesheet"]:not([data-boot-optional])')].map(stylesheet));
    if(boot.failed)return;
-   if(typeof game==='undefined'||!game?.player||!Array.isArray(game.heroes)||typeof render!=='function'||typeof showView!=='function'||!window.WL_BETA_GEAR_CARE)throw Error('game initialization');
+   if(typeof game==='undefined'||!game?.player||!Array.isArray(game.heroes)||typeof render!=='function'||typeof showView!=='function'||!window.WL_BETA_GEAR_CARE||!window.WL_BETA_HARBOUR)throw Error('game initialization');
    if(window.__betaSaveGuard?.error)throw Error('save guard');
    showView('hall');window.betaUxRun?.();window.betaR3Run?.();
    await frame();await frame();
    if(!document.querySelector('#beta-guild-name')?.textContent||!document.querySelector('#player-name-label')?.textContent)throw Error('hall render');
+   // The optional font CSS must arrive before asking FontFaceSet to load Cinzel.
+   const fontLink=document.querySelector('link[data-boot-optional][href*="fonts.googleapis.com"]');
+   await Promise.race([(async()=>{if(fontLink)await stylesheet(fontLink);if(document.fonts)await document.fonts.load('500 40px Cinzel')})().catch(()=>{}),new Promise(resolve=>setTimeout(resolve,2500))]);
    if(!boot.allowSkip())return;
    const portrait=imageSrc(game.player)||window.WL_BETA_PORTRAITS?.lookup(game.player);
    // Only one above-the-fold portrait is warmed. Other chibi files remain deferred.
@@ -35,3 +38,4 @@
  },{once:true});
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
 })();
+

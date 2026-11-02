@@ -58,3 +58,7 @@ html.beta-light .gearcare-reason,html.beta-light .gearcare-broken{color:#974936}
 .gearcare-material-short dd{color:var(--red)}
 .gearcare-bulk>.gearcare-materials{max-width:600px}
 @media(max-width:420px){.gearcare-material-row{grid-template-columns:minmax(0,1fr);gap:3px}.gearcare-material-row dd{text-align:left}}
+
+.gearcare-hero-summary{min-height:48px;padding:12px 0;color:var(--acc);cursor:pointer;font:500 18px/1.4 var(--fh,Georgia)}
+.gearcare-hero-block:not([open]){padding:6px 0}
+.gearcare-bulk-reason[hidden]{display:none!important}

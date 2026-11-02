@@ -60,7 +60,7 @@
  const api={equipped,items,damaged,repairQuote,enhancementQuote,candidates,quotePlan,perform};host.WL_BETA_GEAR_CARE=Object.freeze(api);
  if(typeof document==='undefined')return;
  const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
- const state={damagedOnly:true,repairHero:null,enhanceHero:null,repairOpen:new Set(),enhanceOpen:new Set(),feedback:new Map()};
+ const state={damagedOnly:true,repairHero:null,enhanceHero:null,repairOpen:new Set(),enhanceOpen:new Set(),feedback:new Map(),heroOpen:new Set()};
  const money=n=>Number(n||0).toLocaleString(undefined,{maximumFractionDigits:2});let serial=0;
  function make(tag,cls,text){const node=document.createElement(tag);if(cls)node.className=cls;if(text!==undefined)node.textContent=text;return node}
  function btn(text,fn,reason='',cls='btn secondary'){const b=make('button',cls,text);b.type='button';b.disabled=busy||!!reason;b.onclick=fn;if(reason)b.title=reason;return b}
@@ -102,18 +102,22 @@
   const box=make('div','gearcare-bulk');if(kind==='repair'&&plan.ids.length<2)return box;
   const label=(kind==='repair'?'Repair all':'Enhance all')+' · '+money(plan.gold)+' gp',action=btn(label,()=>act(kind,h.id,scope),plan.reason);
   action.dataset.gearBulk=kind;action.setAttribute('aria-label',label+' for '+h.name+' only');box.append(action);
-  const why=reasonFor(action,plan.reason);if(why){why.className='gearcare-note gearcare-bulk-reason';box.append(why)}
+  const why=reasonFor(action,plan.reason);if(why){why.className='gearcare-bulk-reason';why.hidden=true;box.append(why)}
   if(kind==='enhance'){const materials=materialsList(plan,'Total required materials');if(materials)box.append(materials)}
   return box;
  }
  function reveal(node){for(let p=node;p;p=p.parentElement){if(p.tagName==='DETAILS')p.open=true;if(p.classList.contains('m-collapsed'))$(':scope>.m-collapse-toggle',p)?.click()}}
  function focusBatch(kind,id){if(typeof closeHeroStats==='function')closeHeroStats();if(kind==='repair'){state.repairHero=id;state.damagedOnly=true;state.repairOpen.add(id);showView('warehouse')}else{state.enhanceHero=id;state.enhanceOpen.add(id);showView('crafting')}refresh();requestAnimationFrame(()=>{const root=$(kind==='repair'?'#warehouse-gear':'#gear-enhancement');const group=root&&$$('[data-gear-hero]',root).find(node=>node.dataset.gearHero===String(id));const target=group||root;if(!target)return;reveal(target);target.tabIndex=-1;target.scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});target.focus({preventScroll:true})})}
  function heroBlock(h,kind){
-  const block=make('section','gearcare-hero-block');block.dataset.gearKind=kind;const list=kind==='repair'?equipped(h.id).filter(damaged):equipped(h.id).filter(g=>g.madeByPlayer&&!g.gatherTool);
+  const list=kind==='repair'?equipped(h.id).filter(damaged):equipped(h.id).filter(g=>g.madeByPlayer&&!g.gatherTool);
+  const active=kind==='repair'?list:list.filter(g=>Number(g.enhancement||0)<4),key=h.id+'|'+kind;
+  const block=make(active.length?'details':'section','gearcare-hero-block');block.dataset.gearKind=kind;
   const link=btn(kind==='repair'?'Open batch repairs':'Open batch workshop',()=>focusBatch(kind,h.id),'','btn ghost gearcare-link');
-  const active=kind==='repair'?list:list.filter(g=>Number(g.enhancement||0)<4);
   if(!active.length){block.classList.add('gearcare-complete');block.append(note(kind==='repair'?'All gear repaired':list.length?'All equipped enhancements complete':'No crafted equipment equipped.'),link,status(kind,h.id));return block}
-  const head=make('div','gearcare-section-head');head.append(make('h3','',kind==='repair'?'Needs repair':'Enhancements'),link);block.append(head,note(h.name+' · personal purse '+money(h.gold)+' gp'));for(const g of list)block.append(itemRow(kind,g,h,'equipped'));block.append(bulk(kind,h,'equipped',quotePlan(kind,h.id)),status(kind,h.id));return block;
+  const summary=make('summary','gearcare-hero-summary',(kind==='repair'?'Needs repair':'Enhancements')+' · '+list.length+' '+(list.length===1?'item':'items'));
+  block.append(summary,link);block.open=state.heroOpen.has(key);block.ontoggle=()=>{if(block.open)state.heroOpen.add(key);else state.heroOpen.delete(key)};
+  for(const g of list)block.append(itemRow(kind,g,h,'equipped'));
+  block.append(bulk(kind,h,'equipped',quotePlan(kind,h.id)),status(kind,h.id));return block;
  }
  function collapseHelp(right){
   for(const p of $$('p',right)){
@@ -131,7 +135,7 @@
   if(kind==='enhance')box.append(make('h3','','Enhance equipment'));
   box.append(note('Gold is paid by the owning hero. '+(kind==='repair'?'Each Repair all affects one hero only.':'Materials come from guild storage. One next stage per item.')));
   if(kind==='repair'){const visible=all.filter(([id])=>filter===null||filter===id),owners=visible.filter(([id,list])=>hero(id)&&list.some(damaged));box.append(note(owners.length+' '+(owners.length===1?'hero':'heroes')+' · '+visible.reduce((n,[id,list])=>n+list.filter(damaged).length,0)+' damaged · '+money(owners.reduce((n,[id])=>n+(plans.get(id)?.gold||0),0))+' gp','gearcare-total'));const label=make('label','gearcare-filter'),input=make('input');input.type='checkbox';input.checked=state.damagedOnly;input.onchange=()=>{state.damagedOnly=input.checked;batch('repair')};label.append(input,document.createTextNode('Damaged only'));box.append(label)}
-  const chips=make('div','gearcare-chips');chips.setAttribute('aria-label',kind==='repair'?'Repair groups':'Workshop groups');const choose=id=>{if(kind==='repair')state.repairHero=id;else state.enhanceHero=id;batch(kind)};const allButton=btn('All heroes',()=>choose(null),'','btn ghost');allButton.setAttribute('aria-pressed',String(filter===null));chips.append(allButton);
+  const chips=make('div','gearcare-chips');chips.setAttribute('aria-label',kind==='repair'?'Repair groups':'Workshop groups');const choose=id=>{const next=filter===id?null:id;if(kind==='repair')state.repairHero=next;else state.enhanceHero=next;batch(kind)};
   for(const [id,list] of all){const damage=list.filter(damaged).length;if(kind==='repair'&&state.damagedOnly&&!damage&&filter!==id)continue;const h=hero(id),plan=plans.get(id);const text=(h?.name||'Guild storage')+' · '+(kind==='repair'?damage+' damaged':list.length+' items')+(plan?' · '+money(plan.gold)+' gp':'');const chip=btn(text,()=>choose(id),'','btn ghost');chip.setAttribute('aria-pressed',String(filter===id));chip.dataset.gearChip=id;chips.append(chip)}box.append(chips);
   let shown=0;
   for(const [id,list] of all){if(filter!==null&&filter!==id)continue;const h=hero(id),display=kind==='repair'&&state.damagedOnly?list.filter(damaged):list;if(!display.length&&filter!==id)continue;shown++;const section=make('section','gearcare-group');section.dataset.gearHero=id;const head=make('div','gearcare-group-head');head.append(make('h3','',h?.name||'Guild storage'));if(h)head.append(note('Purse '+money(h.gold)+' gp'));section.append(head);

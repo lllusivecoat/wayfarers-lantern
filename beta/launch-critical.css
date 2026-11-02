@@ -21,6 +21,6 @@ html.beta-booting body>:not(#beta-launch-cover):not(script):not(style):not(link)
 @media(prefers-reduced-motion:reduce){#beta-launch-cover{transition:none}}
 
 
-html.beta-hall-ready .shell{animation:beta-hall-in .25s both}
+html.beta-hall-ready .shell{animation:beta-hall-in .25s backwards}
 @keyframes beta-hall-in{from{opacity:0}to{opacity:1}}
 @media(prefers-reduced-motion:reduce){html.beta-hall-ready .shell{animation:none}}

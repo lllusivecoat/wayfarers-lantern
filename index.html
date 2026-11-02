@@ -31,7 +31,7 @@ html.beta-booting body>:not(#beta-launch-cover):not(script):not(style):not(link)
 @media(prefers-reduced-motion:reduce){#beta-launch-cover{transition:none}}
 
 
-html.beta-hall-ready .shell{animation:beta-hall-in .25s both}
+html.beta-hall-ready .shell{animation:beta-hall-in .25s backwards}
 @keyframes beta-hall-in{from{opacity:0}to{opacity:1}}
 @media(prefers-reduced-motion:reduce){html.beta-hall-ready .shell{animation:none}}
 </style>
@@ -1882,7 +1882,7 @@ function pick(sc,v,mode){const fresh=()=>sc.kitchen!=null?$(`#kitchen-recipes se
 function popup(){const id=ST.pop;$$('.beta-rl-pop').forEach(c=>{if(c.id!==id){c.classList.remove('beta-rl-pop');$(':scope > .beta-rl-close',c)?.remove()}});let bd=$('.beta-rl-bd');
  if(!id){bd?.remove();return}const card=document.getElementById(id);if(!card||!$('#crafting.active,#crafting.view.active')&&!card.closest('.view.active')){ST.pop=null;bd?.remove();return}
  let dd=card.closest('details');while(dd){if(!dd.open)dd.open=true;dd=dd.parentElement?.closest('details')}card.classList.add('beta-rl-pop');if(!$(':scope > .beta-rl-close',card)){const x=mk('button','beta-rl-close','✕');x.type='button';x.setAttribute('aria-label','Close');x.onclick=()=>{ST.pop=null;run()};card.prepend(x)}
- if(!bd){bd=mk('div','beta-rl-bd');bd.onclick=()=>{ST.pop=null;run()};document.body.appendChild(bd)}}
+ if(!bd){bd=mk('div','beta-rl-bd');bd.onclick=()=>{ST.pop=null;run()}}if(bd.parentElement!==card.parentElement)card.parentElement.appendChild(bd)}
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&ST.pop){ST.pop=null;run()}});
 
 /* ---------- B3: trading Cargo -> Party with pinned Send bar ---------- */

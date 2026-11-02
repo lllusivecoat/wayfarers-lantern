@@ -2,3 +2,8 @@
 .offline-tools[hidden],.offline-tools [hidden]{display:none!important}
 .offline-tools p{margin:0;flex:1 1 220px}.offline-tools details{flex-basis:100%}.offline-tools summary{cursor:pointer}.offline-tools .btn{white-space:normal}
 @media(max-width:850px){.offline-tools{margin:0 14px 16px}}
+
+.beta-menu>.offline-tools{display:block;max-width:none;margin:6px 0 0;padding:10px;background:transparent;border:0;border-top:1px solid var(--line);border-radius:0;color:var(--text)}
+.beta-menu>.offline-tools>summary{min-height:44px;cursor:pointer;color:var(--acc);padding:10px 0}
+.beta-menu>.offline-tools p{margin:8px 0}
+.beta-menu>.offline-tools .btn{margin:6px 0;width:100%}

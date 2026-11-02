@@ -2,10 +2,15 @@
 (function(){
   const appRoot=new URL('./',document.currentScript.src);
   if(!('serviceWorker' in navigator)||!window.isSecureContext)return;
-  const panel=document.createElement('aside');panel.className='offline-tools';panel.setAttribute('aria-label','Offline play and updates');
-  panel.innerHTML='<p id="offline-status" role="status">Preparing offline play…</p><button class="btn secondary" id="check-game-update">Check for updates</button><button class="btn secondary" id="install-game" hidden>Install game</button><button class="btn" id="apply-game-update" hidden>Restart to apply update</button><details id="install-help"><summary>Install and offline help</summary><p>In your browser menu choose Install app or Add to Home Screen, if available. Wait for “Offline ready” before disconnecting. Saves stay in this browser; export a backup before clearing browser data. The optional Spotify soundtrack needs internet.</p></details>';
-  document.querySelector('.top')?.insertAdjacentElement('afterend',panel);
-  if(!panel.isConnected)document.body.appendChild(panel);
+  const panel=document.createElement('details');panel.className='offline-tools';panel.setAttribute('aria-label','Offline play and updates');
+  panel.innerHTML='<summary>Offline &amp; updates</summary><p id="offline-status" role="status">Preparing offline play…</p><button class="btn secondary" id="check-game-update">Check for updates</button><button class="btn secondary" id="install-game" hidden>Install game</button><button class="btn" id="apply-game-update" hidden>Restart to apply update</button><details id="install-help"><summary>Install and offline help</summary><p>In your browser menu choose Install app or Add to Home Screen, if available. Wait for “Offline ready” before disconnecting. Saves stay in this browser; export a backup before clearing browser data. The optional Spotify soundtrack needs internet.</p></details>';
+  function mount(){
+    const menu=document.querySelector('#beta-menu');if(!menu)return;
+    menu.appendChild(panel);
+    const check=menu.querySelector('[data-a=update]');
+    if(check)check.addEventListener('click',event=>{event.stopImmediatePropagation();panel.open=true;panel.querySelector('#check-game-update').click()});
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount,{once:true});else mount();
   const status=panel.querySelector('#offline-status'),updateButton=panel.querySelector('#apply-game-update'),installButton=panel.querySelector('#install-game'),checkButton=panel.querySelector('#check-game-update');
   if(matchMedia('(display-mode: standalone)').matches||navigator.standalone)panel.querySelector('#install-help').hidden=true;
   let registration,waitingWorker,restarting=false,installPrompt,lastCheck=0;

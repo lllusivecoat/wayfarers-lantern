@@ -111,13 +111,19 @@
  function heroBlock(h,kind){
   const list=kind==='repair'?equipped(h.id).filter(damaged):equipped(h.id).filter(g=>g.madeByPlayer&&!g.gatherTool);
   const active=kind==='repair'?list:list.filter(g=>Number(g.enhancement||0)<4),key=h.id+'|'+kind;
-  const block=make(active.length?'details':'section','gearcare-hero-block');block.dataset.gearKind=kind;
+  const block=make('section','gearcare-hero-block');block.dataset.gearKind=kind;
   const link=btn(kind==='repair'?'Open batch repairs':'Open batch workshop',()=>focusBatch(kind,h.id),'','btn ghost gearcare-link');
   if(!active.length){block.classList.add('gearcare-complete');block.append(note(kind==='repair'?'All gear repaired':list.length?'All equipped enhancements complete':'No crafted equipment equipped.'),link,status(kind,h.id));return block}
-  const summary=make('summary','gearcare-hero-summary',(kind==='repair'?'Needs repair':'Enhancements')+' · '+list.length+' '+(list.length===1?'item':'items'));
-  block.append(summary,link);block.open=state.heroOpen.has(key);block.ontoggle=()=>{if(block.open)state.heroOpen.add(key);else state.heroOpen.delete(key)};
-  for(const g of list)block.append(itemRow(kind,g,h,'equipped'));
-  block.append(bulk(kind,h,'equipped',quotePlan(kind,h.id)),status(kind,h.id));return block;
+  const head=make('div','gearcare-section-head gearcare-aligned-head'),content=make('div','gearcare-hero-items');
+  content.id='gearcare-items-'+kind+'-'+h.id;content.hidden=!state.heroOpen.has(key);
+  const toggle=btn('',()=>{content.hidden=!content.hidden;if(content.hidden)state.heroOpen.delete(key);else state.heroOpen.add(key);sync()},'','gearcare-hero-toggle');
+  toggle.setAttribute('aria-controls',content.id);
+  const title=make('span','',kind==='repair'?'Needs repair':'Enhancements'),count=make('small','',list.length+' '+(list.length===1?'item':'items'));
+  toggle.append(title,count);
+  function sync(){toggle.setAttribute('aria-expanded',String(!content.hidden));block.classList.toggle('gearcare-expanded',!content.hidden)}sync();
+  head.append(toggle,link);block.append(head,content);
+  for(const g of list)content.append(itemRow(kind,g,h,'equipped'));
+  content.append(bulk(kind,h,'equipped',quotePlan(kind,h.id)),status(kind,h.id));return block;
  }
  function collapseHelp(right){
   for(const p of $$('p',right)){

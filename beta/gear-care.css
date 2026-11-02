@@ -62,3 +62,12 @@ html.beta-light .gearcare-reason,html.beta-light .gearcare-broken{color:#974936}
 .gearcare-hero-summary{min-height:48px;padding:12px 0;color:var(--acc);cursor:pointer;font:500 18px/1.4 var(--fh,Georgia)}
 .gearcare-hero-block:not([open]){padding:6px 0}
 .gearcare-bulk-reason[hidden]{display:none!important}
+
+.gearcare-aligned-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:nowrap;gap:12px}
+.gearcare-aligned-head .gearcare-link{flex:0 1 46%;margin:0;text-align:right}
+.gearcare-hero .gearcare-hero-toggle{flex:1 1 54%;min-width:0;margin:0;padding:8px 0!important;border:0;background:transparent;color:var(--acc);text-align:left;font:500 18px/1.4 var(--fh,Georgia)!important}
+.gearcare-hero-toggle>span{display:block}
+.gearcare-hero-toggle>span::before{content:'▸ ';font-size:13px}
+.gearcare-hero-toggle[aria-expanded=true]>span::before{content:'▾ '}
+.gearcare-hero-toggle>small{display:block;padding-left:16px;color:var(--muted);font:12px/1.5 var(--fn,system-ui)}
+.gearcare-hero-items[hidden]{display:none!important}

@@ -44,8 +44,8 @@
  function perform(kind,heroId,scope='equipped',onlyId=null){
   if(busy)return {ok:false,completed:0,reason:'An action is already in progress.'};
   const plan=quotePlan(kind,heroId,scope,onlyId);if(plan.reason)return {ok:false,completed:0,...plan};
-  busy=true;let completed=0,reason='',spent=0;const alertBefore=host.alert;
-  try{host.alert=text=>{reason=String(text)};
+  busy=true;let completed=0,reason='',spent=0;const alertBefore=host.alert,renderBefore=render;
+  try{render=()=>{};host.alert=text=>{reason=String(text)};
    for(const id of plan.ids){
     if(!items(heroId,scope,kind).some(g=>g.id===id)){reason='The equipped items changed. Review this hero’s gear again.';break}
     const q=kind==='repair'?repairQuote(id,heroId):enhancementQuote(id,heroId);if(q.reason){reason=q.reason;break}
@@ -54,7 +54,7 @@
     const applied=kind==='repair'?item.durability===item.maxDurability&&item.durability!==before:Number(item.enhancement)===before+1;
     if(!applied){reason=reason||'The action could not be completed.';break}completed++;spent+=q.gold;
    }
-  }finally{host.alert=alertBefore;busy=false}
+  }finally{host.alert=alertBefore;render=renderBefore;busy=false;if(completed)render()}
   return {ok:completed===plan.ids.length,completed,gold:spent,reason,total:plan.ids.length};
  }
  const api={equipped,items,damaged,repairQuote,enhancementQuote,candidates,quotePlan,perform};host.WL_BETA_GEAR_CARE=Object.freeze(api);
@@ -122,8 +122,9 @@
   toggle.append(title,count);
   function sync(){toggle.setAttribute('aria-expanded',String(!content.hidden));block.classList.toggle('gearcare-expanded',!content.hidden)}sync();
   head.append(toggle,link);block.append(head,content);
-  for(const g of list)content.append(itemRow(kind,g,h,'equipped'));
-  content.append(bulk(kind,h,'equipped',quotePlan(kind,h.id)),status(kind,h.id));return block;
+  let populated=false;
+  function populate(){if(populated)return;populated=true;for(const g of list)content.append(itemRow(kind,g,h,'equipped'));content.append(bulk(kind,h,'equipped',quotePlan(kind,h.id)),status(kind,h.id))}
+  const click=toggle.onclick;toggle.onclick=()=>{click();if(!content.hidden)populate()};if(!content.hidden)populate();return block;
  }
  function collapseHelp(right){
   for(const p of $$('p',right)){
@@ -136,7 +137,7 @@
  const equipment=renderHeroEquipment;renderHeroEquipment=function(){const template=make('template');template.innerHTML=equipment.apply(this,arguments);collapseHelp(template.content);return template.innerHTML};
  function heroPanel(){const h=typeof viewingHeroId==='undefined'?null:hero(viewingHeroId),right=$('#hero-stats-content .hero-stats-right');if(!h||h.dead||!right)return;let panel=$(':scope>.gearcare-hero',right);if(panel)panel.remove();panel=make('div','gearcare-hero');panel.append(heroBlock(h,'repair'),heroBlock(h,'enhance'));right.prepend(panel);collapseHelp(right)}
  function groups(kind){const map=new Map();for(const g of game.gear||[]){if(kind==='enhance'&&(!g.madeByPlayer||g.gatherTool))continue;const id=(kind==='repair'?g.owner:(g.heroOwner||g.owner))||'storage';if(!map.has(id))map.set(id,[]);map.get(id).push(g)}return [...map].sort(([a],[b])=>a==='player'?-1:b==='player'?1:(hero(a)?.name||'Guild storage').localeCompare(hero(b)?.name||'Guild storage'))}
- function batch(kind){const root=$(kind==='repair'?'#warehouse-gear':'#gear-enhancement');if(!root)return;const filter=kind==='repair'?state.repairHero:state.enhanceHero,open=kind==='repair'?state.repairOpen:state.enhanceOpen;const all=groups(kind),plans=new Map();for(const [id,list] of all)if(hero(id))plans.set(id,quotePlan(kind,id,'owned'));
+ function batch(kind){const root=$(kind==='repair'?'#warehouse-gear':'#gear-enhancement');if(!root||!root.closest('.view')?.classList.contains('active'))return;const filter=kind==='repair'?state.repairHero:state.enhanceHero,open=kind==='repair'?state.repairOpen:state.enhanceOpen;const all=groups(kind),plans=new Map();for(const [id,list] of all)if(hero(id))plans.set(id,quotePlan(kind,id,'owned'));
   const box=make('div','gearcare-batch');box.dataset.gearBatch=kind;
   if(kind==='enhance')box.append(make('h3','','Enhance equipment'));
   box.append(note('Gold is paid by the owning hero. '+(kind==='repair'?'Each Repair all affects one hero only.':'Materials come from guild storage. One next stage per item.')));

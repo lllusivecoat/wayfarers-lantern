@@ -38,6 +38,7 @@
       if(!h.dead){service(h,g);continue}
       const report=[...reports].reverse().find(r=>(r.casualties||[]).includes(h.id));
       const m=capture(h,g,report,true);
+      m.name=h.name; // Display names follow renames; archived expedition facts stay intact.
       m.epitaph=typeof m.epitaph==='string'?m.epitaph.slice(0,EPITAPH_LIMIT):'';
     }
     let honors=0;for(const h of fallen(g))if(h.memorial.honored)h.memorial.honored=++honors<=LIMIT;

@@ -21,7 +21,7 @@
  const head=v9PickHead;v9PickHead=function(h){const html=head.apply(this,arguments),holder=document.createElement('div');holder.innerHTML=html;holder.querySelector('.v9pick-name')?.prepend(crest(h));return holder.innerHTML};
  function roster(){document.querySelectorAll('.v9-rrow').forEach(row=>{const h=purse(row.dataset.id);if(!h)return;const sig=[h.className,h.wound?.tier||0,!!h.dead].join('|');if(row.dataset.betaCrest===sig&&row.querySelector('.beta-hero-crest'))return;row.dataset.betaCrest=sig;row.querySelector(':scope>.beta-hero-crest')?.remove();row.prepend(crest(h));const photo=row.querySelector('.v9-rpic');if(photo&&!photo.matches('img'))photo.setAttribute('aria-hidden','true')})}
  const heroes=renderHeroes;renderHeroes=function(){const out=heroes.apply(this,arguments);roster();return out};roster();
- const list=document.getElementById('hero-list');if(list)new MutationObserver(roster).observe(list,{childList:true,subtree:true});
+ const list=document.getElementById('hero-list');if(list)new MutationObserver(records=>{if(records.some(r=>[...r.addedNodes].some(n=>n.nodeType===1&&(n.matches?.('.v9-rrow')||n.querySelector?.('.v9-rrow')))))roster()}).observe(list,{childList:true,subtree:true});
  // Observe the authoritative total; animate a separate decoration, never that total.
  let lastGold=Number(game.gold),floatTimer=null;const total=document.getElementById('gold');
  const announcement=document.createElement('span');announcement.className='beta-sr-only';announcement.setAttribute('role','status');announcement.setAttribute('aria-live','polite');document.body.append(announcement);

@@ -7,3 +7,5 @@
 .beta-menu>.offline-tools>summary{min-height:44px;cursor:pointer;color:var(--acc);padding:10px 0}
 .beta-menu>.offline-tools p{margin:8px 0}
 .beta-menu>.offline-tools .btn{margin:6px 0;width:100%}
+
+.beta-menu{max-height:calc(100dvh - 100px);overflow-y:auto;overscroll-behavior:contain}

@@ -37,6 +37,7 @@
     const i=v9InstById(uid),r=recipes.find(r=>r.id===recipeId),n=Number(quantity);
     if(!i||i.key!=='kitchen'||!r||!v9Ops('kitchen').some(k=>k.uid===uid)||!eligible(i,r))return false;
     const room=Math.max(0,30-storedRations());
+    if(Number.isSafeInteger(n)&&n>room){alert('Ration storage capacity exceeded: '+room+' of 30 spaces available; requested '+n+'. No ingredients were used.');return false}
     if(!Number.isSafeInteger(n)||n<1||n>room||n>(game.materials[r.meat]||0)||n>(game.materials[r.fish]||0))return false;
     let count=n;
     const chance=WL_STAFF.service('kitchen',cookFor(i),i.level,i.uid).extraRationChance;

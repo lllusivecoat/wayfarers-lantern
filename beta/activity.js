@@ -11,13 +11,13 @@
   finally{if(--working===0)hideTimer=setTimeout(()=>{prompt.hidden=true},180)}
  }
  window.WL_ACTIVITY=Object.freeze({run,get working(){return working>0}});
- const selectors='.gearcare-hero-toggle,.gearcare-chips button,.v9-rrow,button[onclick*="openHeroStats"],.tab[data-view],.dropdown-item[data-view],.beta-bbar button,.beta-sheet-item,button[data-gear-action],button[data-gear-bulk],button[onclick*="dispatch" i],button[onclick*="craft" i],button[onclick*="nextDay"],button[onclick*="confirmRest"],#rest-nav-button';
+ const selectors='#alchemy-brew,[data-cook-now],.beta-rcraft,[data-inventory-potion],button[id*=equip i],button[onclick*=equip i],button[data-a*=equip i],.gearcare-hero-toggle,.gearcare-chips button,.v9-rrow,button[onclick*="openHeroStats"],.tab[data-view],.dropdown-item[data-view],.beta-bbar button,.beta-sheet-item,button[data-gear-action],button[data-gear-bulk],button[onclick*="dispatch" i],button[onclick*="craft" i],button[onclick*="nextDay"],button[onclick*="confirmRest"],#rest-nav-button';
  document.addEventListener('click',event=>{
   if(replaying||window.WL_BETA_BOOT?.active)return;
   const button=event.target.closest?.(selectors);if(!button||button.disabled)return;
   event.preventDefault();event.stopImmediatePropagation();if(working)return;
   const navigation=button.matches('.tab,.dropdown-item,.beta-bbar button,.beta-sheet-item');
-  run(navigation?'Loading…':'Updating…',()=>{replaying=true;try{button.click()}finally{replaying=false}}).catch(error=>{
+  run(navigation?'Loading…':/equip|provision/i.test(button.textContent||'')?'Equipping provisions…':/craft|brew|cook/i.test(button.textContent||'')?'Crafting…':'Updating…',()=>{replaying=true;try{button.click()}finally{replaying=false}}).catch(error=>{
    clearTimeout(hideTimer);prompt.hidden=false;prompt.textContent='The action could not finish. Please try again.';hideTimer=setTimeout(()=>{prompt.hidden=true},5000);
    window.dispatchEvent(new ErrorEvent('error',{error,message:error.message||String(error)}));
   });

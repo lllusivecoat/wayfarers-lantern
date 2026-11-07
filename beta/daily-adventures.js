@@ -1,7 +1,7 @@
 /* Save-backed day events and contract acceptance limits. No rerolls on reload. */
 (() => {
  const TRADE_ONLY=new Set(['Ancient Trade Goods','Contract Trade Goods','Trade Goods','Bonus Shipment']);
- const limit=hall=>4+2*(Math.max(1,Math.min(7,Math.floor(Number(hall)||1)))-1);
+ const limit=hall=>4+Math.round(3.5*(Math.max(1,Math.min(7,Math.floor(Number(hall)||1)))-1));
  const stories=[
   ['The Siege of South Wharf','Raiders land beneath a false merchant flag. The watch is trapped at the customs house, and families are fleeing through burning lanes.','str','Harbour Defender'],
   ['The Wilds Turn Red','Hunters return without their packs. Something has driven the region’s beasts into a frenzy, and a refugee caravan is stranded beyond the tree line.','wis','Beastbreaker'],

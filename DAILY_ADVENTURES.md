@@ -1,7 +1,7 @@
 # Daily contracts and story events
 
 Timed, non-standing Contract acceptances are limited by Hall level:
-1: 4, 2: 6, 3: 8, 4: 10, 5: 12, 6: 14, 7: 16.
+1: 4, 2: 8, 3: 11, 4: 15, 5: 18, 6: 22, 7: 25.
 Slots are charged on successful dispatch, not on opening details or failing a
 validation check. Returning, recalling or failing does not refund a slot.
 The saved counter resets on the next game day. Permanent expeditions, gathering,

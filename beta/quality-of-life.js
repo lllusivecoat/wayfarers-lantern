@@ -8,9 +8,24 @@
   const close=make('button','Continue');close.className='btn';close.onclick=()=>box.close();box.append(close);box.addEventListener('close',()=>{box.remove();dialog=null;if(queue.length)showResults()},{once:true});document.body.append(box);box.showModal();close.focus();
  }
  const settle=applyPendingReports;applyPendingReports=function(){const reports=settle.apply(this,arguments);for(const r of reports||[])if(!seen.has(r)){seen.add(r);queue.push(r)}if(queue.length&&!scheduled){scheduled=true;setTimeout(showResults,0)}return reports};
- function remedies(){const root=document.getElementById('warehouse-consumables');if(!root)return;root.querySelector('[data-inventory-remedies]')?.remove();const section=make('section');section.dataset.inventoryRemedies='1';const recipes=alchemyRecipes();
-  for(const item of game.alchemyPotions||[]){const recipe=recipes.find(r=>r.id===item.recipe);if(!recipe?.heal||item.uses<1)continue;const row=make('div');row.append(make('h4',recipe.name+' · '+item.uses+' uses'));const heroes=[game.player,...game.heroes].filter(h=>h&&!h.dead&&h.ready&&h.wound&&h.wound.tier<=recipe.tier&&!hasActiveQuestFor(h.id));const select=make('select');select.setAttribute('aria-label','Wounded hero for '+recipe.name);for(const h of heroes){const option=make('option',h.name+' · '+WOUND_TIERS[h.wound.tier].name);option.value=h.id;select.append(option)}const button=make('button','Use potion');button.className='btn secondary';button.dataset.inventoryPotion=item.id;button.disabled=!heroes.length;button.onclick=()=>useAlchemyPotion(select.value,item.id);if(heroes.length)row.append(select,button);else row.append(make('p','No eligible wounded heroes.'));section.append(row)}if(section.children.length){section.prepend(make('h3','Wound remedies'));root.append(section)}
+ const remedyTargets=new Map();
+ function remedies(){
+  const root=document.getElementById('warehouse-consumables');if(!root)return;
+  root.querySelector('[data-inventory-remedies]')?.remove();const section=make('section');section.dataset.inventoryRemedies='1';const recipes=alchemyRecipes(),groups=new Map();
+  for(const item of game.alchemyPotions||[]){const recipe=recipes.find(r=>r.id===item.recipe);if(!recipe?.heal||item.uses<1)continue;if(!groups.has(recipe.id))groups.set(recipe.id,{recipe,uses:0});groups.get(recipe.id).uses+=Number(item.uses)||0}
+  for(const {recipe,uses} of groups.values()){
+   const row=make('div');row.append(make('h4',recipe.name+' · '+uses+' '+(uses===1?'use':'uses')));
+   const heroes=[game.player,...game.heroes].filter(h=>{const recovery=game.alchemyRecoveryDays?.[h?.id];return h&&!h.dead&&h.ready&&h.wound&&h.wound.tier<=recipe.tier&&!hasActiveQuestFor(h.id)&&!(recovery?.day===game.day&&recovery.amount>=2)});
+   const select=make('select');select.setAttribute('aria-label','Wounded hero for '+recipe.name);
+   for(const h of heroes){const option=make('option',h.name+' · '+WOUND_TIERS[h.wound.tier].name);option.value=h.id;select.append(option)}
+   select.value=heroes.some(h=>h.id===remedyTargets.get(recipe.id))?remedyTargets.get(recipe.id):heroes[0]?.id||'';select.onchange=()=>remedyTargets.set(recipe.id,select.value);
+   const button=make('button','Use potion');button.className='btn secondary';button.dataset.inventoryPotion=recipe.id;button.disabled=!heroes.length;
+   button.onclick=()=>{remedyTargets.set(recipe.id,select.value);const item=(game.alchemyPotions||[]).find(x=>x.recipe===recipe.id&&x.uses>0);if(item)useAlchemyPotion(select.value,item.id)};
+   if(heroes.length)row.append(select,button);else row.append(make('p','No eligible wounded heroes.'));section.append(row);
+  }
+  if(section.children.length){section.prepend(make('h3','Wound remedies'));root.append(section)}
  }
+
  const warehouse=renderWarehouse;renderWarehouse=function(){const out=warehouse.apply(this,arguments);remedies();return out};
  const style=make('style');style.textContent='.quest-finished-popup{width:min(560px,calc(100vw - 32px));max-height:80dvh;overflow:auto;padding:24px;background:var(--panel);color:var(--text);border:1px solid var(--acc);border-radius:14px}.quest-finished-popup::backdrop{background:#0009}.quest-finished-popup section{padding:12px 0;border-bottom:1px solid var(--line)}[data-inventory-remedies] select{display:block;width:100%;margin:10px 0}[data-inventory-remedies]>div{padding:12px 0;border-top:1px solid var(--line)}';document.head.append(style);remedies();
 })();

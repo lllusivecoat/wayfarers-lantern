@@ -20,7 +20,7 @@ tier's ordinary bonus, e.g. a +3 Basic sword. It respects the existing equipped
 loadout bonus cap. Reward IDs and settlement flags prevent duplicate grants.
 
 Trade-only inventory contains Ancient Trade Goods, Contract Trade Goods,
-Trade Goods and Bonus Shipment. All other resources remain in Crafting materials
+Trade Goods, Bonus Shipment and Dungeon Cache. All other resources remain in Crafting materials
 & supplies. Existing consumable batches and identities are unchanged.
 
 Summaries select situation and outcome passages deterministically, avoiding
